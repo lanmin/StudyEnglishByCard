@@ -1829,7 +1829,7 @@
       ]
     },
     "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/LearningDataManager.ets": {
-      "mtimeMs": 1761482681530.4343,
+      "mtimeMs": 1761485200299.675,
       "children": [
         "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/types/CommonTypes.ets"
       ],
@@ -1911,7 +1911,7 @@
       "error": false
     },
     "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/components/WordLearningPage.ets": {
-      "mtimeMs": 1761482681530.4536,
+      "mtimeMs": 1761485287034.134,
       "children": [
         "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/types/CommonTypes.ets",
         "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/LearningDataManager.ets",

@@ -43,6 +43,11 @@ export struct WordLearningPage {
     return this.words[this.currentWordIndex]
   }
 
+  // 获取子分类的英文名称
+  private getSubcategoryEnglishName(): string {
+    return this.learningDataManager.getSubcategoryEnglishName(this.subcategoryId)
+  }
+
   // 播放单词发音
   private async playPronunciation() {
     const word = this.getCurrentWord()
@@ -92,7 +97,7 @@ export struct WordLearningPage {
         
         Blank()
         
-        Text(this.subcategory?.name || '')
+        Text(this.getCurrentWord()?.english || '')
           .fontSize(28)
           .fontColor('#333333')
           .fontWeight(FontWeight.Bold)

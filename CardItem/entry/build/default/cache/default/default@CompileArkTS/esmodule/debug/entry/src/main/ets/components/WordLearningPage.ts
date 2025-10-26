@@ -146,6 +146,10 @@ export class WordLearningPage extends ViewPU {
     private getCurrentWord(): WordData | undefined {
         return this.words[this.currentWordIndex];
     }
+    // 获取子分类的英文名称
+    private getSubcategoryEnglishName(): string {
+        return this.learningDataManager.getSubcategoryEnglishName(this.subcategoryId);
+    }
     // 播放单词发音
     private async playPronunciation() {
         const word = this.getCurrentWord();
@@ -211,7 +215,7 @@ export class WordLearningPage extends ViewPU {
         }, Blank);
         Blank.pop();
         this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Text.create(this.subcategory?.name || '');
+            Text.create(this.getCurrentWord()?.english || '');
             Text.fontSize(28);
             Text.fontColor('#333333');
             Text.fontWeight(FontWeight.Bold);

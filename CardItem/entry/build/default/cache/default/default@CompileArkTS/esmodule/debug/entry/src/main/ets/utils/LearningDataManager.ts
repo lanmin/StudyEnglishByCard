@@ -652,6 +652,23 @@ Yo-yo｜溜溜球｜ヨーヨー（yōyō）`;
     getThemes(): ThemeData[] {
         return this.themes;
     }
+    // 获取子分类的英文名称
+    getSubcategoryEnglishName(subcategoryId: string): string {
+        const allThemes = [
+            this.foodData, this.animalsData, this.dailyItemsData, this.bodyPartsData,
+            this.colorsShapesData, this.vehiclesData, this.familyData, this.actionsData,
+            this.placesData, this.natureData, this.clothingData, this.toysData
+        ];
+        for (const theme of allThemes) {
+            const subcategory = theme.subcategories.find(sub => sub.id === subcategoryId);
+            if (subcategory) {
+                return subcategory.languages.english;
+            }
+        }
+        // 如果找不到，返回中文名称作为备用
+        const subcategory = this.subcategories.find(sub => sub.id === subcategoryId);
+        return subcategory?.name || '';
+    }
     // 根据主题获取单词
     getWordsByTheme(theme: ThemeType): WordData[] {
         const themeMap: Record<ThemeType, string> = {
