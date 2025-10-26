@@ -40,6 +40,7 @@
 						"entities":	["entity.system.home"],
 						"actions":	["action.system.home"]
 					}],
+				"orientation":	"landscape",
 				"descriptionId":	16777220,
 				"iconId":	16777219,
 				"labelId":	16777221,

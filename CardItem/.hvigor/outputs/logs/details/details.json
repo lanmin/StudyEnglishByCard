@@ -5,7 +5,7 @@
         "MODULE_NAME": "1043bfc77febe75fafec0c4309faccf1",
         "API_TYPE": "stageMode",
         "INCREMENTAL_TASKS": {
-          "COMPILE_ARKTS": false
+          "COMPILE_ARKTS": true
         }
       }
     ],
@@ -19,37 +19,31 @@
     "IS_HVIGORFILE_TYPE_CHECK": false,
     "TASK_TIME": {
       "1043bfc77febe75fafec0c4309faccf1": {
-        "PreBuild": 83160542,
-        "CreateModuleInfo": 1107542,
-        "GenerateMetadata": 2017084,
-        "ConfigureCmake": 198500,
-        "MergeProfile": 2534791,
-        "CreateBuildProfile": 1502208,
-        "PreCheckSyscap": 260333,
-        "GeneratePkgContextInfo": 646500,
-        "ProcessIntegratedHsp": 842667,
-        "BuildNativeWithCmake": 294333,
-        "MakePackInfo": 2384250,
-        "SyscapTransform": 719125,
-        "ProcessProfile": 86172416,
-        "ProcessRouterMap": 2263000,
-        "BuildNativeWithNinja": 1053084,
-        "ProcessResource": 3356875,
-        "GenerateLoaderJson": 7697459,
-        "CompileResource": 275625625,
-        "BuildJS": 1547750,
-        "ProcessLibs": 493947167,
-        "DoNativeStrip": 106487167,
-        "CacheNativeLibs": 558196583,
-        "CompileArkTS": 4765501583,
-        "GeneratePkgModuleJson": 1129583,
-        "PackageHap": 376067166,
-        "SignHap": 903458,
-        "CollectDebugSymbol": 1832833,
-        "assembleHap": 127208
+        "PreBuild": 262011500,
+        "CreateModuleInfo": 2023167,
+        "GenerateMetadata": 2245750,
+        "ConfigureCmake": 350458,
+        "MergeProfile": 2865125,
+        "PreCheckSyscap": 404833,
+        "ProcessIntegratedHsp": 1343041,
+        "BuildNativeWithCmake": 386875,
+        "MakePackInfo": 4277583,
+        "SyscapTransform": 1639709,
+        "ProcessProfile": 184351625,
+        "ProcessRouterMap": 2315875,
+        "BuildNativeWithNinja": 1067417,
+        "GenerateLoaderJson": 10700292,
+        "CompileResource": 197355792,
+        "BuildJS": 1185584,
+        "CompileArkTS": 2358861958,
+        "GeneratePkgModuleJson": 1748833,
+        "PackageHap": 348714833,
+        "SignHap": 554417,
+        "CollectDebugSymbol": 2138833,
+        "assembleHap": 151208
       }
     },
-    "BUILD_ID": "202510252141177080",
-    "TOTAL_TIME": 6792195334
+    "TOTAL_TIME": 3674261292,
+    "BUILD_ID": "202510261348004220"
   }
 }
