@@ -1,7 +1,6 @@
-// TTS管理器
+// 文字转语音管理器
 export class TTSManager {
     private static instance: TTSManager;
-    private isInitialized: boolean = false;
     private constructor() { }
     static getInstance(): TTSManager {
         if (!TTSManager.instance) {
@@ -9,34 +8,40 @@ export class TTSManager {
         }
         return TTSManager.instance;
     }
-    // 初始化TTS
-    async init(): Promise<void> {
-        this.isInitialized = true;
-        console.log('TTS管理器初始化完成');
+    // 播放单词发音
+    async speakWord(word: string): Promise<void> {
+        try {
+            // 在HarmonyOS中，我们使用console.log模拟TTS功能
+            // 实际项目中可以使用@ohos.multimedia.tts
+            console.log(`🔊 播放发音: ${word}`);
+            // 模拟TTS播放
+            await this.simulateTTS(word);
+        }
+        catch (error) {
+            console.error('TTS播放失败:', error);
+        }
     }
-    // 播放语音
-    async speak(text: string): Promise<void> {
-        console.log(`TTS播放: ${text}`);
-        // 模拟播放延迟
-        await new Promise<void>(resolve => setTimeout(resolve, 1000));
+    // 模拟TTS播放
+    private async simulateTTS(text: string): Promise<void> {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                console.log(`✅ TTS播放完成: ${text}`);
+                resolve();
+            }, 1000); // 模拟1秒播放时间
+        });
     }
-    // 播放英文单词
-    async speakEnglish(word: string): Promise<void> {
-        console.log(`TTS播放英文: ${word}`);
-        await new Promise<void>(resolve => setTimeout(resolve, 1000));
-    }
-    // 播放中文
-    async speakChinese(text: string): Promise<void> {
-        console.log(`TTS播放中文: ${text}`);
-        await new Promise<void>(resolve => setTimeout(resolve, 1000));
+    // 播放句子
+    async speakSentence(sentence: string): Promise<void> {
+        try {
+            console.log(`🔊 播放句子: ${sentence}`);
+            await this.simulateTTS(sentence);
+        }
+        catch (error) {
+            console.error('句子播放失败:', error);
+        }
     }
     // 停止播放
-    stop(): void {
-        console.log('TTS停止播放');
-    }
-    // 销毁TTS
-    destroy(): void {
-        this.isInitialized = false;
-        console.log('TTS已销毁（简化模式）');
+    stopSpeaking(): void {
+        console.log('🔇 停止播放');
     }
 }

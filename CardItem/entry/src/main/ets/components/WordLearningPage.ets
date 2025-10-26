@@ -1,0 +1,251 @@
+// 单词学习页面组件
+
+import { WordData, SubcategoryData } from '../types/CommonTypes'
+import { LearningDataManager } from '../utils/LearningDataManager'
+import { TTSManager } from '../utils/TTSManager'
+
+@Component
+export struct WordLearningPage {
+  @Prop subcategoryId: string = ''
+  onBack?: () => void
+  
+  @State currentWordIndex: number = 0
+  @State words: WordData[] = []
+  @State subcategory: SubcategoryData | undefined = undefined
+  @State isFlipped: boolean = false
+  @State isPlaying: boolean = false
+  
+  private learningDataManager = LearningDataManager.getInstance()
+  private ttsManager = TTSManager.getInstance()
+
+  aboutToAppear() {
+    this.loadWords()
+  }
+
+  // 加载单词数据
+  private loadWords() {
+    this.subcategory = this.learningDataManager.getSubcategoryById(this.subcategoryId)
+    this.words = this.learningDataManager.getWordsBySubcategory(this.subcategoryId)
+    this.currentWordIndex = 0
+    this.isFlipped = false
+    console.log(`加载子分类 ${this.subcategoryId} 的单词:`, this.words.length)
+  }
+
+  // 获取当前单词
+  private getCurrentWord(): WordData | undefined {
+    return this.words[this.currentWordIndex]
+  }
+
+  // 播放单词发音
+  private async playPronunciation() {
+    const word = this.getCurrentWord()
+    if (!word || this.isPlaying) return
+    
+    this.isPlaying = true
+    try {
+      await this.ttsManager.speakWord(word.english)
+    } finally {
+      this.isPlaying = false
+    }
+  }
+
+  // 翻转卡片
+  private flipCard() {
+    this.isFlipped = !this.isFlipped
+  }
+
+  // 下一个单词
+  private nextWord() {
+    if (this.currentWordIndex < this.words.length - 1) {
+      this.currentWordIndex++
+      this.isFlipped = false
+    }
+  }
+
+  // 上一个单词
+  private prevWord() {
+    if (this.currentWordIndex > 0) {
+      this.currentWordIndex--
+      this.isFlipped = false
+    }
+  }
+
+  @Builder
+  build() {
+    Column() {
+      // 顶部导航栏
+      Row() {
+        Button('←')
+          .fontSize(24)
+          .fontColor('#333333')
+          .backgroundColor(Color.Transparent)
+          .onClick(() => {
+            this.onBack?.()
+          })
+        
+        Blank()
+        
+        Text(this.subcategory?.name || '')
+          .fontSize(28)
+          .fontColor('#333333')
+          .fontWeight(FontWeight.Bold)
+        
+        Blank()
+        
+        Text(`${this.currentWordIndex + 1}/${this.words.length}`)
+          .fontSize(20)
+          .fontColor('#666666')
+      }
+      .width('100%')
+      .height(60)
+      .padding({ left: 20, right: 20 })
+      .backgroundColor('#F5F5F5')
+
+      // 主要内容区域
+      Column() {
+        if (this.getCurrentWord()) {
+          // 单词卡片
+          Stack() {
+            // 正面 - 英文单词
+            Column() {
+              Image(this.getCurrentWord()!.image)
+                .width(300)
+                .height(300)
+                .borderRadius(20)
+                .objectFit(ImageFit.Cover)
+                .alt($r('app.media.foreground')) // 备用图片
+                .onClick(() => {
+                  this.playPronunciation()
+                })
+                .gesture(
+                  LongPressGesture({ repeat: true })
+                    .onAction(() => {
+                      this.flipCard()
+                    })
+                )
+              
+              Text(this.getCurrentWord()!.english)
+                .fontSize(36)
+                .fontColor('#333333')
+                .fontWeight(FontWeight.Bold)
+                .margin({ top: 20 })
+                .onClick(() => {
+                  this.playPronunciation()
+                })
+              
+              Text(this.getCurrentWord()!.pronunciation)
+                .fontSize(20)
+                .fontColor('#666666')
+                .margin({ top: 10 })
+            }
+            .opacity(this.isFlipped ? 0 : 1)
+            .animation({ duration: 300, curve: Curve.EaseInOut })
+            
+            // 背面 - 中文意思
+            Column() {
+              Image(this.getCurrentWord()!.image)
+                .width(300)
+                .height(300)
+                .borderRadius(20)
+                .objectFit(ImageFit.Cover)
+                .opacity(0.3)
+                .alt($r('app.media.foreground')) // 备用图片
+              
+              Text(this.getCurrentWord()!.chinese)
+                .fontSize(36)
+                .fontColor('#FF6B6B')
+                .fontWeight(FontWeight.Bold)
+                .margin({ top: 20 })
+              
+              Text('点击图片播放发音')
+                .fontSize(16)
+                .fontColor('#999999')
+                .margin({ top: 10 })
+            }
+            .opacity(this.isFlipped ? 1 : 0)
+            .animation({ duration: 300, curve: Curve.EaseInOut })
+          }
+          .width(350)
+          .height(450)
+          .backgroundColor('#FFFFFF')
+          .borderRadius(25)
+          .shadow({
+            radius: 10,
+            color: '#00000020',
+            offsetX: 0,
+            offsetY: 5
+          })
+          .onClick(() => {
+            this.flipCard()
+          })
+        } else {
+          // 没有单词时的提示
+          Column() {
+            Image($r('app.media.foreground'))
+              .width(200)
+              .height(200)
+              .opacity(0.5)
+            
+            Text('暂无单词数据')
+              .fontSize(24)
+              .fontColor('#999999')
+              .margin({ top: 20 })
+          }
+          .justifyContent(FlexAlign.Center)
+          .height(450)
+        }
+      }
+      .flexGrow(1)
+      .justifyContent(FlexAlign.Center)
+
+      // 底部控制按钮
+      Row() {
+        Button('上一个')
+          .fontSize(20)
+          .fontColor('#FFFFFF')
+          .backgroundColor('#4ECDC4')
+          .borderRadius(25)
+          .width(120)
+          .height(50)
+          .enabled(this.currentWordIndex > 0)
+          .onClick(() => {
+            this.prevWord()
+          })
+        
+        Blank()
+        
+        Button(this.isFlipped ? '显示英文' : '显示中文')
+          .fontSize(20)
+          .fontColor('#FFFFFF')
+          .backgroundColor('#FF6B6B')
+          .borderRadius(25)
+          .width(120)
+          .height(50)
+          .onClick(() => {
+            this.flipCard()
+          })
+        
+        Blank()
+        
+        Button('下一个')
+          .fontSize(20)
+          .fontColor('#FFFFFF')
+          .backgroundColor('#4ECDC4')
+          .borderRadius(25)
+          .width(120)
+          .height(50)
+          .enabled(this.currentWordIndex < this.words.length - 1)
+          .onClick(() => {
+            this.nextWord()
+          })
+      }
+      .width('100%')
+      .height(80)
+      .padding({ left: 30, right: 30 })
+      .backgroundColor('#F5F5F5')
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor('#F8F9FA')
+  }
+}

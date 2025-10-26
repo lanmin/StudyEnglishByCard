@@ -5,6 +5,7 @@ import { SoundEffectManager } from '../utils/SoundEffectManager'
 import { TTSManager } from '../utils/TTSManager'
 import { LearningProgressManager } from '../utils/LearningProgressManager'
 import { GlobalStyles } from '../styles/GlobalStyles'
+import { WordLearningPage } from '../components/WordLearningPage'
 import { 
   PageType, 
   ThemeType, 
@@ -40,6 +41,7 @@ struct Index {
   private themes: ThemeData[] = []
   private subcategories: SubcategoryData[] = []
   private currentSubcategory: SubcategoryData | null = null
+  private currentSubcategoryId: string = ''
 
   aboutToAppear() {
     this.learningDataManager.init()
@@ -69,11 +71,13 @@ struct Index {
 
   // 开始子分类学习
   startSubcategoryLearning(subcategoryId: string) {
+    this.currentSubcategoryId = subcategoryId
     const subcategory = this.subcategories.find(s => s.id === subcategoryId)
     if (subcategory) {
       this.currentSubcategory = subcategory
       this.currentWordIndex = 0
       this.currentPage = 'word_card'
+      console.log('开始学习子分类:', subcategoryId)
     }
   }
 
@@ -115,7 +119,12 @@ struct Index {
       } else if (this.currentPage === 'parent_helper') {
         this.ParentHelperPage()
       } else if (this.currentPage === 'word_card') {
-        this.WordCardPage()
+        WordLearningPage({
+          subcategoryId: this.currentSubcategoryId,
+          onBack: () => {
+            this.goBack()
+          }
+        })
       }
     }
     .width('100%')

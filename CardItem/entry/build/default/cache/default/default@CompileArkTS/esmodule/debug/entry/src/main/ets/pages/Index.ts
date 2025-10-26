@@ -21,12 +21,14 @@ interface Index_Params {
     themes?: ThemeData[];
     subcategories?: SubcategoryData[];
     currentSubcategory?: SubcategoryData | null;
+    currentSubcategoryId?: string;
 }
 import { LearningDataManager } from "@normalized:N&&&entry/src/main/ets/utils/LearningDataManager&";
 import { SoundEffectManager } from "@normalized:N&&&entry/src/main/ets/utils/SoundEffectManager&";
 import { TTSManager } from "@normalized:N&&&entry/src/main/ets/utils/TTSManager&";
 import { LearningProgressManager } from "@normalized:N&&&entry/src/main/ets/utils/LearningProgressManager&";
 import { GlobalStyles } from "@normalized:N&&&entry/src/main/ets/styles/GlobalStyles&";
+import { WordLearningPage } from "@normalized:N&&&entry/src/main/ets/components/WordLearningPage&";
 import type { PageType, ThemeType, ThemeData, SubcategoryData, WordData, LearningMode } from '../types/CommonTypes';
 class Index extends ViewPU {
     constructor(parent, params, __localStorage, elmtId = -1, paramsLambda = undefined, extraInfo) {
@@ -55,6 +57,7 @@ class Index extends ViewPU {
         this.themes = [];
         this.subcategories = [];
         this.currentSubcategory = null;
+        this.currentSubcategoryId = '';
         this.setInitiallyProvidedValue(params);
         this.finalizeConstruction();
     }
@@ -115,6 +118,9 @@ class Index extends ViewPU {
         }
         if (params.currentSubcategory !== undefined) {
             this.currentSubcategory = params.currentSubcategory;
+        }
+        if (params.currentSubcategoryId !== undefined) {
+            this.currentSubcategoryId = params.currentSubcategoryId;
         }
     }
     updateStateVars(params: Index_Params) {
@@ -242,6 +248,7 @@ class Index extends ViewPU {
     private themes: ThemeData[];
     private subcategories: SubcategoryData[];
     private currentSubcategory: SubcategoryData | null;
+    private currentSubcategoryId: string;
     aboutToAppear() {
         this.learningDataManager.init();
         this.themes = this.learningDataManager.getThemes();
@@ -266,11 +273,13 @@ class Index extends ViewPU {
     }
     // 开始子分类学习
     startSubcategoryLearning(subcategoryId: string) {
+        this.currentSubcategoryId = subcategoryId;
         const subcategory = this.subcategories.find(s => s.id === subcategoryId);
         if (subcategory) {
             this.currentSubcategory = subcategory;
             this.currentWordIndex = 0;
             this.currentPage = 'word_card';
+            console.log('开始学习子分类:', subcategoryId);
         }
     }
     // 返回上一页
@@ -330,7 +339,33 @@ class Index extends ViewPU {
             }
             else if (this.currentPage === 'word_card') {
                 this.ifElseBranchUpdateFunction(3, () => {
-                    this.WordCardPage.bind(this)();
+                    {
+                        this.observeComponentCreation2((elmtId, isInitialRender) => {
+                            if (isInitialRender) {
+                                let componentCall = new WordLearningPage(this, {
+                                    subcategoryId: this.currentSubcategoryId,
+                                    onBack: () => {
+                                        this.goBack();
+                                    }
+                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 122, col: 9 });
+                                ViewPU.create(componentCall);
+                                let paramsLambda = () => {
+                                    return {
+                                        subcategoryId: this.currentSubcategoryId,
+                                        onBack: () => {
+                                            this.goBack();
+                                        }
+                                    };
+                                };
+                                componentCall.paramsGenerator_ = paramsLambda;
+                            }
+                            else {
+                                this.updateStateVarsOfChildByElmtId(elmtId, {
+                                    subcategoryId: this.currentSubcategoryId
+                                });
+                            }
+                        }, { name: "WordLearningPage" });
+                    }
                 });
             }
             else {
