@@ -242,35 +242,37 @@ export class WordLearningPage extends ViewPU {
         Row.pop();
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             // 主要内容区域
-            Column.create();
+            Row.create();
             // 主要内容区域
-            Column.flexGrow(1);
+            Row.flexGrow(1);
             // 主要内容区域
-            Column.justifyContent(FlexAlign.Center);
-        }, Column);
+            Row.justifyContent(FlexAlign.Center);
+            // 主要内容区域
+            Row.padding({ left: 50, right: 50 });
+        }, Row);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             If.create();
             if (this.getCurrentWord()) {
                 this.ifElseBranchUpdateFunction(0, () => {
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        // 单词卡片
+                        // 左侧：单词卡片
                         Stack.create();
-                        // 单词卡片
+                        // 左侧：单词卡片
                         Stack.width(350);
-                        // 单词卡片
+                        // 左侧：单词卡片
                         Stack.height(450);
-                        // 单词卡片
+                        // 左侧：单词卡片
                         Stack.backgroundColor('#FFFFFF');
-                        // 单词卡片
+                        // 左侧：单词卡片
                         Stack.borderRadius(25);
-                        // 单词卡片
+                        // 左侧：单词卡片
                         Stack.shadow({
                             radius: 10,
                             color: '#00000020',
                             offsetX: 0,
                             offsetY: 5
                         });
-                        // 单词卡片
+                        // 左侧：单词卡片
                         Stack.onClick(() => {
                             this.flipCard();
                         });
@@ -372,8 +374,56 @@ export class WordLearningPage extends ViewPU {
                     Text.pop();
                     // 背面 - 中文意思
                     Column.pop();
-                    // 单词卡片
+                    // 左侧：单词卡片
                     Stack.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        // 右侧：英文和中文显示区域
+                        Column.create();
+                        // 右侧：英文和中文显示区域
+                        Column.justifyContent(FlexAlign.Center);
+                        // 右侧：英文和中文显示区域
+                        Column.flexGrow(1);
+                        // 右侧：英文和中文显示区域
+                        Column.padding({ left: 30 });
+                    }, Column);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Text.create(this.getCurrentWord()!.english);
+                        Text.fontSize(48);
+                        Text.fontColor('#333333');
+                        Text.fontWeight(FontWeight.Bold);
+                        Text.margin({ bottom: 30 });
+                    }, Text);
+                    Text.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Text.create(this.getCurrentWord()!.chinese);
+                        Text.fontSize(36);
+                        Text.fontColor('#FF6B6B');
+                        Text.fontWeight(FontWeight.Bold);
+                        Text.margin({ bottom: 20 });
+                    }, Text);
+                    Text.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Text.create(this.getCurrentWord()!.pronunciation);
+                        Text.fontSize(24);
+                        Text.fontColor('#666666');
+                        Text.margin({ bottom: 20 });
+                    }, Text);
+                    Text.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Button.createWithLabel('播放发音');
+                        Button.fontSize(20);
+                        Button.fontColor('#FFFFFF');
+                        Button.backgroundColor('#4ECDC4');
+                        Button.borderRadius(25);
+                        Button.width(120);
+                        Button.height(50);
+                        Button.onClick(() => {
+                            this.playPronunciation();
+                        });
+                    }, Button);
+                    Button.pop();
+                    // 右侧：英文和中文显示区域
+                    Column.pop();
                 });
             }
             else {
@@ -406,7 +456,7 @@ export class WordLearningPage extends ViewPU {
         }, If);
         If.pop();
         // 主要内容区域
-        Column.pop();
+        Row.pop();
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             // 底部控制按钮
             Row.create();

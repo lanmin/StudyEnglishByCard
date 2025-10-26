@@ -121,9 +121,9 @@ export struct WordLearningPage {
       .backgroundColor('#F5F5F5')
 
       // 主要内容区域
-      Column() {
+      Row() {
         if (this.getCurrentWord()) {
-          // 单词卡片
+          // 左侧：单词卡片
           Stack() {
             // 正面 - 英文单词
             Column() {
@@ -206,6 +206,40 @@ export struct WordLearningPage {
           .onClick(() => {
             this.flipCard()
           })
+          
+          // 右侧：英文和中文显示区域
+          Column() {
+            Text(this.getCurrentWord()!.english)
+              .fontSize(48)
+              .fontColor('#333333')
+              .fontWeight(FontWeight.Bold)
+              .margin({ bottom: 30 })
+            
+            Text(this.getCurrentWord()!.chinese)
+              .fontSize(36)
+              .fontColor('#FF6B6B')
+              .fontWeight(FontWeight.Bold)
+              .margin({ bottom: 20 })
+            
+            Text(this.getCurrentWord()!.pronunciation)
+              .fontSize(24)
+              .fontColor('#666666')
+              .margin({ bottom: 20 })
+            
+            Button('播放发音')
+              .fontSize(20)
+              .fontColor('#FFFFFF')
+              .backgroundColor('#4ECDC4')
+              .borderRadius(25)
+              .width(120)
+              .height(50)
+              .onClick(() => {
+                this.playPronunciation()
+              })
+          }
+          .justifyContent(FlexAlign.Center)
+          .flexGrow(1)
+          .padding({ left: 30 })
         } else {
           // 没有单词时的提示
           Column() {
@@ -225,6 +259,7 @@ export struct WordLearningPage {
       }
       .flexGrow(1)
       .justifyContent(FlexAlign.Center)
+      .padding({ left: 50, right: 50 })
 
       // 底部控制按钮
       Row() {
