@@ -7,7 +7,6 @@ import { TTSManager } from '../utils/TTSManager'
 @Component
 export struct WordLearningPage {
   @Prop subcategoryId: string = ''
-  onBack?: () => void
   
   @State currentWordIndex: number = 0
   @State words: WordData[] = []
@@ -24,11 +23,19 @@ export struct WordLearningPage {
 
   // 加载单词数据
   private loadWords() {
+    console.log(`WordLearningPage: 开始加载子分类 ${this.subcategoryId}`)
     this.subcategory = this.learningDataManager.getSubcategoryById(this.subcategoryId)
     this.words = this.learningDataManager.getWordsBySubcategory(this.subcategoryId)
     this.currentWordIndex = 0
     this.isFlipped = false
-    console.log(`加载子分类 ${this.subcategoryId} 的单词:`, this.words.length)
+    console.log(`WordLearningPage: 加载完成，子分类: ${this.subcategory?.name}, 单词数量: ${this.words.length}`)
+    if (this.words.length > 0) {
+      const firstWord = this.words[0]
+      console.log(`WordLearningPage: 第一个单词: ${firstWord.english} - ${firstWord.chinese}`)
+      console.log(`WordLearningPage: 第一个单词图片路径: ${firstWord.image}`)
+    } else {
+      console.log(`WordLearningPage: 警告 - 没有找到单词数据！`)
+    }
   }
 
   // 获取当前单词
@@ -80,7 +87,7 @@ export struct WordLearningPage {
           .fontColor('#333333')
           .backgroundColor(Color.Transparent)
           .onClick(() => {
-            this.onBack?.()
+            console.log('返回按钮被点击 - 暂时禁用返回功能')
           })
         
         Blank()
@@ -108,12 +115,21 @@ export struct WordLearningPage {
           Stack() {
             // 正面 - 英文单词
             Column() {
-              Image(this.getCurrentWord()!.image)
+              // 使用rawfile资源引用
+              Image($rawfile(this.getCurrentWord()!.image))
                 .width(300)
                 .height(300)
                 .borderRadius(20)
                 .objectFit(ImageFit.Cover)
                 .alt($r('app.media.foreground')) // 备用图片
+                .onError(() => {
+                  console.log(`图片加载失败: ${this.getCurrentWord()!.image}`)
+                  // 尝试备用路径
+                  console.log('尝试使用备用图片路径...')
+                })
+                .onComplete(() => {
+                  console.log(`图片加载成功: ${this.getCurrentWord()!.image}`)
+                })
                 .onClick(() => {
                   this.playPronunciation()
                 })

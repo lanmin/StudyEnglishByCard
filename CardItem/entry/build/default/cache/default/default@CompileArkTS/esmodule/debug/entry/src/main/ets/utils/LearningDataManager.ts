@@ -102,14 +102,16 @@ export class LearningDataManager {
             else if (trimmedLine && !trimmedLine.startsWith('#') && currentSubcategory) {
                 const wordInfo = this.parseWordLine(trimmedLine);
                 if (wordInfo) {
+                    const wordId = wordInfo.languages.english.toLowerCase();
                     const wordData: WordDataStructure = {
-                        id: wordInfo.languages.english.toLowerCase(),
+                        id: wordId,
                         languages: wordInfo.languages,
                         subcategory: currentSubcategory.languages.chinese,
-                        image: this.getImagePath(currentTheme!.id, currentSubcategory.languages.chinese, wordInfo.languages.english.toLowerCase()),
+                        image: this.getImagePath(currentTheme!.id, currentSubcategory.languages.chinese, wordId),
                         pronunciation: this.generatePronunciation(wordInfo.languages.english)
                     };
                     currentSubcategory.words.push(wordData);
+                    console.log(`添加单词: ${wordInfo.languages.english} -> 图片路径: ${wordData.image}`);
                 }
             }
         }
@@ -295,7 +297,7 @@ export class LearningDataManager {
         allThemes.forEach(theme => {
             theme.subcategories.forEach(subcategory => {
                 subcategory.words.forEach(word => {
-                    this.words.push({
+                    const wordData: WordData = {
                         id: word.id,
                         english: word.languages.english,
                         chinese: word.languages.chinese,
@@ -303,7 +305,9 @@ export class LearningDataManager {
                         subcategory: subcategory.languages.chinese,
                         image: word.image,
                         pronunciation: word.pronunciation
-                    });
+                    };
+                    this.words.push(wordData);
+                    console.log(`转换单词: ${word.languages.english} -> 图片: ${word.image}`);
                 });
             });
         });
@@ -632,8 +636,17 @@ Yo-yo｜溜溜球｜ヨーヨー（yōyō）`;
         };
         const themeFolder = themeFolderMap[themeId] || 'Food';
         const subcategoryFolder = subcategoryFolderMap[subcategoryName] || 'Fruit';
-        // 生成图片路径：$rawfile/CardOriginal/{主题文件夹}/{子分类文件夹}/{单词ID}.png
-        return `$rawfile/CardOriginal/${themeFolder}/${subcategoryFolder}/${wordId}.png`;
+        // 生成图片路径：尝试不同的rawfile引用格式
+        const possiblePaths = [
+            `$rawfile('CardOriginal/${themeFolder}/${subcategoryFolder}/${wordId}.png')`,
+            `$rawfile('CardOriginal/${themeFolder}/${subcategoryFolder}/${wordId.charAt(0).toUpperCase() + wordId.slice(1)}.png')`,
+            `$rawfile/CardOriginal/${themeFolder}/${subcategoryFolder}/${wordId}.png`,
+            `$rawfile/CardOriginal/${themeFolder}/${subcategoryFolder}/${wordId.charAt(0).toUpperCase() + wordId.slice(1)}.png`
+        ];
+        // 使用简单的字符串路径，在Image组件中处理
+        const imagePath = `CardOriginal/${themeFolder}/${subcategoryFolder}/${wordId}.png`;
+        console.log(`生成图片路径: ${wordId} -> ${imagePath}`);
+        return imagePath;
     }
     // 获取主题数据
     getThemes(): ThemeData[] {
@@ -707,10 +720,14 @@ Yo-yo｜溜溜球｜ヨーヨー（yōyō）`;
     getWordsBySubcategory(subcategoryId: string): WordData[] {
         const subcategory = this.subcategories.find(s => s.id === subcategoryId);
         if (!subcategory) {
+            console.log(`未找到子分类: ${subcategoryId}`);
             return [];
         }
+        console.log(`查找子分类 "${subcategory.name}" 的单词`);
         // 根据子分类名称过滤单词
-        return this.words.filter(word => word.subcategory === subcategory.name);
+        const filteredWords = this.words.filter(word => word.subcategory === subcategory.name);
+        console.log(`找到 ${filteredWords.length} 个单词:`, filteredWords.map(w => w.english));
+        return filteredWords;
     }
     // 获取子分类数据
     getSubcategoryById(subcategoryId: string): SubcategoryData | undefined {

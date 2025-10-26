@@ -3,7 +3,6 @@ if (!("finalizeConstruction" in ViewPU.prototype)) {
 }
 interface WordLearningPage_Params {
     subcategoryId?: string;
-    onBack?: () => void;
     currentWordIndex?: number;
     words?: WordData[];
     subcategory?: SubcategoryData | undefined;
@@ -22,7 +21,6 @@ export class WordLearningPage extends ViewPU {
             this.paramsGenerator_ = paramsLambda;
         }
         this.__subcategoryId = new SynchedPropertySimpleOneWayPU(params.subcategoryId, this, "subcategoryId");
-        this.onBack = undefined;
         this.__currentWordIndex = new ObservedPropertySimplePU(0, this, "currentWordIndex");
         this.__words = new ObservedPropertyObjectPU([], this, "words");
         this.__subcategory = new ObservedPropertyObjectPU(undefined, this, "subcategory");
@@ -36,9 +34,6 @@ export class WordLearningPage extends ViewPU {
     setInitiallyProvidedValue(params: WordLearningPage_Params) {
         if (params.subcategoryId === undefined) {
             this.__subcategoryId.set('');
-        }
-        if (params.onBack !== undefined) {
-            this.onBack = params.onBack;
         }
         if (params.currentWordIndex !== undefined) {
             this.currentWordIndex = params.currentWordIndex;
@@ -90,7 +85,6 @@ export class WordLearningPage extends ViewPU {
     set subcategoryId(newValue: string) {
         this.__subcategoryId.set(newValue);
     }
-    private onBack?: () => void;
     private __currentWordIndex: ObservedPropertySimplePU<number>;
     get currentWordIndex() {
         return this.__currentWordIndex.get();
@@ -133,11 +127,20 @@ export class WordLearningPage extends ViewPU {
     }
     // 加载单词数据
     private loadWords() {
+        console.log(`WordLearningPage: 开始加载子分类 ${this.subcategoryId}`);
         this.subcategory = this.learningDataManager.getSubcategoryById(this.subcategoryId);
         this.words = this.learningDataManager.getWordsBySubcategory(this.subcategoryId);
         this.currentWordIndex = 0;
         this.isFlipped = false;
-        console.log(`加载子分类 ${this.subcategoryId} 的单词:`, this.words.length);
+        console.log(`WordLearningPage: 加载完成，子分类: ${this.subcategory?.name}, 单词数量: ${this.words.length}`);
+        if (this.words.length > 0) {
+            const firstWord = this.words[0];
+            console.log(`WordLearningPage: 第一个单词: ${firstWord.english} - ${firstWord.chinese}`);
+            console.log(`WordLearningPage: 第一个单词图片路径: ${firstWord.image}`);
+        }
+        else {
+            console.log(`WordLearningPage: 警告 - 没有找到单词数据！`);
+        }
     }
     // 获取当前单词
     private getCurrentWord(): WordData | undefined {
@@ -199,7 +202,7 @@ export class WordLearningPage extends ViewPU {
             Button.fontColor('#333333');
             Button.backgroundColor(Color.Transparent);
             Button.onClick(() => {
-                this.onBack?.();
+                console.log('返回按钮被点击 - 暂时禁用返回功能');
             });
         }, Button);
         Button.pop();
@@ -270,12 +273,29 @@ export class WordLearningPage extends ViewPU {
                         Context.animation(null);
                     }, Column);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        Image.create(this.getCurrentWord()!.image);
+                        // 使用rawfile资源引用
+                        Image.create({ "id": -1, "type": 30000, params: [this.getCurrentWord()!.image], "bundleName": "com.example.studyenglishbycard", "moduleName": "entry" });
+                        // 使用rawfile资源引用
                         Image.width(300);
+                        // 使用rawfile资源引用
                         Image.height(300);
+                        // 使用rawfile资源引用
                         Image.borderRadius(20);
+                        // 使用rawfile资源引用
                         Image.objectFit(ImageFit.Cover);
+                        // 使用rawfile资源引用
                         Image.alt({ "id": 16777218, "type": 20000, params: [], "bundleName": "com.example.studyenglishbycard", "moduleName": "entry" });
+                        // 使用rawfile资源引用
+                        Image.onError(() => {
+                            console.log(`图片加载失败: ${this.getCurrentWord()!.image}`);
+                            // 尝试备用路径
+                            console.log('尝试使用备用图片路径...');
+                        });
+                        // 使用rawfile资源引用
+                        Image.onComplete(() => {
+                            console.log(`图片加载成功: ${this.getCurrentWord()!.image}`);
+                        });
+                        // 使用rawfile资源引用
                         Image.onClick(() => {
                             this.playPronunciation();
                         });
