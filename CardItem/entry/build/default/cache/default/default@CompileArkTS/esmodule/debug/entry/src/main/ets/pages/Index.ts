@@ -5,7 +5,12 @@ interface Index_Params {
     currentPage?: PageType;
     currentTheme?: ThemeType;
     currentWordIndex?: number;
-    learningProgress?: LearningProgress;
+    selectedMode?: LearningMode;
+    score?: number;
+    level?: number;
+    showProgress?: boolean;
+    showDetailPage?: boolean;
+    selectedWord?: WordData | null;
     isImageHidden?: boolean;
     volumeVisible?: boolean;
     currentVolume?: number;
@@ -14,31 +19,30 @@ interface Index_Params {
     ttsManager?: TTSManager;
     learningProgressManager?: LearningProgressManager;
     themes?: ThemeData[];
+    subcategories?: SubcategoryData[];
+    currentSubcategory?: SubcategoryData | null;
 }
-import type { PageType, ThemeType, ThemeData, WordData, LearningProgress } from '../types/CommonTypes';
-import { GlobalStyles } from "@normalized:N&&&entry/src/main/ets/styles/GlobalStyles&";
 import { LearningDataManager } from "@normalized:N&&&entry/src/main/ets/utils/LearningDataManager&";
-import { SoundEffectManager } from "@normalized:N&&&entry/src/main/ets/managers/SoundEffectManager&";
+import { SoundEffectManager } from "@normalized:N&&&entry/src/main/ets/utils/SoundEffectManager&";
 import { TTSManager } from "@normalized:N&&&entry/src/main/ets/utils/TTSManager&";
-import { LearningProgressManager } from "@normalized:N&&&entry/src/main/ets/managers/LearningProgressManager&";
+import { LearningProgressManager } from "@normalized:N&&&entry/src/main/ets/utils/LearningProgressManager&";
+import { GlobalStyles } from "@normalized:N&&&entry/src/main/ets/styles/GlobalStyles&";
+import type { PageType, ThemeType, ThemeData, SubcategoryData, WordData, LearningMode } from '../types/CommonTypes';
 class Index extends ViewPU {
     constructor(parent, params, __localStorage, elmtId = -1, paramsLambda = undefined, extraInfo) {
         super(parent, __localStorage, elmtId, extraInfo);
         if (typeof paramsLambda === "function") {
             this.paramsGenerator_ = paramsLambda;
         }
-        this.__currentPage = new ObservedPropertySimplePU('theme_select' // 直接进入主题选择页
-        , this, "currentPage");
+        this.__currentPage = new ObservedPropertySimplePU('theme_select', this, "currentPage");
         this.__currentTheme = new ObservedPropertySimplePU('fruits', this, "currentTheme");
         this.__currentWordIndex = new ObservedPropertySimplePU(0, this, "currentWordIndex");
-        this.__learningProgress = new ObservedPropertyObjectPU({
-            currentTheme: 'fruits',
-            currentWordIndex: 0,
-            totalLearningTime: 0,
-            sessionStartTime: 0,
-            stickers: [],
-            completedThemes: []
-        }, this, "learningProgress");
+        this.__selectedMode = new ObservedPropertySimplePU('listen', this, "selectedMode");
+        this.__score = new ObservedPropertySimplePU(0, this, "score");
+        this.__level = new ObservedPropertySimplePU(1, this, "level");
+        this.__showProgress = new ObservedPropertySimplePU(false, this, "showProgress");
+        this.__showDetailPage = new ObservedPropertySimplePU(false, this, "showDetailPage");
+        this.__selectedWord = new ObservedPropertyObjectPU(null, this, "selectedWord");
         this.__isImageHidden = new ObservedPropertySimplePU(false, this, "isImageHidden");
         this.__volumeVisible = new ObservedPropertySimplePU(false, this, "volumeVisible");
         this.__currentVolume = new ObservedPropertySimplePU(50
@@ -49,6 +53,8 @@ class Index extends ViewPU {
         this.ttsManager = TTSManager.getInstance();
         this.learningProgressManager = LearningProgressManager.getInstance();
         this.themes = [];
+        this.subcategories = [];
+        this.currentSubcategory = null;
         this.setInitiallyProvidedValue(params);
         this.finalizeConstruction();
     }
@@ -62,8 +68,23 @@ class Index extends ViewPU {
         if (params.currentWordIndex !== undefined) {
             this.currentWordIndex = params.currentWordIndex;
         }
-        if (params.learningProgress !== undefined) {
-            this.learningProgress = params.learningProgress;
+        if (params.selectedMode !== undefined) {
+            this.selectedMode = params.selectedMode;
+        }
+        if (params.score !== undefined) {
+            this.score = params.score;
+        }
+        if (params.level !== undefined) {
+            this.level = params.level;
+        }
+        if (params.showProgress !== undefined) {
+            this.showProgress = params.showProgress;
+        }
+        if (params.showDetailPage !== undefined) {
+            this.showDetailPage = params.showDetailPage;
+        }
+        if (params.selectedWord !== undefined) {
+            this.selectedWord = params.selectedWord;
         }
         if (params.isImageHidden !== undefined) {
             this.isImageHidden = params.isImageHidden;
@@ -89,6 +110,12 @@ class Index extends ViewPU {
         if (params.themes !== undefined) {
             this.themes = params.themes;
         }
+        if (params.subcategories !== undefined) {
+            this.subcategories = params.subcategories;
+        }
+        if (params.currentSubcategory !== undefined) {
+            this.currentSubcategory = params.currentSubcategory;
+        }
     }
     updateStateVars(params: Index_Params) {
     }
@@ -96,7 +123,12 @@ class Index extends ViewPU {
         this.__currentPage.purgeDependencyOnElmtId(rmElmtId);
         this.__currentTheme.purgeDependencyOnElmtId(rmElmtId);
         this.__currentWordIndex.purgeDependencyOnElmtId(rmElmtId);
-        this.__learningProgress.purgeDependencyOnElmtId(rmElmtId);
+        this.__selectedMode.purgeDependencyOnElmtId(rmElmtId);
+        this.__score.purgeDependencyOnElmtId(rmElmtId);
+        this.__level.purgeDependencyOnElmtId(rmElmtId);
+        this.__showProgress.purgeDependencyOnElmtId(rmElmtId);
+        this.__showDetailPage.purgeDependencyOnElmtId(rmElmtId);
+        this.__selectedWord.purgeDependencyOnElmtId(rmElmtId);
         this.__isImageHidden.purgeDependencyOnElmtId(rmElmtId);
         this.__volumeVisible.purgeDependencyOnElmtId(rmElmtId);
         this.__currentVolume.purgeDependencyOnElmtId(rmElmtId);
@@ -105,14 +137,19 @@ class Index extends ViewPU {
         this.__currentPage.aboutToBeDeleted();
         this.__currentTheme.aboutToBeDeleted();
         this.__currentWordIndex.aboutToBeDeleted();
-        this.__learningProgress.aboutToBeDeleted();
+        this.__selectedMode.aboutToBeDeleted();
+        this.__score.aboutToBeDeleted();
+        this.__level.aboutToBeDeleted();
+        this.__showProgress.aboutToBeDeleted();
+        this.__showDetailPage.aboutToBeDeleted();
+        this.__selectedWord.aboutToBeDeleted();
         this.__isImageHidden.aboutToBeDeleted();
         this.__volumeVisible.aboutToBeDeleted();
         this.__currentVolume.aboutToBeDeleted();
         SubscriberManager.Get().delete(this.id__());
         this.aboutToBeDeletedInternal();
     }
-    private __currentPage: ObservedPropertySimplePU<PageType>; // 直接进入主题选择页
+    private __currentPage: ObservedPropertySimplePU<PageType>;
     get currentPage() {
         return this.__currentPage.get();
     }
@@ -133,12 +170,47 @@ class Index extends ViewPU {
     set currentWordIndex(newValue: number) {
         this.__currentWordIndex.set(newValue);
     }
-    private __learningProgress: ObservedPropertyObjectPU<LearningProgress>;
-    get learningProgress() {
-        return this.__learningProgress.get();
+    private __selectedMode: ObservedPropertySimplePU<LearningMode>;
+    get selectedMode() {
+        return this.__selectedMode.get();
     }
-    set learningProgress(newValue: LearningProgress) {
-        this.__learningProgress.set(newValue);
+    set selectedMode(newValue: LearningMode) {
+        this.__selectedMode.set(newValue);
+    }
+    private __score: ObservedPropertySimplePU<number>;
+    get score() {
+        return this.__score.get();
+    }
+    set score(newValue: number) {
+        this.__score.set(newValue);
+    }
+    private __level: ObservedPropertySimplePU<number>;
+    get level() {
+        return this.__level.get();
+    }
+    set level(newValue: number) {
+        this.__level.set(newValue);
+    }
+    private __showProgress: ObservedPropertySimplePU<boolean>;
+    get showProgress() {
+        return this.__showProgress.get();
+    }
+    set showProgress(newValue: boolean) {
+        this.__showProgress.set(newValue);
+    }
+    private __showDetailPage: ObservedPropertySimplePU<boolean>;
+    get showDetailPage() {
+        return this.__showDetailPage.get();
+    }
+    set showDetailPage(newValue: boolean) {
+        this.__showDetailPage.set(newValue);
+    }
+    private __selectedWord: ObservedPropertyObjectPU<WordData | null>;
+    get selectedWord() {
+        return this.__selectedWord.get();
+    }
+    set selectedWord(newValue: WordData | null) {
+        this.__selectedWord.set(newValue);
     }
     private __isImageHidden: ObservedPropertySimplePU<boolean>;
     get isImageHidden() {
@@ -168,32 +240,11 @@ class Index extends ViewPU {
     private learningProgressManager: LearningProgressManager;
     // 主题数据
     private themes: ThemeData[];
+    private subcategories: SubcategoryData[];
+    private currentSubcategory: SubcategoryData | null;
     aboutToAppear() {
         this.learningDataManager.init();
         this.themes = this.learningDataManager.getThemes();
-    }
-    // 初始化应用
-    async initializeApp() {
-        try {
-            // 初始化TTS
-            await this.ttsManager.init();
-            // 初始化学习进度管理器
-            await this.learningProgressManager.init();
-            // 初始化音效管理器
-            await this.soundEffectManager.init();
-            // 加载学习进度
-            this.loadLearningProgress();
-            // 播放欢迎音效
-            await this.soundEffectManager.playWelcome();
-            console.log('应用初始化完成');
-        }
-        catch (error) {
-            console.error('应用初始化失败:', error);
-        }
-    }
-    // 加载学习进度
-    loadLearningProgress() {
-        this.learningProgress = this.learningProgressManager.loadProgress();
     }
     // 保存学习进度
     saveLearningProgress() {
@@ -207,6 +258,21 @@ class Index extends ViewPU {
         await this.soundEffectManager.playLearningStart();
         this.currentPage = 'word_card';
     }
+    // 进入子分类选择页面
+    enterSubcategorySelect(theme: ThemeType) {
+        this.currentTheme = theme;
+        this.subcategories = this.learningDataManager.getSubcategoriesByTheme(theme);
+        this.currentPage = 'subcategory_select';
+    }
+    // 开始子分类学习
+    startSubcategoryLearning(subcategoryId: string) {
+        const subcategory = this.subcategories.find(s => s.id === subcategoryId);
+        if (subcategory) {
+            this.currentSubcategory = subcategory;
+            this.currentWordIndex = 0;
+            this.currentPage = 'word_card';
+        }
+    }
     // 返回上一页
     goBack() {
         console.log(`goBack called, current page: ${this.currentPage}`);
@@ -214,21 +280,29 @@ class Index extends ViewPU {
             this.currentPage = 'theme_select';
             console.log('Returning to theme_select from parent_helper');
         }
+        else if (this.currentPage === 'subcategory_select') {
+            this.currentPage = 'theme_select';
+            console.log('Returning to theme_select from subcategory_select');
+        }
         else if (this.currentPage === 'word_card') {
+            if (this.currentSubcategory) {
+                this.currentPage = 'subcategory_select';
+                console.log('Returning to subcategory_select from word_card');
+            }
+            else {
+                this.currentPage = 'theme_select';
+                console.log('Returning to theme_select from word_card');
+            }
+        }
+        else {
             this.currentPage = 'theme_select';
-            console.log('Returning to theme_select from word_card');
+            console.log('Default return to theme_select');
         }
-        else if (this.currentPage === 'speaking_practice' ||
-            this.currentPage === 'writing_practice') {
-            this.currentPage = 'word_card';
-            console.log('Returning to word_card from practice page');
-        }
-        else if (this.currentPage === 'progress_reward' ||
-            this.currentPage === 'sticker_collection' ||
-            this.currentPage === 'rest_break') {
-            this.currentPage = 'theme_select';
-            console.log('Returning to theme_select from reward/collection/break page');
-        }
+    }
+    // 获取主题名称
+    getThemeName(theme: ThemeType): string {
+        const themeData = this.themes.find(t => t.id === theme);
+        return themeData ? themeData.name : theme;
     }
     initialRender() {
         this.observeComponentCreation2((elmtId, isInitialRender) => {
@@ -236,9 +310,6 @@ class Index extends ViewPU {
             Column.width('100%');
             Column.height('100%');
             Column.backgroundColor(GlobalStyles.COLORS.BACKGROUND);
-            Column.onAppear(() => {
-                this.initializeApp();
-            });
         }, Column);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             If.create();
@@ -247,43 +318,23 @@ class Index extends ViewPU {
                     this.ThemeSelectPage.bind(this)();
                 });
             }
-            else if (this.currentPage === 'parent_helper') {
+            else if (this.currentPage === 'subcategory_select') {
                 this.ifElseBranchUpdateFunction(1, () => {
+                    this.SubcategorySelectPage.bind(this)();
+                });
+            }
+            else if (this.currentPage === 'parent_helper') {
+                this.ifElseBranchUpdateFunction(2, () => {
                     this.ParentHelperPage.bind(this)();
                 });
             }
             else if (this.currentPage === 'word_card') {
-                this.ifElseBranchUpdateFunction(2, () => {
+                this.ifElseBranchUpdateFunction(3, () => {
                     this.WordCardPage.bind(this)();
                 });
             }
-            else if (this.currentPage === 'speaking_practice') {
-                this.ifElseBranchUpdateFunction(3, () => {
-                    this.SpeakingPracticePage.bind(this)();
-                });
-            }
-            else if (this.currentPage === 'writing_practice') {
-                this.ifElseBranchUpdateFunction(4, () => {
-                    this.WritingPracticePage.bind(this)();
-                });
-            }
-            else if (this.currentPage === 'progress_reward') {
-                this.ifElseBranchUpdateFunction(5, () => {
-                    this.ProgressRewardPage.bind(this)();
-                });
-            }
-            else if (this.currentPage === 'sticker_collection') {
-                this.ifElseBranchUpdateFunction(6, () => {
-                    this.StickerCollectionPage.bind(this)();
-                });
-            }
-            else if (this.currentPage === 'rest_break') {
-                this.ifElseBranchUpdateFunction(7, () => {
-                    this.RestBreakPage.bind(this)();
-                });
-            }
             else {
-                this.ifElseBranchUpdateFunction(8, () => {
+                this.ifElseBranchUpdateFunction(4, () => {
                 });
             }
         }, If);
@@ -333,7 +384,7 @@ class Index extends ViewPU {
             Button.onClick(() => {
                 this.soundEffectManager.playButtonClick();
                 console.log('Settings button clicked, changing to parent_helper');
-                this.currentPage = 'parent_helper'; // 暂时使用家长助手页面作为设置页面
+                this.currentPage = 'parent_helper';
             });
         }, Button);
         // 设置按钮
@@ -388,7 +439,7 @@ class Index extends ViewPU {
             Column.margin({ right: GlobalStyles.SIZES.SPACING_MEDIUM });
             Column.onClick(() => {
                 this.soundEffectManager.playButtonClick();
-                this.startThemeLearning(theme.id);
+                this.enterSubcategorySelect(theme.id);
             });
             Context.animation(null);
             Column.scale({ x: 1, y: 1 });
@@ -431,15 +482,147 @@ class Index extends ViewPU {
         Text.pop();
         Column.pop();
     }
+    // 子分类选择页面
+    SubcategorySelectPage(parent = null) {
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Column.create();
+            Column.width('100%');
+            Column.height('100%');
+            Column.backgroundColor(GlobalStyles.COLORS.BACKGROUND);
+        }, Column);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            // 顶部区域 - 标题和返回按钮
+            Row.create();
+            // 顶部区域 - 标题和返回按钮
+            Row.width('100%');
+            // 顶部区域 - 标题和返回按钮
+            Row.padding({ left: GlobalStyles.SIZES.SPACING_LARGE, right: GlobalStyles.SIZES.SPACING_LARGE, top: GlobalStyles.SIZES.SPACING_MEDIUM });
+            // 顶部区域 - 标题和返回按钮
+            Row.margin({ bottom: GlobalStyles.SIZES.SPACING_MEDIUM });
+        }, Row);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Button.createWithLabel('←');
+            Button.width(60);
+            Button.height(60);
+            Button.backgroundColor(GlobalStyles.COLORS.LIGHT_GRAY);
+            Button.fontSize(24);
+            Button.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
+            Button.onClick(() => {
+                this.soundEffectManager.playButtonClick();
+                this.goBack();
+            });
+        }, Button);
+        Button.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Text.create(`${this.getThemeName(this.currentTheme)} - 选择子分类`);
+            Text.fontSize(GlobalStyles.FONT_SIZES.TITLE_MEDIUM);
+            Text.fontColor(GlobalStyles.COLORS.PRIMARY_BLUE);
+            Text.fontWeight(FontWeight.Bold);
+            Text.layoutWeight(1);
+            Text.textAlign(TextAlign.Center);
+        }, Text);
+        Text.pop();
+        // 顶部区域 - 标题和返回按钮
+        Row.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            // 子分类卡片容器 - 支持左右滑动
+            Scroll.create();
+            // 子分类卡片容器 - 支持左右滑动
+            Scroll.width('100%');
+            // 子分类卡片容器 - 支持左右滑动
+            Scroll.layoutWeight(1);
+            // 子分类卡片容器 - 支持左右滑动
+            Scroll.scrollable(ScrollDirection.Horizontal);
+            // 子分类卡片容器 - 支持左右滑动
+            Scroll.scrollBar(BarState.Auto);
+            // 子分类卡片容器 - 支持左右滑动
+            Scroll.padding({ left: GlobalStyles.SIZES.SPACING_LARGE, right: GlobalStyles.SIZES.SPACING_LARGE });
+        }, Scroll);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Row.create();
+            Row.justifyContent(FlexAlign.Start);
+            Row.padding({ top: GlobalStyles.SIZES.SPACING_MEDIUM, bottom: GlobalStyles.SIZES.SPACING_MEDIUM });
+        }, Row);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            ForEach.create();
+            const forEachItemGenFunction = (_item, index: number) => {
+                const subcategory = _item;
+                this.SubcategoryCard.bind(this)(subcategory, index);
+            };
+            this.forEachUpdateFunction(elmtId, this.subcategories, forEachItemGenFunction, undefined, true, false);
+        }, ForEach);
+        ForEach.pop();
+        Row.pop();
+        // 子分类卡片容器 - 支持左右滑动
+        Scroll.pop();
+        Column.pop();
+    }
+    // 子分类卡片
+    SubcategoryCard(subcategory: SubcategoryData, index: number, parent = null) {
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Column.create();
+            Context.animation(GlobalStyles.ANIMATIONS.BUTTON_PRESS);
+            Column.width(200);
+            Column.height(220);
+            Column.backgroundColor(GlobalStyles.COLORS.CARD_BACKGROUND);
+            Column.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
+            Column.padding({ top: GlobalStyles.SIZES.SPACING_SMALL, bottom: GlobalStyles.SIZES.SPACING_SMALL, left: GlobalStyles.SIZES.SPACING_SMALL, right: GlobalStyles.SIZES.SPACING_SMALL });
+            Column.justifyContent(FlexAlign.Center);
+            Column.shadow(GlobalStyles.SHADOWS.MEDIUM);
+            Column.margin({ right: GlobalStyles.SIZES.SPACING_MEDIUM });
+            Column.onClick(() => {
+                this.soundEffectManager.playButtonClick();
+                this.startSubcategoryLearning(subcategory.id);
+            });
+            Context.animation(null);
+            Column.scale({ x: 1, y: 1 });
+        }, Column);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            // 子分类图标
+            Image.create(subcategory.icon);
+            // 子分类图标
+            Image.width(140);
+            // 子分类图标
+            Image.height(140);
+            // 子分类图标
+            Image.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
+            // 子分类图标
+            Image.backgroundColor(subcategory.color);
+            // 子分类图标
+            Image.padding(GlobalStyles.SIZES.SPACING_SMALL);
+        }, Image);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            // 子分类名称（包含进度信息）
+            Text.create(`${subcategory.name}（${subcategory.completedWords}/${subcategory.totalWords}）`);
+            // 子分类名称（包含进度信息）
+            Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_SMALL);
+            // 子分类名称（包含进度信息）
+            Text.fontColor(subcategory.color);
+            // 子分类名称（包含进度信息）
+            Text.fontWeight(FontWeight.Bold);
+            // 子分类名称（包含进度信息）
+            Text.margin({ top: GlobalStyles.SIZES.SPACING_SMALL });
+            // 子分类名称（包含进度信息）
+            Text.textAlign(TextAlign.Center);
+            // 子分类名称（包含进度信息）
+            Text.maxLines(2);
+            // 子分类名称（包含进度信息）
+            Text.textOverflow({ overflow: TextOverflow.None });
+            // 子分类名称（包含进度信息）
+            Text.width('100%');
+        }, Text);
+        // 子分类名称（包含进度信息）
+        Text.pop();
+        Column.pop();
+    }
     // 设置页面
     ParentHelperPage(parent = null) {
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             Column.create();
             Column.width('100%');
             Column.height('100%');
-            Column.justifyContent(FlexAlign.Center);
-            Column.padding(GlobalStyles.SIZES.SPACING_LARGE);
             Column.backgroundColor(GlobalStyles.COLORS.BACKGROUND);
+            Column.justifyContent(FlexAlign.Center);
         }, Column);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             // 标题
@@ -451,39 +634,22 @@ class Index extends ViewPU {
             // 标题
             Text.fontWeight(FontWeight.Bold);
             // 标题
-            Text.margin({ bottom: GlobalStyles.SIZES.SPACING_LARGE });
+            Text.margin({ top: GlobalStyles.SIZES.SPACING_LARGE, bottom: GlobalStyles.SIZES.SPACING_LARGE });
         }, Text);
         // 标题
         Text.pop();
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             // 音量控制
-            Column.create();
-            // 音量控制
-            Column.width('100%');
-            // 音量控制
-            Column.padding(GlobalStyles.SIZES.SPACING_LARGE);
-            // 音量控制
-            Column.backgroundColor(GlobalStyles.COLORS.CARD_BACKGROUND);
-            // 音量控制
-            Column.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
-            // 音量控制
-            Column.margin({ bottom: GlobalStyles.SIZES.SPACING_LARGE });
-        }, Column);
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Text.create('音量控制');
-            Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_LARGE);
-            Text.fontColor(GlobalStyles.COLORS.TEXT_PRIMARY);
-            Text.fontWeight(FontWeight.Bold);
-            Text.margin({ bottom: GlobalStyles.SIZES.SPACING_MEDIUM });
-        }, Text);
-        Text.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
             Row.create();
+            // 音量控制
             Row.justifyContent(FlexAlign.Center);
+            // 音量控制
+            Row.margin({ bottom: GlobalStyles.SIZES.SPACING_LARGE });
         }, Row);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Text.create('🔊');
-            Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_LARGE);
+            Text.create('音量');
+            Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM);
+            Text.fontColor(GlobalStyles.COLORS.TEXT_PRIMARY);
             Text.margin({ right: GlobalStyles.SIZES.SPACING_MEDIUM });
         }, Text);
         Text.pop();
@@ -500,83 +666,25 @@ class Index extends ViewPU {
             });
         }, Slider);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Text.create('🔊');
-            Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_LARGE);
+            Text.create(`${this.currentVolume}%`);
+            Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_SMALL);
+            Text.fontColor(GlobalStyles.COLORS.TEXT_SECONDARY);
             Text.margin({ left: GlobalStyles.SIZES.SPACING_MEDIUM });
         }, Text);
         Text.pop();
-        Row.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Text.create(`当前音量: ${this.currentVolume}%`);
-            Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM);
-            Text.fontColor(GlobalStyles.COLORS.TEXT_SECONDARY);
-            Text.margin({ top: GlobalStyles.SIZES.SPACING_SMALL });
-        }, Text);
-        Text.pop();
         // 音量控制
-        Column.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            // 家长指导
-            Column.create();
-            // 家长指导
-            Column.width('100%');
-            // 家长指导
-            Column.padding(GlobalStyles.SIZES.SPACING_LARGE);
-            // 家长指导
-            Column.backgroundColor(GlobalStyles.COLORS.CARD_BACKGROUND);
-            // 家长指导
-            Column.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
-            // 家长指导
-            Column.margin({ bottom: GlobalStyles.SIZES.SPACING_LARGE });
-        }, Column);
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Text.create('学习指导');
-            Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_LARGE);
-            Text.fontColor(GlobalStyles.COLORS.TEXT_PRIMARY);
-            Text.fontWeight(FontWeight.Bold);
-            Text.margin({ bottom: GlobalStyles.SIZES.SPACING_MEDIUM });
-        }, Text);
-        Text.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Text.create('1. 听一听：点击喇叭图标，让孩子听单词发音');
-            Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM);
-            Text.fontColor(GlobalStyles.COLORS.TEXT_PRIMARY);
-            Text.margin({ bottom: GlobalStyles.SIZES.SPACING_SMALL });
-        }, Text);
-        Text.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Text.create('2. 说一说：点击星星图标，让孩子跟读练习');
-            Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM);
-            Text.fontColor(GlobalStyles.COLORS.TEXT_PRIMARY);
-            Text.margin({ bottom: GlobalStyles.SIZES.SPACING_SMALL });
-        }, Text);
-        Text.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Text.create('3. 写一写：点击画笔图标，让孩子练习书写');
-            Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM);
-            Text.fontColor(GlobalStyles.COLORS.TEXT_PRIMARY);
-            Text.margin({ bottom: GlobalStyles.SIZES.SPACING_SMALL });
-        }, Text);
-        Text.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Text.create('4. 每天学习15-20分钟，效果最佳');
-            Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM);
-            Text.fontColor(GlobalStyles.COLORS.TEXT_PRIMARY);
-        }, Text);
-        Text.pop();
-        // 家长指导
-        Column.pop();
+        Row.pop();
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             // 返回按钮
             Button.createWithLabel('返回首页');
             // 返回按钮
-            Button.width(GlobalStyles.SIZES.BUTTON_LARGE.width);
+            Button.width(200);
             // 返回按钮
-            Button.height(GlobalStyles.SIZES.BUTTON_LARGE.height);
+            Button.height(50);
             // 返回按钮
             Button.backgroundColor(GlobalStyles.COLORS.PRIMARY_BLUE);
             // 返回按钮
-            Button.fontColor(GlobalStyles.COLORS.TEXT_WHITE);
+            Button.fontColor(Color.White);
             // 返回按钮
             Button.fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM);
             // 返回按钮
@@ -584,7 +692,6 @@ class Index extends ViewPU {
             // 返回按钮
             Button.onClick(() => {
                 this.soundEffectManager.playButtonClick();
-                console.log('Return button clicked in settings page');
                 this.goBack();
             });
         }, Button);
@@ -592,7 +699,7 @@ class Index extends ViewPU {
         Button.pop();
         Column.pop();
     }
-    // 单词卡片页面
+    // 单词卡片页面（简化版本）
     WordCardPage(parent = null) {
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             Column.create();
@@ -601,502 +708,21 @@ class Index extends ViewPU {
             Column.backgroundColor(GlobalStyles.COLORS.BACKGROUND);
         }, Column);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
-            // 顶部进度信息
+            // 顶部区域
             Row.create();
-            // 顶部进度信息
+            // 顶部区域
             Row.width('100%');
-            // 顶部进度信息
-            Row.padding({ left: GlobalStyles.SIZES.SPACING_MEDIUM, right: GlobalStyles.SIZES.SPACING_MEDIUM });
-            // 顶部进度信息
-            Row.margin({ top: GlobalStyles.SIZES.SPACING_MEDIUM });
-        }, Row);
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Text.create(`${this.getThemeName()} ${this.currentWordIndex + 1}/${this.getThemeWords().length}`);
-            Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM);
-            Text.fontColor(GlobalStyles.COLORS.TEXT_SECONDARY);
-        }, Text);
-        Text.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Blank.create();
-        }, Blank);
-        Blank.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Text.create('贴纸：2/5');
-            Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM);
-            Text.fontColor(GlobalStyles.COLORS.PRIMARY_ORANGE);
-        }, Text);
-        Text.pop();
-        // 顶部进度信息
-        Row.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            // 主要内容区域
-            Column.create();
-            // 主要内容区域
-            Column.layoutWeight(1);
-            // 主要内容区域
-            Column.justifyContent(FlexAlign.Center);
-        }, Column);
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            // 图片区域
-            Image.create(this.getCurrentWordImage());
-            // 图片区域
-            Image.width(GlobalStyles.SIZES.CORE_IMAGE_WIDTH);
-            // 图片区域
-            Image.height(GlobalStyles.SIZES.CORE_IMAGE_HEIGHT);
-            // 图片区域
-            Image.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
-            // 图片区域
-            Image.margin({ bottom: GlobalStyles.SIZES.SPACING_MEDIUM });
-        }, Image);
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            // 文字区域
-            Column.create();
-            // 文字区域
-            Column.margin({ bottom: GlobalStyles.SIZES.SPACING_LARGE });
-        }, Column);
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Text.create(this.getCurrentWord());
-            Text.fontSize(GlobalStyles.FONT_SIZES.TITLE_MEDIUM);
-            Text.fontColor(GlobalStyles.COLORS.PRIMARY_BLUE);
-            Text.fontWeight(FontWeight.Bold);
-            Text.margin({ bottom: GlobalStyles.SIZES.SPACING_TINY });
-        }, Text);
-        Text.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Text.create(this.getCurrentPronunciation());
-            Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM);
-            Text.fontColor(GlobalStyles.COLORS.TEXT_SECONDARY);
-            Text.margin({ bottom: GlobalStyles.SIZES.SPACING_TINY });
-        }, Text);
-        Text.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Text.create(this.getCurrentChineseMeaning());
-            Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_LARGE);
-            Text.fontColor(GlobalStyles.COLORS.PRIMARY_PINK);
-            Text.fontWeight(FontWeight.Bold);
-        }, Text);
-        Text.pop();
-        // 文字区域
-        Column.pop();
-        // 主要内容区域
-        Column.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            // 底部功能按钮
-            Row.create();
-            // 底部功能按钮
-            Row.width('100%');
-            // 底部功能按钮
-            Row.padding(GlobalStyles.SIZES.SPACING_MEDIUM);
-            // 底部功能按钮
+            // 顶部区域
+            Row.padding({ left: GlobalStyles.SIZES.SPACING_LARGE, right: GlobalStyles.SIZES.SPACING_LARGE, top: GlobalStyles.SIZES.SPACING_MEDIUM });
+            // 顶部区域
             Row.margin({ bottom: GlobalStyles.SIZES.SPACING_MEDIUM });
         }, Row);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
-            // 听一听按钮
-            Button.createWithLabel('听一听');
-            // 听一听按钮
-            Button.width(GlobalStyles.SIZES.BUTTON_MEDIUM.width);
-            // 听一听按钮
-            Button.height(GlobalStyles.SIZES.BUTTON_MEDIUM.height);
-            // 听一听按钮
-            Button.backgroundColor(GlobalStyles.COLORS.PRIMARY_BLUE);
-            // 听一听按钮
-            Button.fontColor(GlobalStyles.COLORS.TEXT_WHITE);
-            // 听一听按钮
-            Button.fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM);
-            // 听一听按钮
-            Button.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
-            // 听一听按钮
-            Button.onClick(() => {
-                this.soundEffectManager.playButtonClick();
-                this.playWordSound();
-            });
-        }, Button);
-        // 听一听按钮
-        Button.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Blank.create();
-        }, Blank);
-        Blank.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            // 说一说按钮
-            Button.createWithLabel('说一说');
-            // 说一说按钮
-            Button.width(GlobalStyles.SIZES.BUTTON_MEDIUM.width);
-            // 说一说按钮
-            Button.height(GlobalStyles.SIZES.BUTTON_MEDIUM.height);
-            // 说一说按钮
-            Button.backgroundColor(GlobalStyles.COLORS.PRIMARY_YELLOW);
-            // 说一说按钮
-            Button.fontColor(GlobalStyles.COLORS.TEXT_WHITE);
-            // 说一说按钮
-            Button.fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM);
-            // 说一说按钮
-            Button.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
-            // 说一说按钮
-            Button.onClick(() => {
-                this.soundEffectManager.playButtonClick();
-                this.startSpeakingPractice();
-            });
-        }, Button);
-        // 说一说按钮
-        Button.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Blank.create();
-        }, Blank);
-        Blank.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            // 写一写按钮
-            Button.createWithLabel('写一写');
-            // 写一写按钮
-            Button.width(GlobalStyles.SIZES.BUTTON_MEDIUM.width);
-            // 写一写按钮
-            Button.height(GlobalStyles.SIZES.BUTTON_MEDIUM.height);
-            // 写一写按钮
-            Button.backgroundColor(GlobalStyles.COLORS.PRIMARY_GREEN);
-            // 写一写按钮
-            Button.fontColor(GlobalStyles.COLORS.TEXT_WHITE);
-            // 写一写按钮
-            Button.fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM);
-            // 写一写按钮
-            Button.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
-            // 写一写按钮
-            Button.onClick(() => {
-                this.soundEffectManager.playButtonClick();
-                this.startWritingPractice();
-            });
-        }, Button);
-        // 写一写按钮
-        Button.pop();
-        // 底部功能按钮
-        Row.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            // 返回按钮
-            Button.createWithLabel('返回主题选择');
-            // 返回按钮
-            Button.width(GlobalStyles.SIZES.BUTTON_LARGE.width);
-            // 返回按钮
-            Button.height(GlobalStyles.SIZES.BUTTON_MEDIUM.height);
-            // 返回按钮
+            Button.createWithLabel('←');
+            Button.width(60);
+            Button.height(60);
             Button.backgroundColor(GlobalStyles.COLORS.LIGHT_GRAY);
-            // 返回按钮
-            Button.fontColor(GlobalStyles.COLORS.TEXT_SECONDARY);
-            // 返回按钮
-            Button.fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM);
-            // 返回按钮
-            Button.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
-            // 返回按钮
-            Button.onClick(() => {
-                this.soundEffectManager.playButtonClick();
-                this.goBack();
-            });
-        }, Button);
-        // 返回按钮
-        Button.pop();
-        Column.pop();
-    }
-    // 说功能页面
-    SpeakingPracticePage(parent = null) {
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Column.create();
-            Column.width('100%');
-            Column.height('100%');
-            Column.backgroundColor(GlobalStyles.COLORS.BACKGROUND);
-        }, Column);
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            // 顶部信息
-            Row.create();
-            // 顶部信息
-            Row.width('100%');
-            // 顶部信息
-            Row.justifyContent(FlexAlign.Center);
-            // 顶部信息
-            Row.margin({ top: GlobalStyles.SIZES.SPACING_MEDIUM });
-        }, Row);
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Text.create(this.getCurrentWord());
-            Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_LARGE);
-            Text.fontColor(GlobalStyles.COLORS.PRIMARY_BLUE);
-        }, Text);
-        Text.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Image.create(this.getCurrentWordImage());
-            Image.width(60);
-            Image.height(60);
-            Image.borderRadius(GlobalStyles.BORDER_RADIUS.SMALL);
-        }, Image);
-        // 顶部信息
-        Row.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            // 麦克风区域
-            Column.create();
-            // 麦克风区域
-            Column.layoutWeight(1);
-            // 麦克风区域
-            Column.justifyContent(FlexAlign.Center);
-        }, Column);
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Text.create('🎤');
-            Text.fontSize(120);
-            Text.margin({ bottom: GlobalStyles.SIZES.SPACING_MEDIUM });
-        }, Text);
-        Text.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Text.create('请跟读单词');
-            Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_LARGE);
-            Text.fontColor(GlobalStyles.COLORS.PRIMARY_PINK);
-            Text.fontWeight(FontWeight.Bold);
-        }, Text);
-        Text.pop();
-        // 麦克风区域
-        Column.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            // 底部按钮
-            Row.create();
-            // 底部按钮
-            Row.width('100%');
-            // 底部按钮
-            Row.padding(GlobalStyles.SIZES.SPACING_MEDIUM);
-            // 底部按钮
-            Row.margin({ bottom: GlobalStyles.SIZES.SPACING_MEDIUM });
-        }, Row);
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Button.createWithLabel('再试一次');
-            Button.width(GlobalStyles.SIZES.BUTTON_MEDIUM.width);
-            Button.height(GlobalStyles.SIZES.BUTTON_MEDIUM.height);
-            Button.backgroundColor(GlobalStyles.COLORS.PRIMARY_YELLOW);
-            Button.fontColor(GlobalStyles.COLORS.TEXT_WHITE);
-            Button.fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM);
-            Button.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
-            Button.onClick(() => {
-                this.soundEffectManager.playButtonClick();
-                this.startSpeakingPractice();
-            });
-        }, Button);
-        Button.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Blank.create();
-        }, Blank);
-        Blank.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Button.createWithLabel('返回卡片');
-            Button.width(GlobalStyles.SIZES.BUTTON_MEDIUM.width);
-            Button.height(GlobalStyles.SIZES.BUTTON_MEDIUM.height);
-            Button.backgroundColor(GlobalStyles.COLORS.PRIMARY_BLUE);
-            Button.fontColor(GlobalStyles.COLORS.TEXT_WHITE);
-            Button.fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM);
-            Button.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
-            Button.onClick(() => {
-                this.soundEffectManager.playButtonClick();
-                this.goBack();
-            });
-        }, Button);
-        Button.pop();
-        // 底部按钮
-        Row.pop();
-        Column.pop();
-    }
-    // 写功能页面
-    WritingPracticePage(parent = null) {
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Column.create();
-            Column.width('100%');
-            Column.height('100%');
-            Column.backgroundColor(GlobalStyles.COLORS.BACKGROUND);
-        }, Column);
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            // 顶部信息
-            Row.create();
-            // 顶部信息
-            Row.width('100%');
-            // 顶部信息
-            Row.justifyContent(FlexAlign.Center);
-            // 顶部信息
-            Row.margin({ top: GlobalStyles.SIZES.SPACING_MEDIUM });
-        }, Row);
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Text.create(this.getCurrentWord());
-            Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_LARGE);
-            Text.fontColor(GlobalStyles.COLORS.PRIMARY_BLUE);
-        }, Text);
-        Text.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Text.create(this.getCurrentPronunciation());
-            Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM);
-            Text.fontColor(GlobalStyles.COLORS.TEXT_SECONDARY);
-        }, Text);
-        Text.pop();
-        // 顶部信息
-        Row.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            // 描红区域
-            Column.create();
-            // 描红区域
-            Column.layoutWeight(1);
-            // 描红区域
-            Column.justifyContent(FlexAlign.Center);
-        }, Column);
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Text.create('描红练习');
-            Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_LARGE);
-            Text.fontColor(GlobalStyles.COLORS.PRIMARY_GREEN);
-            Text.fontWeight(FontWeight.Bold);
-            Text.margin({ bottom: GlobalStyles.SIZES.SPACING_MEDIUM });
-        }, Text);
-        Text.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Text.create('请按照轨迹描红');
-            Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM);
-            Text.fontColor(GlobalStyles.COLORS.TEXT_SECONDARY);
-        }, Text);
-        Text.pop();
-        // 描红区域
-        Column.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            // 底部按钮
-            Row.create();
-            // 底部按钮
-            Row.width('100%');
-            // 底部按钮
-            Row.padding(GlobalStyles.SIZES.SPACING_MEDIUM);
-            // 底部按钮
-            Row.margin({ bottom: GlobalStyles.SIZES.SPACING_MEDIUM });
-        }, Row);
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Button.createWithLabel('单个字母练习');
-            Button.width(GlobalStyles.SIZES.BUTTON_MEDIUM.width);
-            Button.height(GlobalStyles.SIZES.BUTTON_MEDIUM.height);
-            Button.backgroundColor(GlobalStyles.COLORS.PRIMARY_GREEN);
-            Button.fontColor(GlobalStyles.COLORS.TEXT_WHITE);
-            Button.fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM);
-            Button.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
-            Button.onClick(() => {
-                this.soundEffectManager.playButtonClick();
-                this.startSingleLetterPractice();
-            });
-        }, Button);
-        Button.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Blank.create();
-        }, Blank);
-        Blank.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Button.createWithLabel('完成');
-            Button.width(GlobalStyles.SIZES.BUTTON_MEDIUM.width);
-            Button.height(GlobalStyles.SIZES.BUTTON_MEDIUM.height);
-            Button.backgroundColor(GlobalStyles.COLORS.PRIMARY_PINK);
-            Button.fontColor(GlobalStyles.COLORS.TEXT_WHITE);
-            Button.fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM);
-            Button.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
-            Button.onClick(() => {
-                this.soundEffectManager.playButtonClick();
-                this.completeWriting();
-            });
-        }, Button);
-        Button.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Blank.create();
-        }, Blank);
-        Blank.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Button.createWithLabel('返回卡片');
-            Button.width(GlobalStyles.SIZES.BUTTON_MEDIUM.width);
-            Button.height(GlobalStyles.SIZES.BUTTON_MEDIUM.height);
-            Button.backgroundColor(GlobalStyles.COLORS.LIGHT_GRAY);
-            Button.fontColor(GlobalStyles.COLORS.TEXT_SECONDARY);
-            Button.fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM);
-            Button.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
-            Button.onClick(() => {
-                this.soundEffectManager.playButtonClick();
-                this.goBack();
-            });
-        }, Button);
-        Button.pop();
-        // 底部按钮
-        Row.pop();
-        Column.pop();
-    }
-    // 进度奖励页面
-    ProgressRewardPage(parent = null) {
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Column.create();
-            Column.width('100%');
-            Column.height('100%');
-            Column.justifyContent(FlexAlign.Center);
-            Column.padding(GlobalStyles.SIZES.SPACING_LARGE);
-            Column.backgroundColor(GlobalStyles.COLORS.BACKGROUND);
-        }, Column);
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Text.create('恭喜解锁新贴纸！');
-            Text.fontSize(GlobalStyles.FONT_SIZES.TITLE_MEDIUM);
-            Text.fontColor(GlobalStyles.COLORS.PRIMARY_ORANGE);
-            Text.fontWeight(FontWeight.Bold);
-            Text.margin({ bottom: GlobalStyles.SIZES.SPACING_LARGE });
-        }, Text);
-        Text.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Text.create('继续学习更多单词');
-            Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_LARGE);
-            Text.fontColor(GlobalStyles.COLORS.TEXT_PRIMARY);
-            Text.margin({ bottom: GlobalStyles.SIZES.SPACING_LARGE });
-        }, Text);
-        Text.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Row.create();
-            Row.width('100%');
-            Row.padding(GlobalStyles.SIZES.SPACING_MEDIUM);
-        }, Row);
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Button.createWithLabel('查看全部贴纸');
-            Button.width(GlobalStyles.SIZES.BUTTON_MEDIUM.width);
-            Button.height(GlobalStyles.SIZES.BUTTON_MEDIUM.height);
-            Button.backgroundColor(GlobalStyles.COLORS.PRIMARY_BLUE);
-            Button.fontColor(GlobalStyles.COLORS.TEXT_WHITE);
-            Button.fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM);
-            Button.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
-            Button.onClick(() => {
-                this.soundEffectManager.playButtonClick();
-                this.currentPage = 'sticker_collection';
-            });
-        }, Button);
-        Button.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Blank.create();
-        }, Blank);
-        Blank.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Button.createWithLabel('继续学习');
-            Button.width(GlobalStyles.SIZES.BUTTON_MEDIUM.width);
-            Button.height(GlobalStyles.SIZES.BUTTON_MEDIUM.height);
-            Button.backgroundColor(GlobalStyles.COLORS.PRIMARY_GREEN);
-            Button.fontColor(GlobalStyles.COLORS.TEXT_WHITE);
-            Button.fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM);
-            Button.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
-            Button.onClick(() => {
-                this.soundEffectManager.playButtonClick();
-                this.continueLearning();
-            });
-        }, Button);
-        Button.pop();
-        Row.pop();
-        Column.pop();
-    }
-    // 贴纸收集页面
-    StickerCollectionPage(parent = null) {
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Column.create();
-            Column.width('100%');
-            Column.height('100%');
-            Column.justifyContent(FlexAlign.Center);
-            Column.padding(GlobalStyles.SIZES.SPACING_LARGE);
-            Column.backgroundColor(GlobalStyles.COLORS.BACKGROUND);
-        }, Column);
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Button.createWithLabel('返回');
-            Button.width(GlobalStyles.SIZES.BUTTON_MEDIUM.width);
-            Button.height(GlobalStyles.SIZES.BUTTON_MEDIUM.height);
-            Button.backgroundColor(GlobalStyles.COLORS.LIGHT_GRAY);
-            Button.fontColor(GlobalStyles.COLORS.TEXT_SECONDARY);
-            Button.fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM);
+            Button.fontSize(24);
             Button.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
             Button.onClick(() => {
                 this.soundEffectManager.playButtonClick();
@@ -1105,175 +731,40 @@ class Index extends ViewPU {
         }, Button);
         Button.pop();
         this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Text.create('我的贴纸收集册');
+            Text.create(this.currentSubcategory ? this.currentSubcategory.name : this.getThemeName(this.currentTheme));
             Text.fontSize(GlobalStyles.FONT_SIZES.TITLE_MEDIUM);
             Text.fontColor(GlobalStyles.COLORS.PRIMARY_BLUE);
             Text.fontWeight(FontWeight.Bold);
-            Text.margin({ top: GlobalStyles.SIZES.SPACING_MEDIUM, bottom: GlobalStyles.SIZES.SPACING_LARGE });
+            Text.layoutWeight(1);
+            Text.textAlign(TextAlign.Center);
         }, Text);
         Text.pop();
+        // 顶部区域
+        Row.pop();
         this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Text.create('已收集 2/20 个贴纸');
-            Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_LARGE);
-            Text.fontColor(GlobalStyles.COLORS.TEXT_PRIMARY);
-            Text.margin({ bottom: GlobalStyles.SIZES.SPACING_LARGE });
-        }, Text);
-        Text.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Grid.create();
-            Grid.columnsTemplate('1fr 1fr');
-            Grid.width('100%');
-            Grid.height(200);
-        }, Grid);
-        {
-            const itemCreation2 = (elmtId, isInitialRender) => {
-                GridItem.create(() => { }, false);
-            };
-            const observedDeepRender = () => {
-                this.observeComponentCreation2(itemCreation2, GridItem);
-                this.observeComponentCreation2((elmtId, isInitialRender) => {
-                    Column.create();
-                }, Column);
-                this.observeComponentCreation2((elmtId, isInitialRender) => {
-                    Text.create('🎉');
-                    Text.fontSize(60);
-                }, Text);
-                Text.pop();
-                this.observeComponentCreation2((elmtId, isInitialRender) => {
-                    Text.create('水果贴纸');
-                    Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_SMALL);
-                    Text.fontColor(GlobalStyles.COLORS.TEXT_PRIMARY);
-                }, Text);
-                Text.pop();
-                Column.pop();
-                GridItem.pop();
-            };
-            observedDeepRender();
-        }
-        {
-            const itemCreation2 = (elmtId, isInitialRender) => {
-                GridItem.create(() => { }, false);
-            };
-            const observedDeepRender = () => {
-                this.observeComponentCreation2(itemCreation2, GridItem);
-                this.observeComponentCreation2((elmtId, isInitialRender) => {
-                    Column.create();
-                }, Column);
-                this.observeComponentCreation2((elmtId, isInitialRender) => {
-                    Text.create('🎉');
-                    Text.fontSize(60);
-                }, Text);
-                Text.pop();
-                this.observeComponentCreation2((elmtId, isInitialRender) => {
-                    Text.create('动物贴纸');
-                    Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_SMALL);
-                    Text.fontColor(GlobalStyles.COLORS.TEXT_PRIMARY);
-                }, Text);
-                Text.pop();
-                Column.pop();
-                GridItem.pop();
-            };
-            observedDeepRender();
-        }
-        Grid.pop();
-        Column.pop();
-    }
-    // 休息页面
-    RestBreakPage(parent = null) {
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            // 内容区域
             Column.create();
-            Column.width('100%');
-            Column.height('100%');
+            // 内容区域
+            Column.layoutWeight(1);
+            // 内容区域
             Column.justifyContent(FlexAlign.Center);
-            Column.padding(GlobalStyles.SIZES.SPACING_LARGE);
-            Column.backgroundColor(GlobalStyles.COLORS.BACKGROUND);
         }, Column);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Text.create('休息一下');
+            Text.create('单词学习页面');
             Text.fontSize(GlobalStyles.FONT_SIZES.TITLE_LARGE);
-            Text.fontColor(GlobalStyles.COLORS.PRIMARY_BLUE);
-            Text.fontWeight(FontWeight.Bold);
-            Text.margin({ bottom: GlobalStyles.SIZES.SPACING_LARGE });
-        }, Text);
-        Text.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Text.create('保护小眼睛～');
-            Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_LARGE);
             Text.fontColor(GlobalStyles.COLORS.TEXT_PRIMARY);
             Text.margin({ bottom: GlobalStyles.SIZES.SPACING_LARGE });
         }, Text);
         Text.pop();
         this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Button.createWithLabel('继续学习');
-            Button.width(GlobalStyles.SIZES.BUTTON_LARGE.width);
-            Button.height(GlobalStyles.SIZES.BUTTON_LARGE.height);
-            Button.backgroundColor(GlobalStyles.COLORS.PRIMARY_GREEN);
-            Button.fontColor(GlobalStyles.COLORS.TEXT_WHITE);
-            Button.fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM);
-            Button.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
-            Button.onClick(() => {
-                this.soundEffectManager.playButtonClick();
-                this.goBack();
-            });
-        }, Button);
-        Button.pop();
+            Text.create('这里将显示单词卡片内容');
+            Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM);
+            Text.fontColor(GlobalStyles.COLORS.TEXT_SECONDARY);
+        }, Text);
+        Text.pop();
+        // 内容区域
         Column.pop();
-    }
-    // 辅助方法
-    getThemeName(): string {
-        const theme = this.themes.find(t => t.id === this.currentTheme);
-        return theme ? theme.name : '未知主题';
-    }
-    getThemeWords(): WordData[] {
-        return this.learningDataManager.getWordsByTheme(this.currentTheme);
-    }
-    getCurrentWord(): string {
-        const words = this.getThemeWords();
-        return words[this.currentWordIndex]?.english || 'Apple';
-    }
-    getCurrentWordImage(): string {
-        const words = this.getThemeWords();
-        return words[this.currentWordIndex]?.image || '$rawfile/CardOriginal/Food/Fruit/apple.png';
-    }
-    getCurrentPronunciation(): string {
-        const words = this.getThemeWords();
-        return words[this.currentWordIndex]?.pronunciation || '/ˈæpəl/';
-    }
-    getCurrentChineseMeaning(): string {
-        const words = this.getThemeWords();
-        return words[this.currentWordIndex]?.chinese || '苹果';
-    }
-    // 功能方法
-    async playWordSound(): Promise<void> {
-        await this.soundEffectManager.playWordSound(this.getCurrentWord());
-    }
-    async playSentence(): Promise<void> {
-        await this.soundEffectManager.playSentence(`This is a ${this.getCurrentWord()}`);
-    }
-    async startSpeakingPractice(): Promise<void> {
-        await this.soundEffectManager.playSpeakingStart();
-        this.currentPage = 'speaking_practice';
-    }
-    async startWritingPractice(): Promise<void> {
-        await this.soundEffectManager.playWritingStart();
-        this.currentPage = 'writing_practice';
-    }
-    async startSingleLetterPractice(): Promise<void> {
-        console.log('开始单个字母练习');
-    }
-    async completeWriting(): Promise<void> {
-        await this.soundEffectManager.playWritingComplete();
-        this.currentPage = 'progress_reward';
-    }
-    async continueLearning(): Promise<void> {
-        this.currentWordIndex++;
-        if (this.currentWordIndex >= this.getThemeWords().length) {
-            this.currentWordIndex = 0;
-            this.currentPage = 'theme_select';
-        }
-        else {
-            this.currentPage = 'word_card';
-        }
+        Column.pop();
     }
     rerender() {
         this.updateDirtyElements();

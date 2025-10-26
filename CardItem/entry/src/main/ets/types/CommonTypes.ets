@@ -18,6 +18,7 @@ export type ThemeType =
 // 页面类型 - 重新规划，移除启动页
 export type PageType = 
   | 'theme_select'     // 主题选择页（首页）
+  | 'subcategory_select' // 子分类选择页
   | 'parent_helper'    // 家长助手页面
   | 'word_card'        // 单词卡片主页面
   | 'speaking_practice' // 跟读打分页面
