@@ -84,17 +84,22 @@ struct Index {
 
   // 返回上一页
   goBack() {
+    console.log(`goBack called, current page: ${this.currentPage}`)
     if (this.currentPage === 'parent_helper') {
       this.currentPage = 'theme_select'
+      console.log('Returning to theme_select from parent_helper')
     } else if (this.currentPage === 'word_card') {
       this.currentPage = 'theme_select'
+      console.log('Returning to theme_select from word_card')
     } else if (this.currentPage === 'speaking_practice' || 
                this.currentPage === 'writing_practice') {
       this.currentPage = 'word_card'
+      console.log('Returning to word_card from practice page')
     } else if (this.currentPage === 'progress_reward' || 
                this.currentPage === 'sticker_collection' || 
                this.currentPage === 'rest_break') {
       this.currentPage = 'theme_select'
+      console.log('Returning to theme_select from reward/collection/break page')
     }
   }
 
@@ -128,86 +133,47 @@ struct Index {
 
   // 主题选择页（横屏布局，左右滑动）
   @Builder ThemeSelectPage() {
-    Row() {
-      // 左侧区域 - 主题卡片展示
-      Column() {
-        // 标题
+    Column() {
+      // 顶部区域 - 标题和设置按钮
+      Row() {
         Text('选择学习主题')
           .fontSize(GlobalStyles.FONT_SIZES.TITLE_LARGE)
           .fontColor(GlobalStyles.COLORS.PRIMARY_BLUE)
           .fontWeight(FontWeight.Bold)
-          .margin({ bottom: GlobalStyles.SIZES.SPACING_LARGE })
+          .layoutWeight(1)
         
-        // 主题卡片容器 - 支持左右滑动
-        Scroll() {
-          Row() {
-            ForEach(this.themes, (theme: ThemeData, index: number) => {
-              this.ThemeCard(theme, index)
-            })
-          }
-          .width('100%')
-          .justifyContent(FlexAlign.SpaceEvenly)
-        }
-        .width('100%')
-        .height('100%')
-        .scrollable(ScrollDirection.Horizontal)
-        .scrollBar(BarState.Auto)
-      }
-      .width('75%')
-      .height('100%')
-      .justifyContent(FlexAlign.Center)
-      .padding(GlobalStyles.SIZES.SPACING_LARGE)
-      
-      // 右侧区域 - 功能按钮
-      Column() {
-        // 家长助手按钮
-        Button('家长助手')
-          .width(GlobalStyles.SIZES.BUTTON_LARGE.width)
-          .height(GlobalStyles.SIZES.BUTTON_LARGE.height)
+        // 设置按钮
+        Button('⚙️')
+          .width(60)
+          .height(60)
           .backgroundColor(GlobalStyles.COLORS.LIGHT_GRAY)
-          .fontColor(GlobalStyles.COLORS.TEXT_SECONDARY)
-          .fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM)
+          .fontSize(24)
           .borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM)
-          .margin({ bottom: GlobalStyles.SIZES.SPACING_MEDIUM })
           .onClick(() => {
             this.soundEffectManager.playButtonClick()
-            this.currentPage = 'parent_helper'
+            console.log('Settings button clicked, changing to parent_helper')
+            this.currentPage = 'parent_helper' // 暂时使用家长助手页面作为设置页面
           })
-        
-        // 音量控制
-        Column() {
-          Text('音量')
-            .fontSize(GlobalStyles.FONT_SIZES.TEXT_SMALL)
-            .fontColor(GlobalStyles.COLORS.TEXT_SECONDARY)
-            .margin({ bottom: GlobalStyles.SIZES.SPACING_TINY })
-          
-          Row() {
-            Text('🔊')
-              .fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM)
-              .margin({ right: GlobalStyles.SIZES.SPACING_TINY })
-            
-            Slider({
-              value: this.currentVolume,
-              min: 0,
-              max: 100,
-              step: 1
-            })
-              .width(120)
-              .onChange((value: number) => {
-                this.currentVolume = value
-              })
-            
-            Text('🔊')
-              .fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM)
-              .margin({ left: GlobalStyles.SIZES.SPACING_TINY })
-          }
-        }
-        .margin({ top: GlobalStyles.SIZES.SPACING_LARGE })
       }
-      .width('25%')
-      .height('100%')
-      .justifyContent(FlexAlign.Center)
-      .padding(GlobalStyles.SIZES.SPACING_LARGE)
+      .width('100%')
+      .padding({ left: GlobalStyles.SIZES.SPACING_LARGE, right: GlobalStyles.SIZES.SPACING_LARGE, top: GlobalStyles.SIZES.SPACING_MEDIUM })
+      .margin({ bottom: GlobalStyles.SIZES.SPACING_MEDIUM })
+      
+      // 主题卡片容器 - 支持左右滑动
+      Scroll() {
+        Row() {
+          ForEach(this.themes, (theme: ThemeData, index: number) => {
+            this.ThemeCard(theme, index)
+          })
+        }
+        .justifyContent(FlexAlign.Start)
+        .padding({ top: GlobalStyles.SIZES.SPACING_MEDIUM, bottom: GlobalStyles.SIZES.SPACING_MEDIUM })
+      }
+      .width('100%')
+      .layoutWeight(1)
+      .scrollable(ScrollDirection.Horizontal)
+      .scrollBar(BarState.Auto)
+      .padding({ left: GlobalStyles.SIZES.SPACING_LARGE, right: GlobalStyles.SIZES.SPACING_LARGE })
     }
     .width('100%')
     .height('100%')
@@ -219,30 +185,27 @@ struct Index {
     Column() {
       // 主题图标
       Image(theme.icon)
-        .width(180)
-        .height(180)
+        .width(160)
+        .height(160)
         .borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM)
         .backgroundColor(theme.color)
         .padding(GlobalStyles.SIZES.SPACING_SMALL)
       
-      // 主题名称
-      Text(theme.name)
-        .fontSize(GlobalStyles.FONT_SIZES.TEXT_LARGE)
+      // 主题名称（包含进度信息）
+      Text(`${theme.name}（${theme.completedWords}/${theme.totalWords}）`)
+        .fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM)
         .fontColor(theme.color)
         .fontWeight(FontWeight.Bold)
-        .margin({ top: GlobalStyles.SIZES.SPACING_SMALL })
-      
-      // 进度信息
-      Text(`${theme.completedWords}/${theme.totalWords}`)
-        .fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM)
-        .fontColor(GlobalStyles.COLORS.TEXT_SECONDARY)
-        .margin({ top: GlobalStyles.SIZES.SPACING_TINY })
+        .margin({ top: GlobalStyles.SIZES.SPACING_MEDIUM })
+        .textAlign(TextAlign.Center)
+        .maxLines(1)
+        .textOverflow({ overflow: TextOverflow.Ellipsis })
     }
     .width(220)
-    .height(280)
+    .height(240)
     .backgroundColor(GlobalStyles.COLORS.CARD_BACKGROUND)
     .borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM)
-    .padding(GlobalStyles.SIZES.SPACING_MEDIUM)
+    .padding({ top: GlobalStyles.SIZES.SPACING_MEDIUM, bottom: GlobalStyles.SIZES.SPACING_MEDIUM, left: GlobalStyles.SIZES.SPACING_MEDIUM, right: GlobalStyles.SIZES.SPACING_MEDIUM })
     .justifyContent(FlexAlign.Center)
     .shadow(GlobalStyles.SHADOWS.MEDIUM)
     .margin({ right: GlobalStyles.SIZES.SPACING_MEDIUM })
@@ -254,39 +217,86 @@ struct Index {
     .scale({ x: 1, y: 1 })
   }
 
-  // 家长助手页面
+  // 设置页面
   @Builder ParentHelperPage() {
     Column() {
       // 标题
-      Text('家长指导小手册')
+      Text('设置')
         .fontSize(GlobalStyles.FONT_SIZES.TITLE_MEDIUM)
         .fontColor(GlobalStyles.COLORS.PRIMARY_BLUE)
         .fontWeight(FontWeight.Bold)
         .margin({ bottom: GlobalStyles.SIZES.SPACING_LARGE })
       
-      // 指导内容
+      // 音量控制
       Column() {
+        Text('音量控制')
+          .fontSize(GlobalStyles.FONT_SIZES.TEXT_LARGE)
+          .fontColor(GlobalStyles.COLORS.TEXT_PRIMARY)
+          .fontWeight(FontWeight.Bold)
+          .margin({ bottom: GlobalStyles.SIZES.SPACING_MEDIUM })
+        
+        Row() {
+          Text('🔊')
+            .fontSize(GlobalStyles.FONT_SIZES.TEXT_LARGE)
+            .margin({ right: GlobalStyles.SIZES.SPACING_MEDIUM })
+          
+          Slider({
+            value: this.currentVolume,
+            min: 0,
+            max: 100,
+            step: 1
+          })
+            .width(200)
+            .onChange((value: number) => {
+              this.currentVolume = value
+            })
+          
+          Text('🔊')
+            .fontSize(GlobalStyles.FONT_SIZES.TEXT_LARGE)
+            .margin({ left: GlobalStyles.SIZES.SPACING_MEDIUM })
+        }
+        .justifyContent(FlexAlign.Center)
+        
+        Text(`当前音量: ${this.currentVolume}%`)
+          .fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM)
+          .fontColor(GlobalStyles.COLORS.TEXT_SECONDARY)
+          .margin({ top: GlobalStyles.SIZES.SPACING_SMALL })
+      }
+      .width('100%')
+      .padding(GlobalStyles.SIZES.SPACING_LARGE)
+      .backgroundColor(GlobalStyles.COLORS.CARD_BACKGROUND)
+      .borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM)
+      .margin({ bottom: GlobalStyles.SIZES.SPACING_LARGE })
+      
+      // 家长指导
+      Column() {
+        Text('学习指导')
+          .fontSize(GlobalStyles.FONT_SIZES.TEXT_LARGE)
+          .fontColor(GlobalStyles.COLORS.TEXT_PRIMARY)
+          .fontWeight(FontWeight.Bold)
+          .margin({ bottom: GlobalStyles.SIZES.SPACING_MEDIUM })
+        
         Text('1. 听一听：点击喇叭图标，让孩子听单词发音')
           .fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM)
           .fontColor(GlobalStyles.COLORS.TEXT_PRIMARY)
-          .margin({ bottom: GlobalStyles.SIZES.SPACING_MEDIUM })
+          .margin({ bottom: GlobalStyles.SIZES.SPACING_SMALL })
         
         Text('2. 说一说：点击星星图标，让孩子跟读练习')
           .fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM)
           .fontColor(GlobalStyles.COLORS.TEXT_PRIMARY)
-          .margin({ bottom: GlobalStyles.SIZES.SPACING_MEDIUM })
+          .margin({ bottom: GlobalStyles.SIZES.SPACING_SMALL })
         
         Text('3. 写一写：点击画笔图标，让孩子练习书写')
           .fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM)
           .fontColor(GlobalStyles.COLORS.TEXT_PRIMARY)
-          .margin({ bottom: GlobalStyles.SIZES.SPACING_MEDIUM })
+          .margin({ bottom: GlobalStyles.SIZES.SPACING_SMALL })
         
         Text('4. 每天学习15-20分钟，效果最佳')
           .fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM)
           .fontColor(GlobalStyles.COLORS.TEXT_PRIMARY)
       }
       .width('100%')
-      .padding(GlobalStyles.SIZES.SPACING_MEDIUM)
+      .padding(GlobalStyles.SIZES.SPACING_LARGE)
       .backgroundColor(GlobalStyles.COLORS.CARD_BACKGROUND)
       .borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM)
       .margin({ bottom: GlobalStyles.SIZES.SPACING_LARGE })
@@ -295,12 +305,13 @@ struct Index {
       Button('返回首页')
         .width(GlobalStyles.SIZES.BUTTON_LARGE.width)
         .height(GlobalStyles.SIZES.BUTTON_LARGE.height)
-        .backgroundColor(GlobalStyles.COLORS.LIGHT_GRAY)
-        .fontColor(GlobalStyles.COLORS.TEXT_SECONDARY)
+        .backgroundColor(GlobalStyles.COLORS.PRIMARY_BLUE)
+        .fontColor(GlobalStyles.COLORS.TEXT_WHITE)
         .fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM)
         .borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM)
         .onClick(() => {
           this.soundEffectManager.playButtonClick()
+          console.log('Return button clicked in settings page')
           this.goBack()
         })
     }

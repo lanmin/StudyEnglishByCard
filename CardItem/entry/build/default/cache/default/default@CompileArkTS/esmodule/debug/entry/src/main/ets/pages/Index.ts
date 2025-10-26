@@ -209,20 +209,25 @@ class Index extends ViewPU {
     }
     // 返回上一页
     goBack() {
+        console.log(`goBack called, current page: ${this.currentPage}`);
         if (this.currentPage === 'parent_helper') {
             this.currentPage = 'theme_select';
+            console.log('Returning to theme_select from parent_helper');
         }
         else if (this.currentPage === 'word_card') {
             this.currentPage = 'theme_select';
+            console.log('Returning to theme_select from word_card');
         }
         else if (this.currentPage === 'speaking_practice' ||
             this.currentPage === 'writing_practice') {
             this.currentPage = 'word_card';
+            console.log('Returning to word_card from practice page');
         }
         else if (this.currentPage === 'progress_reward' ||
             this.currentPage === 'sticker_collection' ||
             this.currentPage === 'rest_break') {
             this.currentPage = 'theme_select';
+            console.log('Returning to theme_select from reward/collection/break page');
         }
     }
     initialRender() {
@@ -288,53 +293,71 @@ class Index extends ViewPU {
     // 主题选择页（横屏布局，左右滑动）
     ThemeSelectPage(parent = null) {
         this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Row.create();
-            Row.width('100%');
-            Row.height('100%');
-            Row.backgroundColor(GlobalStyles.COLORS.BACKGROUND);
-        }, Row);
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            // 左侧区域 - 主题卡片展示
             Column.create();
-            // 左侧区域 - 主题卡片展示
-            Column.width('75%');
-            // 左侧区域 - 主题卡片展示
+            Column.width('100%');
             Column.height('100%');
-            // 左侧区域 - 主题卡片展示
-            Column.justifyContent(FlexAlign.Center);
-            // 左侧区域 - 主题卡片展示
-            Column.padding(GlobalStyles.SIZES.SPACING_LARGE);
+            Column.backgroundColor(GlobalStyles.COLORS.BACKGROUND);
         }, Column);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
-            // 标题
+            // 顶部区域 - 标题和设置按钮
+            Row.create();
+            // 顶部区域 - 标题和设置按钮
+            Row.width('100%');
+            // 顶部区域 - 标题和设置按钮
+            Row.padding({ left: GlobalStyles.SIZES.SPACING_LARGE, right: GlobalStyles.SIZES.SPACING_LARGE, top: GlobalStyles.SIZES.SPACING_MEDIUM });
+            // 顶部区域 - 标题和设置按钮
+            Row.margin({ bottom: GlobalStyles.SIZES.SPACING_MEDIUM });
+        }, Row);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
             Text.create('选择学习主题');
-            // 标题
             Text.fontSize(GlobalStyles.FONT_SIZES.TITLE_LARGE);
-            // 标题
             Text.fontColor(GlobalStyles.COLORS.PRIMARY_BLUE);
-            // 标题
             Text.fontWeight(FontWeight.Bold);
-            // 标题
-            Text.margin({ bottom: GlobalStyles.SIZES.SPACING_LARGE });
+            Text.layoutWeight(1);
         }, Text);
-        // 标题
         Text.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            // 设置按钮
+            Button.createWithLabel('⚙️');
+            // 设置按钮
+            Button.width(60);
+            // 设置按钮
+            Button.height(60);
+            // 设置按钮
+            Button.backgroundColor(GlobalStyles.COLORS.LIGHT_GRAY);
+            // 设置按钮
+            Button.fontSize(24);
+            // 设置按钮
+            Button.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
+            // 设置按钮
+            Button.onClick(() => {
+                this.soundEffectManager.playButtonClick();
+                console.log('Settings button clicked, changing to parent_helper');
+                this.currentPage = 'parent_helper'; // 暂时使用家长助手页面作为设置页面
+            });
+        }, Button);
+        // 设置按钮
+        Button.pop();
+        // 顶部区域 - 标题和设置按钮
+        Row.pop();
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             // 主题卡片容器 - 支持左右滑动
             Scroll.create();
             // 主题卡片容器 - 支持左右滑动
             Scroll.width('100%');
             // 主题卡片容器 - 支持左右滑动
-            Scroll.height('100%');
+            Scroll.layoutWeight(1);
             // 主题卡片容器 - 支持左右滑动
             Scroll.scrollable(ScrollDirection.Horizontal);
             // 主题卡片容器 - 支持左右滑动
             Scroll.scrollBar(BarState.Auto);
+            // 主题卡片容器 - 支持左右滑动
+            Scroll.padding({ left: GlobalStyles.SIZES.SPACING_LARGE, right: GlobalStyles.SIZES.SPACING_LARGE });
         }, Scroll);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             Row.create();
-            Row.width('100%');
-            Row.justifyContent(FlexAlign.SpaceEvenly);
+            Row.justifyContent(FlexAlign.Start);
+            Row.padding({ top: GlobalStyles.SIZES.SPACING_MEDIUM, bottom: GlobalStyles.SIZES.SPACING_MEDIUM });
         }, Row);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             ForEach.create();
@@ -348,91 +371,7 @@ class Index extends ViewPU {
         Row.pop();
         // 主题卡片容器 - 支持左右滑动
         Scroll.pop();
-        // 左侧区域 - 主题卡片展示
         Column.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            // 右侧区域 - 功能按钮
-            Column.create();
-            // 右侧区域 - 功能按钮
-            Column.width('25%');
-            // 右侧区域 - 功能按钮
-            Column.height('100%');
-            // 右侧区域 - 功能按钮
-            Column.justifyContent(FlexAlign.Center);
-            // 右侧区域 - 功能按钮
-            Column.padding(GlobalStyles.SIZES.SPACING_LARGE);
-        }, Column);
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            // 家长助手按钮
-            Button.createWithLabel('家长助手');
-            // 家长助手按钮
-            Button.width(GlobalStyles.SIZES.BUTTON_LARGE.width);
-            // 家长助手按钮
-            Button.height(GlobalStyles.SIZES.BUTTON_LARGE.height);
-            // 家长助手按钮
-            Button.backgroundColor(GlobalStyles.COLORS.LIGHT_GRAY);
-            // 家长助手按钮
-            Button.fontColor(GlobalStyles.COLORS.TEXT_SECONDARY);
-            // 家长助手按钮
-            Button.fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM);
-            // 家长助手按钮
-            Button.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
-            // 家长助手按钮
-            Button.margin({ bottom: GlobalStyles.SIZES.SPACING_MEDIUM });
-            // 家长助手按钮
-            Button.onClick(() => {
-                this.soundEffectManager.playButtonClick();
-                this.currentPage = 'parent_helper';
-            });
-        }, Button);
-        // 家长助手按钮
-        Button.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            // 音量控制
-            Column.create();
-            // 音量控制
-            Column.margin({ top: GlobalStyles.SIZES.SPACING_LARGE });
-        }, Column);
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Text.create('音量');
-            Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_SMALL);
-            Text.fontColor(GlobalStyles.COLORS.TEXT_SECONDARY);
-            Text.margin({ bottom: GlobalStyles.SIZES.SPACING_TINY });
-        }, Text);
-        Text.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Row.create();
-        }, Row);
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Text.create('🔊');
-            Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM);
-            Text.margin({ right: GlobalStyles.SIZES.SPACING_TINY });
-        }, Text);
-        Text.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Slider.create({
-                value: this.currentVolume,
-                min: 0,
-                max: 100,
-                step: 1
-            });
-            Slider.width(120);
-            Slider.onChange((value: number) => {
-                this.currentVolume = value;
-            });
-        }, Slider);
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Text.create('🔊');
-            Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM);
-            Text.margin({ left: GlobalStyles.SIZES.SPACING_TINY });
-        }, Text);
-        Text.pop();
-        Row.pop();
-        // 音量控制
-        Column.pop();
-        // 右侧区域 - 功能按钮
-        Column.pop();
-        Row.pop();
     }
     // 主题卡片
     ThemeCard(theme: ThemeData, index: number, parent = null) {
@@ -440,10 +379,10 @@ class Index extends ViewPU {
             Column.create();
             Context.animation(GlobalStyles.ANIMATIONS.BUTTON_PRESS);
             Column.width(220);
-            Column.height(280);
+            Column.height(240);
             Column.backgroundColor(GlobalStyles.COLORS.CARD_BACKGROUND);
             Column.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
-            Column.padding(GlobalStyles.SIZES.SPACING_MEDIUM);
+            Column.padding({ top: GlobalStyles.SIZES.SPACING_MEDIUM, bottom: GlobalStyles.SIZES.SPACING_MEDIUM, left: GlobalStyles.SIZES.SPACING_MEDIUM, right: GlobalStyles.SIZES.SPACING_MEDIUM });
             Column.justifyContent(FlexAlign.Center);
             Column.shadow(GlobalStyles.SHADOWS.MEDIUM);
             Column.margin({ right: GlobalStyles.SIZES.SPACING_MEDIUM });
@@ -458,9 +397,9 @@ class Index extends ViewPU {
             // 主题图标
             Image.create(theme.icon);
             // 主题图标
-            Image.width(180);
+            Image.width(160);
             // 主题图标
-            Image.height(180);
+            Image.height(160);
             // 主题图标
             Image.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
             // 主题图标
@@ -469,34 +408,28 @@ class Index extends ViewPU {
             Image.padding(GlobalStyles.SIZES.SPACING_SMALL);
         }, Image);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
-            // 主题名称
-            Text.create(theme.name);
-            // 主题名称
-            Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_LARGE);
-            // 主题名称
-            Text.fontColor(theme.color);
-            // 主题名称
-            Text.fontWeight(FontWeight.Bold);
-            // 主题名称
-            Text.margin({ top: GlobalStyles.SIZES.SPACING_SMALL });
-        }, Text);
-        // 主题名称
-        Text.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            // 进度信息
-            Text.create(`${theme.completedWords}/${theme.totalWords}`);
-            // 进度信息
+            // 主题名称（包含进度信息）
+            Text.create(`${theme.name}（${theme.completedWords}/${theme.totalWords}）`);
+            // 主题名称（包含进度信息）
             Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM);
-            // 进度信息
-            Text.fontColor(GlobalStyles.COLORS.TEXT_SECONDARY);
-            // 进度信息
-            Text.margin({ top: GlobalStyles.SIZES.SPACING_TINY });
+            // 主题名称（包含进度信息）
+            Text.fontColor(theme.color);
+            // 主题名称（包含进度信息）
+            Text.fontWeight(FontWeight.Bold);
+            // 主题名称（包含进度信息）
+            Text.margin({ top: GlobalStyles.SIZES.SPACING_MEDIUM });
+            // 主题名称（包含进度信息）
+            Text.textAlign(TextAlign.Center);
+            // 主题名称（包含进度信息）
+            Text.maxLines(1);
+            // 主题名称（包含进度信息）
+            Text.textOverflow({ overflow: TextOverflow.Ellipsis });
         }, Text);
-        // 进度信息
+        // 主题名称（包含进度信息）
         Text.pop();
         Column.pop();
     }
-    // 家长助手页面
+    // 设置页面
     ParentHelperPage(parent = null) {
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             Column.create();
@@ -508,7 +441,7 @@ class Index extends ViewPU {
         }, Column);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             // 标题
-            Text.create('家长指导小手册');
+            Text.create('设置');
             // 标题
             Text.fontSize(GlobalStyles.FONT_SIZES.TITLE_MEDIUM);
             // 标题
@@ -521,38 +454,106 @@ class Index extends ViewPU {
         // 标题
         Text.pop();
         this.observeComponentCreation2((elmtId, isInitialRender) => {
-            // 指导内容
+            // 音量控制
             Column.create();
-            // 指导内容
+            // 音量控制
             Column.width('100%');
-            // 指导内容
-            Column.padding(GlobalStyles.SIZES.SPACING_MEDIUM);
-            // 指导内容
+            // 音量控制
+            Column.padding(GlobalStyles.SIZES.SPACING_LARGE);
+            // 音量控制
             Column.backgroundColor(GlobalStyles.COLORS.CARD_BACKGROUND);
-            // 指导内容
+            // 音量控制
             Column.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
-            // 指导内容
+            // 音量控制
             Column.margin({ bottom: GlobalStyles.SIZES.SPACING_LARGE });
         }, Column);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Text.create('音量控制');
+            Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_LARGE);
+            Text.fontColor(GlobalStyles.COLORS.TEXT_PRIMARY);
+            Text.fontWeight(FontWeight.Bold);
+            Text.margin({ bottom: GlobalStyles.SIZES.SPACING_MEDIUM });
+        }, Text);
+        Text.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Row.create();
+            Row.justifyContent(FlexAlign.Center);
+        }, Row);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Text.create('🔊');
+            Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_LARGE);
+            Text.margin({ right: GlobalStyles.SIZES.SPACING_MEDIUM });
+        }, Text);
+        Text.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Slider.create({
+                value: this.currentVolume,
+                min: 0,
+                max: 100,
+                step: 1
+            });
+            Slider.width(200);
+            Slider.onChange((value: number) => {
+                this.currentVolume = value;
+            });
+        }, Slider);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Text.create('🔊');
+            Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_LARGE);
+            Text.margin({ left: GlobalStyles.SIZES.SPACING_MEDIUM });
+        }, Text);
+        Text.pop();
+        Row.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Text.create(`当前音量: ${this.currentVolume}%`);
+            Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM);
+            Text.fontColor(GlobalStyles.COLORS.TEXT_SECONDARY);
+            Text.margin({ top: GlobalStyles.SIZES.SPACING_SMALL });
+        }, Text);
+        Text.pop();
+        // 音量控制
+        Column.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            // 家长指导
+            Column.create();
+            // 家长指导
+            Column.width('100%');
+            // 家长指导
+            Column.padding(GlobalStyles.SIZES.SPACING_LARGE);
+            // 家长指导
+            Column.backgroundColor(GlobalStyles.COLORS.CARD_BACKGROUND);
+            // 家长指导
+            Column.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
+            // 家长指导
+            Column.margin({ bottom: GlobalStyles.SIZES.SPACING_LARGE });
+        }, Column);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Text.create('学习指导');
+            Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_LARGE);
+            Text.fontColor(GlobalStyles.COLORS.TEXT_PRIMARY);
+            Text.fontWeight(FontWeight.Bold);
+            Text.margin({ bottom: GlobalStyles.SIZES.SPACING_MEDIUM });
+        }, Text);
+        Text.pop();
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             Text.create('1. 听一听：点击喇叭图标，让孩子听单词发音');
             Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM);
             Text.fontColor(GlobalStyles.COLORS.TEXT_PRIMARY);
-            Text.margin({ bottom: GlobalStyles.SIZES.SPACING_MEDIUM });
+            Text.margin({ bottom: GlobalStyles.SIZES.SPACING_SMALL });
         }, Text);
         Text.pop();
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             Text.create('2. 说一说：点击星星图标，让孩子跟读练习');
             Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM);
             Text.fontColor(GlobalStyles.COLORS.TEXT_PRIMARY);
-            Text.margin({ bottom: GlobalStyles.SIZES.SPACING_MEDIUM });
+            Text.margin({ bottom: GlobalStyles.SIZES.SPACING_SMALL });
         }, Text);
         Text.pop();
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             Text.create('3. 写一写：点击画笔图标，让孩子练习书写');
             Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM);
             Text.fontColor(GlobalStyles.COLORS.TEXT_PRIMARY);
-            Text.margin({ bottom: GlobalStyles.SIZES.SPACING_MEDIUM });
+            Text.margin({ bottom: GlobalStyles.SIZES.SPACING_SMALL });
         }, Text);
         Text.pop();
         this.observeComponentCreation2((elmtId, isInitialRender) => {
@@ -561,7 +562,7 @@ class Index extends ViewPU {
             Text.fontColor(GlobalStyles.COLORS.TEXT_PRIMARY);
         }, Text);
         Text.pop();
-        // 指导内容
+        // 家长指导
         Column.pop();
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             // 返回按钮
@@ -571,9 +572,9 @@ class Index extends ViewPU {
             // 返回按钮
             Button.height(GlobalStyles.SIZES.BUTTON_LARGE.height);
             // 返回按钮
-            Button.backgroundColor(GlobalStyles.COLORS.LIGHT_GRAY);
+            Button.backgroundColor(GlobalStyles.COLORS.PRIMARY_BLUE);
             // 返回按钮
-            Button.fontColor(GlobalStyles.COLORS.TEXT_SECONDARY);
+            Button.fontColor(GlobalStyles.COLORS.TEXT_WHITE);
             // 返回按钮
             Button.fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM);
             // 返回按钮
@@ -581,6 +582,7 @@ class Index extends ViewPU {
             // 返回按钮
             Button.onClick(() => {
                 this.soundEffectManager.playButtonClick();
+                console.log('Return button clicked in settings page');
                 this.goBack();
             });
         }, Button);
