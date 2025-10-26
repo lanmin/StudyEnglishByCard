@@ -189,7 +189,7 @@ export class WordLearningPage extends ViewPU {
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             Column.create();
             Column.width('100%');
-            Column.height('100%');
+            Column.height('90%');
             Column.backgroundColor('#F8F9FA');
         }, Column);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
@@ -246,7 +246,9 @@ export class WordLearningPage extends ViewPU {
             // 主要内容区域
             Row.flexGrow(1);
             // 主要内容区域
-            Row.justifyContent(FlexAlign.Center);
+            Row.justifyContent(FlexAlign.Start);
+            // 主要内容区域
+            Row.alignItems(VerticalAlign.Center);
             // 主要内容区域
             Row.padding({ left: 50, right: 50 });
         }, Row);
@@ -255,24 +257,46 @@ export class WordLearningPage extends ViewPU {
             if (this.getCurrentWord()) {
                 this.ifElseBranchUpdateFunction(0, () => {
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        // 左侧：单词卡片
+                        // 左侧：上一个按钮
+                        Button.createWithLabel('上一个');
+                        // 左侧：上一个按钮
+                        Button.fontSize(30);
+                        // 左侧：上一个按钮
+                        Button.fontColor('#FFFFFF');
+                        // 左侧：上一个按钮
+                        Button.backgroundColor('#FF0000');
+                        // 左侧：上一个按钮
+                        Button.borderRadius(15);
+                        // 左侧：上一个按钮
+                        Button.width(80);
+                        // 左侧：上一个按钮
+                        Button.height(60);
+                        // 左侧：上一个按钮
+                        Button.enabled(this.currentWordIndex > 0);
+                        // 左侧：上一个按钮
+                        Button.onClick(() => {
+                            this.prevWord();
+                        });
+                    }, Button);
+                    // 左侧：上一个按钮
+                    Button.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        // 中间：单词卡片
                         Stack.create();
-                        // 左侧：单词卡片
+                        // 中间：单词卡片
                         Stack.width(350);
-                        // 左侧：单词卡片
+                        // 中间：单词卡片
                         Stack.height(450);
-                        // 左侧：单词卡片
-                        Stack.backgroundColor('#FFFFFF');
-                        // 左侧：单词卡片
+                        // 中间：单词卡片
                         Stack.borderRadius(25);
-                        // 左侧：单词卡片
+                        // 中间：单词卡片
                         Stack.shadow({
                             radius: 10,
                             color: '#00000020',
                             offsetX: 0,
                             offsetY: 5
                         });
-                        // 左侧：单词卡片
+                        // 中间：单词卡片
                         Stack.onClick(() => {
                             this.flipCard();
                         });
@@ -320,24 +344,6 @@ export class WordLearningPage extends ViewPU {
                         LongPressGesture.pop();
                         Gesture.pop();
                     }, Image);
-                    this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        Text.create(this.getCurrentWord()!.english);
-                        Text.fontSize(36);
-                        Text.fontColor('#333333');
-                        Text.fontWeight(FontWeight.Bold);
-                        Text.margin({ top: 20 });
-                        Text.onClick(() => {
-                            this.playPronunciation();
-                        });
-                    }, Text);
-                    Text.pop();
-                    this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        Text.create(this.getCurrentWord()!.pronunciation);
-                        Text.fontSize(20);
-                        Text.fontColor('#666666');
-                        Text.margin({ top: 10 });
-                    }, Text);
-                    Text.pop();
                     // 正面 - 英文单词
                     Column.pop();
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
@@ -357,24 +363,9 @@ export class WordLearningPage extends ViewPU {
                         Image.opacity(0.3);
                         Image.alt({ "id": 16777218, "type": 20000, params: [], "bundleName": "com.example.studyenglishbycard", "moduleName": "entry" });
                     }, Image);
-                    this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        Text.create(this.getCurrentWord()!.chinese);
-                        Text.fontSize(48);
-                        Text.fontColor('#FF0000');
-                        Text.fontWeight(FontWeight.Bold);
-                        Text.margin({ top: 20 });
-                    }, Text);
-                    Text.pop();
-                    this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        Text.create('点击图片播放发音');
-                        Text.fontSize(16);
-                        Text.fontColor('#999999');
-                        Text.margin({ top: 10 });
-                    }, Text);
-                    Text.pop();
                     // 背面 - 中文意思
                     Column.pop();
-                    // 左侧：单词卡片
+                    // 中间：单词卡片
                     Stack.pop();
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         // 右侧：英文和中文显示区域
@@ -424,6 +415,30 @@ export class WordLearningPage extends ViewPU {
                     Button.pop();
                     // 右侧：英文和中文显示区域
                     Column.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        // 最右侧：下一个按钮
+                        Button.createWithLabel('下一个');
+                        // 最右侧：下一个按钮
+                        Button.fontSize(30);
+                        // 最右侧：下一个按钮
+                        Button.fontColor('#FFFFFF');
+                        // 最右侧：下一个按钮
+                        Button.backgroundColor('#0000FF');
+                        // 最右侧：下一个按钮
+                        Button.borderRadius(15);
+                        // 最右侧：下一个按钮
+                        Button.width(80);
+                        // 最右侧：下一个按钮
+                        Button.height(60);
+                        // 最右侧：下一个按钮
+                        Button.enabled(this.currentWordIndex < this.words.length - 1);
+                        // 最右侧：下一个按钮
+                        Button.onClick(() => {
+                            this.nextWord();
+                        });
+                    }, Button);
+                    // 最右侧：下一个按钮
+                    Button.pop();
                 });
             }
             else {
@@ -456,69 +471,6 @@ export class WordLearningPage extends ViewPU {
         }, If);
         If.pop();
         // 主要内容区域
-        Row.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            // 底部控制按钮
-            Row.create();
-            // 底部控制按钮
-            Row.width('100%');
-            // 底部控制按钮
-            Row.height(80);
-            // 底部控制按钮
-            Row.padding({ left: 30, right: 30 });
-            // 底部控制按钮
-            Row.backgroundColor('#F5F5F5');
-        }, Row);
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Button.createWithLabel('上一个');
-            Button.fontSize(20);
-            Button.fontColor('#FFFFFF');
-            Button.backgroundColor('#4ECDC4');
-            Button.borderRadius(25);
-            Button.width(120);
-            Button.height(50);
-            Button.enabled(this.currentWordIndex > 0);
-            Button.onClick(() => {
-                this.prevWord();
-            });
-        }, Button);
-        Button.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Blank.create();
-        }, Blank);
-        Blank.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Button.createWithLabel(this.isFlipped ? '显示英文' : '显示中文');
-            Button.fontSize(20);
-            Button.fontColor('#FFFFFF');
-            Button.backgroundColor('#FF6B6B');
-            Button.borderRadius(25);
-            Button.width(120);
-            Button.height(50);
-            Button.onClick(() => {
-                this.flipCard();
-            });
-        }, Button);
-        Button.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Blank.create();
-        }, Blank);
-        Blank.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Button.createWithLabel('下一个');
-            Button.fontSize(20);
-            Button.fontColor('#FFFFFF');
-            Button.backgroundColor('#4ECDC4');
-            Button.borderRadius(25);
-            Button.width(120);
-            Button.height(50);
-            Button.enabled(this.currentWordIndex < this.words.length - 1);
-            Button.onClick(() => {
-                this.nextWord();
-            });
-        }, Button);
-        Button.pop();
-        // 底部控制按钮
         Row.pop();
         Column.pop();
     }

@@ -98,7 +98,7 @@ export struct WordLearningPage {
           .onClick(() => {
             console.log('返回按钮被点击 - 暂时禁用返回功能')
           })
-        
+
         Blank()
         
         Text(this.getCurrentWord()?.english || '')
@@ -123,7 +123,20 @@ export struct WordLearningPage {
       // 主要内容区域
       Row() {
         if (this.getCurrentWord()) {
-          // 左侧：单词卡片
+          // 左侧：上一个按钮
+          Button('上一个')
+            .fontSize(30)
+            .fontColor('#FFFFFF')
+            .backgroundColor('#FF0000')
+            .borderRadius(15)
+            .width(80)
+            .height(60)
+            .enabled(this.currentWordIndex > 0)
+            .onClick(() => {
+              this.prevWord()
+            })
+          
+          // 中间：单词卡片
           Stack() {
             // 正面 - 英文单词
             Column() {
@@ -151,20 +164,6 @@ export struct WordLearningPage {
                       this.flipCard()
                     })
                 )
-              
-              Text(this.getCurrentWord()!.english)
-                .fontSize(36)
-                .fontColor('#333333')
-                .fontWeight(FontWeight.Bold)
-                .margin({ top: 20 })
-                .onClick(() => {
-                  this.playPronunciation()
-                })
-              
-              Text(this.getCurrentWord()!.pronunciation)
-                .fontSize(20)
-                .fontColor('#666666')
-                .margin({ top: 10 })
             }
             .rotate({ angle: this.isFlipped ? 180 : 0, x: 0, y: 1, z: 0 })
             .animation({ duration: 600, curve: Curve.EaseInOut, iterations: 1, playMode: PlayMode.Normal })
@@ -178,24 +177,12 @@ export struct WordLearningPage {
                 .objectFit(ImageFit.Cover)
                 .opacity(0.3)
                 .alt($r('app.media.foreground')) // 备用图片
-              
-              Text(this.getCurrentWord()!.chinese)
-                .fontSize(48)
-                .fontColor('#FF0000')
-                .fontWeight(FontWeight.Bold)
-                .margin({ top: 20 })
-              
-              Text('点击图片播放发音')
-                .fontSize(16)
-                .fontColor('#999999')
-                .margin({ top: 10 })
             }
             .rotate({ angle: this.isFlipped ? 0 : -180, x: 0, y: 1, z: 0 })
             .animation({ duration: 600, curve: Curve.EaseInOut, iterations: 1, playMode: PlayMode.Normal })
           }
           .width(350)
           .height(450)
-          .backgroundColor('#FFFFFF')
           .borderRadius(25)
           .shadow({
             radius: 10,
@@ -214,13 +201,13 @@ export struct WordLearningPage {
               .fontColor('#333333')
               .fontWeight(FontWeight.Bold)
               .margin({ bottom: 30 })
-            
+
             Text(this.getCurrentWord()!.chinese)
               .fontSize(36)
               .fontColor('#FF6B6B')
               .fontWeight(FontWeight.Bold)
               .margin({ bottom: 20 })
-            
+
             Text(this.getCurrentWord()!.pronunciation)
               .fontSize(24)
               .fontColor('#666666')
@@ -240,6 +227,19 @@ export struct WordLearningPage {
           .justifyContent(FlexAlign.Center)
           .flexGrow(1)
           .padding({ left: 30 })
+          
+          // 最右侧：下一个按钮
+          Button('下一个')
+            .fontSize(30)
+            .fontColor('#FFFFFF')
+            .backgroundColor('#0000FF')
+            .borderRadius(15)
+            .width(80)
+            .height(60)
+            .enabled(this.currentWordIndex < this.words.length - 1)
+            .onClick(() => {
+              this.nextWord()
+            })
         } else {
           // 没有单词时的提示
           Column() {
@@ -258,57 +258,13 @@ export struct WordLearningPage {
         }
       }
       .flexGrow(1)
-      .justifyContent(FlexAlign.Center)
+      .justifyContent(FlexAlign.Start)
+      .alignItems(VerticalAlign.Center)
       .padding({ left: 50, right: 50 })
-
-      // 底部控制按钮
-      Row() {
-        Button('上一个')
-          .fontSize(20)
-          .fontColor('#FFFFFF')
-          .backgroundColor('#4ECDC4')
-          .borderRadius(25)
-          .width(120)
-          .height(50)
-          .enabled(this.currentWordIndex > 0)
-          .onClick(() => {
-            this.prevWord()
-          })
-        
-        Blank()
-        
-        Button(this.isFlipped ? '显示英文' : '显示中文')
-          .fontSize(20)
-          .fontColor('#FFFFFF')
-          .backgroundColor('#FF6B6B')
-          .borderRadius(25)
-          .width(120)
-          .height(50)
-          .onClick(() => {
-            this.flipCard()
-          })
-        
-        Blank()
-        
-        Button('下一个')
-          .fontSize(20)
-          .fontColor('#FFFFFF')
-          .backgroundColor('#4ECDC4')
-          .borderRadius(25)
-          .width(120)
-          .height(50)
-          .enabled(this.currentWordIndex < this.words.length - 1)
-          .onClick(() => {
-            this.nextWord()
-          })
-      }
-      .width('100%')
-      .height(80)
-      .padding({ left: 30, right: 30 })
-      .backgroundColor('#F5F5F5')
+      // .backgroundColor(Color.Green)
     }
     .width('100%')
-    .height('100%')
+    .height('90%')
     .backgroundColor('#F8F9FA')
   }
 }
