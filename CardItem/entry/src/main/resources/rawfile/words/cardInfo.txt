@@ -1,3 +1,243 @@
+### 一、食物类（100个）｜Food（100）｜食べ物（たべもの）
+#### 水果｜Fruit｜果物（くだもの）
+Apple｜苹果｜りんご（ringo）  
+Banana｜香蕉｜バナナ（banana）  
+Orange｜橙子｜オレンジ（orenji）  
+Pear｜梨｜梨（なし，nashi）  
+Grape｜葡萄｜ぶどう（budou）  
+Watermelon｜西瓜｜スイカ（suika）  
+Strawberry｜草莓｜いちご（ichigo）  
+Mango｜芒果｜マンゴー（mangou）  
+Pineapple｜菠萝｜パイナップル（painappuru）  
+Peach｜桃子｜桃（もも，momo）  
+Cherry｜樱桃｜さくらんぼ（sakuranbo）  
+Lemon｜柠檬｜レモン（remon）  
+Kiwi｜猕猴桃｜キウイ（kiui）  
+Blueberry｜蓝莓｜ブルーベリー（burū berī）  
+Raspberry｜树莓｜ラズベリー（razuberī）  
+Apricot｜杏｜アンズ（anzu）  
+Plum｜李子｜梅（うめ，ume）  
+Pomegranate｜石榴｜ザクロ（zakuro）  
+Coconut｜椰子｜ココナッツ（kokonattsu）  
+Lychee｜荔枝｜ライチ（raichi）  
+
+#### 蔬菜｜Vegetables｜野菜（やさい）
+Carrot｜胡萝卜｜人参（にんじん，ninjin）  
+Tomato｜番茄｜トマト（tomato）  
+Onion｜洋葱｜玉ねぎ（たまねぎ，tamanegi）  
+Potato｜土豆｜ジャガイモ（jagaimo）  
+Cabbage｜卷心菜｜キャベツ（kyabetsu）  
+Spinach｜菠菜｜ほうれん草（ほうれんそう，hourensou）  
+Broccoli｜西兰花｜ブロッコリー（brokkorī）  
+Cauliflower｜花椰菜｜カリフラワー（karifuraawaa）  
+Cucumber｜黄瓜｜キュウリ（kyuuri）  
+Pumpkin｜南瓜｜カボチャ（kabochya）  
+Corn｜玉米｜トウモロコシ（toumoro kosi）  
+Peas｜豌豆｜エンドウ豆（えんどうまめ，endou mame）  
+Beans｜豆角｜四季豆（しきさいどう，shikisai dou）  
+Lettuce｜生菜｜レタス（retasu）  
+Eggplant｜茄子｜ナス（nasu）  
+Pepper｜辣椒｜唐辛子（とうがらし，togarashi）  
+Garlic｜大蒜｜大蒜（にんにく，ninniku）  
+Ginger｜姜｜生姜（しょうが，shouga）  
+Radish｜萝卜｜大根（だいこん，daikon）  
+Celery｜芹菜｜セロリー（serorī）  
+
+#### 主食｜Staple Foods｜主食（しゅしょく）
+Rice｜米饭｜ご飯（ごはん，gohan）  
+Bread｜面包｜パン（pan）  
+Noodle｜面条｜うどん（udon）  
+Pasta｜意面｜パスタ（pasuta）  
+Cake｜蛋糕｜ケーキ（keeki）  
+Biscuit｜饼干｜ビスケット（bisuketto）  
+Cookie｜曲奇｜クッキー（kukkī）  
+Pie｜派｜パイ（pai）  
+Pancake｜煎饼｜パンケーキ（pankēki）  
+Oatmeal｜燕麦｜オートミール（ootomīru）  
+Porridge｜粥｜お粥（おかゆ，okayu）  
+Sandwich｜三明治｜サンドイッチ（sandoicchi）  
+Hamburger｜汉堡｜ハンバーガー（hanbaagaa）  
+Pizza｜披萨｜ピザ（piza）  
+Dumpling｜饺子｜餃子（ぎょうざ，gyouza）  
+Bun｜包子｜饅頭（まんじゅう，manjuu）  
+Rice cake｜米糕｜お餅（おもち，omochi）  
+Toast｜吐司｜トースト（toostu）  
+Waffle｜华夫饼｜ワッフル（waffuru）  
+Muffin｜玛芬｜マフィン（mafin）  
+
+#### 零食&其他食物｜Snacks & Other Foods｜スナック＆その他の食べ物（すなっく＆そのたののたべもの）
+Candy｜糖果｜キャンディー（kyandii）  
+Chocolate｜巧克力｜チョコレート（chokoreeto）  
+Cheese｜奶酪｜チーズ（cheese）  
+Milk｜牛奶｜牛乳（ぎゅうにゅう，gyuunyuu）  
+Yogurt｜酸奶｜ヨーグルト（yooguruto）  
+Juice｜果汁｜ジュース（juusu）  
+Soda｜汽水｜サイダー（saidaa）  
+Ice cream｜冰淇淋｜アイスクリーム（aisu kurīmu）  
+Popcorn｜爆米花｜ポップコーン（poppukoon）  
+Chips｜薯片｜チップス（chippusu）  
+Nut｜坚果｜ナッツ（nattsu）  
+Jam｜果酱｜ジャム（jamu）  
+Honey｜蜂蜜｜はちみつ（hachimitsu）  
+Butter｜黄油｜バター（battaa）  
+Egg｜鸡蛋｜卵（たまご，tamago）  
+Chicken｜鸡肉｜鶏肉（とりにく，toriniku）  
+Beef｜牛肉｜牛肉（ぎゅうにく，gyuuniku）  
+Pork｜猪肉｜豚肉（ぶたにく，butaniku）  
+Fish｜鱼肉｜魚肉（さかなにく，sakana niku）  
+Shrimp｜虾｜エビ（ebi）  
+
+---
+
+### 二、动物类（100个）｜Animals（100）｜動物（どうぶつ）
+#### 宠物｜Pets｜ペット（petto）
+Dog｜狗｜犬（いぬ，inu）  
+Cat｜猫｜猫（ねこ，neko）  
+Rabbit｜兔子｜ウサギ（usagi）  
+Hamster｜仓鼠｜ハムスター（hamusutaa）  
+Guinea pig｜豚鼠｜モルモット（morumotto）  
+Parrot｜鹦鹉｜オウム（oumu）  
+Goldfish｜金鱼｜金魚（きんぎょ，kingyo）  
+Turtle｜乌龟｜カメ（kame）  
+Bird｜鸟｜鳥（とり，tori）  
+Kitten｜小猫｜子猫（こねこ，koneko）  
+Puppy｜小狗｜子犬（こいぬ，koinu）  
+
+#### 农场动物｜Farm Animals｜農場の動物（のうじょうのどうぶつ）
+Cow｜奶牛｜牛（うし，ushi）  
+Horse｜马｜馬（うま，uma）  
+Pig｜猪｜豚（ぶた，buta）  
+Sheep｜绵羊｜羊（ひつじ，hitsuji）  
+Goat｜山羊｜山羊（やぎ，yagi）  
+Chicken｜鸡｜鶏（にわとり，niwatori）  
+Duck｜鸭｜アヒル（ahiru）  
+Goose｜鹅｜ガチョウ（gachou）  
+Turkey｜火鸡｜七面鳥（しちめんちょう，shichimenchou）  
+Donkey｜驴｜ロバ（roba）  
+Mule｜骡子｜ラバ（raba）  
+Rooster｜公鸡｜雄鶏（おんどり，ondori）  
+Hen｜母鸡｜雌鶏（めんどり，mendori）  
+Lamb｜小羊｜子羊（こひつじ，kohitsuji）  
+Calf｜小牛｜子牛（こうし，koushi）  
+Foal｜小马｜子馬（こうま，kouma）  
+Piglet｜小猪｜子豚（こぶた，kobuta）  
+Duckling｜小鸭｜アヒルの子（あひるのこ，ahiru no ko）  
+Gosling｜小鹅｜ガチョウの子（がちょうのこ，gachou no ko）  
+Chick｜小鸡｜ひよこ（hiyoko）  
+
+#### 动物园动物｜Zoo Animals｜動物園の動物（どうぶつえんのどうぶつ）
+Tiger｜老虎｜虎（とら，tora）  
+Lion｜狮子｜ライオン（raion）  
+Elephant｜大象｜象（ぞう，zou）  
+Giraffe｜长颈鹿｜キリン（kirin）  
+Monkey｜猴子｜猿（さる，saru）  
+Panda｜熊猫｜パンダ（panda）  
+Bear｜熊｜熊（くま，kuma）  
+Zebra｜斑马｜シマウマ（shimauma）  
+Hippo｜河马｜カバ（kaba）  
+Rhino｜犀牛｜サイ（sai）  
+Crocodile｜鳄鱼｜ワニ（wani）  
+Snake｜蛇｜ヘビ（hebi）  
+Kangaroo｜袋鼠｜カンガルー（kangaruu）  
+Koala｜考拉｜コアラ（koara）  
+Penguin｜企鹅｜ペンギン（pengin）  
+Owl｜猫头鹰｜フクロウ（fukurou）  
+Fox｜狐狸｜キツネ（kitsune）  
+Wolf｜狼｜オオカミ（ookami）  
+Deer｜鹿｜シカ（shika）  
+Leopard｜豹子｜ヒョウ（hyou）  
+
+#### 水生动物｜Aquatic Animals｜水生動物（すいせいどうぶつ）
+Fish｜鱼｜魚（さかな，sakana）  
+Shark｜鲨鱼｜サメ（same）  
+Dolphin｜海豚｜イルカ（iruka）  
+Whale｜鲸鱼｜クジラ（kujira）  
+Turtle｜海龟｜海亀（うみがめ，umigame）  
+Octopus｜章鱼｜タコ（tako）  
+Crab｜螃蟹｜カニ（kani）  
+Shrimp｜虾｜エビ（ebi）  
+Starfish｜海星｜ヒトデ（hitode）  
+Clam｜蛤蜊｜蛤（はまぐり，hamaguri）  
+Oyster｜牡蛎｜カキ（kaki）  
+Jellyfish｜水母｜クラゲ（kurage）  
+Seahorse｜海马｜タツノオトシゴ（tatsunootoshigo）  
+Lobster｜龙虾｜ロブスター（robusutaa）  
+Eel｜鳗鱼｜ウナギ（unagi）  
+Seal｜海豹｜アザラシ（azarashi）  
+Walrus｜海象｜セイウチ（seiuchi）  
+Otter｜水獭｜カワウソ（kawauso）  
+Ray｜鳐鱼｜エイ（ei）  
+Minnow｜小鱼｜メダカ（medaka）  
+
+#### 昆虫&小型动物｜Insects & Small Animals｜昆虫＆小型動物（こんちゅう＆こがたどうぶつ）
+Ant｜蚂蚁｜アリ（ari）  
+Bee｜蜜蜂｜ミツバチ（mitsubachi）  
+Butterfly｜蝴蝶｜チョウ（chou）  
+Dragonfly｜蜻蜓｜トンボ（tonbo）  
+Ladybug｜瓢虫｜テントウムシ（tentoumushi）  
+Spider｜蜘蛛｜クモ（kumo）  
+Worm｜虫子｜ミミズ（mimizu）  
+Snail｜蜗牛｜カタツムリ（katatsumuri）  
+Cricket｜蟋蟀｜コオロギ（koorogi）  
+Grasshopper｜蚂蚱｜バッタ（batta）  
+Mosquito｜蚊子｜モスキート（mosukīto）  
+Fly｜苍蝇｜ハエ（hae）  
+Moth｜飞蛾｜ガ（ga）  
+Caterpillar｜毛毛虫｜イモムシ（imomushi）  
+Beetle｜甲虫｜カブトムシ（kabutomushi）  
+Centipede｜蜈蚣｜ムカデ（mukade）  
+Millipede｜千足虫｜ヤナギムシ（yanagimushi）  
+Louse｜虱子｜ハジラミ（hajirami）  
+Tick｜蜱虫｜ダニ（dani）  
+Flea｜跳蚤｜ノミ（nomi）  
+
+---
+
+### 三、日常物品类（100个）｜Daily Items（100）｜日常用品（にちじょうようひん）
+#### 厨房用品｜Kitchen Supplies｜キッチン用品（kitchin youhin）
+Plate｜盘子｜お皿（おざら，ozara）  
+Bowl｜碗｜お椀（おわん，owan）  
+Spoon｜勺子｜スプーン（supuun）  
+Fork｜叉子｜フォーク（fooku）  
+Knife｜刀｜ナイフ（naifu）  
+Cup｜杯子｜コップ（koppu）  
+Glass｜玻璃杯｜グラス（gurasu）  
+Mug｜马克杯｜マグカップ（magukappu）  
+Pot｜锅｜鍋（なべ，nabe）  
+Pan｜平底锅｜フライパン（furaipan）  
+Kettle｜水壶｜ケトル（ketoru）  
+Spatula｜锅铲｜ヘラ（hera）  
+Ladle｜汤勺｜おたま（otama）  
+Cutting board｜砧板｜まな板（まないた，manaita）  
+Dish｜餐具｜食器（しょっき，shokki）  
+Tray｜托盘｜トレイ（torei）  
+Jar｜罐子｜ジャー（jaa）  
+Can｜罐头｜缶（かん，kan）  
+Container｜容器｜容器（ようき，youki）  
+Napkin｜餐巾纸｜ナプキン（napukin）  
+
+#### 卧室用品｜Bedroom Supplies｜寝室用品（しんしつようひん）
+Bed｜床｜ベッド（beddo）  
+Pillow｜枕头｜枕（まくら，makura）  
+Blanket｜毯子｜毛布（もうふ，moufu）  
+Quilt｜被子｜布団（ふとん，futon）  
+Sheet｜床单｜シーツ（shiitsu）  
+Pillowcase｜枕套｜枕カバー（まくらかばー，makura kabaa）  
+Mattress｜床垫｜マットレス（mattoresu）  
+Bedside table｜床头柜｜ベッドサイドテーブル（beddo saido teeburu）  
+Lamp｜台灯｜卓上ランプ（たくじょうらんぷ，takujou ranpu）  
+Alarm clock｜闹钟｜目覚まし時計（めざましどけい，mezamashi dokei）  
+Teddy bear｜泰迪熊｜テディベア（tedibea）  
+Doll｜玩偶｜人形（にんぎょう，ningyou）  
+Pajamas｜睡衣｜パジャマ（pajama）  
+Slippers｜拖鞋｜スリッパ（surippa）  
+Comb｜梳子｜櫛（くし，kushi）  
+Brush｜刷子｜ブラシ（burashi）  
+Mirror｜镜子｜鏡（かがみ，kagami）  
+Towel｜毛巾｜タオル（taoru）  
+Soap｜肥皂｜石鹸（せっけん，sekken）  
+Toothbrush｜牙刷｜歯ブラシ（はブラシ，ha burashi）  
+
 #### 客厅用品｜Living Room Supplies｜リビング用品（ribingu youhin）
 Sofa｜沙发｜ソファ（sofa）  
 Chair｜椅子｜椅子（いす，isu）  
