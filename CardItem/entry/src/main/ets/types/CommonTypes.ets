@@ -1,7 +1,19 @@
 // 通用类型定义
 
 // 主题类型
-export type ThemeType = 'fruits' | 'animals' | 'vehicles' | 'body_parts'
+export type ThemeType = 
+  | 'fruits' 
+  | 'animals' 
+  | 'daily_items'
+  | 'body_parts'
+  | 'colors_shapes'
+  | 'vehicles'
+  | 'family'
+  | 'actions'
+  | 'places'
+  | 'nature'
+  | 'clothing'
+  | 'toys'
 
 // 页面类型 - 重新规划，移除启动页
 export type PageType = 
@@ -34,6 +46,18 @@ export interface ThemeData {
   name: string
   icon: string
   color: string
+  totalWords: number
+  completedWords: number
+  isUnlocked: boolean
+}
+
+// 子分类数据接口
+export interface SubcategoryData {
+  id: string
+  name: string
+  icon: string
+  color: string
+  themeId: ThemeType
   totalWords: number
   completedWords: number
   isUnlocked: boolean

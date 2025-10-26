@@ -137,7 +137,7 @@ struct Index {
       // 顶部区域 - 标题和设置按钮
       Row() {
         Text('选择学习主题')
-          .fontSize(GlobalStyles.FONT_SIZES.TITLE_LARGE)
+          .fontSize(GlobalStyles.FONT_SIZES.TITLE_MEDIUM)
           .fontColor(GlobalStyles.COLORS.PRIMARY_BLUE)
           .fontWeight(FontWeight.Bold)
           .layoutWeight(1)
@@ -185,27 +185,28 @@ struct Index {
     Column() {
       // 主题图标
       Image(theme.icon)
-        .width(160)
-        .height(160)
+        .width(140)
+        .height(140)
         .borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM)
         .backgroundColor(theme.color)
         .padding(GlobalStyles.SIZES.SPACING_SMALL)
       
       // 主题名称（包含进度信息）
       Text(`${theme.name}（${theme.completedWords}/${theme.totalWords}）`)
-        .fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM)
+        .fontSize(GlobalStyles.FONT_SIZES.TEXT_SMALL)
         .fontColor(theme.color)
         .fontWeight(FontWeight.Bold)
-        .margin({ top: GlobalStyles.SIZES.SPACING_MEDIUM })
+        .margin({ top: GlobalStyles.SIZES.SPACING_SMALL })
         .textAlign(TextAlign.Center)
-        .maxLines(1)
-        .textOverflow({ overflow: TextOverflow.Ellipsis })
+        .maxLines(2)
+        .textOverflow({ overflow: TextOverflow.None })
+        .width('100%')
     }
-    .width(220)
-    .height(240)
+    .width(200)
+    .height(220)
     .backgroundColor(GlobalStyles.COLORS.CARD_BACKGROUND)
     .borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM)
-    .padding({ top: GlobalStyles.SIZES.SPACING_MEDIUM, bottom: GlobalStyles.SIZES.SPACING_MEDIUM, left: GlobalStyles.SIZES.SPACING_MEDIUM, right: GlobalStyles.SIZES.SPACING_MEDIUM })
+    .padding({ top: GlobalStyles.SIZES.SPACING_SMALL, bottom: GlobalStyles.SIZES.SPACING_SMALL, left: GlobalStyles.SIZES.SPACING_SMALL, right: GlobalStyles.SIZES.SPACING_SMALL })
     .justifyContent(FlexAlign.Center)
     .shadow(GlobalStyles.SHADOWS.MEDIUM)
     .margin({ right: GlobalStyles.SIZES.SPACING_MEDIUM })

@@ -310,7 +310,7 @@ class Index extends ViewPU {
         }, Row);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             Text.create('选择学习主题');
-            Text.fontSize(GlobalStyles.FONT_SIZES.TITLE_LARGE);
+            Text.fontSize(GlobalStyles.FONT_SIZES.TITLE_MEDIUM);
             Text.fontColor(GlobalStyles.COLORS.PRIMARY_BLUE);
             Text.fontWeight(FontWeight.Bold);
             Text.layoutWeight(1);
@@ -378,11 +378,11 @@ class Index extends ViewPU {
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             Column.create();
             Context.animation(GlobalStyles.ANIMATIONS.BUTTON_PRESS);
-            Column.width(220);
-            Column.height(240);
+            Column.width(200);
+            Column.height(220);
             Column.backgroundColor(GlobalStyles.COLORS.CARD_BACKGROUND);
             Column.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
-            Column.padding({ top: GlobalStyles.SIZES.SPACING_MEDIUM, bottom: GlobalStyles.SIZES.SPACING_MEDIUM, left: GlobalStyles.SIZES.SPACING_MEDIUM, right: GlobalStyles.SIZES.SPACING_MEDIUM });
+            Column.padding({ top: GlobalStyles.SIZES.SPACING_SMALL, bottom: GlobalStyles.SIZES.SPACING_SMALL, left: GlobalStyles.SIZES.SPACING_SMALL, right: GlobalStyles.SIZES.SPACING_SMALL });
             Column.justifyContent(FlexAlign.Center);
             Column.shadow(GlobalStyles.SHADOWS.MEDIUM);
             Column.margin({ right: GlobalStyles.SIZES.SPACING_MEDIUM });
@@ -397,9 +397,9 @@ class Index extends ViewPU {
             // 主题图标
             Image.create(theme.icon);
             // 主题图标
-            Image.width(160);
+            Image.width(140);
             // 主题图标
-            Image.height(160);
+            Image.height(140);
             // 主题图标
             Image.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
             // 主题图标
@@ -411,19 +411,21 @@ class Index extends ViewPU {
             // 主题名称（包含进度信息）
             Text.create(`${theme.name}（${theme.completedWords}/${theme.totalWords}）`);
             // 主题名称（包含进度信息）
-            Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_MEDIUM);
+            Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_SMALL);
             // 主题名称（包含进度信息）
             Text.fontColor(theme.color);
             // 主题名称（包含进度信息）
             Text.fontWeight(FontWeight.Bold);
             // 主题名称（包含进度信息）
-            Text.margin({ top: GlobalStyles.SIZES.SPACING_MEDIUM });
+            Text.margin({ top: GlobalStyles.SIZES.SPACING_SMALL });
             // 主题名称（包含进度信息）
             Text.textAlign(TextAlign.Center);
             // 主题名称（包含进度信息）
-            Text.maxLines(1);
+            Text.maxLines(2);
             // 主题名称（包含进度信息）
-            Text.textOverflow({ overflow: TextOverflow.Ellipsis });
+            Text.textOverflow({ overflow: TextOverflow.None });
+            // 主题名称（包含进度信息）
+            Text.width('100%');
         }, Text);
         // 主题名称（包含进度信息）
         Text.pop();

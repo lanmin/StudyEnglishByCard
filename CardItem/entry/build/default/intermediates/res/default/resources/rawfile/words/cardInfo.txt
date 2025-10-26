@@ -1,0 +1,636 @@
+### 一、食物类（100个）｜Food（100）｜食べ物（たべもの）
+#### 水果｜Fruit｜果物（くだもの）
+Apple｜苹果｜りんご（ringo）  
+Banana｜香蕉｜バナナ（banana）  
+Orange｜橙子｜オレンジ（orenji）  
+Pear｜梨｜梨（なし，nashi）  
+Grape｜葡萄｜ぶどう（budou）  
+Watermelon｜西瓜｜スイカ（suika）  
+Strawberry｜草莓｜いちご（ichigo）  
+Mango｜芒果｜マンゴー（mangou）  
+Pineapple｜菠萝｜パイナップル（painappuru）  
+Peach｜桃子｜桃（もも，momo）  
+Cherry｜樱桃｜さくらんぼ（sakuranbo）  
+Lemon｜柠檬｜レモン（remon）  
+Kiwi｜猕猴桃｜キウイ（kiui）  
+Blueberry｜蓝莓｜ブルーベリー（burū berī）  
+Raspberry｜树莓｜ラズベリー（razuberī）  
+Apricot｜杏｜アンズ（anzu）  
+Plum｜李子｜梅（うめ，ume）  
+Pomegranate｜石榴｜ザクロ（zakuro）  
+Coconut｜椰子｜ココナッツ（kokonattsu）  
+Lychee｜荔枝｜ライチ（raichi）  
+
+#### 蔬菜｜Vegetables｜野菜（やさい）
+Carrot｜胡萝卜｜人参（にんじん，ninjin）  
+Tomato｜番茄｜トマト（tomato）  
+Onion｜洋葱｜玉ねぎ（たまねぎ，tamanegi）  
+Potato｜土豆｜ジャガイモ（jagaimo）  
+Cabbage｜卷心菜｜キャベツ（kyabetsu）  
+Spinach｜菠菜｜ほうれん草（ほうれんそう，hourensou）  
+Broccoli｜西兰花｜ブロッコリー（brokkorī）  
+Cauliflower｜花椰菜｜カリフラワー（karifuraawaa）  
+Cucumber｜黄瓜｜キュウリ（kyuuri）  
+Pumpkin｜南瓜｜カボチャ（kabochya）  
+Corn｜玉米｜トウモロコシ（toumoro kosi）  
+Peas｜豌豆｜エンドウ豆（えんどうまめ，endou mame）  
+Beans｜豆角｜四季豆（しきさいどう，shikisai dou）  
+Lettuce｜生菜｜レタス（retasu）  
+Eggplant｜茄子｜ナス（nasu）  
+Pepper｜辣椒｜唐辛子（とうがらし，togarashi）  
+Garlic｜大蒜｜大蒜（にんにく，ninniku）  
+Ginger｜姜｜生姜（しょうが，shouga）  
+Radish｜萝卜｜大根（だいこん，daikon）  
+Celery｜芹菜｜セロリー（serorī）  
+
+#### 主食｜Staple Foods｜主食（しゅしょく）
+Rice｜米饭｜ご飯（ごはん，gohan）  
+Bread｜面包｜パン（pan）  
+Noodle｜面条｜うどん（udon）  
+Pasta｜意面｜パスタ（pasuta）  
+Cake｜蛋糕｜ケーキ（keeki）  
+Biscuit｜饼干｜ビスケット（bisuketto）  
+Cookie｜曲奇｜クッキー（kukkī）  
+Pie｜派｜パイ（pai）  
+Pancake｜煎饼｜パンケーキ（pankēki）  
+Oatmeal｜燕麦｜オートミール（ootomīru）  
+Porridge｜粥｜お粥（おかゆ，okayu）  
+Sandwich｜三明治｜サンドイッチ（sandoicchi）  
+Hamburger｜汉堡｜ハンバーガー（hanbaagaa）  
+Pizza｜披萨｜ピザ（piza）  
+Dumpling｜饺子｜餃子（ぎょうざ，gyouza）  
+Bun｜包子｜饅頭（まんじゅう，manjuu）  
+Rice cake｜米糕｜お餅（おもち，omochi）  
+Toast｜吐司｜トースト（toostu）  
+Waffle｜华夫饼｜ワッフル（waffuru）  
+Muffin｜玛芬｜マフィン（mafin）  
+
+#### 零食&其他食物｜Snacks & Other Foods｜スナック＆その他の食べ物（すなっく＆そのたののたべもの）
+Candy｜糖果｜キャンディー（kyandii）  
+Chocolate｜巧克力｜チョコレート（chokoreeto）  
+Cheese｜奶酪｜チーズ（cheese）  
+Milk｜牛奶｜牛乳（ぎゅうにゅう，gyuunyuu）  
+Yogurt｜酸奶｜ヨーグルト（yooguruto）  
+Juice｜果汁｜ジュース（juusu）  
+Soda｜汽水｜サイダー（saidaa）  
+Ice cream｜冰淇淋｜アイスクリーム（aisu kurīmu）  
+Popcorn｜爆米花｜ポップコーン（poppukoon）  
+Chips｜薯片｜チップス（chippusu）  
+Nut｜坚果｜ナッツ（nattsu）  
+Jam｜果酱｜ジャム（jamu）  
+Honey｜蜂蜜｜はちみつ（hachimitsu）  
+Butter｜黄油｜バター（battaa）  
+Egg｜鸡蛋｜卵（たまご，tamago）  
+Chicken｜鸡肉｜鶏肉（とりにく，toriniku）  
+Beef｜牛肉｜牛肉（ぎゅうにく，gyuuniku）  
+Pork｜猪肉｜豚肉（ぶたにく，butaniku）  
+Fish｜鱼肉｜魚肉（さかなにく，sakana niku）  
+Shrimp｜虾｜エビ（ebi）  
+
+---
+
+### 二、动物类（100个）｜Animals（100）｜動物（どうぶつ）
+#### 宠物｜Pets｜ペット（petto）
+Dog｜狗｜犬（いぬ，inu）  
+Cat｜猫｜猫（ねこ，neko）  
+Rabbit｜兔子｜ウサギ（usagi）  
+Hamster｜仓鼠｜ハムスター（hamusutaa）  
+Guinea pig｜豚鼠｜モルモット（morumotto）  
+Parrot｜鹦鹉｜オウム（oumu）  
+Goldfish｜金鱼｜金魚（きんぎょ，kingyo）  
+Turtle｜乌龟｜カメ（kame）  
+Bird｜鸟｜鳥（とり，tori）  
+Kitten｜小猫｜子猫（こねこ，koneko）  
+Puppy｜小狗｜子犬（こいぬ，koinu）  
+
+#### 农场动物｜Farm Animals｜農場の動物（のうじょうのどうぶつ）
+Cow｜奶牛｜牛（うし，ushi）  
+Horse｜马｜馬（うま，uma）  
+Pig｜猪｜豚（ぶた，buta）  
+Sheep｜绵羊｜羊（ひつじ，hitsuji）  
+Goat｜山羊｜山羊（やぎ，yagi）  
+Chicken｜鸡｜鶏（にわとり，niwatori）  
+Duck｜鸭｜アヒル（ahiru）  
+Goose｜鹅｜ガチョウ（gachou）  
+Turkey｜火鸡｜七面鳥（しちめんちょう，shichimenchou）  
+Donkey｜驴｜ロバ（roba）  
+Mule｜骡子｜ラバ（raba）  
+Rooster｜公鸡｜雄鶏（おんどり，ondori）  
+Hen｜母鸡｜雌鶏（めんどり，mendori）  
+Lamb｜小羊｜子羊（こひつじ，kohitsuji）  
+Calf｜小牛｜子牛（こうし，koushi）  
+Foal｜小马｜子馬（こうま，kouma）  
+Piglet｜小猪｜子豚（こぶた，kobuta）  
+Duckling｜小鸭｜アヒルの子（あひるのこ，ahiru no ko）  
+Gosling｜小鹅｜ガチョウの子（がちょうのこ，gachou no ko）  
+Chick｜小鸡｜ひよこ（hiyoko）  
+
+#### 动物园动物｜Zoo Animals｜動物園の動物（どうぶつえんのどうぶつ）
+Tiger｜老虎｜虎（とら，tora）  
+Lion｜狮子｜ライオン（raion）  
+Elephant｜大象｜象（ぞう，zou）  
+Giraffe｜长颈鹿｜キリン（kirin）  
+Monkey｜猴子｜猿（さる，saru）  
+Panda｜熊猫｜パンダ（panda）  
+Bear｜熊｜熊（くま，kuma）  
+Zebra｜斑马｜シマウマ（shimauma）  
+Hippo｜河马｜カバ（kaba）  
+Rhino｜犀牛｜サイ（sai）  
+Crocodile｜鳄鱼｜ワニ（wani）  
+Snake｜蛇｜ヘビ（hebi）  
+Kangaroo｜袋鼠｜カンガルー（kangaruu）  
+Koala｜考拉｜コアラ（koara）  
+Penguin｜企鹅｜ペンギン（pengin）  
+Owl｜猫头鹰｜フクロウ（fukurou）  
+Fox｜狐狸｜キツネ（kitsune）  
+Wolf｜狼｜オオカミ（ookami）  
+Deer｜鹿｜シカ（shika）  
+Leopard｜豹子｜ヒョウ（hyou）  
+
+#### 水生动物｜Aquatic Animals｜水生動物（すいせいどうぶつ）
+Fish｜鱼｜魚（さかな，sakana）  
+Shark｜鲨鱼｜サメ（same）  
+Dolphin｜海豚｜イルカ（iruka）  
+Whale｜鲸鱼｜クジラ（kujira）  
+Turtle｜海龟｜海亀（うみがめ，umigame）  
+Octopus｜章鱼｜タコ（tako）  
+Crab｜螃蟹｜カニ（kani）  
+Shrimp｜虾｜エビ（ebi）  
+Starfish｜海星｜ヒトデ（hitode）  
+Clam｜蛤蜊｜蛤（はまぐり，hamaguri）  
+Oyster｜牡蛎｜カキ（kaki）  
+Jellyfish｜水母｜クラゲ（kurage）  
+Seahorse｜海马｜タツノオトシゴ（tatsunootoshigo）  
+Lobster｜龙虾｜ロブスター（robusutaa）  
+Eel｜鳗鱼｜ウナギ（unagi）  
+Seal｜海豹｜アザラシ（azarashi）  
+Walrus｜海象｜セイウチ（seiuchi）  
+Otter｜水獭｜カワウソ（kawauso）  
+Ray｜鳐鱼｜エイ（ei）  
+Minnow｜小鱼｜メダカ（medaka）  
+
+#### 昆虫&小型动物｜Insects & Small Animals｜昆虫＆小型動物（こんちゅう＆こがたどうぶつ）
+Ant｜蚂蚁｜アリ（ari）  
+Bee｜蜜蜂｜ミツバチ（mitsubachi）  
+Butterfly｜蝴蝶｜チョウ（chou）  
+Dragonfly｜蜻蜓｜トンボ（tonbo）  
+Ladybug｜瓢虫｜テントウムシ（tentoumushi）  
+Spider｜蜘蛛｜クモ（kumo）  
+Worm｜虫子｜ミミズ（mimizu）  
+Snail｜蜗牛｜カタツムリ（katatsumuri）  
+Cricket｜蟋蟀｜コオロギ（koorogi）  
+Grasshopper｜蚂蚱｜バッタ（batta）  
+Mosquito｜蚊子｜モスキート（mosukīto）  
+Fly｜苍蝇｜ハエ（hae）  
+Moth｜飞蛾｜ガ（ga）  
+Caterpillar｜毛毛虫｜イモムシ（imomushi）  
+Beetle｜甲虫｜カブトムシ（kabutomushi）  
+Centipede｜蜈蚣｜ムカデ（mukade）  
+Millipede｜千足虫｜ヤナギムシ（yanagimushi）  
+Louse｜虱子｜ハジラミ（hajirami）  
+Tick｜蜱虫｜ダニ（dani）  
+Flea｜跳蚤｜ノミ（nomi）  
+
+---
+
+### 三、日常物品类（100个）｜Daily Items（100）｜日常用品（にちじょうようひん）
+#### 厨房用品｜Kitchen Supplies｜キッチン用品（kitchin youhin）
+Plate｜盘子｜お皿（おざら，ozara）  
+Bowl｜碗｜お椀（おわん，owan）  
+Spoon｜勺子｜スプーン（supuun）  
+Fork｜叉子｜フォーク（fooku）  
+Knife｜刀｜ナイフ（naifu）  
+Cup｜杯子｜コップ（koppu）  
+Glass｜玻璃杯｜グラス（gurasu）  
+Mug｜马克杯｜マグカップ（magukappu）  
+Pot｜锅｜鍋（なべ，nabe）  
+Pan｜平底锅｜フライパン（furaipan）  
+Kettle｜水壶｜ケトル（ketoru）  
+Spatula｜锅铲｜ヘラ（hera）  
+Ladle｜汤勺｜おたま（otama）  
+Cutting board｜砧板｜まな板（まないた，manaita）  
+Dish｜餐具｜食器（しょっき，shokki）  
+Tray｜托盘｜トレイ（torei）  
+Jar｜罐子｜ジャー（jaa）  
+Can｜罐头｜缶（かん，kan）  
+Container｜容器｜容器（ようき，youki）  
+Napkin｜餐巾纸｜ナプキン（napukin）  
+
+#### 卧室用品｜Bedroom Supplies｜寝室用品（しんしつようひん）
+Bed｜床｜ベッド（beddo）  
+Pillow｜枕头｜枕（まくら，makura）  
+Blanket｜毯子｜毛布（もうふ，moufu）  
+Quilt｜被子｜布団（ふとん，futon）  
+Sheet｜床单｜シーツ（shiitsu）  
+Pillowcase｜枕套｜枕カバー（まくらかばー，makura kabaa）  
+Mattress｜床垫｜マットレス（mattoresu）  
+Bedside table｜床头柜｜ベッドサイドテーブル（beddo saido teeburu）  
+Lamp｜台灯｜卓上ランプ（たくじょうらんぷ，takujou ranpu）  
+Alarm clock｜闹钟｜目覚まし時計（めざましどけい，mezamashi dokei）  
+Teddy bear｜泰迪熊｜テディベア（tedibea）  
+Doll｜玩偶｜人形（にんぎょう，ningyou）  
+Pajamas｜睡衣｜パジャマ（pajama）  
+Slippers｜拖鞋｜スリッパ（surippa）  
+Comb｜梳子｜櫛（くし，kushi）  
+Brush｜刷子｜ブラシ（burashi）  
+Mirror｜镜子｜鏡（かがみ，kagami）  
+Towel｜毛巾｜タオル（taoru）  
+Soap｜肥皂｜石鹸（せっけん，sekken）  
+Toothbrush｜牙刷｜歯ブラシ（はブラシ，ha burashi）  
+
+#### 客厅用品｜Living Room Supplies｜リビング用品（ribingu youhin）
+Sofa｜沙发｜ソファ（sofa）  
+Chair｜椅子｜椅子（いす，isu）  
+Table｜桌子｜テーブル（teeburu）  
+Carpet｜地毯｜カーペット（kaapetto）  
+Rug｜小地毯｜ラグ（ragu）  
+Curtain｜窗帘｜カーテン（kaaten）  
+Lamp｜落地灯｜スタンドランプ（sutando ranpu）  
+TV｜电视｜テレビ（terebi）  
+Remote｜遥控器｜リモコン（rimokon）  
+Cushion｜靠垫｜クッション（kusshon）  
+Book｜书｜本（ほん，hon）  
+Magazine｜杂志｜雑誌（ざっし，zasshi）  
+Newspaper｜报纸｜新聞（しんぶん，shinbun）  
+Vase｜花瓶｜花瓶（はながら，hanagara）  
+Picture frame｜相框｜額縁（がくぶち，gakubuchi）  
+Clock｜时钟｜時計（どけい，dokei）  
+Fan｜风扇｜扇風機（せんぷうき，senpuki）  
+Air conditioner｜空调｜エアコン（eakon）  
+Phone｜手机｜携帯電話（けいたいでんわ，keitai denwa）  
+Speaker｜音箱｜スピーカー（supiikaa）  
+
+#### 洗漱用品｜Toiletries｜トイレタリー（toiretarī）
+Toothpaste｜牙膏｜歯磨き粉（はみがきこ，hamigaki ko）  
+Toothbrush｜牙刷｜歯ブラシ（はブラシ，ha burashi）  
+Soap｜香皂｜石鹸（せっけん，sekken）  
+Shampoo｜洗发水｜シャンプー（shampoo）  
+Conditioner｜护发素｜コンディショナー（ Kondishonā）  
+Towel｜毛巾｜タオル（taoru）  
+Washcloth｜洗脸巾｜洗顔タオル（せんがんたおる，sengan taoru）  
+Comb｜梳子｜櫛（くし，kushi）  
+Brush｜刷子｜ブラシ（burashi）  
+Mirror｜镜子｜鏡（かがみ，kagami）  
+Razor｜剃须刀｜カミソリ（kamisori）  
+Lotion｜乳液｜化粧水（けしょうすい，keshousui）  
+Cream｜面霜｜クリーム（kuriimu）  
+Perfume｜香水｜香水（こうすい，kousui）  
+Tissue｜纸巾｜ティッシュ（tisshu）  
+Cotton swab｜棉签｜綿棒（わたぼう，watabou）  
+Bath tub｜浴缸｜バスタブ（basutabu）  
+Shower｜淋浴｜シャワー（shawaa）  
+Soap dish｜肥皂盒｜石鹸皿（せっけんざら，sekken zara）  
+Toothcup｜牙杯｜歯みがきカップ（はみがきかっぷ，hamigaki kappu）  
+
+#### 其他日常物品｜Other Daily Items｜その他の日常用品（そのたのにちじょうようひん）
+Bag｜包｜バッグ（baggu）  
+Backpack｜书包｜リュックサック（ryukkusakku）  
+Wallet｜钱包｜財布（さいふ，saifu）  
+Key｜钥匙｜鍵（かぎ，kagi）  
+Umbrella｜雨伞｜傘（かさ，kasa）  
+Hat｜帽子｜帽子（ぼうし，boushi）  
+Scarf｜围巾｜マフラー（mafuraa）  
+Gloves｜手套｜手袋（てぶくろ，tebukuro）  
+Watch｜手表｜時計（どけい，dokei）  
+Pen｜钢笔｜ペン（pen）  
+Pencil｜铅笔｜鉛筆（えんぴつ，enpitsu）  
+Eraser｜橡皮｜消しゴム（けしごむ，keshigomu）  
+Ruler｜尺子｜定規（じょうぎ，jougi）  
+Notebook｜笔记本｜ノート（nooto）  
+Paper｜纸｜紙（かみ，kami）  
+Crayon｜蜡笔｜クレヨン（kureyon）  
+Marker｜马克笔｜マーカー（maakaa）  
+Scissors｜剪刀｜ハサミ（hasami）  
+Tape｜胶带｜テープ（teepu）  
+Stapler｜订书机｜ホッチキス（hochikisu）  
+
+---
+
+### 四、身体部位类（50个）｜Body Parts（50）｜身体の部位（しんたいのぶい，shintai no bui）
+#### 头部｜Head｜頭部（ずつぶ，zutsubu）
+Head｜头｜頭（あたま，atama）  
+Hair｜头发｜髪（かみ，kami）  
+Face｜脸｜顔（かお，kao）  
+Eye｜眼睛｜目（め，me）  
+Ear｜耳朵｜耳（みみ，mimi）  
+Nose｜鼻子｜鼻（はな，hana）  
+Mouth｜嘴｜口（くち，kuchi）  
+Lip｜嘴唇｜唇（くちびる，kuchibiru）  
+Tooth｜牙齿｜歯（は，ha）  
+Tongue｜舌头｜舌（した，shita）  
+Cheek｜脸颊｜頬（ほお，hoo）  
+Chin｜下巴｜顎（あご，ago）  
+Forehead｜额头｜額（ひたい，hitai）  
+Eyebrow｜眉毛｜眉（まゆ，mayu）  
+Eyelash｜睫毛｜まつ毛（まつげ，matsuge）  
+Eyelid｜眼皮｜まぶた（mabuta）  
+
+#### 四肢｜Limbs｜四肢（しし，shishi）
+Arm｜胳膊｜腕（うで，ude）  
+Hand｜手｜手（て，te）  
+Finger｜手指｜指（ゆび，yubi）  
+Thumb｜拇指｜親指（おやゆび，oyayubi）  
+Wrist｜手腕｜手首（てくび，tekubi）  
+Elbow｜手肘｜肘（ひじ，hiji）  
+Shoulder｜肩膀｜肩（かた，kata）  
+Leg｜腿｜脚（あし，ashi）  
+Foot｜脚｜足（あし，ashi）  
+Toe｜脚趾｜足の指（あしのゆび，ashi no yubi）  
+Knee｜膝盖｜膝（ひざ，hiza）  
+Ankle｜脚踝｜足首（あしくび，ashikubi）  
+Hip｜臀部｜腰（こし，koshi）  
+
+#### 躯干｜Torso｜胴体（どうたい，doutai）
+Body｜身体｜体（からだ，karada）  
+Chest｜胸部｜胸（むね，mune）  
+Back｜背部｜背中（せなか，senaka）  
+Stomach｜肚子｜お腹（おなか，onaka）  
+Waist｜腰｜腰（こし，koshi）  
+Neck｜脖子｜首（くび，kubi）  
+Skin｜皮肤｜皮膚（ひふ，hifu）  
+Bone｜骨头｜骨（ほね，hone）  
+
+#### 其他｜Others｜その他（そのた，sonota）
+Nail｜指甲｜爪（つめ，tsume）  
+Muscle｜肌肉｜筋肉（きんにく，kinniku）  
+Blood｜血液｜血液（けつえき，ketsueki）  
+Heart｜心脏｜心臓（しんぞう，shinzou）  
+Lung｜肺｜肺（はい，hai）  
+Brain｜大脑｜脳（のう，nou）  
+Teeth｜牙齿（复数）｜歯（は，ha）  
+Throat｜喉咙｜喉（のど，nodo）  
+
+---
+
+### 五、颜色&形状类（50个）｜Colors & Shapes（50）｜色＆形（しょく＆かたち，shoku＆katachi）
+#### 颜色｜Colors｜色（しょく，shoku）
+Red｜红色｜赤（あか，aka）  
+Blue｜蓝色｜青（あお，ao）  
+Yellow｜黄色｜黄色（きいろ，kiiro）  
+Green｜绿色｜緑（みどり，midori）  
+Orange｜橙色｜オレンジ色（オレンジしょく，orenji shoku）  
+Purple｜紫色｜紫（むらさき，murasaki）  
+Pink｜粉色｜ピンク（pinku）  
+Black｜黑色｜黒（くろ，kuro）  
+White｜白色｜白（しろ，shiro）  
+Gray｜灰色｜灰色（はいいろ，haiiro）  
+Brown｜棕色｜茶色（ちゃいろ，chairo）  
+Beige｜米色｜ベージュ（beēju）  
+Gold｜金色｜金色（きんいろ，kin'iro）  
+Silver｜银色｜銀色（ぎんいろ，gin'iro）  
+Indigo｜靛蓝｜藍色（あいいろ，aiiro）  
+Violet｜紫罗兰色｜バイオレット（baioretto）  
+Cyan｜青色｜シアン（shian）  
+Magenta｜品红｜マゼンタ（mazenta）  
+Lavender｜淡紫｜ラベンダー色（ラベンダーしょく，rabendaa shoku）  
+Turquoise｜青绿色｜ターコイズ（taakoizu）  
+Maroon｜深红｜栗色（くりいろ，kuriiro）  
+Navy｜藏青｜紺色（こんいろ，kon'iro）  
+Olive｜橄榄绿｜オリーブ色（オリーブしょく，orību shoku）  
+Teal｜蓝绿｜ティール（tīru）  
+Coral｜珊瑚色｜サンゴ色（さんごしょく，sango shoku）  
+Peach｜桃色｜桃色（ももいろ，momo'iro）  
+Lemon｜柠檬黄｜レモン色（レモンしょく，remon shoku）  
+Lime｜酸橙绿｜ライム色（ライムしょく，raimu shoku）  
+Sky blue｜天蓝｜空色（そらいろ，sorairo）  
+Forest green｜森林绿｜森の緑（もりのみどり，mori no midori）  
+
+#### 形状｜Shapes｜形（かたち，katachi）
+Circle｜圆形｜円（まる，maru）  
+Square｜正方形｜四角形（しかくけい，shikakukei）  
+Triangle｜三角形｜三角形（さんかっけい，sankakkei）  
+Rectangle｜长方形｜長方形（ちょうほうけい，chouhoukei）  
+Oval｜椭圆形｜楕円形（だんえんけい，dan'enkei）  
+Star｜星形｜星型（ほしがた，hoshigata）  
+Heart｜心形｜ハート形（ハートがた，haato gata）  
+Diamond｜菱形｜菱形（りょうけい，ryoukei）  
+Pentagon｜五边形｜五角形（ごかっけい，gokakkei）  
+Hexagon｜六边形｜六角形（ろっかっけい，rokkakkei）  
+Octagon｜八边形｜八角形（はっかっけい，hakkakkei）  
+Sphere｜球体｜球体（きゅうたい，kyuutai）  
+Cube｜立方体｜立方体（りゅうほうたい，ryuuhoutai）  
+Cylinder｜圆柱体｜円柱（えんちゅう，enchuu）  
+Cone｜圆锥体｜円錐（えんすい，ensui）  
+Pyramid｜金字塔形｜角錐（かくすい，kakusui）  
+Semicircle｜半圆｜半円（はんえん，han'en）  
+Crescent｜月牙形｜三日月形（みかづきがた，mikazuki gata）  
+Cross｜十字形｜十字形（じゅうじけい，juujikei）  
+Line｜直线｜直線（ちょくせん，chokusen）  
+
+---
+
+### 六、交通工具类（30个）｜Transportation（30）｜交通機関（こうつうきかん，koutsuu kikan）
+#### 陆地｜Land｜陸上（りくじょう，rikujou）
+Car｜汽车｜車（くるま，kuruma）  
+Bus｜公交车｜バス（basu）  
+Truck｜卡车｜トラック（torakku）  
+Taxi｜出租车｜タクシー（takushii）  
+Bike/Bicycle｜自行车｜自転車（じてんしゃ，jitensha）  
+Motorcycle｜摩托车｜バイク（baiku）  
+Scooter｜滑板车｜スクーター（sukuutaa）  
+Train｜火车｜電車（でんしゃ，densha）  
+Subway｜地铁｜地下鉄（ちかてつ，chikatetsu）  
+Tram｜电车｜路面電車（ろめんでんしゃ，romen densha）  
+Van｜厢式车｜バン（ban）  
+Jeep｜吉普车｜ジープ（jiipu）  
+Tractor｜拖拉机｜トラクター（torakutaa）  
+Roller skates｜轮滑鞋｜ローラースケート（rooraa sukeeto）  
+Skateboard｜滑板｜スケートボード（sukeeto booodo）  
+Wheelchair｜轮椅｜車椅子（くるまいす，kurumaisu）  
+Stroller｜婴儿车｜ベビーカー（beebiikaa）  
+Cart｜手推车｜カート（kaato）  
+Bicycle｜自行车｜自転車（じてんしゃ，jitensha）  
+Scooter｜踏板车｜スクーター（sukuutaa）  
+
+#### 水上｜Water｜水上（すいじょう，suijou）
+Boat｜小船｜ボート（boooto）  
+Ship｜轮船｜船（ふね，fune）  
+Yacht｜游艇｜ヨット（yotto）  
+Canoe｜独木舟｜カヌー（kanuu）  
+Kayak｜皮划艇｜カヤック（kayakku）  
+Ferry｜渡轮｜フェリー（ferii）  
+Submarine｜潜艇｜潜水艦（せんすいかん，sensuikan）  
+
+#### 空中｜Air｜空中（くうちゅう，kuuchuu）
+Plane｜飞机｜飛行機（ひこうき，hikouki）  
+Helicopter｜直升机｜ヘリコプター（herikoputaa）  
+Hot air balloon｜热气球｜熱気球（ねつききゅう，netsukikyuu）  
+Drone｜无人机｜ドローン（doroon）  
+
+---
+
+
+### 七、家庭成员&称呼类（20个）｜Family Members & Titles（20）｜家族メンバー＆呼び方（かぞくめんばー＆よびかた，kazoku menbaa＆yobikata）
+Mom｜妈妈｜母（はは，haha）  
+Dad｜爸爸｜父（ちち，chichi）  
+Brother｜哥哥/弟弟｜兄弟（きょうだい，kyoudai）  
+Sister｜姐姐/妹妹｜姉妹（しまい，shimai）  
+Baby｜宝宝｜赤ちゃん（あかちゃん，akachan）  
+Grandpa｜爷爷/外公｜お爺さん（おじいさん，ojiisan）  
+Grandma｜奶奶/外婆｜お婆さん（おばあさん，obaasan）  
+Uncle｜叔叔/舅舅｜おじさん（ojisan）  
+Aunt｜阿姨/姑姑｜おばさん（obasan）  
+Cousin｜堂/表兄弟姐妹｜いとこ（itoko）  
+Son｜儿子｜息子（むすこ，musuko）  
+Daughter｜女儿｜娘（むすめ，musume）  
+Nephew｜侄子｜甥（おい，oi）  
+Niece｜侄女｜姪（めい，mei）  
+Husband｜丈夫｜夫（おっと，otto）  
+Wife｜妻子｜妻（つま，tsuma）  
+Mommy｜妈咪｜マミー（mamii）  
+Daddy｜爹地｜ダディー（daddii）  
+Grandpa｜祖父｜祖父（そふ，sofu）  
+Grandma｜祖母｜祖母（そば，soba）  
+
+---
+
+### 八、动作类（50个）｜Actions（50）｜動作（どうさ，dousa）
+#### 日常动作｜Daily Actions｜日常の動作（にちじょうのどうさ，nichijou no dousa）
+Eat｜吃｜食べる（たべる，taberu）  
+Drink｜喝｜飲む（のむ，nomu）  
+Sleep｜睡｜寝る（ねる，neru）  
+Walk｜走｜歩く（あるく，aruku）  
+Run｜跑｜走る（はしる，hashiru）  
+Jump｜跳｜跳ぶ（とぶ，tobu）  
+Hop｜单脚跳｜跳ねる（はねる，haneru）  
+Skip｜蹦跳｜跳び跳ねる（とびはねる，tobihaneru）  
+Climb｜爬｜登る（のぼる，noboru）  
+Crawl｜爬｜這う（はう，hau）  
+Sit｜坐｜座る（すわる，suwaru）  
+Stand｜站｜立つ（たつ，tatsu）  
+Lie｜躺｜横たわる（よこたわる，yokotawaru）  
+Kneel｜跪｜跪く（ひざまずく，hizamazuku）  
+Bend｜弯腰｜曲げる（まげる，mageru）  
+
+#### 感官动作｜Sensory Actions｜感覚の動作（かんかくのどうさ，kankaku no dousa）
+See｜看｜見る（みる，miru）  
+Hear｜听｜聞く（きく，kiku）  
+Smell｜闻｜嗅ぐ（かぐ，kagu）  
+Taste｜尝｜味わう（あじわう，ajiwau）  
+Touch｜摸｜触る（さわる，sawaru）  
+
+#### 互动动作｜Interactive Actions｜インタラクティブな動作（intarakutibu na dousa）
+Talk｜说｜話す（はなす，hanasu）  
+Sing｜唱｜歌う（うたう，utau）  
+Dance｜跳｜踊る（おどる，odoru）  
+Play｜玩｜遊ぶ（あそぶ，asobu）  
+Laugh｜笑｜笑う（わらう，warau）  
+Cry｜哭｜泣く（なく，naku）  
+Hug｜抱｜抱きしめる（だきしめる，dakishimeru）  
+Kiss｜亲｜キスする（kisu suru）  
+Share｜分享｜分ける（わける，wakeru）  
+Help｜帮助｜助ける（たすける，tasukeru）  
+
+#### 生活动作｜Life Actions｜生活の動作（せいかつのどうさ，seikatsu no dousa）
+Wash｜洗｜洗う（あらう，arau）  
+Brush｜刷｜ブラッシュする（burasshu suru）  
+Dress｜穿衣服｜着る（きる，kiru）  
+Undress｜脱衣服｜脱ぐ（ぬぐ，nugu）  
+Cook｜做饭｜料理する（りょうりする，ryouri suru）  
+Clean｜打扫｜掃除する（そうじする，souji suru）  
+Write｜写｜書く（かく，kaku）  
+Draw｜画｜描く（えがく，egaku）  
+Read｜读｜読む（よむ，yomu）  
+Count｜数｜数える（かぞえる，kazoeru）  
+
+#### 其他动作｜Other Actions｜その他の動作（そのたのどうさ，sonota no dousa）
+Open｜开｜開ける（あける，akeru）  
+Close｜关｜閉める（とじる，tojiru）  
+Take｜拿｜取る（とる，toru）  
+Give｜给｜与える（あたえる，ataeru）  
+Push｜推｜押す（おす，osu）  
+Pull｜拉｜引く（ひく，hiku）  
+Throw｜扔｜投げる（なげる，nageru）  
+Catch｜接｜捕まえる（つかまえる，tsukamaeru）  
+Carry｜搬｜運ぶ（はこぶ，hakobu）  
+Hold｜拿｜持つ（もつ，motsu）  
+
+---
+
+### 九、场所类（20个）｜Places（20）｜場所（ばしょ，basho）
+Home｜家｜家（いえ，ie）  
+Park｜公园｜公園（こうえん，kouen）  
+School｜学校｜学校（がっこう，gakkou）  
+Classroom｜教室｜教室（きょうしつ，kyoushitsu）  
+Playground｜操场｜運動場（うんどうじょう，undoujou）  
+Library｜图书馆｜図書館（としょかん，toshokan）  
+Hospital｜医院｜病院（びょういん，byouin）  
+Doctor’s office｜医生办公室｜医者のオフィス（いしゃのofisu，isha no ofisu）  
+Supermarket｜超市｜スーパー（suupaa）  
+Store｜商店｜店（みせ，mise）  
+Restaurant｜餐厅｜レストラン（resutoran）  
+Café｜咖啡馆｜カフェ（kafe）  
+Zoo｜动物园｜動物園（どうぶつえん，doubutsuen）  
+Farm｜农场｜農場（のうじょう，noujou）  
+Garden｜花园｜庭（にわ，niwa）  
+Beach｜沙滩｜ビーチ（biichi）  
+Pool｜泳池｜プール（puuru）  
+Museum｜博物馆｜美術館（びじゅつかん，bijutsukan）  
+Cinema｜电影院｜映画館（えいがかん，eigakan）  
+Shop｜商店｜ショップ（shoppu）  
+
+---
+
+### 十、自然事物类（20个）｜Natural Things（20）｜自然のもの（しぜんのもの，shizen no mono）
+Sun｜太阳｜太陽（たいよう，taiyou）  
+Moon｜月亮｜月（つき，tsuki）  
+Star｜星星｜星（ほし，hoshi）  
+Cloud｜云｜雲（くも，kumo）  
+Rain｜雨｜雨（あめ，ame）  
+Snow｜雪｜雪（ゆき，yuki）  
+Wind｜风｜風（かぜ，kaze）  
+Thunder｜雷｜雷（かみなり，kaminari）  
+Lightning｜闪电｜稲妻（いなづま，inazuma）  
+Sky｜天空｜空（そら，sora）  
+Earth｜地球｜地球（ちきゅう，chikyuu）  
+Mountain｜山｜山（やま，yama）  
+River｜河｜川（かわ，kawa）  
+Lake｜湖｜湖（みずうみ，mizuumi）  
+Sea｜海｜海（うみ，umi）  
+Tree｜树｜木（き，ki）  
+Flower｜花｜花（はな，hana）  
+Grass｜草｜草（くさ，kusa）  
+Leaf｜叶子｜葉（は，ha）  
+Rock｜石头｜石（いし，ishi）  
+
+---
+
+### 十一、服饰类（20个）｜Clothing（20）｜服装（ふくそう，fukusou）
+Shirt｜衬衫｜シャツ（shatsu）  
+T-shirt｜T恤｜Tシャツ（tii shatsu）  
+Pants｜裤子｜ズボン（zubon）  
+Shorts｜短裤｜ショートパンツ（shooto pantsu）  
+Skirt｜裙子｜スカート（sukaato）  
+Dress｜连衣裙｜ワンピース（wanpiisu）  
+Coat｜外套｜コート（kooto）  
+Jacket｜夹克｜ジャケット（jaketto）  
+Sweater｜毛衣｜セーター（seetaa）  
+Hoodie｜连帽衫｜フーディー（fuudii）  
+Socks｜袜子｜靴下（くつした，kutsushita）  
+Shoes｜鞋子｜靴（くつ，kutsu）  
+Boots｜靴子｜ブーツ（buutsu）  
+Sandals｜凉鞋｜サンダル（sandaru）  
+Hat｜帽子｜帽子（ぼうし，boushi）  
+Cap｜棒球帽｜キャップ（kyappu）  
+Scarf｜围巾｜マフラー（mafuraa）  
+Gloves｜手套｜手袋（てぶくろ，tebukuro）  
+Tie｜领带｜ネクタイ（nekutai）  
+Belt｜腰带｜ベルト（beruto）  
+
+---
+
+### 十二、玩具类（10个）｜Toys（10）｜おもちゃ（omochya）
+Ball｜球｜ボール（booru）  
+Doll｜玩偶｜人形（にんぎょう，ningyou）  
+Car｜玩具车｜おもちゃの車（おもちゃのくるま，omochya no kuruma）  
+Train｜玩具火车｜おもちゃの電車（おもちゃのでんしゃ，omochya no densha）  
+Puzzle｜拼图｜パズル（pazzuru）  
+Block｜积木｜積み木（つみき，tsumiki）  
+Teddy bear｜泰迪熊｜テディベア（tedibea）  
+Robot｜机器人｜ロボット（robotto）  
+Dollhouse｜娃娃屋｜ドールハウス（dooru hausu）  
+Toy plane｜玩具飞机｜おもちゃの飛行機（おもちゃのひこうき，omochya no hikouki）  
+
+---
+
+要不要我帮你制作一份**可打印的日语词汇对照表PDF**？按类别整理排版，方便你随时查阅和学习。
