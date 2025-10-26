@@ -166,6 +166,10 @@ export class WordLearningPage extends ViewPU {
     // 翻转卡片
     private flipCard() {
         this.isFlipped = !this.isFlipped;
+        console.log(`卡片翻转状态: ${this.isFlipped}`);
+        if (this.getCurrentWord()) {
+            console.log(`当前单词: ${this.getCurrentWord()!.english} - ${this.getCurrentWord()!.chinese}`);
+        }
     }
     // 下一个单词
     private nextWord() {
@@ -219,6 +223,9 @@ export class WordLearningPage extends ViewPU {
             Text.fontSize(28);
             Text.fontColor('#333333');
             Text.fontWeight(FontWeight.Bold);
+            Text.onClick(() => {
+                this.flipCard();
+            });
         }, Text);
         Text.pop();
         this.observeComponentCreation2((elmtId, isInitialRender) => {
@@ -271,9 +278,9 @@ export class WordLearningPage extends ViewPU {
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         // 正面 - 英文单词
                         Column.create();
-                        Context.animation({ duration: 300, curve: Curve.EaseInOut });
+                        Context.animation({ duration: 600, curve: Curve.EaseInOut, iterations: 1, playMode: PlayMode.Normal });
                         // 正面 - 英文单词
-                        Column.opacity(this.isFlipped ? 0 : 1);
+                        Column.rotate({ angle: this.isFlipped ? 180 : 0, x: 0, y: 1, z: 0 });
                         Context.animation(null);
                     }, Column);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
@@ -334,13 +341,13 @@ export class WordLearningPage extends ViewPU {
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         // 背面 - 中文意思
                         Column.create();
-                        Context.animation({ duration: 300, curve: Curve.EaseInOut });
+                        Context.animation({ duration: 600, curve: Curve.EaseInOut, iterations: 1, playMode: PlayMode.Normal });
                         // 背面 - 中文意思
-                        Column.opacity(this.isFlipped ? 1 : 0);
+                        Column.rotate({ angle: this.isFlipped ? 0 : -180, x: 0, y: 1, z: 0 });
                         Context.animation(null);
                     }, Column);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        Image.create(this.getCurrentWord()!.image);
+                        Image.create({ "id": -1, "type": 30000, params: [this.getCurrentWord()!.image], "bundleName": "com.example.studyenglishbycard", "moduleName": "entry" });
                         Image.width(300);
                         Image.height(300);
                         Image.borderRadius(20);
@@ -350,8 +357,8 @@ export class WordLearningPage extends ViewPU {
                     }, Image);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         Text.create(this.getCurrentWord()!.chinese);
-                        Text.fontSize(36);
-                        Text.fontColor('#FF6B6B');
+                        Text.fontSize(48);
+                        Text.fontColor('#FF0000');
                         Text.fontWeight(FontWeight.Bold);
                         Text.margin({ top: 20 });
                     }, Text);

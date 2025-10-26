@@ -231,6 +231,7 @@
         "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.data.rdb.d.ts",
         "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.multimodalInput.pointer.d.ts",
         "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.app.ability.appManager.d.ts",
+        "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.data.preferences.d.ts",
         "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/graphics3d/SceneResources.d.ts",
         "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/build-tools/ets-loader/declarations/embedded_component.d.ts",
         "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/build-tools/ets-loader/declarations/nav_destination.d.ts",
@@ -239,8 +240,7 @@
         "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.web.webview.d.ts",
         "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.security.cert.d.ts",
         "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.security.cryptoFramework.d.ts",
-        "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.print.d.ts",
-        "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.data.preferences.d.ts"
+        "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.print.d.ts"
       ],
       "error": false
     },
@@ -1394,6 +1394,101 @@
       ],
       "error": false
     },
+    "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/LearningDataManager.ets": {
+      "mtimeMs": 1761485499635.3936,
+      "children": [
+        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/types/CommonTypes.ets"
+      ],
+      "parent": [
+        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/pages/Index.ets",
+        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/components/WordLearningPage.ets"
+      ],
+      "error": false
+    },
+    "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/SoundEffectManager.ets": {
+      "mtimeMs": 1761464297029.668,
+      "children": [],
+      "parent": [
+        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/pages/Index.ets"
+      ],
+      "error": false
+    },
+    "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/TTSManager.ets": {
+      "mtimeMs": 1761478632887.8523,
+      "children": [],
+      "parent": [
+        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/pages/Index.ets",
+        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/components/WordLearningPage.ets"
+      ],
+      "error": false
+    },
+    "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/LearningProgressManager.ets": {
+      "mtimeMs": 1761464458588.317,
+      "children": [
+        "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.data.preferences.d.ts",
+        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/types/CommonTypes.ets"
+      ],
+      "parent": [
+        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/pages/Index.ets"
+      ],
+      "error": false
+    },
+    "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/styles/GlobalStyles.ets": {
+      "mtimeMs": 1761457443305.973,
+      "children": [],
+      "parent": [
+        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/pages/Index.ets"
+      ],
+      "error": false
+    },
+    "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/components/WordLearningPage.ets": {
+      "mtimeMs": 1761487164638.5698,
+      "children": [
+        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/types/CommonTypes.ets",
+        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/LearningDataManager.ets",
+        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/TTSManager.ets"
+      ],
+      "parent": [
+        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/pages/Index.ets"
+      ],
+      "error": false
+    },
+    "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/types/CommonTypes.ets": {
+      "mtimeMs": 1761463944710.647,
+      "children": [],
+      "parent": [
+        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/pages/Index.ets",
+        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/LearningDataManager.ets",
+        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/LearningProgressManager.ets",
+        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/components/WordLearningPage.ets"
+      ],
+      "error": false
+    },
+    "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/pages/Index.ets": {
+      "mtimeMs": 1761481927825.2078,
+      "children": [
+        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/LearningDataManager.ets",
+        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/SoundEffectManager.ets",
+        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/TTSManager.ets",
+        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/LearningProgressManager.ets",
+        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/styles/GlobalStyles.ets",
+        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/components/WordLearningPage.ets",
+        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/types/CommonTypes.ets"
+      ],
+      "parent": [],
+      "error": false
+    },
+    "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.data.preferences.d.ts": {
+      "mtimeMs": 1755503973000,
+      "children": [
+        "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.base.d.ts",
+        "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/application/BaseContext.d.ts"
+      ],
+      "parent": [
+        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/LearningProgressManager.ets"
+      ],
+      "error": false
+    },
     "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/build-tools/ets-loader/declarations/action_sheet.d.ts": {
       "mtimeMs": 1755503974000,
       "children": [
@@ -1802,123 +1897,6 @@
       ],
       "parent": [
         "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.security.cert.d.ts"
-      ],
-      "error": false
-    },
-    "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/types/CommonTypes.ets": {
-      "mtimeMs": 1761463944710.647,
-      "children": [],
-      "parent": [
-        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/pages/Index.ets",
-        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/LearningDataManager.ets",
-        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/managers/LearningProgressManager.ets",
-        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/LearningProgressManager.ets",
-        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/components/WordLearningPage.ets"
-      ],
-      "error": false
-    },
-    "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/styles/GlobalStyles.ets": {
-      "mtimeMs": 1761457443305.973,
-      "children": [],
-      "parent": [
-        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/pages/Index.ets"
-      ],
-      "error": false,
-      "errorCodes": [
-        -1
-      ]
-    },
-    "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/LearningDataManager.ets": {
-      "mtimeMs": 1761485200299.675,
-      "children": [
-        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/types/CommonTypes.ets"
-      ],
-      "parent": [
-        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/pages/Index.ets",
-        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/components/WordLearningPage.ets"
-      ],
-      "error": false
-    },
-    "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/managers/SoundEffectManager.ets": {
-      "mtimeMs": 1761457355148.525,
-      "children": [],
-      "parent": [
-        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/pages/Index.ets"
-      ],
-      "error": false
-    },
-    "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/TTSManager.ets": {
-      "mtimeMs": 1761478632887.8523,
-      "children": [],
-      "parent": [
-        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/pages/Index.ets",
-        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/components/WordLearningPage.ets"
-      ],
-      "error": false
-    },
-    "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/managers/LearningProgressManager.ets": {
-      "mtimeMs": 1761457443306.174,
-      "children": [
-        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/types/CommonTypes.ets"
-      ],
-      "parent": [
-        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/pages/Index.ets"
-      ],
-      "error": false
-    },
-    "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/pages/Index.ets": {
-      "mtimeMs": 1761481927825.2078,
-      "children": [
-        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/LearningDataManager.ets",
-        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/SoundEffectManager.ets",
-        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/TTSManager.ets",
-        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/LearningProgressManager.ets",
-        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/styles/GlobalStyles.ets",
-        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/components/WordLearningPage.ets",
-        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/types/CommonTypes.ets"
-      ],
-      "parent": [],
-      "error": false
-    },
-    "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/SoundEffectManager.ets": {
-      "mtimeMs": 1761464297029.668,
-      "children": [],
-      "parent": [
-        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/pages/Index.ets"
-      ],
-      "error": false
-    },
-    "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/LearningProgressManager.ets": {
-      "mtimeMs": 1761464458588.317,
-      "children": [
-        "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.data.preferences.d.ts",
-        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/types/CommonTypes.ets"
-      ],
-      "parent": [
-        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/pages/Index.ets"
-      ],
-      "error": false
-    },
-    "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.data.preferences.d.ts": {
-      "mtimeMs": 1755503973000,
-      "children": [
-        "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.base.d.ts",
-        "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/application/BaseContext.d.ts"
-      ],
-      "parent": [
-        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/LearningProgressManager.ets"
-      ],
-      "error": false
-    },
-    "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/components/WordLearningPage.ets": {
-      "mtimeMs": 1761485287034.134,
-      "children": [
-        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/types/CommonTypes.ets",
-        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/LearningDataManager.ets",
-        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/TTSManager.ets"
-      ],
-      "parent": [
-        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/pages/Index.ets"
       ],
       "error": false
     }

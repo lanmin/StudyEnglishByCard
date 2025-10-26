@@ -574,4 +574,4 @@ Block｜积木｜積み木（つみき，tsumiki）
 Teddy bear｜泰迪熊｜テディベア（tedibea）  
 Robot｜机器人｜ロボット（robotto）  
 Dollhouse｜娃娃屋｜ドールハウス（dooru hausu）  
-Toy plane｜玩具飞机｜おもちゃの飛行機（おもちゃのひこうき，omochya no hikouki） 
+Toy plane｜玩具飞机｜おもちゃの飛行機（おもちゃのひこうき，omochya no hikouki）  

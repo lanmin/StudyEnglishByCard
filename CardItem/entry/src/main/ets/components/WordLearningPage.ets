@@ -64,6 +64,10 @@ export struct WordLearningPage {
   // 翻转卡片
   private flipCard() {
     this.isFlipped = !this.isFlipped
+    console.log(`卡片翻转状态: ${this.isFlipped}`)
+    if (this.getCurrentWord()) {
+      console.log(`当前单词: ${this.getCurrentWord()!.english} - ${this.getCurrentWord()!.chinese}`)
+    }
   }
 
   // 下一个单词
@@ -101,6 +105,9 @@ export struct WordLearningPage {
           .fontSize(28)
           .fontColor('#333333')
           .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+            this.flipCard()
+          })
         
         Blank()
         
@@ -159,12 +166,12 @@ export struct WordLearningPage {
                 .fontColor('#666666')
                 .margin({ top: 10 })
             }
-            .opacity(this.isFlipped ? 0 : 1)
-            .animation({ duration: 300, curve: Curve.EaseInOut })
+            .rotate({ angle: this.isFlipped ? 180 : 0, x: 0, y: 1, z: 0 })
+            .animation({ duration: 600, curve: Curve.EaseInOut, iterations: 1, playMode: PlayMode.Normal })
             
             // 背面 - 中文意思
             Column() {
-              Image(this.getCurrentWord()!.image)
+              Image($rawfile(this.getCurrentWord()!.image))
                 .width(300)
                 .height(300)
                 .borderRadius(20)
@@ -173,8 +180,8 @@ export struct WordLearningPage {
                 .alt($r('app.media.foreground')) // 备用图片
               
               Text(this.getCurrentWord()!.chinese)
-                .fontSize(36)
-                .fontColor('#FF6B6B')
+                .fontSize(48)
+                .fontColor('#FF0000')
                 .fontWeight(FontWeight.Bold)
                 .margin({ top: 20 })
               
@@ -183,8 +190,8 @@ export struct WordLearningPage {
                 .fontColor('#999999')
                 .margin({ top: 10 })
             }
-            .opacity(this.isFlipped ? 1 : 0)
-            .animation({ duration: 300, curve: Curve.EaseInOut })
+            .rotate({ angle: this.isFlipped ? 0 : -180, x: 0, y: 1, z: 0 })
+            .animation({ duration: 600, curve: Curve.EaseInOut, iterations: 1, playMode: PlayMode.Normal })
           }
           .width(350)
           .height(450)
