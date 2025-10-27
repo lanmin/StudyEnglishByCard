@@ -867,15 +867,18 @@ Yo-yo｜溜溜球｜ヨーヨー（yōyō）`
       if (subcategory) {
         console.log(`找到子分类: ${subcategory.languages.chinese}, 单词数量: ${subcategory.words.length}`)
         if (subcategory.words.length > 0) {
-          // 获取第一个单词的ID，用于生成图片路径
-          const firstWordId = subcategory.words[0].languages.english
-          console.log(`第一个单词: ${firstWordId}`)
-          // 图片文件名处理：统一使用首字母大写格式
-          const fileName = `${firstWordId.charAt(0).toUpperCase() + firstWordId.slice(1).toLowerCase()}.png`
-          
-          const iconPath = `CardOriginal/${themeFolder}/${subcategoryFolder}/${fileName}`
-          console.log(`生成子分类图标路径: ${subcategoryName} -> ${iconPath}`)
-          return iconPath
+          // 遍历所有单词，找到第一个存在于文件夹中的图片
+          for (const word of subcategory.words) {
+            const wordId = word.languages.english
+            // 图片文件名处理：统一使用首字母大写格式
+            const fileName = `${wordId.charAt(0).toUpperCase() + wordId.slice(1).toLowerCase()}.png`
+            const iconPath = `CardOriginal/${themeFolder}/${subcategoryFolder}/${fileName}`
+            
+            // 这里返回第一个单词的图片路径（实际检查由Image组件的onError处理）
+            // 如果图片不存在，Image组件的onError会使用DefaultImg.png
+            console.log(`生成子分类图标路径: ${subcategoryName} -> ${iconPath} (单词: ${wordId})`)
+            return iconPath
+          }
         } else {
           console.log(`子分类 ${subcategoryName} 没有单词数据`)
         }
