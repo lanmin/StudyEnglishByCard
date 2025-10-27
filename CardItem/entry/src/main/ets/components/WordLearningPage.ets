@@ -2,11 +2,11 @@
 
 import { WordData, SubcategoryData } from '../types/CommonTypes'
 import { LearningDataManager } from '../utils/LearningDataManager'
-import { TTSManager } from '../utils/TTSManager'
+import { SpeechManager } from '../utils/SpeechManager'
 @Entry
 @Component
 export struct WordLearningPage {
-  @Prop subcategoryId: string = ''
+  @State subcategoryId: string = ''
   
   @State currentWordIndex: number = 0
   @State words: WordData[] = []
@@ -15,10 +15,16 @@ export struct WordLearningPage {
   @State isPlaying: boolean = false
   
   private learningDataManager = LearningDataManager.getInstance()
-  private ttsManager = TTSManager.getInstance()
 
   aboutToAppear() {
+    // 初始化TTS
+    SpeechManager.init()
     this.loadWords()
+  }
+
+  aboutToDisappear() {
+    // 清理TTS资源
+    SpeechManager.destroy()
   }
 
   // 加载单词数据
@@ -50,14 +56,24 @@ export struct WordLearningPage {
 
   // 播放单词发音
   private async playPronunciation() {
+    console.info('🎵 playPronunciation被调用')
     const word = this.getCurrentWord()
-    if (!word || this.isPlaying) return
+    console.info('当前单词:', word ? word.english : '无')
+    console.info('isPlaying状态:', this.isPlaying)
+    
+    if (!word || this.isPlaying) {
+      console.warn('跳过播放 - word为空或正在播放')
+      return
+    }
     
     this.isPlaying = true
+    console.info('准备调用SpeechManager.speak, 单词:', word.english)
     try {
-      await this.ttsManager.speakWord(word.english)
+      await SpeechManager.speak(word.english)
+      console.info('✅ SpeechManager.speak完成')
     } finally {
       this.isPlaying = false
+      console.info('isPlaying已重置为false')
     }
   }
 
@@ -84,6 +100,12 @@ export struct WordLearningPage {
       this.currentWordIndex--
       this.isFlipped = false
     }
+  }
+
+  // 处理点击事件：翻转卡片并播放发音
+  private handleTap() {
+    this.flipCard()
+    this.playPronunciation()
   }
 
   @Builder
@@ -138,7 +160,7 @@ export struct WordLearningPage {
                 console.log(`图片加载成功: ${this.getCurrentWord()!.image}`)
               })
               .onClick(() => {
-                this.playPronunciation()
+                this.handleTap()
               })
               .gesture(
                 LongPressGesture({ repeat: true })
@@ -202,7 +224,7 @@ export struct WordLearningPage {
           Button('→')
             .fontSize(40)
             .fontColor('#FFFFFF')
-            .backgroundColor('#0000FF')
+            .backgroundColor('#FF0000')
             .borderRadius(15)
             .width(60)
             .height(60)
@@ -230,6 +252,9 @@ export struct WordLearningPage {
       }
       .flexGrow(1)
       .padding({ left: 50, right: 50 })
+      .onClick(() => {
+        this.handleTap()
+      })
     }
     .width('100%')
     .height('100%')

@@ -47,5 +47,9 @@
 			"type":	"profile",
 			"name":	"main_pages",
 			"id":	"0x0100000B"
+		}, {
+			"type":	"string",
+			"name":	"permission_reason",
+			"id":	"0x0100000C"
 		}]
 }

@@ -11,10 +11,8 @@ export class TTSManager {
     // 播放单词发音
     async speakWord(word: string): Promise<void> {
         try {
-            // 在HarmonyOS中，我们使用console.log模拟TTS功能
-            // 实际项目中可以使用@ohos.multimedia.tts
             console.log(`🔊 播放发音: ${word}`);
-            // 模拟TTS播放
+            // 使用模拟TTS播放
             await this.simulateTTS(word);
         }
         catch (error) {

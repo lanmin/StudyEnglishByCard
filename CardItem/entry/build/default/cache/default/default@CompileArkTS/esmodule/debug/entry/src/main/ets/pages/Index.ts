@@ -354,9 +354,7 @@ class Index extends ViewPU {
                                 componentCall.paramsGenerator_ = paramsLambda;
                             }
                             else {
-                                this.updateStateVarsOfChildByElmtId(elmtId, {
-                                    subcategoryId: this.currentSubcategoryId
-                                });
+                                this.updateStateVarsOfChildByElmtId(elmtId, {});
                             }
                         }, { name: "WordLearningPage" });
                     }

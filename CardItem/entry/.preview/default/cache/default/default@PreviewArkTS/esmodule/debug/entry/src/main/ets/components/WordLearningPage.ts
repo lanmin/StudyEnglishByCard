@@ -9,31 +9,29 @@ interface WordLearningPage_Params {
     isFlipped?: boolean;
     isPlaying?: boolean;
     learningDataManager?;
-    ttsManager?;
 }
 import type { WordData, SubcategoryData } from '../types/CommonTypes';
 import { LearningDataManager } from "@normalized:N&&&entry/src/main/ets/utils/LearningDataManager&";
-import { TTSManager } from "@normalized:N&&&entry/src/main/ets/utils/TTSManager&";
+import { SpeechManager } from "@normalized:N&&&entry/src/main/ets/utils/SpeechManager&";
 export class WordLearningPage extends ViewPU {
     constructor(parent, params, __localStorage, elmtId = -1, paramsLambda = undefined, extraInfo) {
         super(parent, __localStorage, elmtId, extraInfo);
         if (typeof paramsLambda === "function") {
             this.paramsGenerator_ = paramsLambda;
         }
-        this.__subcategoryId = new SynchedPropertySimpleOneWayPU(params.subcategoryId, this, "subcategoryId");
+        this.__subcategoryId = new ObservedPropertySimplePU('', this, "subcategoryId");
         this.__currentWordIndex = new ObservedPropertySimplePU(0, this, "currentWordIndex");
         this.__words = new ObservedPropertyObjectPU([], this, "words");
         this.__subcategory = new ObservedPropertyObjectPU(undefined, this, "subcategory");
         this.__isFlipped = new ObservedPropertySimplePU(false, this, "isFlipped");
         this.__isPlaying = new ObservedPropertySimplePU(false, this, "isPlaying");
         this.learningDataManager = LearningDataManager.getInstance();
-        this.ttsManager = TTSManager.getInstance();
         this.setInitiallyProvidedValue(params);
         this.finalizeConstruction();
     }
     setInitiallyProvidedValue(params: WordLearningPage_Params) {
-        if (params.subcategoryId === undefined) {
-            this.__subcategoryId.set('');
+        if (params.subcategoryId !== undefined) {
+            this.subcategoryId = params.subcategoryId;
         }
         if (params.currentWordIndex !== undefined) {
             this.currentWordIndex = params.currentWordIndex;
@@ -53,12 +51,8 @@ export class WordLearningPage extends ViewPU {
         if (params.learningDataManager !== undefined) {
             this.learningDataManager = params.learningDataManager;
         }
-        if (params.ttsManager !== undefined) {
-            this.ttsManager = params.ttsManager;
-        }
     }
     updateStateVars(params: WordLearningPage_Params) {
-        this.__subcategoryId.reset(params.subcategoryId);
     }
     purgeVariableDependenciesOnElmtId(rmElmtId) {
         this.__subcategoryId.purgeDependencyOnElmtId(rmElmtId);
@@ -78,7 +72,7 @@ export class WordLearningPage extends ViewPU {
         SubscriberManager.Get().delete(this.id__());
         this.aboutToBeDeletedInternal();
     }
-    private __subcategoryId: SynchedPropertySimpleOneWayPU<string>;
+    private __subcategoryId: ObservedPropertySimplePU<string>;
     get subcategoryId() {
         return this.__subcategoryId.get();
     }
@@ -121,9 +115,14 @@ export class WordLearningPage extends ViewPU {
         this.__isPlaying.set(newValue);
     }
     private learningDataManager;
-    private ttsManager;
     aboutToAppear() {
+        // 初始化TTS
+        SpeechManager.init();
         this.loadWords();
+    }
+    aboutToDisappear() {
+        // 清理TTS资源
+        SpeechManager.destroy();
     }
     // 加载单词数据
     private loadWords() {
@@ -152,15 +151,23 @@ export class WordLearningPage extends ViewPU {
     }
     // 播放单词发音
     private async playPronunciation() {
+        console.info('🎵 playPronunciation被调用');
         const word = this.getCurrentWord();
-        if (!word || this.isPlaying)
+        console.info('当前单词:', word ? word.english : '无');
+        console.info('isPlaying状态:', this.isPlaying);
+        if (!word || this.isPlaying) {
+            console.warn('跳过播放 - word为空或正在播放');
             return;
+        }
         this.isPlaying = true;
+        console.info('准备调用SpeechManager.speak, 单词:', word.english);
         try {
-            await this.ttsManager.speakWord(word.english);
+            await SpeechManager.speak(word.english);
+            console.info('✅ SpeechManager.speak完成');
         }
         finally {
             this.isPlaying = false;
+            console.info('isPlaying已重置为false');
         }
     }
     // 翻转卡片
@@ -185,17 +192,22 @@ export class WordLearningPage extends ViewPU {
             this.isFlipped = false;
         }
     }
+    // 处理点击事件：翻转卡片并播放发音
+    private handleTap() {
+        this.flipCard();
+        this.playPronunciation();
+    }
     initialRender() {
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             Column.create();
-            Column.debugLine("entry/src/main/ets/components/WordLearningPage.ets(91:5)", "entry");
+            Column.debugLine("entry/src/main/ets/components/WordLearningPage.ets(113:5)", "entry");
             Column.width('100%');
             Column.height('100%');
         }, Column);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             // 顶部导航栏
             Row.create();
-            Row.debugLine("entry/src/main/ets/components/WordLearningPage.ets(93:7)", "entry");
+            Row.debugLine("entry/src/main/ets/components/WordLearningPage.ets(115:7)", "entry");
             // 顶部导航栏
             Row.width('100%');
             // 顶部导航栏
@@ -205,7 +217,7 @@ export class WordLearningPage extends ViewPU {
         }, Row);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             Button.createWithLabel('←');
-            Button.debugLine("entry/src/main/ets/components/WordLearningPage.ets(94:9)", "entry");
+            Button.debugLine("entry/src/main/ets/components/WordLearningPage.ets(116:9)", "entry");
             Button.fontSize(24);
             Button.fontColor('#333333');
             Button.backgroundColor(Color.Transparent);
@@ -219,11 +231,15 @@ export class WordLearningPage extends ViewPU {
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             // 主要内容区域
             Row.create();
-            Row.debugLine("entry/src/main/ets/components/WordLearningPage.ets(107:7)", "entry");
+            Row.debugLine("entry/src/main/ets/components/WordLearningPage.ets(129:7)", "entry");
             // 主要内容区域
             Row.flexGrow(1);
             // 主要内容区域
             Row.padding({ left: 50, right: 50 });
+            // 主要内容区域
+            Row.onClick(() => {
+                this.handleTap();
+            });
         }, Row);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             If.create();
@@ -232,7 +248,7 @@ export class WordLearningPage extends ViewPU {
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         // 左侧：上一个按钮
                         Button.createWithLabel('←');
-                        Button.debugLine("entry/src/main/ets/components/WordLearningPage.ets(110:11)", "entry");
+                        Button.debugLine("entry/src/main/ets/components/WordLearningPage.ets(132:11)", "entry");
                         // 左侧：上一个按钮
                         Button.fontSize(40);
                         // 左侧：上一个按钮
@@ -259,7 +275,7 @@ export class WordLearningPage extends ViewPU {
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         // 中间：单词卡片
                         Column.create();
-                        Column.debugLine("entry/src/main/ets/components/WordLearningPage.ets(124:11)", "entry");
+                        Column.debugLine("entry/src/main/ets/components/WordLearningPage.ets(146:11)", "entry");
                         Context.animation({ duration: 600, curve: Curve.EaseInOut, iterations: 1, playMode: PlayMode.Normal });
                         // 中间：单词卡片
                         Column.rotate({ angle: this.isFlipped ? 180 : 0, x: 0, y: 1, z: 0 });
@@ -289,7 +305,7 @@ export class WordLearningPage extends ViewPU {
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         // 使用rawfile资源引用
                         Image.create({ "id": -1, "type": 30000, params: [this.getCurrentWord()!.image], "bundleName": "com.example.studyenglishbycard", "moduleName": "entry" });
-                        Image.debugLine("entry/src/main/ets/components/WordLearningPage.ets(126:13)", "entry");
+                        Image.debugLine("entry/src/main/ets/components/WordLearningPage.ets(148:13)", "entry");
                         // 使用rawfile资源引用
                         Image.width(250);
                         // 使用rawfile资源引用
@@ -312,7 +328,7 @@ export class WordLearningPage extends ViewPU {
                         });
                         // 使用rawfile资源引用
                         Image.onClick(() => {
-                            this.playPronunciation();
+                            this.handleTap();
                         });
                         Gesture.create(GesturePriority.Low);
                         LongPressGesture.create({ repeat: true });
@@ -327,7 +343,7 @@ export class WordLearningPage extends ViewPU {
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         // 右侧：英文和中文显示区域
                         Column.create();
-                        Column.debugLine("entry/src/main/ets/components/WordLearningPage.ets(168:11)", "entry");
+                        Column.debugLine("entry/src/main/ets/components/WordLearningPage.ets(190:11)", "entry");
                         // 右侧：英文和中文显示区域
                         Column.justifyContent(FlexAlign.Center);
                         // 右侧：英文和中文显示区域
@@ -337,7 +353,7 @@ export class WordLearningPage extends ViewPU {
                     }, Column);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         Text.create(this.getCurrentWord()!.english);
-                        Text.debugLine("entry/src/main/ets/components/WordLearningPage.ets(169:13)", "entry");
+                        Text.debugLine("entry/src/main/ets/components/WordLearningPage.ets(191:13)", "entry");
                         Text.fontSize(48);
                         Text.fontColor('#333333');
                         Text.fontWeight(FontWeight.Bold);
@@ -346,7 +362,7 @@ export class WordLearningPage extends ViewPU {
                     Text.pop();
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         Text.create(this.getCurrentWord()!.chinese);
-                        Text.debugLine("entry/src/main/ets/components/WordLearningPage.ets(175:13)", "entry");
+                        Text.debugLine("entry/src/main/ets/components/WordLearningPage.ets(197:13)", "entry");
                         Text.fontSize(36);
                         Text.fontColor('#FF6B6B');
                         Text.fontWeight(FontWeight.Bold);
@@ -355,7 +371,7 @@ export class WordLearningPage extends ViewPU {
                     Text.pop();
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         Text.create(this.getCurrentWord()!.pronunciation);
-                        Text.debugLine("entry/src/main/ets/components/WordLearningPage.ets(181:13)", "entry");
+                        Text.debugLine("entry/src/main/ets/components/WordLearningPage.ets(203:13)", "entry");
                         Text.fontSize(24);
                         Text.fontColor('#666666');
                         Text.margin({ bottom: 20 });
@@ -363,7 +379,7 @@ export class WordLearningPage extends ViewPU {
                     Text.pop();
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         Button.createWithLabel('播放发音');
-                        Button.debugLine("entry/src/main/ets/components/WordLearningPage.ets(186:13)", "entry");
+                        Button.debugLine("entry/src/main/ets/components/WordLearningPage.ets(208:13)", "entry");
                         Button.fontSize(20);
                         Button.fontColor('#FFFFFF');
                         Button.backgroundColor('#4ECDC4');
@@ -380,13 +396,13 @@ export class WordLearningPage extends ViewPU {
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         // 最右侧：下一个按钮
                         Button.createWithLabel('→');
-                        Button.debugLine("entry/src/main/ets/components/WordLearningPage.ets(202:11)", "entry");
+                        Button.debugLine("entry/src/main/ets/components/WordLearningPage.ets(224:11)", "entry");
                         // 最右侧：下一个按钮
                         Button.fontSize(40);
                         // 最右侧：下一个按钮
                         Button.fontColor('#FFFFFF');
                         // 最右侧：下一个按钮
-                        Button.backgroundColor('#0000FF');
+                        Button.backgroundColor('#FF0000');
                         // 最右侧：下一个按钮
                         Button.borderRadius(15);
                         // 最右侧：下一个按钮
@@ -411,7 +427,7 @@ export class WordLearningPage extends ViewPU {
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         // 没有单词时的提示
                         Column.create();
-                        Column.debugLine("entry/src/main/ets/components/WordLearningPage.ets(216:11)", "entry");
+                        Column.debugLine("entry/src/main/ets/components/WordLearningPage.ets(238:11)", "entry");
                         // 没有单词时的提示
                         Column.justifyContent(FlexAlign.Center);
                         // 没有单词时的提示
@@ -419,14 +435,14 @@ export class WordLearningPage extends ViewPU {
                     }, Column);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         Image.create({ "id": 16777216, "type": 20000, params: [], "bundleName": "com.example.studyenglishbycard", "moduleName": "entry" });
-                        Image.debugLine("entry/src/main/ets/components/WordLearningPage.ets(217:13)", "entry");
+                        Image.debugLine("entry/src/main/ets/components/WordLearningPage.ets(239:13)", "entry");
                         Image.width(200);
                         Image.height(200);
                         Image.opacity(0.5);
                     }, Image);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         Text.create('暂无单词数据');
-                        Text.debugLine("entry/src/main/ets/components/WordLearningPage.ets(222:13)", "entry");
+                        Text.debugLine("entry/src/main/ets/components/WordLearningPage.ets(244:13)", "entry");
                         Text.fontSize(24);
                         Text.fontColor('#999999');
                         Text.margin({ top: 20 });
