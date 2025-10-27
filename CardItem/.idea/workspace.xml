@@ -2,23 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f13ac8f3-b68d-464b-b6b1-4675f4b41389" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Cake.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Cookie.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.hvigor/cache/file-cache.json" beforeDir="false" afterPath="$PROJECT_DIR$/.hvigor/cache/file-cache.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.hvigor/cache/task-cache.json" beforeDir="false" afterPath="$PROJECT_DIR$/.hvigor/cache/task-cache.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.hvigor/outputs/build-logs/build.log" beforeDir="false" afterPath="$PROJECT_DIR$/.hvigor/outputs/build-logs/build.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.hvigor/outputs/logs/details/details.json" beforeDir="false" afterPath="$PROJECT_DIR$/.hvigor/outputs/logs/details/details.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510271717487660.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510271730068000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510271733303590.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510271738589890.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510271740354270.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510271744274210.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510271745504500.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510271748281250.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510271757101570.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510271803230910.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510271808380820.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/.ts_checker_cache" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/.ts_checker_cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/.tsbuildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/.tsbuildinfo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/.tsbuildinfo.linter" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/.tsbuildinfo.linter" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/modules/AudioRecorderManager.ets-6e9dcfe689ac3122815feb39c6d6c714.msgpack" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/modules/AudioRecorderManager.ets-6e9dcfe689ac3122815feb39c6d6c714.msgpack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/modules/EntryAbility.ets-ed094f99147a0bb953af739472c9aecd.msgpack" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/modules/EntryAbility.ets-ed094f99147a0bb953af739472c9aecd.msgpack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/modules/EntryBackupAbility.ets-da0f5f32349699037802393e9f948309.msgpack" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/modules/EntryBackupAbility.ets-da0f5f32349699037802393e9f948309.msgpack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/modules/Index.ets-927f80b0136368d430d4aa1cb5061f0a.msgpack" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/modules/Index.ets-927f80b0136368d430d4aa1cb5061f0a.msgpack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/modules/LearningDataManager.ets-5b7f316c88dc4b643119589893457505.msgpack" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/modules/LearningDataManager.ets-5b7f316c88dc4b643119589893457505.msgpack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/modules/LearningProgressManager.ets-ba2f11133f37424faee62da45ca82446.msgpack" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/modules/LearningProgressManager.ets-ba2f11133f37424faee62da45ca82446.msgpack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/plugins/plugins.msgpack" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/plugins/plugins.msgpack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/entry/src/main/ets/utils/LearningDataManager.protoBin" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/entry/src/main/ets/utils/LearningDataManager.protoBin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/entry/src/main/ets/utils/LearningDataManager.ts" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/entry/src/main/ets/utils/LearningDataManager.ts" afterDir="false" />
@@ -31,30 +33,6 @@
       <change beforePath="$PROJECT_DIR$/entry/build/default/outputs/default/entry-default-unsigned.hap" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/outputs/default/entry-default-unsigned.hap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/build/default/outputs/default/mapping/sourceMaps.map" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/outputs/default/mapping/sourceMaps.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/src/main/ets/utils/LearningDataManager.ets" beforeDir="false" afterPath="$PROJECT_DIR$/entry/src/main/ets/utils/LearningDataManager.ets" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Actions/Daily Actions.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Actions/Interactive Actions.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Actions/Life Actions.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Actions/Other Actions.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Actions/Sensory Actions.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Animals/Aquatic Animals.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Animals/Farm Animals.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Animals/Insects &amp; Small Animals.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Animals/Pet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Animals/Zoo Animals.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Body Parts/Head.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Body Parts/Limbs.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Body Parts/Others.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Body Parts/Torso.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Colors &amp; Shapes/Colors.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Colors &amp; Shapes/Shapes.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Daily Items/Bedroom Supplies.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Daily Items/Kitchen Supplies.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Daily Items/Living Room Supplies.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Daily Items/Other Daily Items.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Daily Items/Toiletries.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Transportation/Air.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Transportation/Land.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Transportation/Water.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,9 +61,9 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "127.0.0.1:5555": "5376832281761559722606",
+    "127.0.0.1:5555": "5376832281761561826967",
     "Application.entry.executor": "Run",
-    "MODULE_HAP_TIME": "{\"127.0.0.1:5555entry\":\"2025-10-27T10:08:41.461257402Z\"}",
+    "MODULE_HAP_TIME": "{\"127.0.0.1:5555entry\":\"2025-10-27T11:54:19.643437505Z\"}",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "ace.nodejs.version": "18.20.1"
