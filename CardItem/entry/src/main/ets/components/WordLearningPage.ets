@@ -140,7 +140,7 @@ export struct WordLearningPage {
             .onClick(() => {
               this.prevWord()
             })
-            .alignSelf(ItemAlign.End)
+            .alignSelf(ItemAlign.Center)
           
           // 中间：单词卡片
           Column() {
@@ -186,35 +186,87 @@ export struct WordLearningPage {
             this.flipCard()
           })
           
-          // 右侧：英文和中文显示区域
+          // 右侧：英文和中文显示区域 + 听说读写按钮
           Column() {
-            Text(this.getCurrentWord()!.english)
-              .fontSize(48)
-              .fontColor('#333333')
-              .fontWeight(FontWeight.Bold)
-              .margin({ bottom: 30 })
+            // 单词信息区域
+            Column() {
+              Text(this.getCurrentWord()!.english)
+                .fontSize(48)
+                .fontColor('#333333')
+                .fontWeight(FontWeight.Bold)
+                .margin({ bottom: 30 })
 
-            Text(this.getCurrentWord()!.chinese)
-              .fontSize(36)
-              .fontColor('#FF6B6B')
-              .fontWeight(FontWeight.Bold)
-              .margin({ bottom: 20 })
+              Text(this.getCurrentWord()!.chinese)
+                .fontSize(36)
+                .fontColor('#FF6B6B')
+                .fontWeight(FontWeight.Bold)
+                .margin({ bottom: 20 })
 
-            Text(this.getCurrentWord()!.pronunciation)
-              .fontSize(24)
-              .fontColor('#666666')
-              .margin({ bottom: 20 })
-            
-            Button('播放发音')
-              .fontSize(20)
-              .fontColor('#FFFFFF')
-              .backgroundColor('#4ECDC4')
-              .borderRadius(25)
-              .width(120)
-              .height(50)
-              .onClick(() => {
-                this.playPronunciation()
-              })
+              Text(this.getCurrentWord()!.pronunciation)
+                .fontSize(24)
+                .fontColor('#666666')
+                .margin({ bottom: 20 })
+            }
+            .justifyContent(FlexAlign.Center)
+            .flexGrow(1)
+
+            // 听说读写按钮区域
+            Column() {
+              Row() {
+                Button('听')
+                  .fontSize(18)
+                  .fontColor('#FFFFFF')
+                  .backgroundColor('#FF6B6B')
+                  .borderRadius(20)
+                  .width(60)
+                  .height(50)
+                  .margin({ right: 10 })
+                  .onClick(() => {
+                    console.log('听力练习模式')
+                    // TODO: 实现听力练习
+                  })
+
+                Button('说')
+                  .fontSize(18)
+                  .fontColor('#FFFFFF')
+                  .backgroundColor('#4ECDC4')
+                  .borderRadius(20)
+                  .width(60)
+                  .height(50)
+                  .margin({ right: 10 })
+                  .onClick(() => {
+                    console.log('口语练习模式')
+                    // TODO: 实现口语练习
+                  })
+
+                Button('读')
+                  .fontSize(18)
+                  .fontColor('#FFFFFF')
+                  .backgroundColor('#45B7D1')
+                  .borderRadius(20)
+                  .width(60)
+                  .height(50)
+                  .margin({ right: 10 })
+                  .onClick(() => {
+                    console.log('阅读练习模式')
+                    // TODO: 实现阅读练习
+                  })
+
+                Button('写')
+                  .fontSize(18)
+                  .fontColor('#FFFFFF')
+                  .backgroundColor('#96CEB4')
+                  .borderRadius(20)
+                  .width(60)
+                  .height(50)
+                  .onClick(() => {
+                    console.log('书写练习模式')
+                    // TODO: 实现书写练习
+                  })
+              }
+              .justifyContent(FlexAlign.Center)
+            }
+            .margin({ top: 20 })
           }
           .justifyContent(FlexAlign.Center)
           .flexGrow(1)
@@ -232,7 +284,7 @@ export struct WordLearningPage {
             .onClick(() => {
               this.nextWord()
             })
-            .alignSelf(ItemAlign.End)
+            .alignSelf(ItemAlign.Center)
         } else {
           // 没有单词时的提示
           Column() {

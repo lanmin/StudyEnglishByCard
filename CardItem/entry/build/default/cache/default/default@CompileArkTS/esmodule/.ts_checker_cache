@@ -1455,7 +1455,7 @@
       "error": false
     },
     "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/components/WordLearningPage.ets": {
-      "mtimeMs": 1761543102531.2566,
+      "mtimeMs": 1761546104667.5156,
       "children": [
         "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/types/CommonTypes.ets",
         "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/LearningDataManager.ets",
@@ -1914,7 +1914,7 @@
       "error": false
     },
     "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/SpeechManager.ets": {
-      "mtimeMs": 1761544167248.5295,
+      "mtimeMs": 1761545652375.9485,
       "children": [
         "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.promptAction.d.ts",
         "/Applications/DevEco-Studio.app/Contents/sdk/default/hms/ets/api/@hms.ai.textToSpeech.d.ts",

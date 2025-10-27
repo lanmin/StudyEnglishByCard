@@ -263,7 +263,7 @@ export class WordLearningPage extends ViewPU {
                             this.prevWord();
                         });
                         // 左侧：上一个按钮
-                        Button.alignSelf(ItemAlign.End);
+                        Button.alignSelf(ItemAlign.Center);
                     }, Button);
                     // 左侧：上一个按钮
                     Button.pop();
@@ -334,14 +334,22 @@ export class WordLearningPage extends ViewPU {
                     // 中间：单词卡片
                     Column.pop();
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        // 右侧：英文和中文显示区域
+                        // 右侧：英文和中文显示区域 + 听说读写按钮
                         Column.create();
-                        // 右侧：英文和中文显示区域
+                        // 右侧：英文和中文显示区域 + 听说读写按钮
                         Column.justifyContent(FlexAlign.Center);
-                        // 右侧：英文和中文显示区域
+                        // 右侧：英文和中文显示区域 + 听说读写按钮
                         Column.flexGrow(1);
-                        // 右侧：英文和中文显示区域
+                        // 右侧：英文和中文显示区域 + 听说读写按钮
                         Column.padding({ left: 30 });
+                    }, Column);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        // 单词信息区域
+                        Column.create();
+                        // 单词信息区域
+                        Column.justifyContent(FlexAlign.Center);
+                        // 单词信息区域
+                        Column.flexGrow(1);
                     }, Column);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         Text.create(this.getCurrentWord()!.english);
@@ -366,20 +374,81 @@ export class WordLearningPage extends ViewPU {
                         Text.margin({ bottom: 20 });
                     }, Text);
                     Text.pop();
+                    // 单词信息区域
+                    Column.pop();
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        Button.createWithLabel('播放发音');
-                        Button.fontSize(20);
+                        // 听说读写按钮区域
+                        Column.create();
+                        // 听说读写按钮区域
+                        Column.margin({ top: 20 });
+                    }, Column);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Row.create();
+                        Row.justifyContent(FlexAlign.Center);
+                    }, Row);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Button.createWithLabel('听');
+                        Button.fontSize(18);
                         Button.fontColor('#FFFFFF');
-                        Button.backgroundColor('#4ECDC4');
-                        Button.borderRadius(25);
-                        Button.width(120);
+                        Button.backgroundColor('#FF6B6B');
+                        Button.borderRadius(20);
+                        Button.width(60);
                         Button.height(50);
+                        Button.margin({ right: 10 });
                         Button.onClick(() => {
-                            this.playPronunciation();
+                            console.log('听力练习模式');
+                            // TODO: 实现听力练习
                         });
                     }, Button);
                     Button.pop();
-                    // 右侧：英文和中文显示区域
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Button.createWithLabel('说');
+                        Button.fontSize(18);
+                        Button.fontColor('#FFFFFF');
+                        Button.backgroundColor('#4ECDC4');
+                        Button.borderRadius(20);
+                        Button.width(60);
+                        Button.height(50);
+                        Button.margin({ right: 10 });
+                        Button.onClick(() => {
+                            console.log('口语练习模式');
+                            // TODO: 实现口语练习
+                        });
+                    }, Button);
+                    Button.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Button.createWithLabel('读');
+                        Button.fontSize(18);
+                        Button.fontColor('#FFFFFF');
+                        Button.backgroundColor('#45B7D1');
+                        Button.borderRadius(20);
+                        Button.width(60);
+                        Button.height(50);
+                        Button.margin({ right: 10 });
+                        Button.onClick(() => {
+                            console.log('阅读练习模式');
+                            // TODO: 实现阅读练习
+                        });
+                    }, Button);
+                    Button.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Button.createWithLabel('写');
+                        Button.fontSize(18);
+                        Button.fontColor('#FFFFFF');
+                        Button.backgroundColor('#96CEB4');
+                        Button.borderRadius(20);
+                        Button.width(60);
+                        Button.height(50);
+                        Button.onClick(() => {
+                            console.log('书写练习模式');
+                            // TODO: 实现书写练习
+                        });
+                    }, Button);
+                    Button.pop();
+                    Row.pop();
+                    // 听说读写按钮区域
+                    Column.pop();
+                    // 右侧：英文和中文显示区域 + 听说读写按钮
                     Column.pop();
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         // 最右侧：下一个按钮
@@ -403,7 +472,7 @@ export class WordLearningPage extends ViewPU {
                             this.nextWord();
                         });
                         // 最右侧：下一个按钮
-                        Button.alignSelf(ItemAlign.End);
+                        Button.alignSelf(ItemAlign.Center);
                     }, Button);
                     // 最右侧：下一个按钮
                     Button.pop();

@@ -268,7 +268,7 @@ export class WordLearningPage extends ViewPU {
                             this.prevWord();
                         });
                         // 左侧：上一个按钮
-                        Button.alignSelf(ItemAlign.End);
+                        Button.alignSelf(ItemAlign.Center);
                     }, Button);
                     // 左侧：上一个按钮
                     Button.pop();
@@ -341,19 +341,28 @@ export class WordLearningPage extends ViewPU {
                     // 中间：单词卡片
                     Column.pop();
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        // 右侧：英文和中文显示区域
+                        // 右侧：英文和中文显示区域 + 听说读写按钮
                         Column.create();
                         Column.debugLine("entry/src/main/ets/components/WordLearningPage.ets(190:11)", "entry");
-                        // 右侧：英文和中文显示区域
+                        // 右侧：英文和中文显示区域 + 听说读写按钮
                         Column.justifyContent(FlexAlign.Center);
-                        // 右侧：英文和中文显示区域
+                        // 右侧：英文和中文显示区域 + 听说读写按钮
                         Column.flexGrow(1);
-                        // 右侧：英文和中文显示区域
+                        // 右侧：英文和中文显示区域 + 听说读写按钮
                         Column.padding({ left: 30 });
                     }, Column);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        // 单词信息区域
+                        Column.create();
+                        Column.debugLine("entry/src/main/ets/components/WordLearningPage.ets(192:13)", "entry");
+                        // 单词信息区域
+                        Column.justifyContent(FlexAlign.Center);
+                        // 单词信息区域
+                        Column.flexGrow(1);
+                    }, Column);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
                         Text.create(this.getCurrentWord()!.english);
-                        Text.debugLine("entry/src/main/ets/components/WordLearningPage.ets(191:13)", "entry");
+                        Text.debugLine("entry/src/main/ets/components/WordLearningPage.ets(193:15)", "entry");
                         Text.fontSize(48);
                         Text.fontColor('#333333');
                         Text.fontWeight(FontWeight.Bold);
@@ -362,7 +371,7 @@ export class WordLearningPage extends ViewPU {
                     Text.pop();
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         Text.create(this.getCurrentWord()!.chinese);
-                        Text.debugLine("entry/src/main/ets/components/WordLearningPage.ets(197:13)", "entry");
+                        Text.debugLine("entry/src/main/ets/components/WordLearningPage.ets(199:15)", "entry");
                         Text.fontSize(36);
                         Text.fontColor('#FF6B6B');
                         Text.fontWeight(FontWeight.Bold);
@@ -371,32 +380,98 @@ export class WordLearningPage extends ViewPU {
                     Text.pop();
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         Text.create(this.getCurrentWord()!.pronunciation);
-                        Text.debugLine("entry/src/main/ets/components/WordLearningPage.ets(203:13)", "entry");
+                        Text.debugLine("entry/src/main/ets/components/WordLearningPage.ets(205:15)", "entry");
                         Text.fontSize(24);
                         Text.fontColor('#666666');
                         Text.margin({ bottom: 20 });
                     }, Text);
                     Text.pop();
+                    // 单词信息区域
+                    Column.pop();
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        Button.createWithLabel('播放发音');
-                        Button.debugLine("entry/src/main/ets/components/WordLearningPage.ets(208:13)", "entry");
-                        Button.fontSize(20);
+                        // 听说读写按钮区域
+                        Column.create();
+                        Column.debugLine("entry/src/main/ets/components/WordLearningPage.ets(214:13)", "entry");
+                        // 听说读写按钮区域
+                        Column.margin({ top: 20 });
+                    }, Column);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Row.create();
+                        Row.debugLine("entry/src/main/ets/components/WordLearningPage.ets(215:15)", "entry");
+                        Row.justifyContent(FlexAlign.Center);
+                    }, Row);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Button.createWithLabel('听');
+                        Button.debugLine("entry/src/main/ets/components/WordLearningPage.ets(216:17)", "entry");
+                        Button.fontSize(18);
                         Button.fontColor('#FFFFFF');
-                        Button.backgroundColor('#4ECDC4');
-                        Button.borderRadius(25);
-                        Button.width(120);
+                        Button.backgroundColor('#FF6B6B');
+                        Button.borderRadius(20);
+                        Button.width(60);
                         Button.height(50);
+                        Button.margin({ right: 10 });
                         Button.onClick(() => {
-                            this.playPronunciation();
+                            console.log('听力练习模式');
+                            // TODO: 实现听力练习
                         });
                     }, Button);
                     Button.pop();
-                    // 右侧：英文和中文显示区域
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Button.createWithLabel('说');
+                        Button.debugLine("entry/src/main/ets/components/WordLearningPage.ets(229:17)", "entry");
+                        Button.fontSize(18);
+                        Button.fontColor('#FFFFFF');
+                        Button.backgroundColor('#4ECDC4');
+                        Button.borderRadius(20);
+                        Button.width(60);
+                        Button.height(50);
+                        Button.margin({ right: 10 });
+                        Button.onClick(() => {
+                            console.log('口语练习模式');
+                            // TODO: 实现口语练习
+                        });
+                    }, Button);
+                    Button.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Button.createWithLabel('读');
+                        Button.debugLine("entry/src/main/ets/components/WordLearningPage.ets(242:17)", "entry");
+                        Button.fontSize(18);
+                        Button.fontColor('#FFFFFF');
+                        Button.backgroundColor('#45B7D1');
+                        Button.borderRadius(20);
+                        Button.width(60);
+                        Button.height(50);
+                        Button.margin({ right: 10 });
+                        Button.onClick(() => {
+                            console.log('阅读练习模式');
+                            // TODO: 实现阅读练习
+                        });
+                    }, Button);
+                    Button.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Button.createWithLabel('写');
+                        Button.debugLine("entry/src/main/ets/components/WordLearningPage.ets(255:17)", "entry");
+                        Button.fontSize(18);
+                        Button.fontColor('#FFFFFF');
+                        Button.backgroundColor('#96CEB4');
+                        Button.borderRadius(20);
+                        Button.width(60);
+                        Button.height(50);
+                        Button.onClick(() => {
+                            console.log('书写练习模式');
+                            // TODO: 实现书写练习
+                        });
+                    }, Button);
+                    Button.pop();
+                    Row.pop();
+                    // 听说读写按钮区域
+                    Column.pop();
+                    // 右侧：英文和中文显示区域 + 听说读写按钮
                     Column.pop();
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         // 最右侧：下一个按钮
                         Button.createWithLabel('→');
-                        Button.debugLine("entry/src/main/ets/components/WordLearningPage.ets(224:11)", "entry");
+                        Button.debugLine("entry/src/main/ets/components/WordLearningPage.ets(276:11)", "entry");
                         // 最右侧：下一个按钮
                         Button.fontSize(40);
                         // 最右侧：下一个按钮
@@ -416,7 +491,7 @@ export class WordLearningPage extends ViewPU {
                             this.nextWord();
                         });
                         // 最右侧：下一个按钮
-                        Button.alignSelf(ItemAlign.End);
+                        Button.alignSelf(ItemAlign.Center);
                     }, Button);
                     // 最右侧：下一个按钮
                     Button.pop();
@@ -427,7 +502,7 @@ export class WordLearningPage extends ViewPU {
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         // 没有单词时的提示
                         Column.create();
-                        Column.debugLine("entry/src/main/ets/components/WordLearningPage.ets(238:11)", "entry");
+                        Column.debugLine("entry/src/main/ets/components/WordLearningPage.ets(290:11)", "entry");
                         // 没有单词时的提示
                         Column.justifyContent(FlexAlign.Center);
                         // 没有单词时的提示
@@ -435,14 +510,14 @@ export class WordLearningPage extends ViewPU {
                     }, Column);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         Image.create({ "id": 16777216, "type": 20000, params: [], "bundleName": "com.example.studyenglishbycard", "moduleName": "entry" });
-                        Image.debugLine("entry/src/main/ets/components/WordLearningPage.ets(239:13)", "entry");
+                        Image.debugLine("entry/src/main/ets/components/WordLearningPage.ets(291:13)", "entry");
                         Image.width(200);
                         Image.height(200);
                         Image.opacity(0.5);
                     }, Image);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         Text.create('暂无单词数据');
-                        Text.debugLine("entry/src/main/ets/components/WordLearningPage.ets(244:13)", "entry");
+                        Text.debugLine("entry/src/main/ets/components/WordLearningPage.ets(296:13)", "entry");
                         Text.fontSize(24);
                         Text.fontColor('#999999');
                         Text.margin({ top: 20 });
