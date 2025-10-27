@@ -14,6 +14,9 @@ interface WordLearningPage_Params {
     imageError?: boolean;
     micIconScale?: number;
     showHearGif?: boolean;
+    testOptions?: WordData[];
+    selectedTestOption?: number;
+    testCorrectAnswerShown?: boolean;
     learningDataManager?;
 }
 import type { WordData, SubcategoryData } from '../types/CommonTypes';
@@ -44,6 +47,12 @@ export class WordLearningPage extends ViewPU {
         , this, "micIconScale");
         this.__showHearGif = new ObservedPropertySimplePU(false // 是否显示听音GIF
         , this, "showHearGif");
+        this.__testOptions = new ObservedPropertyObjectPU([] // 测试选项（3个单词）
+        , this, "testOptions");
+        this.__selectedTestOption = new ObservedPropertySimplePU(-1 // 选中的选项索引
+        , this, "selectedTestOption");
+        this.__testCorrectAnswerShown = new ObservedPropertySimplePU(false // 是否正确答案已显示
+        , this, "testCorrectAnswerShown");
         this.learningDataManager = LearningDataManager.getInstance();
         this.setInitiallyProvidedValue(params);
         this.finalizeConstruction();
@@ -85,6 +94,15 @@ export class WordLearningPage extends ViewPU {
         if (params.showHearGif !== undefined) {
             this.showHearGif = params.showHearGif;
         }
+        if (params.testOptions !== undefined) {
+            this.testOptions = params.testOptions;
+        }
+        if (params.selectedTestOption !== undefined) {
+            this.selectedTestOption = params.selectedTestOption;
+        }
+        if (params.testCorrectAnswerShown !== undefined) {
+            this.testCorrectAnswerShown = params.testCorrectAnswerShown;
+        }
         if (params.learningDataManager !== undefined) {
             this.learningDataManager = params.learningDataManager;
         }
@@ -102,6 +120,9 @@ export class WordLearningPage extends ViewPU {
         this.__imageError.purgeDependencyOnElmtId(rmElmtId);
         this.__micIconScale.purgeDependencyOnElmtId(rmElmtId);
         this.__showHearGif.purgeDependencyOnElmtId(rmElmtId);
+        this.__testOptions.purgeDependencyOnElmtId(rmElmtId);
+        this.__selectedTestOption.purgeDependencyOnElmtId(rmElmtId);
+        this.__testCorrectAnswerShown.purgeDependencyOnElmtId(rmElmtId);
     }
     aboutToBeDeleted() {
         this.__currentWordIndex.aboutToBeDeleted();
@@ -114,6 +135,9 @@ export class WordLearningPage extends ViewPU {
         this.__imageError.aboutToBeDeleted();
         this.__micIconScale.aboutToBeDeleted();
         this.__showHearGif.aboutToBeDeleted();
+        this.__testOptions.aboutToBeDeleted();
+        this.__selectedTestOption.aboutToBeDeleted();
+        this.__testCorrectAnswerShown.aboutToBeDeleted();
         SubscriberManager.Get().delete(this.id__());
         this.aboutToBeDeletedInternal();
     }
@@ -189,6 +213,27 @@ export class WordLearningPage extends ViewPU {
     }
     set showHearGif(newValue: boolean) {
         this.__showHearGif.set(newValue);
+    }
+    private __testOptions: ObservedPropertyObjectPU<WordData[]>; // 测试选项（3个单词）
+    get testOptions() {
+        return this.__testOptions.get();
+    }
+    set testOptions(newValue: WordData[]) {
+        this.__testOptions.set(newValue);
+    }
+    private __selectedTestOption: ObservedPropertySimplePU<number>; // 选中的选项索引
+    get selectedTestOption() {
+        return this.__selectedTestOption.get();
+    }
+    set selectedTestOption(newValue: number) {
+        this.__selectedTestOption.set(newValue);
+    }
+    private __testCorrectAnswerShown: ObservedPropertySimplePU<boolean>; // 是否正确答案已显示
+    get testCorrectAnswerShown() {
+        return this.__testCorrectAnswerShown.get();
+    }
+    set testCorrectAnswerShown(newValue: boolean) {
+        this.__testCorrectAnswerShown.set(newValue);
     }
     private learningDataManager;
     aboutToAppear() {
@@ -375,12 +420,68 @@ export class WordLearningPage extends ViewPU {
             console.error('停止录音失败:', error);
         }
     }
-    // 进入阅读模式
-    private enterReadMode() {
+    // 进入测试模式
+    private async enterReadMode() {
         this.currentMode = 'read';
-        console.log('进入阅读模式');
-        // 阅读模式：自动朗读单词
-        this.playPronunciation();
+        console.log('进入测试模式');
+        const correctWord = this.getCurrentWord();
+        if (!correctWord) {
+            console.error('没有当前单词');
+            return;
+        }
+        // 生成3个选项：1个正确 + 2个错误
+        this.generateTestOptions(correctWord);
+        // 播放问题："哪个是沙发Sofa？"
+        const question = `哪个是${correctWord.chinese}${correctWord.english}？`;
+        await SpeechManager.speak(question);
+    }
+    // 生成测试选项
+    private generateTestOptions(correctWord: WordData) {
+        const options: WordData[] = [correctWord];
+        // 从其他单词中随机选择2个作为干扰项
+        const otherWords = this.words.filter(w => w.english !== correctWord.english);
+        // 随机打乱
+        const shuffled = otherWords.sort(() => Math.random() - 0.5);
+        // 添加2个干扰项
+        for (let i = 0; i < 2 && i < shuffled.length; i++) {
+            options.push(shuffled[i]);
+        }
+        // 随机打乱选项顺序
+        const shuffledOptions = options.sort(() => Math.random() - 0.5);
+        this.testOptions = shuffledOptions;
+        this.selectedTestOption = -1;
+        this.testCorrectAnswerShown = false;
+        console.log('测试选项生成:', shuffledOptions.map(w => w.english));
+    }
+    // 选择测试选项
+    private async selectTestOption(index: number) {
+        if (this.testCorrectAnswerShown) {
+            return; // 正确答案已显示，不允许再选择
+        }
+        this.selectedTestOption = index;
+        console.log('选择了选项:', index);
+        const correctWord = this.getCurrentWord();
+        const isCorrect = index === this.testOptions.findIndex(w => w.english === correctWord?.english);
+        // 等待一小段时间后播放声音
+        setTimeout(async () => {
+            if (isCorrect) {
+                // 选择正确 - 播放欢呼声
+                console.log('✅ 选择正确！');
+                this.testCorrectAnswerShown = true;
+                await SpeechManager.speak('答对了，你真棒！');
+                // 自动返回学习页面
+                setTimeout(() => {
+                    this.currentMode = 'normal';
+                }, 1000);
+            }
+            else {
+                // 选择错误 - 清除选择，允许重新选择
+                console.log('❌ 选择错误！');
+                await SpeechManager.speak('再试试吧');
+                // 清空选择，让用户可以重选
+                this.selectedTestOption = -1;
+            }
+        }, 300);
     }
     // 进入书写模式
     private enterWriteMode() {
@@ -475,16 +576,88 @@ export class WordLearningPage extends ViewPU {
         // 顶部导航栏
         Row.pop();
         this.observeComponentCreation2((elmtId, isInitialRender) => {
+            If.create();
             // 主要内容区域
+            if (this.currentMode === 'read') {
+                this.ifElseBranchUpdateFunction(0, () => {
+                    // 测试模式显示
+                    this.buildTestMode.bind(this)();
+                });
+            }
+            else {
+                this.ifElseBranchUpdateFunction(1, () => {
+                    // 常规模式显示
+                    this.buildNormalMode.bind(this)();
+                });
+            }
+        }, If);
+        If.pop();
+        Column.pop();
+    }
+    buildTestMode(parent = null) {
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Column.create();
+            Column.width('100%');
+            Column.height('90%');
+            Column.padding(20);
+        }, Column);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Text.create('听音选择正确的图片');
+            Text.fontSize(24);
+            Text.fontColor('#333333');
+            Text.fontWeight(FontWeight.Bold);
+            Text.margin({ bottom: 30 });
+        }, Text);
+        Text.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            // 3个选项
             Row.create();
-            // 主要内容区域
+            // 3个选项
+            Row.justifyContent(FlexAlign.Center);
+            // 3个选项
+            Row.width('100%');
+            // 3个选项
             Row.flexGrow(1);
-            // 主要内容区域
+        }, Row);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            ForEach.create();
+            const forEachItemGenFunction = (_item, index: number) => {
+                const option = _item;
+                this.observeComponentCreation2((elmtId, isInitialRender) => {
+                    Column.create();
+                    Column.margin({ right: 10 });
+                }, Column);
+                this.observeComponentCreation2((elmtId, isInitialRender) => {
+                    Image.create({ "id": -1, "type": 30000, params: [option.image], "bundleName": "com.example.studyenglishbycard", "moduleName": "entry" });
+                    Image.width(150);
+                    Image.height(150);
+                    Image.borderRadius(15);
+                    Image.objectFit(ImageFit.Cover);
+                    Image.border({
+                        width: this.selectedTestOption === index ? 5 : 0,
+                        color: this.selectedTestOption === index
+                            ? (index === this.testOptions.findIndex(w => w.english === this.getCurrentWord()?.english) ? '#00FF00' : '#FF0000')
+                            : '#000000',
+                        style: BorderStyle.Solid
+                    });
+                    Image.onClick(() => {
+                        this.selectTestOption(index);
+                    });
+                }, Image);
+                Column.pop();
+            };
+            this.forEachUpdateFunction(elmtId, this.testOptions, forEachItemGenFunction, undefined, true, false);
+        }, ForEach);
+        ForEach.pop();
+        // 3个选项
+        Row.pop();
+        Column.pop();
+    }
+    buildNormalMode(parent = null) {
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Row.create();
+            Row.flexGrow(1);
             Row.padding({ left: 50, right: 50 });
-            // 主要内容区域
-            Row.onClick(() => {
-                this.handleTap();
-            });
         }, Row);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             If.create();
@@ -799,9 +972,7 @@ export class WordLearningPage extends ViewPU {
             }
         }, If);
         If.pop();
-        // 主要内容区域
         Row.pop();
-        Column.pop();
     }
     rerender() {
         this.updateDirtyElements();
