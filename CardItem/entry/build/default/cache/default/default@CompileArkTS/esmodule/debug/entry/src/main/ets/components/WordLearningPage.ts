@@ -15,6 +15,7 @@ interface WordLearningPage_Params {
 import type { WordData, SubcategoryData } from '../types/CommonTypes';
 import { LearningDataManager } from "@normalized:N&&&entry/src/main/ets/utils/LearningDataManager&";
 import { SpeechManager } from "@normalized:N&&&entry/src/main/ets/utils/SpeechManager&";
+import { AudioRecorderManager } from "@normalized:N&&&entry/src/main/ets/utils/AudioRecorderManager&";
 export class WordLearningPage extends ViewPU {
     constructor(parent, params, __localStorage, elmtId = -1, paramsLambda = undefined, extraInfo) {
         super(parent, __localStorage, elmtId, extraInfo);
@@ -270,32 +271,31 @@ export class WordLearningPage extends ViewPU {
     private async startRecording(word: WordData) {
         console.log('开始录音，单词:', word.english);
         try {
-            // 这里需要实现录音功能
-            // 由于HarmonyOS的录音API比较复杂，这里先提供一个框架
-            console.log('录音功能待实现，10秒超时');
-            // 模拟10秒录音
-            setTimeout(() => {
-                console.log('录音超时，停止录音');
-                this.saveRecording(word);
+            // 开始录音
+            await AudioRecorderManager.startRecord(word.english);
+            console.log('录音已开始，单词:', word.english);
+            // 10秒后自动停止录音
+            setTimeout(async () => {
+                console.log('录音超时（10秒），停止录音');
+                await this.stopRecording(word);
             }, 10000);
         }
         catch (error) {
             console.error('录音失败:', error);
         }
     }
-    // 保存录音文件
-    private async saveRecording(word: WordData) {
+    // 停止录音
+    private async stopRecording(word: WordData) {
         try {
-            console.log('保存录音文件，单词:', word.english);
-            // 构造文件路径
-            const fileName = `${word.english}.wav`;
-            const filePath = `/data/storage/el2/base/haps/entry/files/${fileName}`;
-            console.log('录音文件路径:', filePath);
-            // TODO: 实现实际的录音保存功能
-            // 这里需要用到HarmonyOS的AudioRecorder API
+            // 停止录音
+            const uri = await AudioRecorderManager.stopRecord();
+            console.log('录音已停止，文件URI:', uri);
+            if (uri) {
+                console.log(`录音文件已保存: ${word.english}.wav`);
+            }
         }
         catch (error) {
-            console.error('保存录音失败:', error);
+            console.error('停止录音失败:', error);
         }
     }
     // 进入阅读模式

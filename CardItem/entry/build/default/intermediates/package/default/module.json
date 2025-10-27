@@ -58,6 +58,15 @@
 						"resourceId":	16777226
 					}]
 			}],
+		"requestPermissions":	[{
+				"name":	"ohos.permission.MICROPHONE",
+				"reason":	"$string:microphone_permission_reason",
+				"usedScene":	{
+					"abilities":	["EntryAbility"],
+					"when":	"inuse"
+				},
+				"reasonId":	16777229
+			}],
 		"packageName":	"entry",
 		"virtualMachine":	"ark12.0.6.0",
 		"compileMode":	"esmodule",

@@ -11,7 +11,7 @@ interface ThemeProgress {
 export class LearningProgressManager {
   private static instance: LearningProgressManager
   private currentProgress: LearningProgress = {
-    currentTheme: 'fruits',
+    currentTheme: 'food',
     currentWordIndex: 0,
     totalLearningTime: 0,
     sessionStartTime: 0,

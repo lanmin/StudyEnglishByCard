@@ -51,7 +51,7 @@ export class LearningDataManager {
   private static instance: LearningDataManager
   
   // 12个主题的数据数组
-  private foodData: ThemeDataStructure = { id: 'fruits', languages: { english: '', chinese: '', japanese: '' }, subcategories: [] }
+  private foodData: ThemeDataStructure = { id: 'food', languages: { english: '', chinese: '', japanese: '' }, subcategories: [] }
   private animalsData: ThemeDataStructure = { id: 'animals', languages: { english: '', chinese: '', japanese: '' }, subcategories: [] }
   private dailyItemsData: ThemeDataStructure = { id: 'daily_items', languages: { english: '', chinese: '', japanese: '' }, subcategories: [] }
   private bodyPartsData: ThemeDataStructure = { id: 'body_parts', languages: { english: '', chinese: '', japanese: '' }, subcategories: [] }
@@ -202,7 +202,7 @@ export class LearningDataManager {
   // 根据ID获取主题数据
   private getThemeDataById(id: string): ThemeDataStructure | null {
     const themeMap: Record<string, ThemeDataStructure> = {
-      'fruits': this.foodData,
+      'food': this.foodData,
       'animals': this.animalsData,
       'daily_items': this.dailyItemsData,
       'body_parts': this.bodyPartsData,
@@ -222,7 +222,7 @@ export class LearningDataManager {
   // 生成主题ID
   private generateThemeId(chineseName: string): string {
     const themeIdMap: Record<string, string> = {
-      '食物类': 'fruits',
+      '食物类': 'food',
       '动物类': 'animals',
       '日常物品类': 'daily_items',
       '身体部位类': 'body_parts',
@@ -358,7 +358,7 @@ export class LearningDataManager {
 
   // 获取主题索引
   private getThemeIndex(themeId: string): number {
-    const themeOrder = ['fruits', 'animals', 'daily_items', 'body_parts', 'colors_shapes', 
+    const themeOrder = ['food', 'animals', 'daily_items', 'body_parts', 'colors_shapes', 
                        'vehicles', 'family', 'actions', 'places', 'nature', 'clothing', 'toys']
     return themeOrder.indexOf(themeId)
   }
@@ -593,43 +593,43 @@ Yo-yo｜溜溜球｜ヨーヨー（yōyō）`
   // 生成图标路径
   private generateIconPath(themeId: string): string {
     const iconMap: Record<string, string> = {
-      'fruits': '$rawfile/CardOriginal/Food/Fruit/apple.png',
-      'animals': '$rawfile/CardOriginal/Animals/Pets/dog.png',
-      'daily_items': '$rawfile/CardOriginal/DailyItems/Kitchen/spoon.png',
-      'body_parts': '$rawfile/CardOriginal/BodyParts/Head/eye.png',
-      'colors_shapes': '$rawfile/CardOriginal/ColorsShapes/Colors/red.png',
-      'vehicles': '$rawfile/CardOriginal/Vehicles/Land/car.png',
-      'family': '$rawfile/CardOriginal/Family/FamilyMembers/father.png',
-      'actions': '$rawfile/CardOriginal/Actions/DailyActions/walk.png',
-      'places': '$rawfile/CardOriginal/Places/IndoorPlaces/home.png',
-      'nature': '$rawfile/CardOriginal/Nature/Weather/sun.png',
-      'clothing': '$rawfile/CardOriginal/Clothing/Tops/shirt.png',
-      'toys': '$rawfile/CardOriginal/Toys/TraditionalToys/ball.png'
+      'food': 'CardOriginal/Theme/Food.png',
+      'animals': 'CardOriginal/Theme/Animals.png',
+      'daily_items': 'CardOriginal/Theme/Daily Items.png',
+      'body_parts': 'CardOriginal/Theme/Body Parts.png',
+      'colors_shapes': 'CardOriginal/Theme/Colors & Shapes.png',
+      'vehicles': 'CardOriginal/Theme/Transportation.png',
+      'family': 'CardOriginal/Theme/Family Members & Titles.png',
+      'actions': 'CardOriginal/Theme/Actions.png',
+      'places': 'CardOriginal/Theme/Places.png',
+      'nature': 'CardOriginal/Theme/Natural Things.png',
+      'clothing': 'CardOriginal/Theme/Clothing.png',
+      'toys': 'CardOriginal/Theme/Toys.png'
     }
     
-    return iconMap[themeId] || '$rawfile/CardOriginal/Food/Fruit/apple.png'
+    return iconMap[themeId] || 'CardOriginal/Theme/Food.png'
   }
 
 
   // 根据主题、子分类和单词名称生成图片路径
   private getImagePath(themeId: string, subcategoryName: string, wordId: string): string {
-    // 主题到文件夹的映射
+    // 主题到文件夹的映射（根据实际目录结构）
     const themeFolderMap: Record<string, string> = {
-      'fruits': 'Food',
+      'food': 'Food',
       'animals': 'Animals',
-      'daily_items': 'DailyItems',
-      'body_parts': 'BodyParts',
-      'colors_shapes': 'ColorsShapes',
-      'vehicles': 'Vehicles',
-      'family': 'Family',
+      'daily_items': 'Daily Items',
+      'body_parts': 'Body Parts',
+      'colors_shapes': 'Colors & Shapes',
+      'vehicles': 'Transportation',
+      'family': 'Family Members & Titles',
       'actions': 'Actions',
       'places': 'Places',
-      'nature': 'Nature',
+      'nature': 'Natural Things',
       'clothing': 'Clothing',
       'toys': 'Toys'
     }
 
-    // 子分类到文件夹的映射
+    // 子分类到文件夹的映射（根据实际目录结构）
     const subcategoryFolderMap: Record<string, string> = {
       // 食物类
       '水果': 'Fruit',
@@ -645,11 +645,11 @@ Yo-yo｜溜溜球｜ヨーヨー（yōyō）`
       '昆虫&小型动物': 'Insects & Small Animals',
       
       // 日常物品类
-      '厨房用品': 'Kitchen',
-      '卧室用品': 'Bedroom',
-      '客厅用品': 'LivingRoom',
+      '厨房用品': 'Kitchen Supplies',
+      '卧室用品': 'Bedroom Supplies',
+      '客厅用品': 'Living Room Supplies',
       '洗漱用品': 'Toiletries',
-      '其他日常物品': 'OtherDailyItems',
+      '其他日常物品': 'Other Daily Items',
       
       // 身体部位类
       '头部': 'Head',
@@ -667,49 +667,46 @@ Yo-yo｜溜溜球｜ヨーヨー（yōyō）`
       '空中': 'Air',
       
       // 家庭成员类
-      '家庭成员': 'FamilyMembers',
+      '家庭成员': 'Family Members',
       
       // 动作类
-      '日常动作': 'DailyActions',
-      '感官动作': 'SensoryActions',
-      '互动动作': 'InteractiveActions',
-      '生活动作': 'LifeActions',
-      '其他动作': 'OtherActions',
+      '日常动作': 'Daily Actions',
+      '感官动作': 'Sensory Actions',
+      '互动动作': 'Interactive Actions',
+      '生活动作': 'Life Actions',
+      '其他动作': 'Other Actions',
       
-      // 场所类
-      '室内场所': 'IndoorPlaces',
+      // 场所类（所有场所都在Places目录下，没有子目录）
+      '室内场所': 'Places',
       
-      // 自然事物类
-      '天气': 'Weather',
+      // 自然事物类（所有自然事物都在Natural Things目录下，没有子目录）
+      '天气': 'Natural Things',
       
-      // 服饰类
-      '上衣': 'Tops',
+      // 服饰类（所有服饰都在Clothing目录下，没有子目录）
+      '上衣': 'Clothing',
       
-      // 玩具类
-      '传统玩具': 'TraditionalToys',
-      '现代玩具': 'ModernToys',
-      '户外玩具': 'OutdoorToys',
-      '益智玩具': 'EducationalToys',
-      '运动玩具': 'SportsToys',
-      '创意玩具': 'CreativeToys',
-      '电子玩具': 'ElectronicToys',
-      '角色扮演玩具': 'RolePlayToys',
-      '其他玩具': 'OtherToys'
+      // 玩具类（所有玩具都在Toys目录下，没有子目录）
+      '传统玩具': 'Toys',
+      '现代玩具': 'Toys',
+      '户外玩具': 'Toys',
+      '益智玩具': 'Toys',
+      '运动玩具': 'Toys',
+      '创意玩具': 'Toys',
+      '电子玩具': 'Toys',
+      '角色扮演玩具': 'Toys',
+      '其他玩具': 'Toys'
     }
 
     const themeFolder = themeFolderMap[themeId] || 'Food'
     const subcategoryFolder = subcategoryFolderMap[subcategoryName] || 'Fruit'
     
-    // 生成图片路径：尝试不同的rawfile引用格式
-    const possiblePaths = [
-      `$rawfile('CardOriginal/${themeFolder}/${subcategoryFolder}/${wordId}.png')`,
-      `$rawfile('CardOriginal/${themeFolder}/${subcategoryFolder}/${wordId.charAt(0).toUpperCase() + wordId.slice(1)}.png')`,
-      `$rawfile/CardOriginal/${themeFolder}/${subcategoryFolder}/${wordId}.png`,
-      `$rawfile/CardOriginal/${themeFolder}/${subcategoryFolder}/${wordId.charAt(0).toUpperCase() + wordId.slice(1)}.png`
-    ]
+    // 图片文件名处理：尝试小写和首字母大写
+    const fileNameLower = `${wordId.toLowerCase()}.png`
+    const fileNameCapitalized = `${wordId.charAt(0).toUpperCase() + wordId.slice(1)}.png`
     
     // 使用简单的字符串路径，在Image组件中处理
-    const imagePath = `CardOriginal/${themeFolder}/${subcategoryFolder}/${wordId}.png`
+    // 优先尝试首字母大写的文件名（因为实际文件名都是首字母大写）
+    const imagePath = `CardOriginal/${themeFolder}/${subcategoryFolder}/${fileNameCapitalized}`
     console.log(`生成图片路径: ${wordId} -> ${imagePath}`)
     return imagePath
   }
@@ -742,7 +739,7 @@ Yo-yo｜溜溜球｜ヨーヨー（yōyō）`
   // 根据主题获取单词
   getWordsByTheme(theme: ThemeType): WordData[] {
     const themeMap: Record<ThemeType, string> = {
-      'fruits': 'fruits',
+      'food': 'food',
       'animals': 'animals',
       'daily_items': 'daily_items',
       'body_parts': 'body_parts',
@@ -771,30 +768,16 @@ Yo-yo｜溜溜球｜ヨーヨー（yōyō）`
     return colors[index % colors.length]
   }
 
-  // 生成子分类图标路径
+  // 生成子分类图标路径 - 使用Theme目录下的图片
   private generateSubcategoryIconPath(themeId: string, subcategoryName: string): string {
-    const iconMap: Record<string, string> = {
-      'fruits': '$rawfile/CardOriginal/Food/Fruit/apple.png',
-      'animals': '$rawfile/CardOriginal/Animals/Pets/dog.png',
-      'daily_items': '$rawfile/CardOriginal/DailyItems/Kitchen/spoon.png',
-      'body_parts': '$rawfile/CardOriginal/BodyParts/Head/eye.png',
-      'colors_shapes': '$rawfile/CardOriginal/ColorsShapes/Colors/red.png',
-      'vehicles': '$rawfile/CardOriginal/Vehicles/Land/car.png',
-      'family': '$rawfile/CardOriginal/Family/FamilyMembers/father.png',
-      'actions': '$rawfile/CardOriginal/Actions/DailyActions/walk.png',
-      'places': '$rawfile/CardOriginal/Places/IndoorPlaces/home.png',
-      'nature': '$rawfile/CardOriginal/Nature/Weather/sun.png',
-      'clothing': '$rawfile/CardOriginal/Clothing/Tops/shirt.png',
-      'toys': '$rawfile/CardOriginal/Toys/TraditionalToys/ball.png'
-    }
-    
-    return iconMap[themeId] || '$rawfile/CardOriginal/Food/Fruit/apple.png'
+    // 返回主题图标，因为实际目录结构中子分类没有对应的图标文件
+    return this.generateIconPath(themeId)
   }
 
   // 生成子分类颜色
   private generateSubcategoryColor(themeId: string): string {
     const colorMap: Record<string, string> = {
-      'fruits': '#FF6B6B',
+      'food': '#FF6B6B',
       'animals': '#4ECDC4',
       'daily_items': '#45B7D1',
       'body_parts': '#96CEB4',

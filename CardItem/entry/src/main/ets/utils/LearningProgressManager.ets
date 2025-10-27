@@ -9,7 +9,7 @@ export class LearningProgressManager {
 
   private constructor() {
     this.currentProgress = {
-      currentTheme: 'fruits',
+      currentTheme: 'food',
       currentWordIndex: 0,
       totalLearningTime: 0,
       sessionStartTime: 0,

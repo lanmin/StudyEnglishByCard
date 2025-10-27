@@ -19,7 +19,7 @@ import {
 @Component
 struct Index {
   @State currentPage: PageType = 'theme_select'
-  @State currentTheme: ThemeType = 'fruits'
+  @State currentTheme: ThemeType = 'food'
   @State currentWordIndex: number = 0
   @State selectedMode: LearningMode = 'listen'
   @State score: number = 0
@@ -182,29 +182,30 @@ struct Index {
   @Builder ThemeCard(theme: ThemeData, index: number) {
     Column() {
       // 主题图标
-      Image(theme.icon)
-        .width(140)
-        .height(140)
-        .borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM)
-        .backgroundColor(theme.color)
-        .padding(GlobalStyles.SIZES.SPACING_SMALL)
+      Image($rawfile(theme.icon))
+        .width(100)
+        .height(100)
+        .borderRadius(GlobalStyles.BORDER_RADIUS.SMALL)
+        .backgroundColor('#FFFFFF')
+        .objectFit(ImageFit.Contain)
+        .padding(5)
       
       // 主题名称（包含进度信息）
       Text(`${theme.name}（${theme.completedWords}/${theme.totalWords}）`)
         .fontSize(GlobalStyles.FONT_SIZES.TEXT_SMALL)
-        .fontColor(theme.color)
+        .fontColor(GlobalStyles.COLORS.TEXT_PRIMARY)
         .fontWeight(FontWeight.Bold)
-        .margin({ top: GlobalStyles.SIZES.SPACING_SMALL })
+        .margin({ top: 8 })
         .textAlign(TextAlign.Center)
         .maxLines(2)
-        .textOverflow({ overflow: TextOverflow.None })
+        .textOverflow({ overflow: TextOverflow.Ellipsis })
         .width('100%')
     }
     .width(200)
-    .height(220)
+    .height(190)
     .backgroundColor(GlobalStyles.COLORS.CARD_BACKGROUND)
     .borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM)
-    .padding({ top: GlobalStyles.SIZES.SPACING_SMALL, bottom: GlobalStyles.SIZES.SPACING_SMALL, left: GlobalStyles.SIZES.SPACING_SMALL, right: GlobalStyles.SIZES.SPACING_SMALL })
+    .padding({ top: 10, bottom: 10, left: 10, right: 10 })
     .justifyContent(FlexAlign.Center)
     .shadow(GlobalStyles.SHADOWS.MEDIUM)
     .margin({ right: GlobalStyles.SIZES.SPACING_MEDIUM })
@@ -268,7 +269,7 @@ struct Index {
   @Builder SubcategoryCard(subcategory: SubcategoryData, index: number) {
     Column() {
       // 子分类图标
-      Image(subcategory.icon)
+      Image($rawfile(subcategory.icon))
         .width(140)
         .height(140)
         .borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM)

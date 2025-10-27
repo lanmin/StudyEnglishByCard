@@ -37,7 +37,7 @@ class Index extends ViewPU {
             this.paramsGenerator_ = paramsLambda;
         }
         this.__currentPage = new ObservedPropertySimplePU('theme_select', this, "currentPage");
-        this.__currentTheme = new ObservedPropertySimplePU('fruits', this, "currentTheme");
+        this.__currentTheme = new ObservedPropertySimplePU('food', this, "currentTheme");
         this.__currentWordIndex = new ObservedPropertySimplePU(0, this, "currentWordIndex");
         this.__selectedMode = new ObservedPropertySimplePU('listen', this, "selectedMode");
         this.__score = new ObservedPropertySimplePU(0, this, "score");
@@ -457,10 +457,10 @@ class Index extends ViewPU {
             Column.create();
             Context.animation(GlobalStyles.ANIMATIONS.BUTTON_PRESS);
             Column.width(200);
-            Column.height(220);
+            Column.height(190);
             Column.backgroundColor(GlobalStyles.COLORS.CARD_BACKGROUND);
             Column.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
-            Column.padding({ top: GlobalStyles.SIZES.SPACING_SMALL, bottom: GlobalStyles.SIZES.SPACING_SMALL, left: GlobalStyles.SIZES.SPACING_SMALL, right: GlobalStyles.SIZES.SPACING_SMALL });
+            Column.padding({ top: 10, bottom: 10, left: 10, right: 10 });
             Column.justifyContent(FlexAlign.Center);
             Column.shadow(GlobalStyles.SHADOWS.MEDIUM);
             Column.margin({ right: GlobalStyles.SIZES.SPACING_MEDIUM });
@@ -473,17 +473,19 @@ class Index extends ViewPU {
         }, Column);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             // 主题图标
-            Image.create(theme.icon);
+            Image.create({ "id": -1, "type": 30000, params: [theme.icon], "bundleName": "com.example.studyenglishbycard", "moduleName": "entry" });
             // 主题图标
-            Image.width(140);
+            Image.width(100);
             // 主题图标
-            Image.height(140);
+            Image.height(100);
             // 主题图标
-            Image.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
+            Image.borderRadius(GlobalStyles.BORDER_RADIUS.SMALL);
             // 主题图标
-            Image.backgroundColor(theme.color);
+            Image.backgroundColor('#FFFFFF');
             // 主题图标
-            Image.padding(GlobalStyles.SIZES.SPACING_SMALL);
+            Image.objectFit(ImageFit.Contain);
+            // 主题图标
+            Image.padding(5);
         }, Image);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             // 主题名称（包含进度信息）
@@ -491,17 +493,17 @@ class Index extends ViewPU {
             // 主题名称（包含进度信息）
             Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_SMALL);
             // 主题名称（包含进度信息）
-            Text.fontColor(theme.color);
+            Text.fontColor(GlobalStyles.COLORS.TEXT_PRIMARY);
             // 主题名称（包含进度信息）
             Text.fontWeight(FontWeight.Bold);
             // 主题名称（包含进度信息）
-            Text.margin({ top: GlobalStyles.SIZES.SPACING_SMALL });
+            Text.margin({ top: 8 });
             // 主题名称（包含进度信息）
             Text.textAlign(TextAlign.Center);
             // 主题名称（包含进度信息）
             Text.maxLines(2);
             // 主题名称（包含进度信息）
-            Text.textOverflow({ overflow: TextOverflow.None });
+            Text.textOverflow({ overflow: TextOverflow.Ellipsis });
             // 主题名称（包含进度信息）
             Text.width('100%');
         }, Text);
@@ -606,7 +608,7 @@ class Index extends ViewPU {
         }, Column);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             // 子分类图标
-            Image.create(subcategory.icon);
+            Image.create({ "id": -1, "type": 30000, params: [subcategory.icon], "bundleName": "com.example.studyenglishbycard", "moduleName": "entry" });
             // 子分类图标
             Image.width(140);
             // 子分类图标

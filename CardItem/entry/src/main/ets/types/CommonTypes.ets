@@ -2,7 +2,7 @@
 
 // 主题类型
 export type ThemeType = 
-  | 'fruits' 
+  | 'food' 
   | 'animals' 
   | 'daily_items'
   | 'body_parts'
