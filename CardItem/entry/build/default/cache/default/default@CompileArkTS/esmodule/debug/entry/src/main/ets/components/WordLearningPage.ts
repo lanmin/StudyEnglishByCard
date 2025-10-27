@@ -12,6 +12,7 @@ interface WordLearningPage_Params {
     currentMode?: 'listen' | 'speak' | 'read' | 'write' | 'normal';
     cardScale?: number;
     imageError?: boolean;
+    micIconScale?: number;
     learningDataManager?;
 }
 import type { WordData, SubcategoryData } from '../types/CommonTypes';
@@ -38,6 +39,8 @@ export class WordLearningPage extends ViewPU {
         , this, "cardScale");
         this.__imageError = new ObservedPropertySimplePU(false // 图片加载失败状态
         , this, "imageError");
+        this.__micIconScale = new ObservedPropertySimplePU(1 // 麦克风图标缩放状态
+        , this, "micIconScale");
         this.learningDataManager = LearningDataManager.getInstance();
         this.setInitiallyProvidedValue(params);
         this.finalizeConstruction();
@@ -73,6 +76,9 @@ export class WordLearningPage extends ViewPU {
         if (params.imageError !== undefined) {
             this.imageError = params.imageError;
         }
+        if (params.micIconScale !== undefined) {
+            this.micIconScale = params.micIconScale;
+        }
         if (params.learningDataManager !== undefined) {
             this.learningDataManager = params.learningDataManager;
         }
@@ -88,6 +94,7 @@ export class WordLearningPage extends ViewPU {
         this.__currentMode.purgeDependencyOnElmtId(rmElmtId);
         this.__cardScale.purgeDependencyOnElmtId(rmElmtId);
         this.__imageError.purgeDependencyOnElmtId(rmElmtId);
+        this.__micIconScale.purgeDependencyOnElmtId(rmElmtId);
     }
     aboutToBeDeleted() {
         this.__currentWordIndex.aboutToBeDeleted();
@@ -98,6 +105,7 @@ export class WordLearningPage extends ViewPU {
         this.__currentMode.aboutToBeDeleted();
         this.__cardScale.aboutToBeDeleted();
         this.__imageError.aboutToBeDeleted();
+        this.__micIconScale.aboutToBeDeleted();
         SubscriberManager.Get().delete(this.id__());
         this.aboutToBeDeletedInternal();
     }
@@ -159,6 +167,13 @@ export class WordLearningPage extends ViewPU {
     }
     set imageError(newValue: boolean) {
         this.__imageError.set(newValue);
+    }
+    private __micIconScale: ObservedPropertySimplePU<number>; // 麦克风图标缩放状态
+    get micIconScale() {
+        return this.__micIconScale.get();
+    }
+    set micIconScale(newValue: number) {
+        this.__micIconScale.set(newValue);
     }
     private learningDataManager;
     aboutToAppear() {
@@ -266,6 +281,8 @@ export class WordLearningPage extends ViewPU {
     private async enterSpeakMode() {
         this.currentMode = 'speak';
         console.log('进入口语模式');
+        // 开始麦克风图标动画
+        this.startMicIconAnimation();
         const word = this.getCurrentWord();
         if (!word) {
             console.error('没有当前单词');
@@ -281,18 +298,41 @@ export class WordLearningPage extends ViewPU {
         // 3. 开启麦克风录制
         await this.startRecording(word);
     }
+    // 开始麦克风图标动画
+    private startMicIconAnimation() {
+        // 创建循环动画：从1.0缩放到1.3，再回到1.0
+        const animation = () => {
+            this.micIconScale = 1.2;
+            setTimeout(() => {
+                this.micIconScale = 1.0;
+            }, 500);
+        };
+        // 立即执行一次
+        animation();
+        // 每1秒重复一次
+        const intervalId = setInterval(() => {
+            if (this.currentMode === 'speak') {
+                animation();
+            }
+            else {
+                clearInterval(intervalId);
+            }
+        }, 1000);
+    }
     // 开始录音
     private async startRecording(word: WordData) {
         console.log('开始录音，单词:', word.english);
+        console.log('当前模式:', this.currentMode);
         try {
+            console.log('准备调用AudioRecorderManager.startRecord');
             // 开始录音
-            await AudioRecorderManager.startRecord(word.english);
-            console.log('录音已开始，单词:', word.english);
-            // 10秒后自动停止录音
+            const result = await AudioRecorderManager.startRecord(word.english);
+            console.log('录音已开始，单词:', word.english, '返回结果:', result);
+            // 3秒后自动停止录音
             setTimeout(async () => {
-                console.log('录音超时（10秒），停止录音');
+                console.log('录音超时（3秒），停止录音');
                 await this.stopRecording(word);
-            }, 10000);
+            }, 3000);
         }
         catch (error) {
             console.error('录音失败:', error);
@@ -307,6 +347,9 @@ export class WordLearningPage extends ViewPU {
             if (uri) {
                 console.log(`录音文件已保存: ${word.english}.wav`);
             }
+            // 恢复界面
+            this.currentMode = 'normal';
+            console.log('说话模式已结束，恢复界面');
         }
         catch (error) {
             console.error('停止录音失败:', error);
@@ -572,6 +615,29 @@ export class WordLearningPage extends ViewPU {
                         Column.margin({ top: 20 });
                     }, Column);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        If.create();
+                        // 录音图标（仅在说话模式下显示）
+                        if (this.currentMode === 'speak') {
+                            this.ifElseBranchUpdateFunction(0, () => {
+                                this.observeComponentCreation2((elmtId, isInitialRender) => {
+                                    Image.create({ "id": 0, "type": 30000, params: ['CardOriginal/Wave.png'], "bundleName": "com.example.studyenglishbycard", "moduleName": "entry" });
+                                    Context.animation({ duration: 500, curve: Curve.EaseInOut, iterations: 1, playMode: PlayMode.Normal });
+                                    Image.width(60);
+                                    Image.height(40);
+                                    Image.objectFit(ImageFit.Fill);
+                                    Image.margin({ bottom: 10 });
+                                    Image.scale({ x: this.micIconScale, y: this.micIconScale });
+                                    Context.animation(null);
+                                }, Image);
+                            });
+                        }
+                        else {
+                            this.ifElseBranchUpdateFunction(1, () => {
+                            });
+                        }
+                    }, If);
+                    If.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
                         Row.create();
                         Row.justifyContent(FlexAlign.Center);
                     }, Row);
@@ -590,7 +656,7 @@ export class WordLearningPage extends ViewPU {
                     }, Button);
                     Button.pop();
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        Button.createWithLabel('读');
+                        Button.createWithLabel('说');
                         Button.fontSize(18);
                         Button.fontColor('#FFFFFF');
                         Button.backgroundColor(this.currentMode === 'speak' ? '#00BFA5' : '#4ECDC4');

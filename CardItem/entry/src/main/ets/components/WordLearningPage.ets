@@ -19,6 +19,7 @@ export struct WordLearningPage {
   @State currentMode: 'listen' | 'speak' | 'read' | 'write' | 'normal' = 'normal'
   @State cardScale: number = 1  // 卡片缩放状态
   @State imageError: boolean = false  // 图片加载失败状态
+  @State micIconScale: number = 1  // 麦克风图标缩放状态
   
   private learningDataManager = LearningDataManager.getInstance()
 
@@ -143,6 +144,9 @@ export struct WordLearningPage {
     this.currentMode = 'speak'
     console.log('进入口语模式')
     
+    // 开始麦克风图标动画
+    this.startMicIconAnimation()
+    
     const word = this.getCurrentWord()
     if (!word) {
       console.error('没有当前单词')
@@ -162,20 +166,45 @@ export struct WordLearningPage {
     await this.startRecording(word)
   }
 
+  // 开始麦克风图标动画
+  private startMicIconAnimation() {
+    // 创建循环动画：从1.0缩放到1.3，再回到1.0
+    const animation = () => {
+      this.micIconScale = 1.2
+      setTimeout(() => {
+        this.micIconScale = 1.0
+      }, 500)
+    }
+    
+    // 立即执行一次
+    animation()
+    
+    // 每1秒重复一次
+    const intervalId = setInterval(() => {
+      if (this.currentMode === 'speak') {
+        animation()
+      } else {
+        clearInterval(intervalId)
+      }
+    }, 1000)
+  }
+
   // 开始录音
   private async startRecording(word: WordData) {
     console.log('开始录音，单词:', word.english)
+    console.log('当前模式:', this.currentMode)
     
     try {
+      console.log('准备调用AudioRecorderManager.startRecord')
       // 开始录音
-      await AudioRecorderManager.startRecord(word.english)
-      console.log('录音已开始，单词:', word.english)
+      const result = await AudioRecorderManager.startRecord(word.english)
+      console.log('录音已开始，单词:', word.english, '返回结果:', result)
       
-      // 10秒后自动停止录音
+      // 3秒后自动停止录音
       setTimeout(async () => {
-        console.log('录音超时（10秒），停止录音')
+        console.log('录音超时（3秒），停止录音')
         await this.stopRecording(word)
-      }, 10000)
+      }, 3000)
       
     } catch (error) {
       console.error('录音失败:', error)
@@ -192,6 +221,10 @@ export struct WordLearningPage {
       if (uri) {
         console.log(`录音文件已保存: ${word.english}.wav`)
       }
+      
+      // 恢复界面
+      this.currentMode = 'normal'
+      console.log('说话模式已结束，恢复界面')
     } catch (error) {
       console.error('停止录音失败:', error)
     }
@@ -356,12 +389,24 @@ export struct WordLearningPage {
                 .fontSize(24)
                 .fontColor('#666666')
                 .margin({ bottom: 20 })
+
             }
             .justifyContent(FlexAlign.Center)
             .flexGrow(1)
 
             // 听说读写按钮区域
             Column() {
+              // 录音图标（仅在说话模式下显示）
+              if (this.currentMode === 'speak') {
+                Image($rawfile('CardOriginal/Wave.png'))
+                  .width(60)
+                  .height(40)
+                  .objectFit(ImageFit.Fill)
+                  .margin({ bottom: 10 })
+                  .scale({ x: this.micIconScale, y: this.micIconScale })
+                  .animation({ duration: 500, curve: Curve.EaseInOut, iterations: 1, playMode: PlayMode.Normal })
+              }
+              
               Row() {
                 Button('听')
                   .fontSize(18)
@@ -375,7 +420,7 @@ export struct WordLearningPage {
                     this.enterListenMode()
                   })
 
-                Button('读')
+                Button('说')
                   .fontSize(18)
                   .fontColor('#FFFFFF')
                   .backgroundColor(this.currentMode === 'speak' ? '#00BFA5' : '#4ECDC4')

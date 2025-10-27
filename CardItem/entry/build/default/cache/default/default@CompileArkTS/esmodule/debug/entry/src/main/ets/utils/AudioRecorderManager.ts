@@ -29,9 +29,14 @@ export class AudioRecorderManager {
             console.info('AudioRecorderManager: 创建AudioCapturer');
             const audioCapturer = await audio.createAudioCapturer(audioCapturerOptions);
             AudioRecorderManager.audioRecorder = audioCapturer;
+            console.info('AudioRecorderManager: AudioCapturer创建成功');
             console.info('AudioRecorderManager: 开始录音');
             if (AudioRecorderManager.audioRecorder) {
                 await AudioRecorderManager.audioRecorder.start();
+                console.info('AudioRecorderManager: AudioCapturer.start() 成功');
+            }
+            else {
+                console.error('AudioRecorderManager.audioRecorder为null!');
             }
             AudioRecorderManager.isRecording = true;
             AudioRecorderManager.recordUri = `file:///data/storage/el2/base/haps/entry/files/${fileName}.wav`;
