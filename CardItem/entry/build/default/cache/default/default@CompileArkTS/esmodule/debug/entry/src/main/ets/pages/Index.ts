@@ -592,10 +592,10 @@ class Index extends ViewPU {
             Column.create();
             Context.animation(GlobalStyles.ANIMATIONS.BUTTON_PRESS);
             Column.width(200);
-            Column.height(220);
+            Column.height(190);
             Column.backgroundColor(GlobalStyles.COLORS.CARD_BACKGROUND);
             Column.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
-            Column.padding({ top: GlobalStyles.SIZES.SPACING_SMALL, bottom: GlobalStyles.SIZES.SPACING_SMALL, left: GlobalStyles.SIZES.SPACING_SMALL, right: GlobalStyles.SIZES.SPACING_SMALL });
+            Column.padding({ top: 10, bottom: 10, left: 10, right: 10 });
             Column.justifyContent(FlexAlign.Center);
             Column.shadow(GlobalStyles.SHADOWS.MEDIUM);
             Column.margin({ right: GlobalStyles.SIZES.SPACING_MEDIUM });
@@ -610,15 +610,17 @@ class Index extends ViewPU {
             // 子分类图标
             Image.create({ "id": -1, "type": 30000, params: [subcategory.icon], "bundleName": "com.example.studyenglishbycard", "moduleName": "entry" });
             // 子分类图标
-            Image.width(140);
+            Image.width(100);
             // 子分类图标
-            Image.height(140);
+            Image.height(100);
             // 子分类图标
-            Image.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
+            Image.borderRadius(GlobalStyles.BORDER_RADIUS.SMALL);
             // 子分类图标
-            Image.backgroundColor(subcategory.color);
+            Image.backgroundColor('#FFFFFF');
             // 子分类图标
-            Image.padding(GlobalStyles.SIZES.SPACING_SMALL);
+            Image.objectFit(ImageFit.Contain);
+            // 子分类图标
+            Image.padding(5);
         }, Image);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             // 子分类名称（包含进度信息）
@@ -626,17 +628,17 @@ class Index extends ViewPU {
             // 子分类名称（包含进度信息）
             Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_SMALL);
             // 子分类名称（包含进度信息）
-            Text.fontColor(subcategory.color);
+            Text.fontColor(GlobalStyles.COLORS.TEXT_PRIMARY);
             // 子分类名称（包含进度信息）
             Text.fontWeight(FontWeight.Bold);
             // 子分类名称（包含进度信息）
-            Text.margin({ top: GlobalStyles.SIZES.SPACING_SMALL });
+            Text.margin({ top: 8 });
             // 子分类名称（包含进度信息）
             Text.textAlign(TextAlign.Center);
             // 子分类名称（包含进度信息）
             Text.maxLines(2);
             // 子分类名称（包含进度信息）
-            Text.textOverflow({ overflow: TextOverflow.None });
+            Text.textOverflow({ overflow: TextOverflow.Ellipsis });
             // 子分类名称（包含进度信息）
             Text.width('100%');
         }, Text);

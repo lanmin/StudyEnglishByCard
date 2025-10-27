@@ -694,10 +694,101 @@ Yo-yo｜溜溜球｜ヨーヨー（yōyō）`;
         ];
         return colors[index % colors.length];
     }
-    // 生成子分类图标路径 - 使用Theme目录下的图片
+    // 生成子分类图标路径 - 使用子分类文件夹内的第一张图片
     private generateSubcategoryIconPath(themeId: string, subcategoryName: string): string {
-        // 返回主题图标，因为实际目录结构中子分类没有对应的图标文件
-        return this.generateIconPath(themeId);
+        // 主题到文件夹的映射
+        const themeFolderMap: Record<string, string> = {
+            'food': 'Food',
+            'animals': 'Animals',
+            'daily_items': 'Daily Items',
+            'body_parts': 'Body Parts',
+            'colors_shapes': 'Colors & Shapes',
+            'vehicles': 'Transportation',
+            'family': 'Family Members & Titles',
+            'actions': 'Actions',
+            'places': 'Places',
+            'nature': 'Natural Things',
+            'clothing': 'Clothing',
+            'toys': 'Toys'
+        };
+        // 子分类到文件夹的映射
+        const subcategoryFolderMap: Record<string, string> = {
+            // 食物类
+            '水果': 'Fruit',
+            '蔬菜': 'Vegetable',
+            '主食': 'Staple Foods',
+            '零食&其他食物': 'Snacks & Other Foods',
+            // 动物类
+            '宠物': 'Pet',
+            '农场动物': 'Farm Animals',
+            '动物园动物': 'Zoo Animals',
+            '水生动物': 'Aquatic Animals',
+            '昆虫&小型动物': 'Insects & Small Animals',
+            // 日常物品类
+            '厨房用品': 'Kitchen Supplies',
+            '卧室用品': 'Bedroom Supplies',
+            '客厅用品': 'Living Room Supplies',
+            '洗漱用品': 'Toiletries',
+            '其他日常物品': 'Other Daily Items',
+            // 身体部位类
+            '头部': 'Head',
+            '四肢': 'Limbs',
+            '躯干': 'Torso',
+            '其他': 'Others',
+            // 颜色&形状类
+            '颜色': 'Colors',
+            '形状': 'Shapes',
+            // 交通工具类
+            '陆地': 'Land',
+            '水上': 'Water',
+            '空中': 'Air',
+            // 家庭成员类
+            '家庭成员': 'Family Members',
+            // 动作类
+            '日常动作': 'Daily Actions',
+            '感官动作': 'Sensory Actions',
+            '互动动作': 'Interactive Actions',
+            '生活动作': 'Life Actions',
+            '其他动作': 'Other Actions',
+            // 场所类（所有场所都在Places目录下，没有子目录）
+            '室内场所': 'Places',
+            // 自然事物类（所有自然事物都在Natural Things目录下，没有子目录）
+            '天气': 'Natural Things',
+            // 服饰类（所有服饰都在Clothing目录下，没有子目录）
+            '上衣': 'Clothing',
+            // 玩具类（所有玩具都在Toys目录下，没有子目录）
+            '传统玩具': 'Toys',
+            '现代玩具': 'Toys',
+            '户外玩具': 'Toys',
+            '益智玩具': 'Toys',
+            '运动玩具': 'Toys',
+            '创意玩具': 'Toys',
+            '电子玩具': 'Toys',
+            '角色扮演玩具': 'Toys',
+            '其他玩具': 'Toys'
+        };
+        const themeFolder = themeFolderMap[themeId] || 'Food';
+        const subcategoryFolder = subcategoryFolderMap[subcategoryName] || 'Fruit';
+        // 从对应的theme数据中获取该子分类的第一个单词
+        const theme = this.getThemeDataById(themeId);
+        if (theme) {
+            const subcategory = theme.subcategories.find(s => s.languages.chinese === subcategoryName);
+            if (subcategory && subcategory.words.length > 0) {
+                // 获取第一个单词的ID，用于生成图片路径
+                const firstWordId = subcategory.words[0].languages.english;
+                // 图片文件名处理：尝试小写和首字母大写
+                const fileNameLower = `${firstWordId.toLowerCase()}.png`;
+                const fileNameCapitalized = `${firstWordId.charAt(0).toUpperCase() + firstWordId.slice(1)}.png`;
+                // 优先尝试首字母大写的文件名
+                const iconPath = `CardOriginal/${themeFolder}/${subcategoryFolder}/${fileNameCapitalized}`;
+                console.log(`生成子分类图标路径: ${subcategoryName} -> ${iconPath}`);
+                return iconPath;
+            }
+        }
+        // 如果找不到，返回一个默认路径
+        const defaultPath = `CardOriginal/${themeFolder}/${subcategoryFolder}/apple.png`;
+        console.log(`使用默认子分类图标路径: ${subcategoryName} -> ${defaultPath}`);
+        return defaultPath;
     }
     // 生成子分类颜色
     private generateSubcategoryColor(themeId: string): string {
