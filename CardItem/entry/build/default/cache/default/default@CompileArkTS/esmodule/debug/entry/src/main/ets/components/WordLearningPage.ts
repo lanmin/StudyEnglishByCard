@@ -8,6 +8,8 @@ interface WordLearningPage_Params {
     subcategory?: SubcategoryData | undefined;
     isFlipped?: boolean;
     isPlaying?: boolean;
+    currentMode?: 'listen' | 'speak' | 'read' | 'write' | 'normal';
+    cardScale?: number;
     learningDataManager?;
 }
 import type { WordData, SubcategoryData } from '../types/CommonTypes';
@@ -24,7 +26,12 @@ export class WordLearningPage extends ViewPU {
         this.__words = new ObservedPropertyObjectPU([], this, "words");
         this.__subcategory = new ObservedPropertyObjectPU(undefined, this, "subcategory");
         this.__isFlipped = new ObservedPropertySimplePU(false, this, "isFlipped");
-        this.__isPlaying = new ObservedPropertySimplePU(false, this, "isPlaying");
+        this.__isPlaying = new ObservedPropertySimplePU(false
+        // 听说读写模式状态
+        , this, "isPlaying");
+        this.__currentMode = new ObservedPropertySimplePU('normal', this, "currentMode");
+        this.__cardScale = new ObservedPropertySimplePU(1 // 卡片缩放状态
+        , this, "cardScale");
         this.learningDataManager = LearningDataManager.getInstance();
         this.setInitiallyProvidedValue(params);
         this.finalizeConstruction();
@@ -48,6 +55,12 @@ export class WordLearningPage extends ViewPU {
         if (params.isPlaying !== undefined) {
             this.isPlaying = params.isPlaying;
         }
+        if (params.currentMode !== undefined) {
+            this.currentMode = params.currentMode;
+        }
+        if (params.cardScale !== undefined) {
+            this.cardScale = params.cardScale;
+        }
         if (params.learningDataManager !== undefined) {
             this.learningDataManager = params.learningDataManager;
         }
@@ -61,6 +74,8 @@ export class WordLearningPage extends ViewPU {
         this.__subcategory.purgeDependencyOnElmtId(rmElmtId);
         this.__isFlipped.purgeDependencyOnElmtId(rmElmtId);
         this.__isPlaying.purgeDependencyOnElmtId(rmElmtId);
+        this.__currentMode.purgeDependencyOnElmtId(rmElmtId);
+        this.__cardScale.purgeDependencyOnElmtId(rmElmtId);
     }
     aboutToBeDeleted() {
         this.__subcategoryId.aboutToBeDeleted();
@@ -69,6 +84,8 @@ export class WordLearningPage extends ViewPU {
         this.__subcategory.aboutToBeDeleted();
         this.__isFlipped.aboutToBeDeleted();
         this.__isPlaying.aboutToBeDeleted();
+        this.__currentMode.aboutToBeDeleted();
+        this.__cardScale.aboutToBeDeleted();
         SubscriberManager.Get().delete(this.id__());
         this.aboutToBeDeletedInternal();
     }
@@ -113,6 +130,21 @@ export class WordLearningPage extends ViewPU {
     }
     set isPlaying(newValue: boolean) {
         this.__isPlaying.set(newValue);
+    }
+    // 听说读写模式状态
+    private __currentMode: ObservedPropertySimplePU<'listen' | 'speak' | 'read' | 'write' | 'normal'>;
+    get currentMode() {
+        return this.__currentMode.get();
+    }
+    set currentMode(newValue: 'listen' | 'speak' | 'read' | 'write' | 'normal') {
+        this.__currentMode.set(newValue);
+    }
+    private __cardScale: ObservedPropertySimplePU<number>; // 卡片缩放状态
+    get cardScale() {
+        return this.__cardScale.get();
+    }
+    set cardScale(newValue: number) {
+        this.__cardScale.set(newValue);
     }
     private learningDataManager;
     aboutToAppear() {
@@ -197,6 +229,107 @@ export class WordLearningPage extends ViewPU {
         this.flipCard();
         this.playPronunciation();
     }
+    // 进入听力模式
+    private enterListenMode() {
+        this.currentMode = 'listen';
+        console.log('进入听力模式');
+        // 卡片缩放动画：缩小再放大
+        this.animateCardScale();
+        // 自动播放当前单词的发音
+        this.playPronunciation();
+    }
+    // 卡片缩放动画
+    private animateCardScale() {
+        // 缩小到0.8
+        this.cardScale = 0.8;
+        // 延迟后恢复到1
+        setTimeout(() => {
+            this.cardScale = 1;
+        }, 200);
+    }
+    // 进入口语模式
+    private async enterSpeakMode() {
+        this.currentMode = 'speak';
+        console.log('进入口语模式');
+        const word = this.getCurrentWord();
+        if (!word) {
+            console.error('没有当前单词');
+            return;
+        }
+        // 1. 先播放一遍单词读音
+        console.log('播放单词读音');
+        await this.playPronunciation();
+        // 2. 播放"XX用英语怎么说？"
+        const question = `${word.chinese}用英语怎么说？`;
+        console.log('播放问题:', question);
+        await SpeechManager.speak(question);
+        // 3. 开启麦克风录制
+        await this.startRecording(word);
+    }
+    // 开始录音
+    private async startRecording(word: WordData) {
+        console.log('开始录音，单词:', word.english);
+        try {
+            // 这里需要实现录音功能
+            // 由于HarmonyOS的录音API比较复杂，这里先提供一个框架
+            console.log('录音功能待实现，10秒超时');
+            // 模拟10秒录音
+            setTimeout(() => {
+                console.log('录音超时，停止录音');
+                this.saveRecording(word);
+            }, 10000);
+        }
+        catch (error) {
+            console.error('录音失败:', error);
+        }
+    }
+    // 保存录音文件
+    private async saveRecording(word: WordData) {
+        try {
+            console.log('保存录音文件，单词:', word.english);
+            // 构造文件路径
+            const fileName = `${word.english}.wav`;
+            const filePath = `/data/storage/el2/base/haps/entry/files/${fileName}`;
+            console.log('录音文件路径:', filePath);
+            // TODO: 实现实际的录音保存功能
+            // 这里需要用到HarmonyOS的AudioRecorder API
+        }
+        catch (error) {
+            console.error('保存录音失败:', error);
+        }
+    }
+    // 进入阅读模式
+    private enterReadMode() {
+        this.currentMode = 'read';
+        console.log('进入阅读模式');
+        // 阅读模式：自动朗读单词
+        this.playPronunciation();
+    }
+    // 进入书写模式
+    private enterWriteMode() {
+        this.currentMode = 'write';
+        console.log('进入书写模式');
+        // TODO: 实现拼写练习功能
+    }
+    // 退出学习模式
+    private exitMode() {
+        this.currentMode = 'normal';
+    }
+    // 获取模式文本
+    private getModeText(): string {
+        switch (this.currentMode) {
+            case 'listen':
+                return '听力模式';
+            case 'speak':
+                return '口语模式';
+            case 'read':
+                return '阅读模式';
+            case 'write':
+                return '书写模式';
+            default:
+                return '';
+        }
+    }
     initialRender() {
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             Column.create();
@@ -223,6 +356,42 @@ export class WordLearningPage extends ViewPU {
             });
         }, Button);
         Button.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Blank.create();
+        }, Blank);
+        Blank.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            If.create();
+            // 显示当前模式
+            if (this.currentMode !== 'normal') {
+                this.ifElseBranchUpdateFunction(0, () => {
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Text.create(this.getModeText());
+                        Text.fontSize(18);
+                        Text.fontColor('#333333');
+                        Text.margin({ left: 10 });
+                    }, Text);
+                    Text.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Button.createWithLabel('×');
+                        Button.fontSize(20);
+                        Button.fontColor('#333333');
+                        Button.backgroundColor(Color.Transparent);
+                        Button.width(50);
+                        Button.height(40);
+                        Button.onClick(() => {
+                            this.exitMode();
+                        });
+                    }, Button);
+                    Button.pop();
+                });
+            }
+            else {
+                this.ifElseBranchUpdateFunction(1, () => {
+                });
+            }
+        }, If);
+        If.pop();
         // 顶部导航栏
         Row.pop();
         this.observeComponentCreation2((elmtId, isInitialRender) => {
@@ -273,6 +442,10 @@ export class WordLearningPage extends ViewPU {
                         Context.animation({ duration: 600, curve: Curve.EaseInOut, iterations: 1, playMode: PlayMode.Normal });
                         // 中间：单词卡片
                         Column.rotate({ angle: this.isFlipped ? 180 : 0, x: 0, y: 1, z: 0 });
+                        Context.animation(null);
+                        Context.animation({ duration: 300, curve: Curve.EaseInOut, iterations: 1, playMode: PlayMode.Normal });
+                        // 中间：单词卡片
+                        Column.scale({ x: this.cardScale, y: this.cardScale });
                         Context.animation(null);
                         // 中间：单词卡片
                         Column.width(350);
@@ -390,14 +563,13 @@ export class WordLearningPage extends ViewPU {
                         Button.createWithLabel('听');
                         Button.fontSize(18);
                         Button.fontColor('#FFFFFF');
-                        Button.backgroundColor('#FF6B6B');
+                        Button.backgroundColor(this.currentMode === 'listen' ? '#FF0000' : '#FF6B6B');
                         Button.borderRadius(20);
                         Button.width(60);
                         Button.height(50);
                         Button.margin({ right: 10 });
                         Button.onClick(() => {
-                            console.log('听力练习模式');
-                            // TODO: 实现听力练习
+                            this.enterListenMode();
                         });
                     }, Button);
                     Button.pop();
@@ -405,14 +577,13 @@ export class WordLearningPage extends ViewPU {
                         Button.createWithLabel('说');
                         Button.fontSize(18);
                         Button.fontColor('#FFFFFF');
-                        Button.backgroundColor('#4ECDC4');
+                        Button.backgroundColor(this.currentMode === 'speak' ? '#00BFA5' : '#4ECDC4');
                         Button.borderRadius(20);
                         Button.width(60);
                         Button.height(50);
                         Button.margin({ right: 10 });
                         Button.onClick(() => {
-                            console.log('口语练习模式');
-                            // TODO: 实现口语练习
+                            this.enterSpeakMode();
                         });
                     }, Button);
                     Button.pop();
@@ -420,14 +591,13 @@ export class WordLearningPage extends ViewPU {
                         Button.createWithLabel('读');
                         Button.fontSize(18);
                         Button.fontColor('#FFFFFF');
-                        Button.backgroundColor('#45B7D1');
+                        Button.backgroundColor(this.currentMode === 'read' ? '#0277BD' : '#45B7D1');
                         Button.borderRadius(20);
                         Button.width(60);
                         Button.height(50);
                         Button.margin({ right: 10 });
                         Button.onClick(() => {
-                            console.log('阅读练习模式');
-                            // TODO: 实现阅读练习
+                            this.enterReadMode();
                         });
                     }, Button);
                     Button.pop();
@@ -435,13 +605,12 @@ export class WordLearningPage extends ViewPU {
                         Button.createWithLabel('写');
                         Button.fontSize(18);
                         Button.fontColor('#FFFFFF');
-                        Button.backgroundColor('#96CEB4');
+                        Button.backgroundColor(this.currentMode === 'write' ? '#009688' : '#96CEB4');
                         Button.borderRadius(20);
                         Button.width(60);
                         Button.height(50);
                         Button.onClick(() => {
-                            console.log('书写练习模式');
-                            // TODO: 实现书写练习
+                            this.enterWriteMode();
                         });
                     }, Button);
                     Button.pop();

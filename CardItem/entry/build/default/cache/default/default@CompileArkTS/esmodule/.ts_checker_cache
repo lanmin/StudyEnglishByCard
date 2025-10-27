@@ -88,7 +88,8 @@
         "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.app.ability.AbilityLifecycleCallback.d.ts",
         "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.ability.featureAbility.d.ts",
         "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/build-tools/ets-loader/declarations/folder_stack.d.ts",
-        "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/build-tools/ets-loader/declarations/navigation.d.ts"
+        "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/build-tools/ets-loader/declarations/navigation.d.ts",
+        "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.file.picker.d.ts"
       ],
       "error": false
     },
@@ -247,7 +248,10 @@
         "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.util.stream.d.ts",
         "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.events.emitter.d.ts",
         "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.multimedia.audio.d.ts",
-        "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.abilityAccessCtrl.d.ts"
+        "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.abilityAccessCtrl.d.ts",
+        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/components/WordLearningPage.ets",
+        "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.file.picker.d.ts",
+        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/AudioRecorderManager.ets"
       ],
       "error": false
     },
@@ -301,7 +305,8 @@
         "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/application/AbilityStageContext.d.ts",
         "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/build-tools/ets-loader/declarations/common.d.ts",
         "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.print.d.ts",
-        "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.abilityAccessCtrl.d.ts"
+        "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.abilityAccessCtrl.d.ts",
+        "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.file.picker.d.ts"
       ],
       "error": false
     },
@@ -1455,11 +1460,12 @@
       "error": false
     },
     "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/components/WordLearningPage.ets": {
-      "mtimeMs": 1761546104667.5156,
+      "mtimeMs": 1761550721972.5266,
       "children": [
         "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/types/CommonTypes.ets",
         "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/LearningDataManager.ets",
-        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/SpeechManager.ets"
+        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/SpeechManager.ets",
+        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/AudioRecorderManager.ets"
       ],
       "parent": [
         "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/pages/Index.ets"
@@ -1950,7 +1956,9 @@
         "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.util.stream.d.ts"
       ],
       "parent": [
-        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/SpeechManager.ets"
+        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/SpeechManager.ets",
+        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/components/WordLearningPage.ets",
+        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/AudioRecorderManager.ets"
       ],
       "error": false
     },
@@ -1960,7 +1968,8 @@
         "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.base.d.ts"
       ],
       "parent": [
-        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/SpeechManager.ets"
+        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/SpeechManager.ets",
+        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/AudioRecorderManager.ets"
       ],
       "error": false
     },
@@ -2013,6 +2022,38 @@
         "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.abilityAccessCtrl.d.ts"
       ],
       "error": false
+    },
+    "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.file.picker.d.ts": {
+      "mtimeMs": 1755503973000,
+      "children": [
+        "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.base.d.ts",
+        "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/application/Context.d.ts",
+        "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.window.d.ts"
+      ],
+      "parent": [
+        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/components/WordLearningPage.ets"
+      ],
+      "error": false
+    },
+    "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/utils/AudioRecorderManager.ets": {
+      "mtimeMs": 1761550793703.3892,
+      "children": [
+        "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.multimedia.audio.d.ts",
+        "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.file.fs.d.ts",
+        "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/@ohos.base.d.ts"
+      ],
+      "parent": [
+        "/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/components/WordLearningPage.ets"
+      ],
+      "error": true,
+      "errorCodes": [
+        2322,
+        18047,
+        -1,
+        2740,
+        2345,
+        1196
+      ]
     }
   }
 }

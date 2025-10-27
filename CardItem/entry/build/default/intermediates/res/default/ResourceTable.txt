@@ -1,6 +1,7 @@
 string EntryAbility_desc 0x01000004
 string EntryAbility_label 0x01000005
 string app_name 0x01000000
+string microphone_permission_reason 0x0100000d
 string module_desc 0x01000006
 string permission_reason 0x0100000c
 color start_window_background 0x01000007

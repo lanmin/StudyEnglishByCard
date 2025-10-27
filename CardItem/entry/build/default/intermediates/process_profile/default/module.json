@@ -66,6 +66,18 @@
 				]
 			}
 		],
+		"requestPermissions": [
+			{
+				"name": "ohos.permission.MICROPHONE",
+				"reason": "$string:microphone_permission_reason",
+				"usedScene": {
+					"abilities": [
+						"EntryAbility"
+					],
+					"when": "inuse"
+				}
+			}
+		],
 		"packageName": "entry",
 		"virtualMachine": "ark12.0.6.0",
 		"compileMode": "esmodule",

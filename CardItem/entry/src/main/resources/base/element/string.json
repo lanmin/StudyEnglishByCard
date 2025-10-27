@@ -15,6 +15,10 @@
     {
       "name": "permission_reason",
       "value": "需要TTS权限来播放单词发音"
+    },
+    {
+      "name": "microphone_permission_reason",
+      "value": "需要在口语模式中录制您的发音"
     }
   ]
 }
