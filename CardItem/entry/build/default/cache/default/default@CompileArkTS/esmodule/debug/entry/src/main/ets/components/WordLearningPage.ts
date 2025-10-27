@@ -273,7 +273,7 @@ export class WordLearningPage extends ViewPU {
         }
         // 1. 先播放一遍单词读音
         console.log('播放单词读音');
-        await this.playPronunciation();
+        // await this.playPronunciation()
         // 2. 播放"XX用英语怎么说？"
         const question = `${word.chinese}用英语怎么说？`;
         console.log('播放问题:', question);
@@ -590,7 +590,7 @@ export class WordLearningPage extends ViewPU {
                     }, Button);
                     Button.pop();
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        Button.createWithLabel('说');
+                        Button.createWithLabel('读');
                         Button.fontSize(18);
                         Button.fontColor('#FFFFFF');
                         Button.backgroundColor(this.currentMode === 'speak' ? '#00BFA5' : '#4ECDC4');
@@ -604,7 +604,7 @@ export class WordLearningPage extends ViewPU {
                     }, Button);
                     Button.pop();
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        Button.createWithLabel('读');
+                        Button.createWithLabel('测');
                         Button.fontSize(18);
                         Button.fontColor('#FFFFFF');
                         Button.backgroundColor(this.currentMode === 'read' ? '#0277BD' : '#45B7D1');

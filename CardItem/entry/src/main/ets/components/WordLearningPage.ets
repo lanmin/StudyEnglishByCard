@@ -151,7 +151,7 @@ export struct WordLearningPage {
     
     // 1. 先播放一遍单词读音
     console.log('播放单词读音')
-    await this.playPronunciation()
+    // await this.playPronunciation()
     
     // 2. 播放"XX用英语怎么说？"
     const question = `${word.chinese}用英语怎么说？`
@@ -375,7 +375,7 @@ export struct WordLearningPage {
                     this.enterListenMode()
                   })
 
-                Button('说')
+                Button('读')
                   .fontSize(18)
                   .fontColor('#FFFFFF')
                   .backgroundColor(this.currentMode === 'speak' ? '#00BFA5' : '#4ECDC4')
@@ -387,7 +387,7 @@ export struct WordLearningPage {
                     this.enterSpeakMode()
                   })
 
-                Button('读')
+                Button('测')
                   .fontSize(18)
                   .fontColor('#FFFFFF')
                   .backgroundColor(this.currentMode === 'read' ? '#0277BD' : '#45B7D1')
