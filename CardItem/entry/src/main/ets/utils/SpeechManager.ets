@@ -235,11 +235,15 @@ export class SpeechManager {
             console.warn('停止TTS失败（可能是没有正在播放的）:', stopErr)
           }
           
-          // 调用speak方法
+          // 调用speak方法，增加音量参数
           try {
             console.info('准备调用speak方法，text:', text, 'requestId:', requestId)
-            // speak方法的正确调用方式：speak(text, { requestId: requestId })
-            SpeechManager.ttsEngine.speak(text, { requestId: requestId })
+            // speak方法的正确调用方式：speak(text, { requestId: requestId, volume: 1.5 })
+            // 注意：音量参数可能需要根据实际情况调整
+            SpeechManager.ttsEngine.speak(text, { 
+              requestId: requestId,
+              // volume: 1.5  // 尝试增加音量（如果API支持）
+            })
             console.info('TTS播放命令已发送，等待onStart回调...')
           } catch (speakErr) {
             console.error('调用speak方法失败:', speakErr)

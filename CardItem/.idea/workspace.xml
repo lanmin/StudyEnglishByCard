@@ -2,28 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f13ac8f3-b68d-464b-b6b1-4675f4b41389" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.hvigor/cache/file-cache.json" beforeDir="false" afterPath="$PROJECT_DIR$/.hvigor/cache/file-cache.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.hvigor/cache/task-cache.json" beforeDir="false" afterPath="$PROJECT_DIR$/.hvigor/cache/task-cache.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.hvigor/outputs/build-logs/build.log" beforeDir="false" afterPath="$PROJECT_DIR$/.hvigor/outputs/build-logs/build.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.hvigor/outputs/build-logs/build.log.1" beforeDir="false" afterPath="$PROJECT_DIR$/.hvigor/outputs/build-logs/build.log.1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.hvigor/outputs/logs/details/details.json" beforeDir="false" afterPath="$PROJECT_DIR$/.hvigor/outputs/logs/details/details.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510271241575270.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510271242169780.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510271243243480.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510271243399160.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510271244389490.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510271245230060.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510271247060250.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510271247554010.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510271248394860.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510271249070890.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510271322511440.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/.preview/default/cache/default/default@PreviewArkTS/esmodule/.tsbuildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/entry/.preview/default/cache/default/default@PreviewArkTS/esmodule/.tsbuildinfo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/.preview/default/cache/default/default@PreviewArkTS/esmodule/.tsbuildinfo.linter" beforeDir="false" afterPath="$PROJECT_DIR$/entry/.preview/default/cache/default/default@PreviewArkTS/esmodule/.tsbuildinfo.linter" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/.preview/default/cache/default/default@PreviewArkTS/esmodule/debug/entry/src/main/ets/components/WordLearningPage.protoBin" beforeDir="false" afterPath="$PROJECT_DIR$/entry/.preview/default/cache/default/default@PreviewArkTS/esmodule/debug/entry/src/main/ets/components/WordLearningPage.protoBin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/.preview/default/cache/default/default@PreviewArkTS/esmodule/debug/entry/src/main/ets/components/WordLearningPage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/entry/.preview/default/cache/default/default@PreviewArkTS/esmodule/debug/entry/src/main/ets/components/WordLearningPage.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/.preview/default/cache/default/default@PreviewArkTS/esmodule/debug/entry/src/main/ets/utils/TTSManager.protoBin" beforeDir="false" afterPath="$PROJECT_DIR$/entry/.preview/default/cache/default/default@PreviewArkTS/esmodule/debug/entry/src/main/ets/utils/TTSManager.protoBin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/.preview/default/cache/default/default@PreviewArkTS/esmodule/debug/entry/src/main/ets/utils/TTSManager.ts" beforeDir="false" afterPath="$PROJECT_DIR$/entry/.preview/default/cache/default/default@PreviewArkTS/esmodule/debug/entry/src/main/ets/utils/TTSManager.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/.preview/default/cache/default/default@PreviewArkTS/esmodule/debug/entry/src/main/ets/utils/SpeechManager.protoBin" beforeDir="false" afterPath="$PROJECT_DIR$/entry/.preview/default/cache/default/default@PreviewArkTS/esmodule/debug/entry/src/main/ets/utils/SpeechManager.protoBin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/.preview/default/cache/default/default@PreviewArkTS/esmodule/debug/entry/src/main/ets/utils/SpeechManager.ts" beforeDir="false" afterPath="$PROJECT_DIR$/entry/.preview/default/cache/default/default@PreviewArkTS/esmodule/debug/entry/src/main/ets/utils/SpeechManager.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/.preview/default/cache/default/default@PreviewArkTS/esmodule/debug/filesInfo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/entry/.preview/default/cache/default/default@PreviewArkTS/esmodule/debug/filesInfo.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/.preview/default/cache/default/default@PreviewArkTS/esmodule/debug/modules.cache" beforeDir="false" afterPath="$PROJECT_DIR$/entry/.preview/default/cache/default/default@PreviewArkTS/esmodule/debug/modules.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/.preview/default/cache/default/default@PreviewArkTS/esmodule/debug/sourceMaps.json" beforeDir="false" afterPath="$PROJECT_DIR$/entry/.preview/default/cache/default/default@PreviewArkTS/esmodule/debug/sourceMaps.json" afterDir="false" />
@@ -32,31 +17,19 @@
       <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/.ts_checker_cache" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/.ts_checker_cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/.tsbuildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/.tsbuildinfo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/.tsbuildinfo.linter" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/.tsbuildinfo.linter" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/modules/Index.ets-927f80b0136368d430d4aa1cb5061f0a.msgpack" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/modules/Index.ets-927f80b0136368d430d4aa1cb5061f0a.msgpack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/modules/TTSManager.ets-92c25547eb71ef0758f95e6a8339da08.msgpack" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/modules/TTSManager.ets-92c25547eb71ef0758f95e6a8339da08.msgpack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/modules/WordLearningPage.ets-ea292f9f4bd1f4b54e87300182ac53df.msgpack" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/modules/WordLearningPage.ets-ea292f9f4bd1f4b54e87300182ac53df.msgpack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/modules/SpeechManager.ets-46261fa3082b7be30c2d209ba6e9c88e.msgpack" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/modules/SpeechManager.ets-46261fa3082b7be30c2d209ba6e9c88e.msgpack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/plugins/plugins.msgpack" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/plugins/plugins.msgpack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/entry/src/main/ets/components/WordLearningPage.protoBin" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/entry/src/main/ets/components/WordLearningPage.protoBin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/entry/src/main/ets/components/WordLearningPage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/entry/src/main/ets/components/WordLearningPage.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/entry/src/main/ets/pages/Index.protoBin" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/entry/src/main/ets/pages/Index.protoBin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/entry/src/main/ets/pages/Index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/entry/src/main/ets/pages/Index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/entry/src/main/ets/utils/TTSManager.protoBin" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/entry/src/main/ets/utils/TTSManager.protoBin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/entry/src/main/ets/utils/TTSManager.ts" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/entry/src/main/ets/utils/TTSManager.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/entry/src/main/ets/utils/SpeechManager.protoBin" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/entry/src/main/ets/utils/SpeechManager.protoBin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/entry/src/main/ets/utils/SpeechManager.ts" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/entry/src/main/ets/utils/SpeechManager.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/filesInfo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/filesInfo.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/modules.cache" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/modules.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/sourceMaps.json" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/sourceMaps.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/generated/r/default/ResourceTable.h" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/generated/r/default/ResourceTable.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/loader_out/default/ets/modules.abc" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/intermediates/loader_out/default/ets/modules.abc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/loader_out/default/ets/sourceMaps.map" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/intermediates/loader_out/default/ets/sourceMaps.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/ResourceTable.txt" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/ResourceTable.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/ids_map/id_defined.json" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/ids_map/id_defined.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources.index" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources.index" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/source_map/default/sourceMaps.map" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/intermediates/source_map/default/sourceMaps.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/build/default/outputs/default/entry-default-unsigned.hap" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/outputs/default/entry-default-unsigned.hap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/build/default/outputs/default/mapping/sourceMaps.map" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/outputs/default/mapping/sourceMaps.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/src/main/ets/components/WordLearningPage.ets" beforeDir="false" afterPath="$PROJECT_DIR$/entry/src/main/ets/components/WordLearningPage.ets" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/src/main/ets/utils/TTSManager.ets" beforeDir="false" afterPath="$PROJECT_DIR$/entry/src/main/ets/utils/TTSManager.ets" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/base/element/string.json" beforeDir="false" afterPath="$PROJECT_DIR$/entry/src/main/resources/base/element/string.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/ets/utils/SpeechManager.ets" beforeDir="false" afterPath="$PROJECT_DIR$/entry/src/main/ets/utils/SpeechManager.ets" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +44,7 @@
       <hilogPanelState>
         <option name="logPanelType" value="ONLINE" />
         <option name="processName" value="com.example.studyenglishbycard" />
-        <option name="searchFilterContent" value="TTS播放命令已发送" />
+        <option name="searchFilterContent" value="onComplete" />
       </hilogPanelState>
     </panelStates>
   </component>
@@ -85,9 +58,9 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "127.0.0.1:5555": "5376832281761543261421",
+    "127.0.0.1:5555": "5376832281761544180502",
     "Application.entry.executor": "Run",
-    "MODULE_HAP_TIME": "{\"127.0.0.1:5555entry\":\"2025-10-27T05:34:20.384362407Z\"}",
+    "MODULE_HAP_TIME": "{\"127.0.0.1:5555entry\":\"2025-10-27T05:49:39.621985558Z\"}",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "ace.nodejs.version": "18.20.1"
