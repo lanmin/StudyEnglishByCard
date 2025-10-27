@@ -749,24 +749,87 @@ export class WordLearningPage extends ViewPU {
             if (this.getCurrentWord()) {
                 this.ifElseBranchUpdateFunction(0, () => {
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Row.create();
+                        Row.width('100%');
+                        Row.height('90%');
+                        Row.backgroundColor('#FAFAFA');
+                        Row.margin({ top: 20, bottom: 20 });
+                    }, Row);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        // 左侧：标题
                         Column.create();
-                        Column.width('100%');
-                        Column.height('90%');
-                        Column.padding({ left: 20, right: 20 });
+                        // 左侧：标题
+                        Column.width('15%');
+                        // 左侧：标题
+                        Column.height('100%');
+                        // 左侧：标题
+                        Column.justifyContent(FlexAlign.Center);
+                        // 左侧：标题
+                        Column.margin({ left: 20 });
                     }, Column);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        // 顶部：可选字母区域
+                        Text.create('✨');
+                        Text.fontSize(50);
+                        Text.fontColor('#FF6B6B');
+                        Text.margin({ bottom: 10 });
+                    }, Text);
+                    Text.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Text.create('拼');
+                        Text.fontSize(60);
+                        Text.fontColor('#FF6B6B');
+                        Text.fontWeight(FontWeight.Bold);
+                    }, Text);
+                    Text.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Text.create('一');
+                        Text.fontSize(60);
+                        Text.fontColor('#FF6B6B');
+                        Text.fontWeight(FontWeight.Bold);
+                    }, Text);
+                    Text.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Text.create('拼');
+                        Text.fontSize(60);
+                        Text.fontColor('#FF6B6B');
+                        Text.fontWeight(FontWeight.Bold);
+                    }, Text);
+                    Text.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Text.create('✨');
+                        Text.fontSize(50);
+                        Text.fontColor('#FF6B6B');
+                        Text.margin({ top: 10 });
+                    }, Text);
+                    Text.pop();
+                    // 左侧：标题
+                    Column.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        // 右侧：滚动内容区域
                         Column.create();
-                        // 顶部：可选字母区域
+                        // 右侧：滚动内容区域
                         Column.width('100%');
-                        // 顶部：可选字母区域
-                        Column.height('30%');
-                        // 顶部：可选字母区域
-                        Column.margin({ top: 30 });
+                        // 右侧：滚动内容区域
+                        Column.layoutWeight(1);
+                    }, Column);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        // 可选字母区域
+                        Column.create();
+                        // 可选字母区域
+                        Column.width('100%');
+                        // 可选字母区域
+                        Column.backgroundColor('#E8F8F5');
+                        // 可选字母区域
+                        Column.borderRadius(25);
+                        // 可选字母区域
+                        Column.padding(15);
+                        // 可选字母区域
+                        Column.margin({ bottom: 20 });
                     }, Column);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         Flex.create({ wrap: FlexWrap.Wrap, justifyContent: FlexAlign.Center });
                         Flex.width('100%');
+                        Flex.padding(10);
                     }, Flex);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         ForEach.create();
@@ -774,17 +837,16 @@ export class WordLearningPage extends ViewPU {
                             const letter = _item;
                             this.observeComponentCreation2((elmtId, isInitialRender) => {
                                 Text.create(letter);
-                                Text.fontSize(60);
+                                Text.fontSize(70);
                                 Text.fontColor('#FFFFFF');
                                 Text.fontWeight(FontWeight.Bold);
-                                Text.width(80);
-                                Text.height(80);
+                                Text.width(85);
+                                Text.height(85);
                                 Text.textAlign(TextAlign.Center);
-                                Text.backgroundColor('#4A90E2');
-                                Text.borderRadius(10);
-                                Text.margin(10);
+                                Text.backgroundColor('#4ECDC4');
+                                Text.borderRadius(18);
+                                Text.margin(6);
                                 Text.onClick(() => {
-                                    // 点击字母，添加到书写框
                                     if (this.draggedLetters.filter(l => l === letter).length < this.getCurrentWord()!.english.split('').filter(l => l === letter).length) {
                                         this.draggedLetters.push(letter);
                                         this.checkWriteResult();
@@ -797,20 +859,38 @@ export class WordLearningPage extends ViewPU {
                     }, ForEach);
                     ForEach.pop();
                     Flex.pop();
-                    // 顶部：可选字母区域
+                    // 可选字母区域
                     Column.pop();
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        // 中间：书写区域（显示已拖拽的字母）
+                        // 书写区域
                         Column.create();
-                        // 中间：书写区域（显示已拖拽的字母）
+                        // 书写区域
                         Column.width('100%');
-                        // 中间：书写区域（显示已拖拽的字母）
-                        Column.margin({ bottom: 40 });
+                        // 书写区域
+                        Column.backgroundColor('#FFF8E7');
+                        // 书写区域
+                        Column.borderRadius(25);
+                        // 书写区域
+                        Column.padding(20);
+                        // 书写区域
+                        Column.border({
+                            width: 4,
+                            color: this.isWriteCorrect ? '#95E1D3' : '#FFB6C1',
+                            style: BorderStyle.Solid
+                        });
+                        // 书写区域
+                        Column.shadow({
+                            radius: 10,
+                            color: '#00000010',
+                            offsetX: 0,
+                            offsetY: 3
+                        });
+                        // 书写区域
+                        Column.margin({ bottom: 10 });
                     }, Column);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         Flex.create({ wrap: FlexWrap.NoWrap, justifyContent: FlexAlign.Center });
                         Flex.width('100%');
-                        Flex.height(150);
                     }, Flex);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         ForEach.create();
@@ -818,17 +898,16 @@ export class WordLearningPage extends ViewPU {
                             const letter = _item;
                             this.observeComponentCreation2((elmtId, isInitialRender) => {
                                 Text.create(letter);
-                                Text.fontSize(70);
-                                Text.fontColor(this.isWriteCorrect ? '#000000' : '#FF0000');
+                                Text.fontSize(85);
+                                Text.fontColor('#FFFFFF');
                                 Text.fontWeight(FontWeight.Bold);
-                                Text.width(90);
-                                Text.height(90);
+                                Text.width(100);
+                                Text.height(100);
                                 Text.textAlign(TextAlign.Center);
-                                Text.backgroundColor(this.isWriteCorrect ? '#90EE90' : '#F0F0F0');
-                                Text.borderRadius(10);
-                                Text.margin(10);
+                                Text.backgroundColor(this.isWriteCorrect ? '#95E1D3' : '#FF9A9A');
+                                Text.borderRadius(20);
+                                Text.margin(8);
                                 Text.onClick(() => {
-                                    // 点击已放置的字母，移除
                                     if (!this.isWriteCorrect) {
                                         this.draggedLetters.splice(index, 1);
                                     }
@@ -844,10 +923,10 @@ export class WordLearningPage extends ViewPU {
                         if (this.draggedLetters.length === 0) {
                             this.ifElseBranchUpdateFunction(0, () => {
                                 this.observeComponentCreation2((elmtId, isInitialRender) => {
-                                    Text.create('点击上面字母拼写单词');
-                                    Text.fontSize(40);
-                                    Text.fontColor('#CCCCCC');
-                                    Text.margin(50);
+                                    Text.create('👆 点击字母拼写');
+                                    Text.fontSize(35);
+                                    Text.fontColor('#A9A9A9');
+                                    Text.margin(20);
                                 }, Text);
                                 Text.pop();
                             });
@@ -859,9 +938,11 @@ export class WordLearningPage extends ViewPU {
                     }, If);
                     If.pop();
                     Flex.pop();
-                    // 中间：书写区域（显示已拖拽的字母）
+                    // 书写区域
                     Column.pop();
+                    // 右侧：滚动内容区域
                     Column.pop();
+                    Row.pop();
                 });
             }
             else {
@@ -996,7 +1077,7 @@ export class WordLearningPage extends ViewPU {
                     }, Column);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         Text.create(this.getCurrentWord()!.english);
-                        Text.fontSize(48);
+                        Text.fontSize(35);
                         Text.fontColor('#333333');
                         Text.fontWeight(FontWeight.Bold);
                         Text.margin({ bottom: 30 });
@@ -1004,7 +1085,7 @@ export class WordLearningPage extends ViewPU {
                     Text.pop();
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         Text.create(this.getCurrentWord()!.chinese);
-                        Text.fontSize(36);
+                        Text.fontSize(35);
                         Text.fontColor('#FF6B6B');
                         Text.fontWeight(FontWeight.Bold);
                         Text.margin({ bottom: 20 });

@@ -492,74 +492,123 @@ export struct WordLearningPage {
   @Builder
   buildWriteMode() {
     if (this.getCurrentWord()) {
-      Column() {
-        // 顶部：可选字母区域
+      Row() {
+        // 左侧：标题
         Column() {
-          Flex({ wrap: FlexWrap.Wrap, justifyContent: FlexAlign.Center }) {
-            ForEach(Array.from(this.getCurrentWord()!.english), (letter: string, index: number) => {
-              Text(letter)
-                .fontSize(60)
-                .fontColor('#FFFFFF')
-                .fontWeight(FontWeight.Bold)
-                .width(80)
-                .height(80)
-                .textAlign(TextAlign.Center)
-                .backgroundColor('#4A90E2')
-                .borderRadius(10)
-                .margin(10)
-                .onClick(() => {
-                  // 点击字母，添加到书写框
-                  if (this.draggedLetters.filter(l => l === letter).length < this.getCurrentWord()!.english.split('').filter(l => l === letter).length) {
-                    this.draggedLetters.push(letter)
-                    this.checkWriteResult()
-                  }
-                })
-            })
-          }
-          .width('100%')
+          Text('✨')
+            .fontSize(50)
+            .fontColor('#FF6B6B')
+            .margin({ bottom: 10 })
+          Text('拼')
+            .fontSize(60)
+            .fontColor('#FF6B6B')
+            .fontWeight(FontWeight.Bold)
+          Text('一')
+            .fontSize(60)
+            .fontColor('#FF6B6B')
+            .fontWeight(FontWeight.Bold)
+          Text('拼')
+            .fontSize(60)
+            .fontColor('#FF6B6B')
+            .fontWeight(FontWeight.Bold)
+          Text('✨')
+            .fontSize(50)
+            .fontColor('#FF6B6B')
+            .margin({ top: 10 })
         }
-        .width('100%')
-        .height('30%')
-        .margin({ top: 30 })
+        .width('15%')
+        .height('100%')
+        .justifyContent(FlexAlign.Center)
+        .margin({ left: 20 })
         
-        // 中间：书写区域（显示已拖拽的字母）
+        // 右侧：滚动内容区域
         Column() {
-          Flex({ wrap: FlexWrap.NoWrap, justifyContent: FlexAlign.Center }) {
-            ForEach(this.draggedLetters, (letter: string, index: number) => {
-              Text(letter)
-                .fontSize(70)
-                .fontColor(this.isWriteCorrect ? '#000000' : '#FF0000')
-                .fontWeight(FontWeight.Bold)
-                .width(90)
-                .height(90)
-                .textAlign(TextAlign.Center)
-                .backgroundColor(this.isWriteCorrect ? '#90EE90' : '#F0F0F0')
-                .borderRadius(10)
-                .margin(10)
-                .onClick(() => {
-                  // 点击已放置的字母，移除
-                  if (!this.isWriteCorrect) {
-                    this.draggedLetters.splice(index, 1)
-                  }
-                })
-            })
-            
-            if (this.draggedLetters.length === 0) {
-              Text('点击上面字母拼写单词')
-                .fontSize(40)
-                .fontColor('#CCCCCC')
-                .margin(50)
+          // 可选字母区域
+          Column() {
+            Flex({ wrap: FlexWrap.Wrap, justifyContent: FlexAlign.Center }) {
+              ForEach(Array.from(this.getCurrentWord()!.english), (letter: string, index: number) => {
+                Text(letter)
+                  .fontSize(70)
+                  .fontColor('#FFFFFF')
+                  .fontWeight(FontWeight.Bold)
+                  .width(85)
+                  .height(85)
+                  .textAlign(TextAlign.Center)
+                  .backgroundColor('#4ECDC4')
+                  .borderRadius(18)
+                  .margin(6)
+                  .onClick(() => {
+                    if (this.draggedLetters.filter(l => l === letter).length < this.getCurrentWord()!.english.split('').filter(l => l === letter).length) {
+                      this.draggedLetters.push(letter)
+                      this.checkWriteResult()
+                    }
+                  })
+              })
             }
+            .width('100%')
+            .padding(10)
           }
           .width('100%')
-          .height(150)
+          .backgroundColor('#E8F8F5')
+          .borderRadius(25)
+          .padding(15)
+          .margin({ bottom: 20 })
+        
+          // 书写区域
+          Column() {
+            Flex({ wrap: FlexWrap.NoWrap, justifyContent: FlexAlign.Center }) {
+              ForEach(this.draggedLetters, (letter: string, index: number) => {
+                Text(letter)
+                  .fontSize(85)
+                  .fontColor('#FFFFFF')
+                  .fontWeight(FontWeight.Bold)
+                  .width(100)
+                  .height(100)
+                  .textAlign(TextAlign.Center)
+                  .backgroundColor(this.isWriteCorrect ? '#95E1D3' : '#FF9A9A')
+                  .borderRadius(20)
+                  .margin(8)
+                  .onClick(() => {
+                    if (!this.isWriteCorrect) {
+                      this.draggedLetters.splice(index, 1)
+                    }
+                  })
+              })
+              
+              if (this.draggedLetters.length === 0) {
+                Text('👆 点击字母拼写')
+                  .fontSize(35)
+                  .fontColor('#A9A9A9')
+                  .margin(20)
+              }
+            }
+            .width('100%')
+            // .height(100)
+          }
+          .width('100%')
+          .backgroundColor('#FFF8E7')
+          .borderRadius(25)
+          .padding(20)
+          .border({
+            width: 4,
+            color: this.isWriteCorrect ? '#95E1D3' : '#FFB6C1',
+            style: BorderStyle.Solid
+          })
+          .shadow({
+            radius: 10,
+            color: '#00000010',
+            offsetX: 0,
+            offsetY: 3
+          })
+          .margin({ bottom: 10 })
         }
         .width('100%')
-        .margin({ bottom: 40 })
+        .layoutWeight(1)
       }
       .width('100%')
       .height('90%')
-      .padding({ left: 20, right: 20 })
+      .backgroundColor('#FAFAFA')
+      .margin({ top: 20, bottom: 20 })
     }
   }
 
@@ -632,13 +681,13 @@ export struct WordLearningPage {
             // 单词信息区域
             Column() {
               Text(this.getCurrentWord()!.english)
-                .fontSize(48)
+                .fontSize(35)
                 .fontColor('#333333')
                 .fontWeight(FontWeight.Bold)
                 .margin({ bottom: 30 })
 
               Text(this.getCurrentWord()!.chinese)
-                .fontSize(36)
+                .fontSize(35)
                 .fontColor('#FF6B6B')
                 .fontWeight(FontWeight.Bold)
                 .margin({ bottom: 20 })
