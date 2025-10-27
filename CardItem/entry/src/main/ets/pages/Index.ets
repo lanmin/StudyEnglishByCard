@@ -120,7 +120,10 @@ struct Index {
         this.ParentHelperPage()
       } else if (this.currentPage === 'word_card') {
         WordLearningPage({
-          subcategoryId: this.currentSubcategoryId
+          subcategoryId: this.currentSubcategoryId,
+          onBack: () => {
+            this.currentPage = 'subcategory_select'
+          }
         })
       }
     }

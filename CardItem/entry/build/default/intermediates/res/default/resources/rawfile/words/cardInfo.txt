@@ -62,7 +62,7 @@ Rice cake｜米糕｜お餅（おもち，omochi）
 Toast｜吐司｜トースト（toostu）  
 Waffle｜华夫饼｜ワッフル（waffuru）  
 Muffin｜玛芬｜マフィン（mafin）  
-@@@ 零食&其他食物｜Snacks & Other Foods｜スナック＆その他の食べ物（すなっく＆そのたののたべもの）
+@@@ 零食和其他食物｜Snacks_Other Foods｜スナック＆その他の食べ物（すなっく＆そのたののたべもの）
 Candy｜糖果｜キャンディー（kyandii）  
 Chocolate｜巧克力｜チョコレート（chokoreeto）  
 Cheese｜奶酪｜チーズ（cheese）  

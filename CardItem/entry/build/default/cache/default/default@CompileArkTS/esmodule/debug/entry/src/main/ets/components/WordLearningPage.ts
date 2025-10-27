@@ -3,6 +3,7 @@ if (!("finalizeConstruction" in ViewPU.prototype)) {
 }
 interface WordLearningPage_Params {
     subcategoryId?: string;
+    onBack?: () => void;
     currentWordIndex?: number;
     words?: WordData[];
     subcategory?: SubcategoryData | undefined;
@@ -10,6 +11,7 @@ interface WordLearningPage_Params {
     isPlaying?: boolean;
     currentMode?: 'listen' | 'speak' | 'read' | 'write' | 'normal';
     cardScale?: number;
+    imageError?: boolean;
     learningDataManager?;
 }
 import type { WordData, SubcategoryData } from '../types/CommonTypes';
@@ -22,7 +24,8 @@ export class WordLearningPage extends ViewPU {
         if (typeof paramsLambda === "function") {
             this.paramsGenerator_ = paramsLambda;
         }
-        this.__subcategoryId = new ObservedPropertySimplePU('', this, "subcategoryId");
+        this.subcategoryId = '';
+        this.onBack = undefined;
         this.__currentWordIndex = new ObservedPropertySimplePU(0, this, "currentWordIndex");
         this.__words = new ObservedPropertyObjectPU([], this, "words");
         this.__subcategory = new ObservedPropertyObjectPU(undefined, this, "subcategory");
@@ -33,6 +36,8 @@ export class WordLearningPage extends ViewPU {
         this.__currentMode = new ObservedPropertySimplePU('normal', this, "currentMode");
         this.__cardScale = new ObservedPropertySimplePU(1 // 卡片缩放状态
         , this, "cardScale");
+        this.__imageError = new ObservedPropertySimplePU(false // 图片加载失败状态
+        , this, "imageError");
         this.learningDataManager = LearningDataManager.getInstance();
         this.setInitiallyProvidedValue(params);
         this.finalizeConstruction();
@@ -40,6 +45,9 @@ export class WordLearningPage extends ViewPU {
     setInitiallyProvidedValue(params: WordLearningPage_Params) {
         if (params.subcategoryId !== undefined) {
             this.subcategoryId = params.subcategoryId;
+        }
+        if (params.onBack !== undefined) {
+            this.onBack = params.onBack;
         }
         if (params.currentWordIndex !== undefined) {
             this.currentWordIndex = params.currentWordIndex;
@@ -62,6 +70,9 @@ export class WordLearningPage extends ViewPU {
         if (params.cardScale !== undefined) {
             this.cardScale = params.cardScale;
         }
+        if (params.imageError !== undefined) {
+            this.imageError = params.imageError;
+        }
         if (params.learningDataManager !== undefined) {
             this.learningDataManager = params.learningDataManager;
         }
@@ -69,7 +80,6 @@ export class WordLearningPage extends ViewPU {
     updateStateVars(params: WordLearningPage_Params) {
     }
     purgeVariableDependenciesOnElmtId(rmElmtId) {
-        this.__subcategoryId.purgeDependencyOnElmtId(rmElmtId);
         this.__currentWordIndex.purgeDependencyOnElmtId(rmElmtId);
         this.__words.purgeDependencyOnElmtId(rmElmtId);
         this.__subcategory.purgeDependencyOnElmtId(rmElmtId);
@@ -77,9 +87,9 @@ export class WordLearningPage extends ViewPU {
         this.__isPlaying.purgeDependencyOnElmtId(rmElmtId);
         this.__currentMode.purgeDependencyOnElmtId(rmElmtId);
         this.__cardScale.purgeDependencyOnElmtId(rmElmtId);
+        this.__imageError.purgeDependencyOnElmtId(rmElmtId);
     }
     aboutToBeDeleted() {
-        this.__subcategoryId.aboutToBeDeleted();
         this.__currentWordIndex.aboutToBeDeleted();
         this.__words.aboutToBeDeleted();
         this.__subcategory.aboutToBeDeleted();
@@ -87,16 +97,12 @@ export class WordLearningPage extends ViewPU {
         this.__isPlaying.aboutToBeDeleted();
         this.__currentMode.aboutToBeDeleted();
         this.__cardScale.aboutToBeDeleted();
+        this.__imageError.aboutToBeDeleted();
         SubscriberManager.Get().delete(this.id__());
         this.aboutToBeDeletedInternal();
     }
-    private __subcategoryId: ObservedPropertySimplePU<string>;
-    get subcategoryId() {
-        return this.__subcategoryId.get();
-    }
-    set subcategoryId(newValue: string) {
-        this.__subcategoryId.set(newValue);
-    }
+    private subcategoryId: string;
+    private onBack?: () => void;
     private __currentWordIndex: ObservedPropertySimplePU<number>;
     get currentWordIndex() {
         return this.__currentWordIndex.get();
@@ -147,6 +153,13 @@ export class WordLearningPage extends ViewPU {
     set cardScale(newValue: number) {
         this.__cardScale.set(newValue);
     }
+    private __imageError: ObservedPropertySimplePU<boolean>; // 图片加载失败状态
+    get imageError() {
+        return this.__imageError.get();
+    }
+    set imageError(newValue: boolean) {
+        this.__imageError.set(newValue);
+    }
     private learningDataManager;
     aboutToAppear() {
         // 初始化TTS
@@ -164,6 +177,7 @@ export class WordLearningPage extends ViewPU {
         this.words = this.learningDataManager.getWordsBySubcategory(this.subcategoryId);
         this.currentWordIndex = 0;
         this.isFlipped = false;
+        this.imageError = false; // 重置图片加载错误状态
         console.log(`WordLearningPage: 加载完成，子分类: ${this.subcategory?.name}, 单词数量: ${this.words.length}`);
         if (this.words.length > 0) {
             const firstWord = this.words[0];
@@ -352,7 +366,10 @@ export class WordLearningPage extends ViewPU {
             Button.fontColor('#333333');
             Button.backgroundColor(Color.Transparent);
             Button.onClick(() => {
-                console.log('返回按钮被点击 - 暂时禁用返回功能');
+                console.log('返回按钮被点击 - 返回子分类选择页面');
+                if (this.onBack) {
+                    this.onBack();
+                }
             });
         }, Button);
         Button.pop();
@@ -470,29 +487,28 @@ export class WordLearningPage extends ViewPU {
                         });
                     }, Column);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        // 使用rawfile资源引用
-                        Image.create({ "id": -1, "type": 30000, params: [this.getCurrentWord()!.image], "bundleName": "com.example.studyenglishbycard", "moduleName": "entry" });
-                        // 使用rawfile资源引用
+                        // 使用rawfile资源引用，如果图片加载失败则使用DefaultImg.png
+                        Image.create(this.imageError ? { "id": 0, "type": 30000, params: ['CardOriginal/DefaultImg.png'], "bundleName": "com.example.studyenglishbycard", "moduleName": "entry" } : { "id": -1, "type": 30000, params: [this.getCurrentWord()!.image], "bundleName": "com.example.studyenglishbycard", "moduleName": "entry" });
+                        // 使用rawfile资源引用，如果图片加载失败则使用DefaultImg.png
                         Image.width(250);
-                        // 使用rawfile资源引用
+                        // 使用rawfile资源引用，如果图片加载失败则使用DefaultImg.png
                         Image.height(250);
-                        // 使用rawfile资源引用
+                        // 使用rawfile资源引用，如果图片加载失败则使用DefaultImg.png
                         Image.borderRadius(20);
-                        // 使用rawfile资源引用
+                        // 使用rawfile资源引用，如果图片加载失败则使用DefaultImg.png
                         Image.objectFit(ImageFit.Cover);
-                        // 使用rawfile资源引用
-                        Image.alt({ "id": 16777218, "type": 20000, params: [], "bundleName": "com.example.studyenglishbycard", "moduleName": "entry" });
-                        // 使用rawfile资源引用
+                        // 使用rawfile资源引用，如果图片加载失败则使用DefaultImg.png
                         Image.onError(() => {
                             console.log(`图片加载失败: ${this.getCurrentWord()!.image}`);
-                            // 尝试备用路径
-                            console.log('尝试使用备用图片路径...');
+                            console.log('使用DefaultImg.png作为占位图');
+                            this.imageError = true;
                         });
-                        // 使用rawfile资源引用
+                        // 使用rawfile资源引用，如果图片加载失败则使用DefaultImg.png
                         Image.onComplete(() => {
                             console.log(`图片加载成功: ${this.getCurrentWord()!.image}`);
+                            this.imageError = false;
                         });
-                        // 使用rawfile资源引用
+                        // 使用rawfile资源引用，如果图片加载失败则使用DefaultImg.png
                         Image.onClick(() => {
                             this.handleTap();
                         });
@@ -683,8 +699,4 @@ export class WordLearningPage extends ViewPU {
     rerender() {
         this.updateDirtyElements();
     }
-    static getEntryName(): string {
-        return "WordLearningPage";
-    }
 }
-registerNamedRoute(() => new WordLearningPage(undefined, {}), "", { bundleName: "com.example.studyenglishbycard", moduleName: "entry", pagePath: "components/WordLearningPage", pageFullPath: "entry/src/main/ets/components/WordLearningPage", integratedHsp: "false", moduleType: "followWithHap" });

@@ -343,12 +343,18 @@ class Index extends ViewPU {
                         this.observeComponentCreation2((elmtId, isInitialRender) => {
                             if (isInitialRender) {
                                 let componentCall = new WordLearningPage(this, {
-                                    subcategoryId: this.currentSubcategoryId
+                                    subcategoryId: this.currentSubcategoryId,
+                                    onBack: () => {
+                                        this.currentPage = 'subcategory_select';
+                                    }
                                 }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 122, col: 9 });
                                 ViewPU.create(componentCall);
                                 let paramsLambda = () => {
                                     return {
-                                        subcategoryId: this.currentSubcategoryId
+                                        subcategoryId: this.currentSubcategoryId,
+                                        onBack: () => {
+                                            this.currentPage = 'subcategory_select';
+                                        }
                                     };
                                 };
                                 componentCall.paramsGenerator_ = paramsLambda;

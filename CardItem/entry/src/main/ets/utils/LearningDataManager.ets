@@ -391,7 +391,7 @@ Bread｜面包｜パン（pan）
 Noodle｜面条｜麺（めん，men）
 Pasta｜意大利面｜パスタ（pasuta）
 Pizza｜披萨｜ピザ（piza）
-@@@ 零食&其他食物｜Snacks & Other Foods｜スナック＆その他の食べ物（すなっく＆そのたののたべもの）
+@@@ 零食和其他食物｜Snacks_Other Foods｜スナック＆その他の食べ物（すなっく＆そのたののたべもの）
 Cookie｜饼干｜クッキー（kukkī）
 Cake｜蛋糕｜ケーキ（kēki）
 Ice cream｜冰淇淋｜アイスクリーム（aisukuriimu）
@@ -635,7 +635,7 @@ Yo-yo｜溜溜球｜ヨーヨー（yōyō）`
       '水果': 'Fruit',
       '蔬菜': 'Vegetable',
       '主食': 'Staple Foods',
-      '零食&其他食物': 'Snacks & Other Foods',
+      '零食和其他食物': 'Snacks_Other Foods',
       
       // 动物类
       '宠物': 'Pet',
@@ -700,14 +700,14 @@ Yo-yo｜溜溜球｜ヨーヨー（yōyō）`
     const themeFolder = themeFolderMap[themeId] || 'Food'
     const subcategoryFolder = subcategoryFolderMap[subcategoryName] || 'Fruit'
     
-    // 图片文件名处理：尝试小写和首字母大写
-    const fileNameLower = `${wordId.toLowerCase()}.png`
-    const fileNameCapitalized = `${wordId.charAt(0).toUpperCase() + wordId.slice(1)}.png`
+    // 图片文件名处理：统一使用首字母大写格式
+    const fileName = `${wordId.charAt(0).toUpperCase() + wordId.slice(1).toLowerCase()}.png`
     
-    // 使用简单的字符串路径，在Image组件中处理
-    // 优先尝试首字母大写的文件名（因为实际文件名都是首字母大写）
-    const imagePath = `CardOriginal/${themeFolder}/${subcategoryFolder}/${fileNameCapitalized}`
+    const imagePath = `CardOriginal/${themeFolder}/${subcategoryFolder}/${fileName}`
     console.log(`生成图片路径: ${wordId} -> ${imagePath}`)
+    
+    // 注意：实际使用时需要在Image组件中添加onError回调来处理图片加载失败
+    // 如果图片不存在，使用DefaultImg.png作为占位图
     return imagePath
   }
 
@@ -792,7 +792,7 @@ Yo-yo｜溜溜球｜ヨーヨー（yōyō）`
       '水果': 'Fruit',
       '蔬菜': 'Vegetable',
       '主食': 'Staple Foods',
-      '零食&其他食物': 'Snacks & Other Foods',
+      '零食和其他食物': 'Snacks_Other Foods',
 
       // 动物类
       '宠物': 'Pet',
@@ -859,20 +859,31 @@ Yo-yo｜溜溜球｜ヨーヨー（yōyō）`
 
     // 从对应的theme数据中获取该子分类的第一个单词
     const theme = this.getThemeDataById(themeId)
+    console.log(`生成子分类图标: themeId=${themeId}, subcategoryName=${subcategoryName}, themeFolder=${themeFolder}, subcategoryFolder=${subcategoryFolder}`)
+    
     if (theme) {
+      console.log(`找到theme: ${theme.id}, 子分类数量: ${theme.subcategories.length}`)
       const subcategory = theme.subcategories.find(s => s.languages.chinese === subcategoryName)
-      if (subcategory && subcategory.words.length > 0) {
-        // 获取第一个单词的ID，用于生成图片路径
-        const firstWordId = subcategory.words[0].languages.english
-        // 图片文件名处理：尝试小写和首字母大写
-        const fileNameLower = `${firstWordId.toLowerCase()}.png`
-        const fileNameCapitalized = `${firstWordId.charAt(0).toUpperCase() + firstWordId.slice(1)}.png`
-        
-        // 优先尝试首字母大写的文件名
-        const iconPath = `CardOriginal/${themeFolder}/${subcategoryFolder}/${fileNameCapitalized}`
-        console.log(`生成子分类图标路径: ${subcategoryName} -> ${iconPath}`)
-        return iconPath
+      if (subcategory) {
+        console.log(`找到子分类: ${subcategory.languages.chinese}, 单词数量: ${subcategory.words.length}`)
+        if (subcategory.words.length > 0) {
+          // 获取第一个单词的ID，用于生成图片路径
+          const firstWordId = subcategory.words[0].languages.english
+          console.log(`第一个单词: ${firstWordId}`)
+          // 图片文件名处理：统一使用首字母大写格式
+          const fileName = `${firstWordId.charAt(0).toUpperCase() + firstWordId.slice(1).toLowerCase()}.png`
+          
+          const iconPath = `CardOriginal/${themeFolder}/${subcategoryFolder}/${fileName}`
+          console.log(`生成子分类图标路径: ${subcategoryName} -> ${iconPath}`)
+          return iconPath
+        } else {
+          console.log(`子分类 ${subcategoryName} 没有单词数据`)
+        }
+      } else {
+        console.log(`未找到子分类: ${subcategoryName}`)
       }
+    } else {
+      console.log(`未找到theme: ${themeId}`)
     }
     
     // 如果找不到，返回一个默认路径

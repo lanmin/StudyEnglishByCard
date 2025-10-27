@@ -4,10 +4,10 @@ import { WordData, SubcategoryData } from '../types/CommonTypes'
 import { LearningDataManager } from '../utils/LearningDataManager'
 import { SpeechManager } from '../utils/SpeechManager'
 import { AudioRecorderManager } from '../utils/AudioRecorderManager'
-@Entry
 @Component
 export struct WordLearningPage {
-  @State subcategoryId: string = ''
+  subcategoryId: string = ''
+  onBack?: () => void
   
   @State currentWordIndex: number = 0
   @State words: WordData[] = []
@@ -18,6 +18,7 @@ export struct WordLearningPage {
   // 听说读写模式状态
   @State currentMode: 'listen' | 'speak' | 'read' | 'write' | 'normal' = 'normal'
   @State cardScale: number = 1  // 卡片缩放状态
+  @State imageError: boolean = false  // 图片加载失败状态
   
   private learningDataManager = LearningDataManager.getInstance()
 
@@ -39,6 +40,7 @@ export struct WordLearningPage {
     this.words = this.learningDataManager.getWordsBySubcategory(this.subcategoryId)
     this.currentWordIndex = 0
     this.isFlipped = false
+    this.imageError = false  // 重置图片加载错误状态
     console.log(`WordLearningPage: 加载完成，子分类: ${this.subcategory?.name}, 单词数量: ${this.words.length}`)
     if (this.words.length > 0) {
       const firstWord = this.words[0]
@@ -241,7 +243,10 @@ export struct WordLearningPage {
           .fontColor('#333333')
           .backgroundColor(Color.Transparent)
           .onClick(() => {
-            console.log('返回按钮被点击 - 暂时禁用返回功能')
+            console.log('返回按钮被点击 - 返回子分类选择页面')
+            if (this.onBack) {
+              this.onBack()
+            }
           })
 
         Blank()
@@ -287,20 +292,20 @@ export struct WordLearningPage {
           
           // 中间：单词卡片
           Column() {
-            // 使用rawfile资源引用
-            Image($rawfile(this.getCurrentWord()!.image))
+            // 使用rawfile资源引用，如果图片加载失败则使用DefaultImg.png
+            Image(this.imageError ? $rawfile('CardOriginal/DefaultImg.png') : $rawfile(this.getCurrentWord()!.image))
               .width(250)
               .height(250)
               .borderRadius(20)
               .objectFit(ImageFit.Cover)
-              .alt($r('app.media.foreground')) // 备用图片
               .onError(() => {
                 console.log(`图片加载失败: ${this.getCurrentWord()!.image}`)
-                // 尝试备用路径
-                console.log('尝试使用备用图片路径...')
+                console.log('使用DefaultImg.png作为占位图')
+                this.imageError = true
               })
               .onComplete(() => {
                 console.log(`图片加载成功: ${this.getCurrentWord()!.image}`)
+                this.imageError = false
               })
               .onClick(() => {
                 this.handleTap()
