@@ -7488,3 +7488,1617 @@ Info: thread pool is started
 [2025-10-27T20:57:09.694] [DEBUG] debug-file - session manager: send message to worker process.
 [2025-10-27T20:57:09.695] [DEBUG] debug-file - watch worker: worker id should be larger than 0. Nothing will be sent to any worker thread.
 [2025-10-27T20:57:09.695] [DEBUG] debug-file - watch worker: worker id should be larger than 0. Nothing will be sent to any worker thread.
+[2025-10-27T20:59:17.077] [DEBUG] debug-file - session manager: set active socket. socketId=hzPLx1Py5OnQ5jhDAAEj
+[2025-10-27T20:59:17.087] [DEBUG] debug-file - watch worker: worker id should be larger than 0. Nothing will be sent to any worker thread.
+[2025-10-27T20:59:17.106] [DEBUG] debug-file - Hvigor init with startParameters:{
+  hvigorfileTypeCheck: false,
+  parallelExecution: true,
+  incrementalExecution: true,
+  printStackTrace: false,
+  daemon: true,
+  analyze: 0,
+  logLevel: Level { level: 20000, levelStr: 'INFO', colour: 'green' }
+}
+[2025-10-27T20:59:17.134] [DEBUG] debug-file - Cache service initialization finished in 27 ms 
+[2025-10-27T20:59:17.140] [DEBUG] debug-file - hvigorfile, resolving /Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/hvigorfile.ts
+[2025-10-27T20:59:17.156] [DEBUG] debug-file - hvigorfile, require result:  { default: { plugins: [] } }
+[2025-10-27T20:59:17.156] [DEBUG] debug-file - hvigorfile, binding system plugins null
+[2025-10-27T20:59:17.163] [DEBUG] debug-file - Start initialize project's product build option map with build mode debug.
+[2025-10-27T20:59:17.163] [DEBUG] debug-file - Picking option from product 'default' with build mode 'debug'.
+[2025-10-27T20:59:17.164] [DEBUG] debug-file - Product 'default' build option initialized
+[2025-10-27T20:59:17.164] [DEBUG] debug-file - End initialize project's product build option map with build mode 'debug'.
+[2025-10-27T20:59:17.166] [DEBUG] debug-file - Obtain build option for product 'default'in this build.
+[2025-10-27T20:59:17.169] [DEBUG] debug-file - No signingConfig found, initRemoteHspCache failed.
+[2025-10-27T20:59:17.172] [DEBUG] debug-file - Start recording SDK configuration permission data.
+[2025-10-27T20:59:17.215] [DEBUG] debug-file - Sdk init in 46 ms 
+[2025-10-27T20:59:17.225] [DEBUG] debug-file - Project task initialization takes 9 ms 
+[2025-10-27T20:59:17.225] [DEBUG] debug-file - hvigorfile, binding custom plugins []
+[2025-10-27T20:59:17.225] [DEBUG] debug-file - hvigorfile, no custom plugins were found in /Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/hvigorfile.ts
+[2025-10-27T20:59:17.225] [DEBUG] debug-file - hvigorfile, resolve finished /Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/hvigorfile.ts
+[2025-10-27T20:59:17.229] [DEBUG] debug-file - hvigorfile, resolving /Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/hvigorfile.ts
+[2025-10-27T20:59:17.232] [DEBUG] debug-file - hvigorfile, require result:  { default: { plugins: [] } }
+[2025-10-27T20:59:17.232] [DEBUG] debug-file - hvigorfile, binding system plugins null
+[2025-10-27T20:59:17.235] [DEBUG] debug-file - Start initialize module-target build option map, moduleName=entry, buildMode=debug
+[2025-10-27T20:59:17.235] [DEBUG] debug-file - Target 'default' config initialized
+[2025-10-27T20:59:17.235] [DEBUG] debug-file - Target 'ohosTest' config initialized
+[2025-10-27T20:59:17.238] [DEBUG] debug-file - Module 'entry' target 'default' build option initialized
+[2025-10-27T20:59:17.238] [DEBUG] debug-file - Module 'entry' target 'ohosTest' build option initialized
+[2025-10-27T20:59:17.238] [DEBUG] debug-file - End initialize module-target build option map, moduleName=entry
+[2025-10-27T20:59:17.238] [DEBUG] debug-file - Obtain build option for module 'entry' target 'default'in this build.
+[2025-10-27T20:59:17.240] [DEBUG] debug-file - Module entry task initialization takes 2 ms 
+[2025-10-27T20:59:17.240] [DEBUG] debug-file - hvigorfile, binding custom plugins []
+[2025-10-27T20:59:17.240] [DEBUG] debug-file - hvigorfile, no custom plugins were found in /Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/hvigorfile.ts
+[2025-10-27T20:59:17.240] [DEBUG] debug-file - hvigorfile, resolve finished /Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/hvigorfile.ts
+[2025-10-27T20:59:17.307] [DEBUG] debug-file - hvigorfile, resolve hvigorfile dependencies in 66 ms 
+[2025-10-27T20:59:17.307] [DEBUG] debug-file - project has submodules:entry
+[2025-10-27T20:59:17.308] [DEBUG] debug-file - start to load updatedOhPackageInfo to the disk
+[2025-10-27T20:59:17.315] [DEBUG] debug-file - load to the disk finished
+[2025-10-27T20:59:17.316] [DEBUG] debug-file - Start to initialize dependency information.
+[2025-10-27T20:59:17.318] [DEBUG] debug-file - Module CardItem Collected Dependency: 
+[2025-10-27T20:59:17.318] [DEBUG] debug-file - Module CardItem's total dependency: 0
+[2025-10-27T20:59:17.319] [DEBUG] debug-file - Start to initialize dependency information.
+[2025-10-27T20:59:17.319] [DEBUG] debug-file - Module entry Collected Dependency: 
+[2025-10-27T20:59:17.319] [DEBUG] debug-file - Module entry's total dependency: 0
+[2025-10-27T20:59:17.320] [DEBUG] debug-file - Configuration phase cost:184 ms 
+[2025-10-27T20:59:17.321] [DEBUG] debug-file - Configuration task cost before running: 224 ms 
+[2025-10-27T20:59:17.322] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T20:59:17.322] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T20:59:17.322] [DEBUG] debug-file - Executing task :entry:default@PreBuild
+[2025-10-27T20:59:17.325] [DEBUG] debug-file - Incremental task entry:default@PreBuild pre-execution cost: 1 ms .
+[2025-10-27T20:59:17.325] [DEBUG] debug-file - entry : default@PreBuild cost memory 0.2169189453125
+[2025-10-27T20:59:17.325] [INFO] debug-file - UP-TO-DATE :entry:default@PreBuild...  
+[2025-10-27T20:59:17.326] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T20:59:17.326] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T20:59:17.326] [DEBUG] debug-file - Executing task :entry:default@CreateModuleInfo
+[2025-10-27T20:59:17.327] [DEBUG] debug-file - Task 'entry:default@CreateModuleInfo' cost while wrapping incremental declarations: 1 ms 
+[2025-10-27T20:59:17.327] [DEBUG] debug-file - entry : default@CreateModuleInfo cost memory 0.04901885986328125
+[2025-10-27T20:59:17.327] [DEBUG] debug-file - runTaskFromQueue task cost before running: 230 ms 
+[2025-10-27T20:59:17.327] [INFO] debug-file - Finished :entry:default@CreateModuleInfo... after 1 ms 
+[2025-10-27T20:59:17.328] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T20:59:17.328] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T20:59:17.328] [DEBUG] debug-file - Executing task :entry:default@GenerateMetadata
+[2025-10-27T20:59:17.329] [DEBUG] debug-file - Task 'entry:default@GenerateMetadata' cost while wrapping incremental declarations: 1 ms 
+[2025-10-27T20:59:17.329] [DEBUG] debug-file - Incremental task entry:default@GenerateMetadata pre-execution cost: 1 ms .
+[2025-10-27T20:59:17.329] [DEBUG] debug-file - entry : default@GenerateMetadata cost memory 0.07814788818359375
+[2025-10-27T20:59:17.329] [INFO] debug-file - UP-TO-DATE :entry:default@GenerateMetadata...  
+[2025-10-27T20:59:17.330] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T20:59:17.330] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T20:59:17.330] [DEBUG] debug-file - Executing task :entry:default@ConfigureCmake
+[2025-10-27T20:59:17.330] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T20:59:17.330] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T20:59:17.330] [DEBUG] debug-file - entry : default@ConfigureCmake cost memory 0.03597259521484375
+[2025-10-27T20:59:17.330] [DEBUG] debug-file - runTaskFromQueue task cost before running: 233 ms 
+[2025-10-27T20:59:17.330] [INFO] debug-file - Finished :entry:default@ConfigureCmake... after 1 ms 
+[2025-10-27T20:59:17.331] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T20:59:17.331] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T20:59:17.331] [DEBUG] debug-file - Executing task :entry:default@MergeProfile
+[2025-10-27T20:59:17.332] [DEBUG] debug-file - Incremental task entry:default@MergeProfile pre-execution cost: 1 ms .
+[2025-10-27T20:59:17.332] [DEBUG] debug-file - entry : default@MergeProfile cost memory 0.0993194580078125
+[2025-10-27T20:59:17.332] [INFO] debug-file - UP-TO-DATE :entry:default@MergeProfile...  
+[2025-10-27T20:59:17.333] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T20:59:17.333] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T20:59:17.333] [DEBUG] debug-file - Executing task :entry:default@CreateBuildProfile
+[2025-10-27T20:59:17.334] [DEBUG] debug-file - Task 'entry:default@CreateBuildProfile' cost while wrapping incremental declarations: 1 ms 
+[2025-10-27T20:59:17.335] [DEBUG] debug-file - Incremental task entry:default@CreateBuildProfile pre-execution cost: 1 ms .
+[2025-10-27T20:59:17.335] [DEBUG] debug-file - entry : default@CreateBuildProfile cost memory 0.0824127197265625
+[2025-10-27T20:59:17.335] [INFO] debug-file - UP-TO-DATE :entry:default@CreateBuildProfile...  
+[2025-10-27T20:59:17.337] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T20:59:17.337] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T20:59:17.337] [DEBUG] debug-file - Executing task :entry:default@PreCheckSyscap
+[2025-10-27T20:59:17.337] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T20:59:17.337] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T20:59:17.338] [DEBUG] debug-file - entry : default@PreCheckSyscap cost memory 0.03619384765625
+[2025-10-27T20:59:17.338] [DEBUG] debug-file - runTaskFromQueue task cost before running: 240 ms 
+[2025-10-27T20:59:17.338] [INFO] debug-file - Finished :entry:default@PreCheckSyscap... after 1 ms 
+[2025-10-27T20:59:17.338] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T20:59:17.338] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T20:59:17.339] [DEBUG] debug-file - Executing task :entry:default@GeneratePkgContextInfo
+[2025-10-27T20:59:17.339] [DEBUG] debug-file - Task 'entry:default@GeneratePkgContextInfo' cost while wrapping incremental declarations: 1 ms 
+[2025-10-27T20:59:17.340] [DEBUG] debug-file - Incremental task entry:default@GeneratePkgContextInfo pre-execution cost: 1 ms .
+[2025-10-27T20:59:17.340] [DEBUG] debug-file - entry : default@GeneratePkgContextInfo cost memory 0.0594635009765625
+[2025-10-27T20:59:17.340] [INFO] debug-file - UP-TO-DATE :entry:default@GeneratePkgContextInfo...  
+[2025-10-27T20:59:17.340] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T20:59:17.340] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T20:59:17.341] [DEBUG] debug-file - Executing task :entry:default@ProcessIntegratedHsp
+[2025-10-27T20:59:17.342] [DEBUG] debug-file - entry:default@ProcessIntegratedHsp is not up-to-date, since the output file '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/build/cache/default/integrated_hsp/integratedHspCache.json' does not exist.
+[2025-10-27T20:59:17.342] [DEBUG] debug-file - Incremental task entry:default@ProcessIntegratedHsp pre-execution cost: 1 ms .
+[2025-10-27T20:59:17.342] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T20:59:17.342] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T20:59:17.342] [DEBUG] debug-file - entry : default@ProcessIntegratedHsp cost memory 0.10687255859375
+[2025-10-27T20:59:17.342] [DEBUG] debug-file - runTaskFromQueue task cost before running: 245 ms 
+[2025-10-27T20:59:17.342] [INFO] debug-file - Finished :entry:default@ProcessIntegratedHsp... after 1 ms 
+[2025-10-27T20:59:17.343] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T20:59:17.343] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T20:59:17.344] [DEBUG] debug-file - Executing task :entry:default@BuildNativeWithCmake
+[2025-10-27T20:59:17.344] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T20:59:17.344] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T20:59:17.344] [DEBUG] debug-file - entry : default@BuildNativeWithCmake cost memory 0.037017822265625
+[2025-10-27T20:59:17.344] [DEBUG] debug-file - runTaskFromQueue task cost before running: 247 ms 
+[2025-10-27T20:59:17.344] [INFO] debug-file - Finished :entry:default@BuildNativeWithCmake... after 1 ms 
+[2025-10-27T20:59:17.344] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T20:59:17.344] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T20:59:17.345] [DEBUG] debug-file - Executing task :entry:default@MakePackInfo
+[2025-10-27T20:59:17.347] [DEBUG] debug-file - Incremental task entry:default@MakePackInfo pre-execution cost: 3 ms .
+[2025-10-27T20:59:17.348] [DEBUG] debug-file - entry : default@MakePackInfo cost memory -4.492118835449219
+[2025-10-27T20:59:17.348] [INFO] debug-file - UP-TO-DATE :entry:default@MakePackInfo...  
+[2025-10-27T20:59:17.349] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T20:59:17.349] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T20:59:17.349] [DEBUG] debug-file - Executing task :entry:default@SyscapTransform
+[2025-10-27T20:59:17.350] [DEBUG] debug-file - File: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/syscap.json' from 'sysCapJsonPath' is not exists, just ignore.
+[2025-10-27T20:59:17.350] [DEBUG] debug-file - Task 'entry:default@SyscapTransform' cost while wrapping incremental declarations: 1 ms 
+[2025-10-27T20:59:17.350] [DEBUG] debug-file - entry:default@SyscapTransform is not up-to-date, since the output file '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/syscap/default/rpcid.sc' does not exist.
+[2025-10-27T20:59:17.350] [DEBUG] debug-file - Incremental task entry:default@SyscapTransform pre-execution cost: 1 ms .
+[2025-10-27T20:59:17.350] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T20:59:17.350] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T20:59:17.350] [DEBUG] debug-file - entry : default@SyscapTransform cost memory 0.11949920654296875
+[2025-10-27T20:59:17.351] [DEBUG] debug-file - runTaskFromQueue task cost before running: 253 ms 
+[2025-10-27T20:59:17.352] [INFO] debug-file - Finished :entry:default@SyscapTransform... after 2 ms 
+[2025-10-27T20:59:17.353] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T20:59:17.353] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T20:59:17.353] [DEBUG] debug-file - Executing task :entry:default@ProcessProfile
+[2025-10-27T20:59:17.354] [DEBUG] debug-file - Incremental task entry:default@ProcessProfile pre-execution cost: 1 ms .
+[2025-10-27T20:59:17.354] [DEBUG] debug-file - entry : default@ProcessProfile cost memory 0.096893310546875
+[2025-10-27T20:59:17.355] [INFO] debug-file - UP-TO-DATE :entry:default@ProcessProfile...  
+[2025-10-27T20:59:17.355] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T20:59:17.355] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T20:59:17.356] [DEBUG] debug-file - Executing task :entry:default@ProcessRouterMap
+[2025-10-27T20:59:17.357] [DEBUG] debug-file - Incremental task entry:default@ProcessRouterMap pre-execution cost: 1 ms .
+[2025-10-27T20:59:17.357] [DEBUG] debug-file - entry : default@ProcessRouterMap cost memory 0.176971435546875
+[2025-10-27T20:59:17.358] [INFO] debug-file - UP-TO-DATE :entry:default@ProcessRouterMap...  
+[2025-10-27T20:59:17.358] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T20:59:17.358] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T20:59:17.358] [DEBUG] debug-file - Executing task :entry:default@BuildNativeWithNinja
+[2025-10-27T20:59:17.358] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T20:59:17.358] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T20:59:17.359] [DEBUG] debug-file - entry : default@BuildNativeWithNinja cost memory 0.05224609375
+[2025-10-27T20:59:17.359] [DEBUG] debug-file - runTaskFromQueue task cost before running: 262 ms 
+[2025-10-27T20:59:17.359] [INFO] debug-file - Finished :entry:default@BuildNativeWithNinja... after 1 ms 
+[2025-10-27T20:59:17.360] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T20:59:17.360] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T20:59:17.360] [DEBUG] debug-file - restool module names: entry; moduleName=entry, taskName=default@ProcessResource
+[2025-10-27T20:59:17.361] [DEBUG] debug-file - Executing task :entry:default@ProcessResource
+[2025-10-27T20:59:17.362] [DEBUG] debug-file - Incremental task entry:default@ProcessResource pre-execution cost: 1 ms .
+[2025-10-27T20:59:17.362] [DEBUG] debug-file - entry : default@ProcessResource cost memory 0.135101318359375
+[2025-10-27T20:59:17.365] [INFO] debug-file - UP-TO-DATE :entry:default@ProcessResource...  
+[2025-10-27T20:59:17.366] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T20:59:17.366] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T20:59:17.367] [DEBUG] debug-file - Executing task :entry:default@GenerateLoaderJson
+[2025-10-27T20:59:17.373] [DEBUG] debug-file - Incremental task entry:default@GenerateLoaderJson pre-execution cost: 3 ms .
+[2025-10-27T20:59:17.373] [DEBUG] debug-file - entry : default@GenerateLoaderJson cost memory 0.5919647216796875
+[2025-10-27T20:59:17.378] [INFO] debug-file - UP-TO-DATE :entry:default@GenerateLoaderJson...  
+[2025-10-27T20:59:17.379] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T20:59:17.379] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T20:59:17.379] [DEBUG] debug-file - Executing task :entry:default@ProcessLibs
+[2025-10-27T20:59:17.380] [DEBUG] debug-file - Incremental task entry:default@ProcessLibs pre-execution cost: 1 ms .
+[2025-10-27T20:59:17.380] [DEBUG] debug-file - entry : default@ProcessLibs cost memory 0.1001434326171875
+[2025-10-27T20:59:17.380] [INFO] debug-file - UP-TO-DATE :entry:default@ProcessLibs...  
+[2025-10-27T20:59:17.381] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T20:59:17.381] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T20:59:17.381] [DEBUG] debug-file - restool module names: entry; moduleName=entry, taskName=default@CompileResource
+[2025-10-27T20:59:17.382] [DEBUG] debug-file - Executing task :entry:default@CompileResource
+[2025-10-27T20:59:17.418] [DEBUG] debug-file - Incremental task entry:default@CompileResource pre-execution cost: 36 ms .
+[2025-10-27T20:59:17.418] [DEBUG] debug-file - entry : default@CompileResource cost memory 0.892242431640625
+[2025-10-27T20:59:17.419] [INFO] debug-file - UP-TO-DATE :entry:default@CompileResource...  
+[2025-10-27T20:59:17.421] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T20:59:17.421] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T20:59:17.422] [DEBUG] debug-file - Executing task :entry:default@DoNativeStrip
+[2025-10-27T20:59:17.422] [DEBUG] debug-file - Task 'entry:default@DoNativeStrip' cost while wrapping incremental declarations: 1 ms 
+[2025-10-27T20:59:17.422] [DEBUG] debug-file - Incremental task entry:default@DoNativeStrip pre-execution cost: 1 ms .
+[2025-10-27T20:59:17.422] [DEBUG] debug-file - entry : default@DoNativeStrip cost memory 0.05591583251953125
+[2025-10-27T20:59:17.422] [INFO] debug-file - UP-TO-DATE :entry:default@DoNativeStrip...  
+[2025-10-27T20:59:17.425] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T20:59:17.425] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T20:59:17.426] [DEBUG] debug-file - Executing task :entry:default@CompileArkTS
+[2025-10-27T20:59:17.441] [DEBUG] debug-file - entry:default@CompileArkTS is not up-to-date, since the input file '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets' has been changed.
+[2025-10-27T20:59:17.441] [DEBUG] debug-file - Incremental task entry:default@CompileArkTS pre-execution cost: 14 ms .
+[2025-10-27T20:59:17.447] [DEBUG] debug-file - build config:
+[2025-10-27T20:59:17.447] [DEBUG] debug-file - {
+  moduleType: 'entry',
+  perf: 0,
+  targetName: '.default',
+  packageManagerType: 'ohpm',
+  localPropertiesPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/local.properties',
+  isPreview: false,
+  isOhosTest: false,
+  isLocalTest: false,
+  buildMode: 'Debug',
+  watchMode: 'false',
+  aceProfilePath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/resources/base/profile',
+  etsLoaderPath: '/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/build-tools/ets-loader',
+  modulePath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry',
+  testFrameworkPar: {
+    testMode: undefined,
+    coveragePathFilter: undefined,
+    coverageMode: undefined
+  },
+  needCoverageInsert: false,
+  debugLine: false,
+  projectTopDir: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem',
+  compileSdkVersion: 17,
+  compatibleSdkVersion: 17,
+  compatibleSdkVersionStage: undefined,
+  bundleName: 'c***d',
+  etsLoaderVersion: '5.0.5.165',
+  etsLoaderReleaseType: 'Release',
+  aotCompileMode: 'type',
+  apPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/modules.ap',
+  entryModuleName: 'entry',
+  entryModuleVersion: '1.0.0',
+  entryPackageName: 'entry',
+  allModuleNameHash: '5b05c2e038a962f9d8d16f4f603565e7',
+  externalApiPaths: [ '/Applications/DevEco-Studio.app/Contents/sdk/default/hms/ets' ],
+  compilerTypes: undefined,
+  isCrossplatform: false,
+  hvigorPluginFile: undefined,
+  compilePluginPath: undefined,
+  buildGeneratedProfilePath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/generated/profile/default',
+  bundleType: 'app',
+  arkTSVersion: undefined,
+  apiVersion: 17,
+  needCompleteSourcesMap: false,
+  isFaMode: false,
+  strictMode: {
+    caseSensitiveCheck: true,
+    useNormalizedOHMUrl: true,
+    noExternalImportByPath: true
+  },
+  buildDir: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build',
+  deviceTypes: [ 'phone', 'tablet', '2in1' ],
+  useNormalizedOHMUrl: true,
+  pkgContextInfo: {
+    '@ohos/hypium': {
+      packageName: '@ohos/hypium',
+      bundleName: '*****',
+      moduleName: '',
+      version: '1.0.21',
+      entryPath: 'index.js',
+      isSO: false,
+      dependencyAlias: ''
+    },
+    '@ohos/hamock': {
+      packageName: '@ohos/hamock',
+      bundleName: '*****',
+      moduleName: '',
+      version: '1.0.0',
+      entryPath: 'index.ets',
+      isSO: false,
+      dependencyAlias: ''
+    },
+    entry: {
+      packageName: 'entry',
+      bundleName: '*****',
+      moduleName: '',
+      version: '',
+      entryPath: 'src/main/',
+      isSO: false,
+      dependencyAlias: ''
+    }
+  },
+  ohPackagePathMap: {},
+  dependencyAliasMap: {},
+  permission: { requestPermissions: [ [Object] ], definePermissions: undefined },
+  integratedHsp: false,
+  projectArkOption: undefined,
+  sourceMapDir: undefined,
+  branchElimination: false,
+  transformLib: undefined,
+  caseSensitiveCheck: true,
+  tsImportSendable: false,
+  resolveConflictMode: true,
+  depName2RootPath: {},
+  depName2DepInfo: {},
+  rootPathSet: [ '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem' ],
+  useNativeResolver: true,
+  shouldEmitJs: true,
+  autoLazyImport: undefined,
+  allowEmptyBundleName: false,
+  singleFileEmit: false,
+  arkCompileCachePath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/cache/default/default@CompileArkTS/esmodule',
+  reExportCheckMode: 'noCheck',
+  aceModuleJsonPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/ark_module.json',
+  appResource: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/ResourceTable.txt',
+  rawFileResource: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/resources/rawfile',
+  resourceTableHash: '8e59911aa3d0057d4fe73ade6c6f7a54',
+  runtimeOS: 'HarmonyOS',
+  sdkInfo: 'false:17:5.0.5.165:Release',
+  aceModuleRoot: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets',
+  compileMode: 'esmodule',
+  aceSuperVisualPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/supervisual',
+  aceBuildJson: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/loader/default/loader.json',
+  cachePath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug',
+  aceModuleBuild: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/loader_out/default/ets',
+  supportChunks: true,
+  declaredFilesPath: undefined,
+  pkgNameToPkgBriefInfo: {
+    entry: {
+      pkgRoot: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry',
+      originalSourceRoots: undefined,
+      sourceRoots: [Array],
+      pkgName: 'entry'
+    }
+  },
+  projectModel: {
+    '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main': {
+      moduleName: 'entry',
+      modulePkgPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry',
+      belongProjectPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem'
+    },
+    '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/src/ohosTest/ets': {
+      moduleName: 'entry_test',
+      modulePkgPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry',
+      belongProjectPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem'
+    },
+    '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/ohosTest': {
+      moduleName: 'entry_test',
+      modulePkgPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry',
+      belongProjectPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem'
+    },
+    '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry': {
+      moduleName: 'entry',
+      modulePkgPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry',
+      belongProjectPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem'
+    },
+    '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem': {
+      moduleName: 'CardItem',
+      modulePkgPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem',
+      belongProjectPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem'
+    }
+  },
+  pkgJsonFileHash: '6b89abcf4532b4f864472c17cdcdc9c1',
+  allModulePaths: [ '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry' ],
+  routerMap: {},
+  obfuscationOptions: undefined,
+  compileBlockPkg: [],
+  mockParams: {
+    decorator: '@MockSetup',
+    packageName: '@ohos/hamock',
+    etsSourceRootPath: 'src/main/ets',
+    mockConfigPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/mock/mock-config.json5',
+    mockConfigKey2ModuleInfo: {}
+  },
+  copyCodeResourceEnable: true,
+  copyCodeResourceExcludes: [],
+  uiTransformOptimization: false,
+  otherPaths: {
+    'entry/*': [ '../*', '../../../build/default/generated/profile/default/*' ]
+  },
+  collectImportersConfig: undefined
+}
+[2025-10-27T20:59:17.447] [DEBUG] debug-file - Compile arkts with external api path: /Applications/DevEco-Studio.app/Contents/sdk/default/hms/ets
+[2025-10-27T20:59:17.448] [DEBUG] debug-file - default@CompileArkTS work[363] is submitted.
+[2025-10-27T20:59:17.448] [DEBUG] debug-file - default@CompileArkTS work[363] is pushed to ready queue.
+[2025-10-27T20:59:17.448] [DEBUG] debug-file - default@CompileArkTS work[363] is not dispatched.
+[2025-10-27T20:59:17.448] [DEBUG] debug-file - CopyResources startTime: 386172765305625
+[2025-10-27T20:59:17.448] [DEBUG] debug-file - default@CompileArkTS work[364] is submitted.
+[2025-10-27T20:59:17.448] [DEBUG] debug-file - default@CompileArkTS work[364] is pushed to ready queue.
+[2025-10-27T20:59:17.448] [DEBUG] debug-file - default@CompileArkTS work[364] is not dispatched.
+[2025-10-27T20:59:17.448] [DEBUG] debug-file - entry : default@CompileArkTS cost memory -2.9184417724609375
+[2025-10-27T20:59:17.449] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T20:59:17.449] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T20:59:17.450] [DEBUG] debug-file - Executing task :entry:default@BuildJS
+[2025-10-27T20:59:17.451] [DEBUG] debug-file - entry : default@BuildJS cost memory 0.12218475341796875
+[2025-10-27T20:59:17.451] [DEBUG] debug-file - runTaskFromQueue task cost before running: 354 ms 
+[2025-10-27T20:59:17.451] [INFO] debug-file - Finished :entry:default@BuildJS... after 2 ms 
+[2025-10-27T20:59:17.452] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T20:59:17.452] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T20:59:17.453] [DEBUG] debug-file - Executing task :entry:default@CacheNativeLibs
+[2025-10-27T20:59:17.453] [DEBUG] debug-file - Task 'entry:default@CacheNativeLibs' cost while wrapping incremental declarations: 1 ms 
+[2025-10-27T20:59:17.453] [DEBUG] debug-file - Incremental task entry:default@CacheNativeLibs pre-execution cost: 1 ms .
+[2025-10-27T20:59:17.453] [DEBUG] debug-file - entry : default@CacheNativeLibs cost memory 0.0624237060546875
+[2025-10-27T20:59:17.453] [INFO] debug-file - UP-TO-DATE :entry:default@CacheNativeLibs...  
+[2025-10-27T20:59:17.655] [DEBUG] debug-file - A work dispatched to worker[7] failed because unable to get work from ready queue.
+[2025-10-27T20:59:17.655] [DEBUG] debug-file - Create  resident worker with id: 6.
+[2025-10-27T20:59:17.656] [DEBUG] debug-file - default@CompileArkTS work[364] has been dispatched to worker[6].
+[2025-10-27T20:59:17.957] [DEBUG] debug-file - A work dispatched to worker[7] failed because unable to get work from ready queue.
+[2025-10-27T20:59:17.957] [DEBUG] debug-file - A work dispatched to worker[6] failed because of worker busy.
+[2025-10-27T20:59:17.957] [DEBUG] debug-file - A work dispatched to worker[5] failed because unable to get work from ready queue.
+[2025-10-27T20:59:17.957] [DEBUG] debug-file - default@CompileArkTS work[363] has been dispatched to worker[4].
+[2025-10-27T20:59:18.255] [DEBUG] debug-file - worker[6] has one work done.
+[2025-10-27T20:59:18.255] [DEBUG] debug-file - CopyResources is end, endTime: 386173571817541
+[2025-10-27T20:59:18.255] [DEBUG] debug-file - default@CompileArkTS work[364] done.
+[2025-10-27T20:59:18.457] [DEBUG] debug-file - A work dispatched to worker[6] failed because unable to get work from ready queue.
+[2025-10-27T20:59:19.476] [DEBUG] debug-file - Ark compile task finished.finished time is 386174793457666
+[2025-10-27T20:59:19.477] [DEBUG] debug-file - worker[4] has one work error.
+[2025-10-27T20:59:19.478] [DEBUG] debug-file - default@CompileArkTS work[363] failed.
+[2025-10-27T20:59:19.479] [ERROR] debug-file - Failed :entry:default@CompileArkTS... 
+[2025-10-27T20:59:19.479] [DEBUG] debug-file - hvigor build process will be closed with an error.
+[2025-10-27T20:59:19.484] [DEBUG] debug-file - ERROR: stacktrace = Error: ArkTS Compiler Error
+[31m1 ERROR: [31mArkTS:ERROR File: /Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/components/WordLearningPage.ets:419:23
+ No such 'CardOriginal/hearWord.gif' resource in current module.
+[39m
+[31mCOMPILE RESULT:FAIL {ERROR:2}[39m
+    at runArkPack (/Applications/DevEco-Studio.app/Contents/tools/hvigor/hvigor-ohos-plugin/node_modules/@ohos/hvigor-arkts-compose/dist/src/arkts-pack.js:1:5438)
+[2025-10-27T20:59:19.484] [ERROR] debug-file - Error: ArkTS Compiler Error
+[31m1 ERROR: [31mArkTS:ERROR File: /Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets/components/WordLearningPage.ets:419:23
+ No such 'CardOriginal/hearWord.gif' resource in current module.
+[39m
+[31mCOMPILE RESULT:FAIL {ERROR:2}[39m
+    at runArkPack (/Applications/DevEco-Studio.app/Contents/tools/hvigor/hvigor-ohos-plugin/node_modules/@ohos/hvigor-arkts-compose/dist/src/arkts-pack.js:1:5438)
+[2025-10-27T20:59:19.488] [WARN] debug-file - BUILD FAILED in 2 s 390 ms 
+[2025-10-27T20:59:19.488] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@PreBuild is up-to-date.
+[2025-10-27T20:59:19.488] [DEBUG] debug-file - Update task entry:default@CreateModuleInfo output file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/generated/profile/default/ModuleInfo.ts cache.
+[2025-10-27T20:59:19.488] [DEBUG] debug-file - Incremental task entry:default@CreateModuleInfo post-execution cost:1 ms .
+[2025-10-27T20:59:19.488] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@GenerateMetadata is up-to-date.
+[2025-10-27T20:59:19.488] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@MergeProfile is up-to-date.
+[2025-10-27T20:59:19.488] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@CreateBuildProfile is up-to-date.
+[2025-10-27T20:59:19.488] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@GeneratePkgContextInfo is up-to-date.
+[2025-10-27T20:59:19.489] [DEBUG] debug-file - Update task entry:default@ProcessIntegratedHsp output file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/build/cache/default/integrated_hsp/integratedHspCache.json cache.
+[2025-10-27T20:59:19.489] [DEBUG] debug-file - Incremental task entry:default@ProcessIntegratedHsp post-execution cost:1 ms .
+[2025-10-27T20:59:19.489] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@MakePackInfo is up-to-date.
+[2025-10-27T20:59:19.489] [DEBUG] debug-file - Update task entry:default@SyscapTransform input file:/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/toolchains/syscap_tool cache by regenerate.
+[2025-10-27T20:59:19.489] [DEBUG] debug-file - Update task entry:default@SyscapTransform input file:/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/device-define cache by regenerate.
+[2025-10-27T20:59:19.490] [DEBUG] debug-file - Update task entry:default@SyscapTransform output file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/syscap/default/rpcid.sc cache.
+[2025-10-27T20:59:19.490] [DEBUG] debug-file - Incremental task entry:default@SyscapTransform post-execution cost:1 ms .
+[2025-10-27T20:59:19.490] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@ProcessProfile is up-to-date.
+[2025-10-27T20:59:19.490] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@ProcessRouterMap is up-to-date.
+[2025-10-27T20:59:19.490] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@ProcessResource is up-to-date.
+[2025-10-27T20:59:19.490] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@GenerateLoaderJson is up-to-date.
+[2025-10-27T20:59:19.490] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@ProcessLibs is up-to-date.
+[2025-10-27T20:59:19.490] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@CompileResource is up-to-date.
+[2025-10-27T20:59:19.490] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@DoNativeStrip is up-to-date.
+[2025-10-27T20:59:19.491] [DEBUG] debug-file - Update task entry:default@CompileArkTS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/loader/default cache by regenerate.
+[2025-10-27T20:59:19.491] [DEBUG] debug-file - Update task entry:default@CompileArkTS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/resources/rawfile cache by regenerate.
+[2025-10-27T20:59:19.501] [DEBUG] debug-file - Update task entry:default@CompileArkTS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/ResourceTable.txt cache by regenerate.
+[2025-10-27T20:59:19.501] [DEBUG] debug-file - Update task entry:default@CompileArkTS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/ark_module.json cache by regenerate.
+[2025-10-27T20:59:19.501] [DEBUG] debug-file - Update task entry:default@CompileArkTS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/resources/base/profile cache by regenerate.
+[2025-10-27T20:59:19.501] [DEBUG] debug-file - Update task entry:default@CompileArkTS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets cache from map.
+[2025-10-27T20:59:19.501] [DEBUG] debug-file - Update task entry:default@CompileArkTS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/loader/default/pkgContextInfo.json cache by regenerate.
+[2025-10-27T20:59:19.501] [DEBUG] debug-file - Update task entry:default@CompileArkTS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/generated/profile/default/BuildProfile.ets cache by regenerate.
+[2025-10-27T20:59:19.501] [DEBUG] debug-file - Update task entry:default@CompileArkTS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/mock/mock-config.json5 cache by regenerate.
+[2025-10-27T20:59:19.501] [DEBUG] debug-file - Update task entry:default@CompileArkTS output file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/loader_out/default/ets cache.
+[2025-10-27T20:59:19.502] [DEBUG] debug-file - Incremental task entry:default@CompileArkTS post-execution cost:12 ms .
+[2025-10-27T20:59:19.502] [DEBUG] debug-file - Update task entry:default@BuildJS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/loader/default cache by regenerate.
+[2025-10-27T20:59:19.502] [DEBUG] debug-file - Update task entry:default@BuildJS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/resources/rawfile cache by regenerate.
+[2025-10-27T20:59:19.512] [DEBUG] debug-file - Update task entry:default@BuildJS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/ResourceTable.txt cache by regenerate.
+[2025-10-27T20:59:19.512] [DEBUG] debug-file - Update task entry:default@BuildJS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/ark_module.json cache by regenerate.
+[2025-10-27T20:59:19.512] [DEBUG] debug-file - Update task entry:default@BuildJS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/resources/base/profile cache by regenerate.
+[2025-10-27T20:59:19.512] [DEBUG] debug-file - Update task entry:default@BuildJS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/loader/default/pkgContextInfo.json cache by regenerate.
+[2025-10-27T20:59:19.512] [DEBUG] debug-file - Update task entry:default@BuildJS output file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/loader_out/default/js cache.
+[2025-10-27T20:59:19.512] [DEBUG] debug-file - Incremental task entry:default@BuildJS post-execution cost:11 ms .
+[2025-10-27T20:59:19.512] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@CacheNativeLibs is up-to-date.
+[2025-10-27T20:59:19.533] [DEBUG] debug-file - Cleanup worker 6.
+[2025-10-27T20:59:19.533] [DEBUG] debug-file - Worker 6 has been cleaned up.
+[2025-10-27T20:59:19.533] [DEBUG] debug-file - Current idle worker size: 1.
+[2025-10-27T20:59:19.533] [DEBUG] debug-file - Current resident worker size: 2.
+[2025-10-27T20:59:19.533] [DEBUG] debug-file - hvigor build process will be closed.
+[2025-10-27T20:59:19.538] [DEBUG] debug-file - session manager: send message to worker process.
+[2025-10-27T20:59:19.538] [DEBUG] debug-file - session manager: send message to worker process.
+[2025-10-27T20:59:19.538] [DEBUG] debug-file - worker[6] exits with exit code 1.
+[2025-10-27T20:59:19.538] [DEBUG] debug-file - watch worker: worker id should be larger than 0. Nothing will be sent to any worker thread.
+[2025-10-27T20:59:19.538] [DEBUG] debug-file - watch worker: worker id should be larger than 0. Nothing will be sent to any worker thread.
+[2025-10-27T21:00:46.475] [DEBUG] debug-file - session manager: set active socket. socketId=jzgyFU90sFB1aK3hAAEl
+[2025-10-27T21:00:46.484] [DEBUG] debug-file - watch worker: worker id should be larger than 0. Nothing will be sent to any worker thread.
+[2025-10-27T21:00:46.501] [DEBUG] debug-file - Hvigor init with startParameters:{
+  hvigorfileTypeCheck: false,
+  parallelExecution: true,
+  incrementalExecution: true,
+  printStackTrace: false,
+  daemon: true,
+  analyze: 0,
+  logLevel: Level { level: 20000, levelStr: 'INFO', colour: 'green' }
+}
+[2025-10-27T21:00:46.520] [DEBUG] debug-file - Cache service initialization finished in 19 ms 
+[2025-10-27T21:00:46.526] [DEBUG] debug-file - hvigorfile, resolving /Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/hvigorfile.ts
+[2025-10-27T21:00:46.537] [DEBUG] debug-file - hvigorfile, require result:  { default: { plugins: [] } }
+[2025-10-27T21:00:46.537] [DEBUG] debug-file - hvigorfile, binding system plugins null
+[2025-10-27T21:00:46.545] [DEBUG] debug-file - Start initialize project's product build option map with build mode debug.
+[2025-10-27T21:00:46.545] [DEBUG] debug-file - Picking option from product 'default' with build mode 'debug'.
+[2025-10-27T21:00:46.545] [DEBUG] debug-file - Product 'default' build option initialized
+[2025-10-27T21:00:46.546] [DEBUG] debug-file - End initialize project's product build option map with build mode 'debug'.
+[2025-10-27T21:00:46.547] [DEBUG] debug-file - Obtain build option for product 'default'in this build.
+[2025-10-27T21:00:46.551] [DEBUG] debug-file - No signingConfig found, initRemoteHspCache failed.
+[2025-10-27T21:00:46.557] [DEBUG] debug-file - Start recording SDK configuration permission data.
+[2025-10-27T21:00:46.586] [DEBUG] debug-file - Sdk init in 34 ms 
+[2025-10-27T21:00:46.594] [DEBUG] debug-file - Project task initialization takes 8 ms 
+[2025-10-27T21:00:46.594] [DEBUG] debug-file - hvigorfile, binding custom plugins []
+[2025-10-27T21:00:46.594] [DEBUG] debug-file - hvigorfile, no custom plugins were found in /Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/hvigorfile.ts
+[2025-10-27T21:00:46.594] [DEBUG] debug-file - hvigorfile, resolve finished /Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/hvigorfile.ts
+[2025-10-27T21:00:46.597] [DEBUG] debug-file - hvigorfile, resolving /Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/hvigorfile.ts
+[2025-10-27T21:00:46.599] [DEBUG] debug-file - hvigorfile, require result:  { default: { plugins: [] } }
+[2025-10-27T21:00:46.599] [DEBUG] debug-file - hvigorfile, binding system plugins null
+[2025-10-27T21:00:46.603] [DEBUG] debug-file - Start initialize module-target build option map, moduleName=entry, buildMode=debug
+[2025-10-27T21:00:46.603] [DEBUG] debug-file - Target 'default' config initialized
+[2025-10-27T21:00:46.603] [DEBUG] debug-file - Target 'ohosTest' config initialized
+[2025-10-27T21:00:46.603] [DEBUG] debug-file - Module 'entry' target 'default' build option initialized
+[2025-10-27T21:00:46.603] [DEBUG] debug-file - Module 'entry' target 'ohosTest' build option initialized
+[2025-10-27T21:00:46.603] [DEBUG] debug-file - End initialize module-target build option map, moduleName=entry
+[2025-10-27T21:00:46.603] [DEBUG] debug-file - Obtain build option for module 'entry' target 'default'in this build.
+[2025-10-27T21:00:46.605] [DEBUG] debug-file - Module entry task initialization takes 1 ms 
+[2025-10-27T21:00:46.605] [DEBUG] debug-file - hvigorfile, binding custom plugins []
+[2025-10-27T21:00:46.605] [DEBUG] debug-file - hvigorfile, no custom plugins were found in /Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/hvigorfile.ts
+[2025-10-27T21:00:46.605] [DEBUG] debug-file - hvigorfile, resolve finished /Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/hvigorfile.ts
+[2025-10-27T21:00:46.675] [DEBUG] debug-file - hvigorfile, resolve hvigorfile dependencies in 70 ms 
+[2025-10-27T21:00:46.676] [DEBUG] debug-file - project has submodules:entry
+[2025-10-27T21:00:46.677] [DEBUG] debug-file - start to load updatedOhPackageInfo to the disk
+[2025-10-27T21:00:46.679] [DEBUG] debug-file - load to the disk finished
+[2025-10-27T21:00:46.679] [DEBUG] debug-file - Start to initialize dependency information.
+[2025-10-27T21:00:46.680] [DEBUG] debug-file - Module CardItem Collected Dependency: 
+[2025-10-27T21:00:46.680] [DEBUG] debug-file - Module CardItem's total dependency: 0
+[2025-10-27T21:00:46.680] [DEBUG] debug-file - Start to initialize dependency information.
+[2025-10-27T21:00:46.681] [DEBUG] debug-file - Module entry Collected Dependency: 
+[2025-10-27T21:00:46.681] [DEBUG] debug-file - Module entry's total dependency: 0
+[2025-10-27T21:00:46.682] [DEBUG] debug-file - Configuration phase cost:161 ms 
+[2025-10-27T21:00:46.682] [DEBUG] debug-file - Configuration task cost before running: 192 ms 
+[2025-10-27T21:00:46.683] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:00:46.683] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:00:46.684] [DEBUG] debug-file - Executing task :entry:default@PreBuild
+[2025-10-27T21:00:46.686] [DEBUG] debug-file - Incremental task entry:default@PreBuild pre-execution cost: 2 ms .
+[2025-10-27T21:00:46.686] [DEBUG] debug-file - entry : default@PreBuild cost memory 0.22682952880859375
+[2025-10-27T21:00:46.686] [INFO] debug-file - UP-TO-DATE :entry:default@PreBuild...  
+[2025-10-27T21:00:46.687] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:00:46.687] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:00:46.688] [DEBUG] debug-file - Executing task :entry:default@CreateModuleInfo
+[2025-10-27T21:00:46.688] [DEBUG] debug-file - Task 'entry:default@CreateModuleInfo' cost while wrapping incremental declarations: 1 ms 
+[2025-10-27T21:00:46.689] [DEBUG] debug-file - entry : default@CreateModuleInfo cost memory 0.049072265625
+[2025-10-27T21:00:46.689] [DEBUG] debug-file - runTaskFromQueue task cost before running: 199 ms 
+[2025-10-27T21:00:46.690] [INFO] debug-file - Finished :entry:default@CreateModuleInfo... after 2 ms 
+[2025-10-27T21:00:46.691] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:00:46.691] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:00:46.692] [DEBUG] debug-file - Executing task :entry:default@GenerateMetadata
+[2025-10-27T21:00:46.692] [DEBUG] debug-file - Task 'entry:default@GenerateMetadata' cost while wrapping incremental declarations: 1 ms 
+[2025-10-27T21:00:46.693] [DEBUG] debug-file - Incremental task entry:default@GenerateMetadata pre-execution cost: 1 ms .
+[2025-10-27T21:00:46.693] [DEBUG] debug-file - entry : default@GenerateMetadata cost memory 0.0784759521484375
+[2025-10-27T21:00:46.693] [INFO] debug-file - UP-TO-DATE :entry:default@GenerateMetadata...  
+[2025-10-27T21:00:46.694] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:00:46.694] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:00:46.694] [DEBUG] debug-file - Executing task :entry:default@ConfigureCmake
+[2025-10-27T21:00:46.694] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:00:46.694] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:00:46.694] [DEBUG] debug-file - entry : default@ConfigureCmake cost memory 0.03607177734375
+[2025-10-27T21:00:46.694] [DEBUG] debug-file - runTaskFromQueue task cost before running: 204 ms 
+[2025-10-27T21:00:46.694] [INFO] debug-file - Finished :entry:default@ConfigureCmake... after 1 ms 
+[2025-10-27T21:00:46.695] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:00:46.695] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:00:46.695] [DEBUG] debug-file - Executing task :entry:default@MergeProfile
+[2025-10-27T21:00:46.696] [DEBUG] debug-file - Incremental task entry:default@MergeProfile pre-execution cost: 1 ms .
+[2025-10-27T21:00:46.696] [DEBUG] debug-file - entry : default@MergeProfile cost memory 0.0999298095703125
+[2025-10-27T21:00:46.696] [INFO] debug-file - UP-TO-DATE :entry:default@MergeProfile...  
+[2025-10-27T21:00:46.697] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:00:46.697] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:00:46.697] [DEBUG] debug-file - Executing task :entry:default@CreateBuildProfile
+[2025-10-27T21:00:46.698] [DEBUG] debug-file - Task 'entry:default@CreateBuildProfile' cost while wrapping incremental declarations: 1 ms 
+[2025-10-27T21:00:46.698] [DEBUG] debug-file - Incremental task entry:default@CreateBuildProfile pre-execution cost: 1 ms .
+[2025-10-27T21:00:46.698] [DEBUG] debug-file - entry : default@CreateBuildProfile cost memory 0.0828704833984375
+[2025-10-27T21:00:46.698] [INFO] debug-file - UP-TO-DATE :entry:default@CreateBuildProfile...  
+[2025-10-27T21:00:46.701] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:00:46.701] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:00:46.702] [DEBUG] debug-file - Executing task :entry:default@PreCheckSyscap
+[2025-10-27T21:00:46.702] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:00:46.702] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:00:46.702] [DEBUG] debug-file - entry : default@PreCheckSyscap cost memory 0.03619384765625
+[2025-10-27T21:00:46.702] [DEBUG] debug-file - runTaskFromQueue task cost before running: 212 ms 
+[2025-10-27T21:00:46.702] [INFO] debug-file - Finished :entry:default@PreCheckSyscap... after 1 ms 
+[2025-10-27T21:00:46.703] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:00:46.703] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:00:46.705] [DEBUG] debug-file - Executing task :entry:default@GeneratePkgContextInfo
+[2025-10-27T21:00:46.705] [DEBUG] debug-file - Task 'entry:default@GeneratePkgContextInfo' cost while wrapping incremental declarations: 1 ms 
+[2025-10-27T21:00:46.705] [DEBUG] debug-file - Incremental task entry:default@GeneratePkgContextInfo pre-execution cost: 1 ms .
+[2025-10-27T21:00:46.705] [DEBUG] debug-file - entry : default@GeneratePkgContextInfo cost memory 0.05879974365234375
+[2025-10-27T21:00:46.705] [INFO] debug-file - UP-TO-DATE :entry:default@GeneratePkgContextInfo...  
+[2025-10-27T21:00:46.706] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:00:46.706] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:00:46.707] [DEBUG] debug-file - Executing task :entry:default@ProcessIntegratedHsp
+[2025-10-27T21:00:46.707] [DEBUG] debug-file - entry:default@ProcessIntegratedHsp is not up-to-date, since the output file '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/build/cache/default/integrated_hsp/integratedHspCache.json' does not exist.
+[2025-10-27T21:00:46.707] [DEBUG] debug-file - Incremental task entry:default@ProcessIntegratedHsp pre-execution cost: 1 ms .
+[2025-10-27T21:00:46.707] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:00:46.707] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:00:46.707] [DEBUG] debug-file - entry : default@ProcessIntegratedHsp cost memory 0.10695648193359375
+[2025-10-27T21:00:46.707] [DEBUG] debug-file - runTaskFromQueue task cost before running: 217 ms 
+[2025-10-27T21:00:46.708] [INFO] debug-file - Finished :entry:default@ProcessIntegratedHsp... after 1 ms 
+[2025-10-27T21:00:46.710] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:00:46.710] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:00:46.711] [DEBUG] debug-file - Executing task :entry:default@BuildNativeWithCmake
+[2025-10-27T21:00:46.712] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:00:46.712] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:00:46.712] [DEBUG] debug-file - entry : default@BuildNativeWithCmake cost memory 0.037017822265625
+[2025-10-27T21:00:46.712] [DEBUG] debug-file - runTaskFromQueue task cost before running: 221 ms 
+[2025-10-27T21:00:46.712] [INFO] debug-file - Finished :entry:default@BuildNativeWithCmake... after 1 ms 
+[2025-10-27T21:00:46.713] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:00:46.713] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:00:46.713] [DEBUG] debug-file - Executing task :entry:default@MakePackInfo
+[2025-10-27T21:00:46.714] [DEBUG] debug-file - Incremental task entry:default@MakePackInfo pre-execution cost: 2 ms .
+[2025-10-27T21:00:46.714] [DEBUG] debug-file - entry : default@MakePackInfo cost memory 0.13298797607421875
+[2025-10-27T21:00:46.715] [INFO] debug-file - UP-TO-DATE :entry:default@MakePackInfo...  
+[2025-10-27T21:00:46.715] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:00:46.716] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:00:46.716] [DEBUG] debug-file - Executing task :entry:default@SyscapTransform
+[2025-10-27T21:00:46.716] [DEBUG] debug-file - File: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/syscap.json' from 'sysCapJsonPath' is not exists, just ignore.
+[2025-10-27T21:00:46.716] [DEBUG] debug-file - Task 'entry:default@SyscapTransform' cost while wrapping incremental declarations: 1 ms 
+[2025-10-27T21:00:46.717] [DEBUG] debug-file - entry:default@SyscapTransform is not up-to-date, since the output file '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/syscap/default/rpcid.sc' does not exist.
+[2025-10-27T21:00:46.717] [DEBUG] debug-file - Incremental task entry:default@SyscapTransform pre-execution cost: 1 ms .
+[2025-10-27T21:00:46.717] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:00:46.717] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:00:46.717] [DEBUG] debug-file - entry : default@SyscapTransform cost memory 0.120849609375
+[2025-10-27T21:00:46.717] [DEBUG] debug-file - runTaskFromQueue task cost before running: 227 ms 
+[2025-10-27T21:00:46.717] [INFO] debug-file - Finished :entry:default@SyscapTransform... after 2 ms 
+[2025-10-27T21:00:46.721] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:00:46.721] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:00:46.722] [DEBUG] debug-file - Executing task :entry:default@ProcessProfile
+[2025-10-27T21:00:46.722] [DEBUG] debug-file - Incremental task entry:default@ProcessProfile pre-execution cost: 1 ms .
+[2025-10-27T21:00:46.722] [DEBUG] debug-file - entry : default@ProcessProfile cost memory 0.0986175537109375
+[2025-10-27T21:00:46.723] [INFO] debug-file - UP-TO-DATE :entry:default@ProcessProfile...  
+[2025-10-27T21:00:46.723] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:00:46.723] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:00:46.724] [DEBUG] debug-file - Executing task :entry:default@ProcessRouterMap
+[2025-10-27T21:00:46.725] [DEBUG] debug-file - Incremental task entry:default@ProcessRouterMap pre-execution cost: 1 ms .
+[2025-10-27T21:00:46.725] [DEBUG] debug-file - entry : default@ProcessRouterMap cost memory 0.17842864990234375
+[2025-10-27T21:00:46.725] [INFO] debug-file - UP-TO-DATE :entry:default@ProcessRouterMap...  
+[2025-10-27T21:00:46.726] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:00:46.726] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:00:46.726] [DEBUG] debug-file - Executing task :entry:default@BuildNativeWithNinja
+[2025-10-27T21:00:46.726] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:00:46.726] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:00:46.726] [DEBUG] debug-file - entry : default@BuildNativeWithNinja cost memory 0.05204010009765625
+[2025-10-27T21:00:46.726] [DEBUG] debug-file - runTaskFromQueue task cost before running: 236 ms 
+[2025-10-27T21:00:46.727] [INFO] debug-file - Finished :entry:default@BuildNativeWithNinja... after 1 ms 
+[2025-10-27T21:00:46.727] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:00:46.727] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:00:46.727] [DEBUG] debug-file - restool module names: entry; moduleName=entry, taskName=default@ProcessResource
+[2025-10-27T21:00:46.729] [DEBUG] debug-file - Executing task :entry:default@ProcessResource
+[2025-10-27T21:00:46.729] [DEBUG] debug-file - Incremental task entry:default@ProcessResource pre-execution cost: 1 ms .
+[2025-10-27T21:00:46.729] [DEBUG] debug-file - entry : default@ProcessResource cost memory 0.13564300537109375
+[2025-10-27T21:00:46.730] [INFO] debug-file - UP-TO-DATE :entry:default@ProcessResource...  
+[2025-10-27T21:00:46.731] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:00:46.731] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:00:46.732] [DEBUG] debug-file - Executing task :entry:default@GenerateLoaderJson
+[2025-10-27T21:00:46.737] [DEBUG] debug-file - Incremental task entry:default@GenerateLoaderJson pre-execution cost: 3 ms .
+[2025-10-27T21:00:46.737] [DEBUG] debug-file - entry : default@GenerateLoaderJson cost memory 0.595794677734375
+[2025-10-27T21:00:46.739] [INFO] debug-file - UP-TO-DATE :entry:default@GenerateLoaderJson...  
+[2025-10-27T21:00:46.740] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:00:46.740] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:00:46.740] [DEBUG] debug-file - Executing task :entry:default@ProcessLibs
+[2025-10-27T21:00:46.741] [DEBUG] debug-file - Incremental task entry:default@ProcessLibs pre-execution cost: 1 ms .
+[2025-10-27T21:00:46.741] [DEBUG] debug-file - entry : default@ProcessLibs cost memory 0.1012420654296875
+[2025-10-27T21:00:46.741] [INFO] debug-file - UP-TO-DATE :entry:default@ProcessLibs...  
+[2025-10-27T21:00:46.742] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:00:46.742] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:00:46.743] [DEBUG] debug-file - restool module names: entry; moduleName=entry, taskName=default@CompileResource
+[2025-10-27T21:00:46.744] [DEBUG] debug-file - Executing task :entry:default@CompileResource
+[2025-10-27T21:00:46.802] [DEBUG] debug-file - Incremental task entry:default@CompileResource pre-execution cost: 57 ms .
+[2025-10-27T21:00:46.802] [DEBUG] debug-file - entry : default@CompileResource cost memory 1.1079483032226562
+[2025-10-27T21:00:46.803] [INFO] debug-file - UP-TO-DATE :entry:default@CompileResource...  
+[2025-10-27T21:00:46.805] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:00:46.805] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:00:46.806] [DEBUG] debug-file - Executing task :entry:default@DoNativeStrip
+[2025-10-27T21:00:46.806] [DEBUG] debug-file - Task 'entry:default@DoNativeStrip' cost while wrapping incremental declarations: 1 ms 
+[2025-10-27T21:00:46.807] [DEBUG] debug-file - Incremental task entry:default@DoNativeStrip pre-execution cost: 1 ms .
+[2025-10-27T21:00:46.807] [DEBUG] debug-file - entry : default@DoNativeStrip cost memory 0.0575408935546875
+[2025-10-27T21:00:46.807] [INFO] debug-file - UP-TO-DATE :entry:default@DoNativeStrip...  
+[2025-10-27T21:00:46.810] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:00:46.810] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:00:46.812] [DEBUG] debug-file - Executing task :entry:default@CompileArkTS
+[2025-10-27T21:00:46.831] [DEBUG] debug-file - build config:
+[2025-10-27T21:00:46.832] [DEBUG] debug-file - {
+  moduleType: 'entry',
+  perf: 0,
+  targetName: '.default',
+  packageManagerType: 'ohpm',
+  localPropertiesPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/local.properties',
+  isPreview: false,
+  isOhosTest: false,
+  isLocalTest: false,
+  buildMode: 'Debug',
+  watchMode: 'false',
+  aceProfilePath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/resources/base/profile',
+  etsLoaderPath: '/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/build-tools/ets-loader',
+  modulePath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry',
+  testFrameworkPar: {
+    testMode: undefined,
+    coveragePathFilter: undefined,
+    coverageMode: undefined
+  },
+  needCoverageInsert: false,
+  debugLine: false,
+  projectTopDir: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem',
+  compileSdkVersion: 17,
+  compatibleSdkVersion: 17,
+  compatibleSdkVersionStage: undefined,
+  bundleName: 'c***d',
+  etsLoaderVersion: '5.0.5.165',
+  etsLoaderReleaseType: 'Release',
+  aotCompileMode: 'type',
+  apPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/modules.ap',
+  entryModuleName: 'entry',
+  entryModuleVersion: '1.0.0',
+  entryPackageName: 'entry',
+  allModuleNameHash: '5b05c2e038a962f9d8d16f4f603565e7',
+  externalApiPaths: [ '/Applications/DevEco-Studio.app/Contents/sdk/default/hms/ets' ],
+  compilerTypes: undefined,
+  isCrossplatform: false,
+  hvigorPluginFile: undefined,
+  compilePluginPath: undefined,
+  buildGeneratedProfilePath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/generated/profile/default',
+  bundleType: 'app',
+  arkTSVersion: undefined,
+  apiVersion: 17,
+  needCompleteSourcesMap: false,
+  isFaMode: false,
+  strictMode: {
+    caseSensitiveCheck: true,
+    useNormalizedOHMUrl: true,
+    noExternalImportByPath: true
+  },
+  buildDir: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build',
+  deviceTypes: [ 'phone', 'tablet', '2in1' ],
+  useNormalizedOHMUrl: true,
+  pkgContextInfo: {
+    '@ohos/hypium': {
+      packageName: '@ohos/hypium',
+      bundleName: '*****',
+      moduleName: '',
+      version: '1.0.21',
+      entryPath: 'index.js',
+      isSO: false,
+      dependencyAlias: ''
+    },
+    '@ohos/hamock': {
+      packageName: '@ohos/hamock',
+      bundleName: '*****',
+      moduleName: '',
+      version: '1.0.0',
+      entryPath: 'index.ets',
+      isSO: false,
+      dependencyAlias: ''
+    },
+    entry: {
+      packageName: 'entry',
+      bundleName: '*****',
+      moduleName: '',
+      version: '',
+      entryPath: 'src/main/',
+      isSO: false,
+      dependencyAlias: ''
+    }
+  },
+  ohPackagePathMap: {},
+  dependencyAliasMap: {},
+  permission: { requestPermissions: [ [Object] ], definePermissions: undefined },
+  integratedHsp: false,
+  projectArkOption: undefined,
+  sourceMapDir: undefined,
+  branchElimination: false,
+  transformLib: undefined,
+  caseSensitiveCheck: true,
+  tsImportSendable: false,
+  resolveConflictMode: true,
+  depName2RootPath: {},
+  depName2DepInfo: {},
+  rootPathSet: [ '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem' ],
+  useNativeResolver: true,
+  shouldEmitJs: true,
+  autoLazyImport: undefined,
+  allowEmptyBundleName: false,
+  singleFileEmit: false,
+  arkCompileCachePath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/cache/default/default@CompileArkTS/esmodule',
+  reExportCheckMode: 'noCheck',
+  aceModuleJsonPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/ark_module.json',
+  appResource: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/ResourceTable.txt',
+  rawFileResource: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/resources/rawfile',
+  resourceTableHash: '8e59911aa3d0057d4fe73ade6c6f7a54',
+  runtimeOS: 'HarmonyOS',
+  sdkInfo: 'false:17:5.0.5.165:Release',
+  aceModuleRoot: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets',
+  compileMode: 'esmodule',
+  aceSuperVisualPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/supervisual',
+  aceBuildJson: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/loader/default/loader.json',
+  cachePath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug',
+  aceModuleBuild: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/loader_out/default/ets',
+  supportChunks: true,
+  declaredFilesPath: undefined,
+  pkgNameToPkgBriefInfo: {
+    entry: {
+      pkgRoot: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry',
+      originalSourceRoots: undefined,
+      sourceRoots: [Array],
+      pkgName: 'entry'
+    }
+  },
+  projectModel: {
+    '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main': {
+      moduleName: 'entry',
+      modulePkgPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry',
+      belongProjectPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem'
+    },
+    '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/src/ohosTest/ets': {
+      moduleName: 'entry_test',
+      modulePkgPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry',
+      belongProjectPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem'
+    },
+    '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/ohosTest': {
+      moduleName: 'entry_test',
+      modulePkgPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry',
+      belongProjectPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem'
+    },
+    '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry': {
+      moduleName: 'entry',
+      modulePkgPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry',
+      belongProjectPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem'
+    },
+    '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem': {
+      moduleName: 'CardItem',
+      modulePkgPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem',
+      belongProjectPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem'
+    }
+  },
+  pkgJsonFileHash: '6b89abcf4532b4f864472c17cdcdc9c1',
+  allModulePaths: [ '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry' ],
+  routerMap: {},
+  obfuscationOptions: undefined,
+  compileBlockPkg: [],
+  mockParams: {
+    decorator: '@MockSetup',
+    packageName: '@ohos/hamock',
+    etsSourceRootPath: 'src/main/ets',
+    mockConfigPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/mock/mock-config.json5',
+    mockConfigKey2ModuleInfo: {}
+  },
+  copyCodeResourceEnable: true,
+  copyCodeResourceExcludes: [],
+  uiTransformOptimization: false,
+  otherPaths: {
+    'entry/*': [ '../*', '../../../build/default/generated/profile/default/*' ]
+  },
+  collectImportersConfig: undefined
+}
+[2025-10-27T21:00:46.832] [DEBUG] debug-file - Compile arkts with external api path: /Applications/DevEco-Studio.app/Contents/sdk/default/hms/ets
+[2025-10-27T21:00:46.832] [DEBUG] debug-file - default@CompileArkTS work[365] is submitted.
+[2025-10-27T21:00:46.832] [DEBUG] debug-file - default@CompileArkTS work[365] is pushed to ready queue.
+[2025-10-27T21:00:46.832] [DEBUG] debug-file - A work dispatched to worker[7] failed because unable to get work from ready queue.
+[2025-10-27T21:00:46.832] [DEBUG] debug-file - A work dispatched to worker[6] failed because unable to get work from ready queue.
+[2025-10-27T21:00:46.832] [DEBUG] debug-file - A work dispatched to worker[5] failed because unable to get work from ready queue.
+[2025-10-27T21:00:46.833] [DEBUG] debug-file - default@CompileArkTS work[365] has been dispatched to worker[4].
+[2025-10-27T21:00:46.833] [DEBUG] debug-file - default@CompileArkTS work[365] is dispatched.
+[2025-10-27T21:00:46.833] [DEBUG] debug-file - CopyResources startTime: 386262147404833
+[2025-10-27T21:00:46.833] [DEBUG] debug-file - default@CompileArkTS work[366] is submitted.
+[2025-10-27T21:00:46.833] [DEBUG] debug-file - default@CompileArkTS work[366] is pushed to ready queue.
+[2025-10-27T21:00:46.833] [DEBUG] debug-file - A work dispatched to worker[7] failed because unable to get work from ready queue.
+[2025-10-27T21:00:46.833] [DEBUG] debug-file - Create  resident worker with id: 6.
+[2025-10-27T21:00:46.833] [DEBUG] debug-file - default@CompileArkTS work[366] has been dispatched to worker[6].
+[2025-10-27T21:00:46.833] [DEBUG] debug-file - default@CompileArkTS work[366] is dispatched.
+[2025-10-27T21:00:46.833] [DEBUG] debug-file - entry : default@CompileArkTS cost memory -7.3997039794921875
+[2025-10-27T21:00:46.834] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:00:46.834] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:00:46.835] [DEBUG] debug-file - Executing task :entry:default@BuildJS
+[2025-10-27T21:00:46.836] [DEBUG] debug-file - entry : default@BuildJS cost memory 0.12311553955078125
+[2025-10-27T21:00:46.837] [DEBUG] debug-file - runTaskFromQueue task cost before running: 346 ms 
+[2025-10-27T21:00:46.837] [INFO] debug-file - Finished :entry:default@BuildJS... after 2 ms 
+[2025-10-27T21:00:46.837] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:00:46.837] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:00:46.838] [DEBUG] debug-file - Executing task :entry:default@CacheNativeLibs
+[2025-10-27T21:00:46.838] [DEBUG] debug-file - Task 'entry:default@CacheNativeLibs' cost while wrapping incremental declarations: 1 ms 
+[2025-10-27T21:00:46.838] [DEBUG] debug-file - Incremental task entry:default@CacheNativeLibs pre-execution cost: 1 ms .
+[2025-10-27T21:00:46.838] [DEBUG] debug-file - entry : default@CacheNativeLibs cost memory 0.0630950927734375
+[2025-10-27T21:00:46.838] [INFO] debug-file - UP-TO-DATE :entry:default@CacheNativeLibs...  
+[2025-10-27T21:00:47.812] [DEBUG] debug-file - worker[6] has one work done.
+[2025-10-27T21:00:47.812] [DEBUG] debug-file - CopyResources is end, endTime: 386263126873958
+[2025-10-27T21:00:47.812] [DEBUG] debug-file - default@CompileArkTS work[366] done.
+[2025-10-27T21:00:47.914] [DEBUG] debug-file - A work dispatched to worker[6] failed because unable to get work from ready queue.
+[2025-10-27T21:00:48.606] [DEBUG] debug-file - Ark compile task finished.finished time is 386263920572041
+[2025-10-27T21:00:48.606] [DEBUG] debug-file - worker[4] has one work done.
+[2025-10-27T21:00:48.610] [DEBUG] debug-file - default@CompileArkTS work[365] done.
+[2025-10-27T21:00:48.612] [INFO] debug-file - Finished :entry:default@CompileArkTS... after 1 s 794 ms 
+[2025-10-27T21:00:48.613] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:00:48.613] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:00:48.613] [DEBUG] debug-file - Executing task :entry:default@GeneratePkgModuleJson
+[2025-10-27T21:00:48.613] [DEBUG] debug-file - Task 'entry:default@GeneratePkgModuleJson' cost while wrapping incremental declarations: 1 ms 
+[2025-10-27T21:00:48.614] [DEBUG] debug-file - Incremental task entry:default@GeneratePkgModuleJson pre-execution cost: 1 ms .
+[2025-10-27T21:00:48.614] [DEBUG] debug-file - entry : default@GeneratePkgModuleJson cost memory 0.05956268310546875
+[2025-10-27T21:00:48.614] [INFO] debug-file - UP-TO-DATE :entry:default@GeneratePkgModuleJson...  
+[2025-10-27T21:00:48.615] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:00:48.615] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:00:48.617] [DEBUG] debug-file - Executing task :entry:default@PackageHap
+[2025-10-27T21:00:48.631] [DEBUG] debug-file - entry:default@PackageHap is not up-to-date, since the input file '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/loader_out/default/ets' has been changed.
+[2025-10-27T21:00:48.631] [DEBUG] debug-file - Incremental task entry:default@PackageHap pre-execution cost: 14 ms .
+[2025-10-27T21:00:48.631] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:00:48.631] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:00:48.632] [DEBUG] debug-file - Use tool [/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/toolchains/lib/app_packing_tool.jar]
+ [
+  'java',
+  '-Dfile.encoding=utf-8',
+  '-jar',
+  '/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/toolchains/lib/app_packing_tool.jar',
+  '--mode',
+  'hap',
+  '--force',
+  'true',
+  '--lib-path',
+  '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/stripped_native_libs/default',
+  '--json-path',
+  '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/package/default/module.json',
+  '--resources-path',
+  '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/resources',
+  '--index-path',
+  '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/resources.index',
+  '--pack-info-path',
+  '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/outputs/default/pack.info',
+  '--out-path',
+  '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/outputs/default/entry-default-unsigned.hap',
+  '--ets-path',
+  '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/loader_out/default/ets',
+  '--pkg-context-path',
+  '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/loader/default/pkgContextInfo.json'
+]
+[2025-10-27T21:00:48.633] [DEBUG] debug-file - default@PackageHap work[367] is submitted.
+[2025-10-27T21:00:48.633] [DEBUG] debug-file - default@PackageHap work[367] is pushed to ready queue.
+[2025-10-27T21:00:48.633] [DEBUG] debug-file - default@PackageHap work[367] is not dispatched.
+[2025-10-27T21:00:48.641] [DEBUG] debug-file - entry : default@PackageHap cost memory 3.8748016357421875
+[2025-10-27T21:00:48.865] [DEBUG] debug-file - A work dispatched to worker[7] failed because unable to get work from ready queue.
+[2025-10-27T21:00:48.879] [DEBUG] debug-file - default@PackageHap work[367] has been dispatched to worker[6].
+[2025-10-27T21:00:49.038] [DEBUG] debug-file - current process  memoryUsage: {
+  rss: 536248320,
+  heapTotal: 75546624,
+  heapUsed: 50975480,
+  external: 2644961,
+  arrayBuffers: 674072
+} os memoryUsage :15.899703979492188
+[2025-10-27T21:00:49.219] [DEBUG] debug-file - A work dispatched to worker[4] failed because unable to get work from ready queue.
+[2025-10-27T21:00:49.525] [DEBUG] debug-file - worker[6] has one work done.
+[2025-10-27T21:00:49.525] [DEBUG] debug-file - default@PackageHap work[367] done.
+[2025-10-27T21:00:49.525] [DEBUG] debug-file - A work dispatched to worker[6] failed because unable to get work from ready queue.
+[2025-10-27T21:00:49.526] [INFO] debug-file - Finished :entry:default@PackageHap... after 513 ms 
+[2025-10-27T21:00:49.527] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:00:49.527] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:00:49.528] [DEBUG] debug-file - Executing task :entry:default@SignHap
+[2025-10-27T21:00:49.528] [WARN] debug-file - Will skip sign 'hos_hap'. No signingConfigs profile is configured in current project.
+             If needed, configure the signingConfigs in /Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/build-profile.json5.
+[2025-10-27T21:00:49.528] [DEBUG] debug-file - entry:default@SignHap is not up-to-date, since the input file '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/outputs/default/entry-default-unsigned.hap' has been changed.
+[2025-10-27T21:00:49.528] [DEBUG] debug-file - Incremental task entry:default@SignHap pre-execution cost: 1 ms .
+[2025-10-27T21:00:49.528] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:00:49.528] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:00:49.529] [DEBUG] debug-file - entry : default@SignHap cost memory 0.10422515869140625
+[2025-10-27T21:00:49.529] [DEBUG] debug-file - runTaskFromQueue task cost before running: 3 s 38 ms 
+[2025-10-27T21:00:49.529] [INFO] debug-file - Finished :entry:default@SignHap... after 1 ms 
+[2025-10-27T21:00:49.535] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:00:49.535] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:00:49.535] [DEBUG] debug-file - Executing task :entry:default@CollectDebugSymbol
+[2025-10-27T21:00:49.537] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:00:49.537] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:00:49.537] [DEBUG] debug-file - entry : default@CollectDebugSymbol cost memory 0.19968414306640625
+[2025-10-27T21:00:49.537] [DEBUG] debug-file - runTaskFromQueue task cost before running: 3 s 46 ms 
+[2025-10-27T21:00:49.537] [INFO] debug-file - Finished :entry:default@CollectDebugSymbol... after 2 ms 
+[2025-10-27T21:00:49.538] [DEBUG] debug-file - Executing task :entry:assembleHap
+[2025-10-27T21:00:49.538] [DEBUG] debug-file - entry : assembleHap cost memory 0.01134490966796875
+[2025-10-27T21:00:49.538] [DEBUG] debug-file - runTaskFromQueue task cost before running: 3 s 47 ms 
+[2025-10-27T21:00:49.538] [INFO] debug-file - Finished :entry:assembleHap... after 1 ms 
+[2025-10-27T21:00:49.539] [DEBUG] debug-file - BUILD SUCCESSFUL in 3 s 48 ms 
+[2025-10-27T21:00:49.539] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@PreBuild is up-to-date.
+[2025-10-27T21:00:49.539] [DEBUG] debug-file - Update task entry:default@CreateModuleInfo output file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/generated/profile/default/ModuleInfo.ts cache.
+[2025-10-27T21:00:49.540] [DEBUG] debug-file - Incremental task entry:default@CreateModuleInfo post-execution cost:1 ms .
+[2025-10-27T21:00:49.540] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@GenerateMetadata is up-to-date.
+[2025-10-27T21:00:49.540] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@MergeProfile is up-to-date.
+[2025-10-27T21:00:49.540] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@CreateBuildProfile is up-to-date.
+[2025-10-27T21:00:49.540] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@GeneratePkgContextInfo is up-to-date.
+[2025-10-27T21:00:49.540] [DEBUG] debug-file - Update task entry:default@ProcessIntegratedHsp output file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/build/cache/default/integrated_hsp/integratedHspCache.json cache.
+[2025-10-27T21:00:49.540] [DEBUG] debug-file - Incremental task entry:default@ProcessIntegratedHsp post-execution cost:1 ms .
+[2025-10-27T21:00:49.541] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@MakePackInfo is up-to-date.
+[2025-10-27T21:00:49.541] [DEBUG] debug-file - Update task entry:default@SyscapTransform input file:/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/toolchains/syscap_tool cache by regenerate.
+[2025-10-27T21:00:49.541] [DEBUG] debug-file - Update task entry:default@SyscapTransform input file:/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/device-define cache by regenerate.
+[2025-10-27T21:00:49.541] [DEBUG] debug-file - Update task entry:default@SyscapTransform output file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/syscap/default/rpcid.sc cache.
+[2025-10-27T21:00:49.541] [DEBUG] debug-file - Incremental task entry:default@SyscapTransform post-execution cost:1 ms .
+[2025-10-27T21:00:49.541] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@ProcessProfile is up-to-date.
+[2025-10-27T21:00:49.541] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@ProcessRouterMap is up-to-date.
+[2025-10-27T21:00:49.541] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@ProcessResource is up-to-date.
+[2025-10-27T21:00:49.541] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@GenerateLoaderJson is up-to-date.
+[2025-10-27T21:00:49.541] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@ProcessLibs is up-to-date.
+[2025-10-27T21:00:49.541] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@CompileResource is up-to-date.
+[2025-10-27T21:00:49.541] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@DoNativeStrip is up-to-date.
+[2025-10-27T21:00:49.542] [DEBUG] debug-file - Update task entry:default@CompileArkTS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/loader/default cache by regenerate.
+[2025-10-27T21:00:49.542] [DEBUG] debug-file - Update task entry:default@CompileArkTS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/resources/rawfile cache by regenerate.
+[2025-10-27T21:00:49.555] [DEBUG] debug-file - Update task entry:default@CompileArkTS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/ResourceTable.txt cache by regenerate.
+[2025-10-27T21:00:49.555] [DEBUG] debug-file - Update task entry:default@CompileArkTS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/ark_module.json cache by regenerate.
+[2025-10-27T21:00:49.555] [DEBUG] debug-file - Update task entry:default@CompileArkTS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/resources/base/profile cache by regenerate.
+[2025-10-27T21:00:49.555] [DEBUG] debug-file - Update task entry:default@CompileArkTS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets cache by regenerate.
+[2025-10-27T21:00:49.555] [DEBUG] debug-file - Update task entry:default@CompileArkTS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/loader/default/pkgContextInfo.json cache by regenerate.
+[2025-10-27T21:00:49.556] [DEBUG] debug-file - Update task entry:default@CompileArkTS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/generated/profile/default/BuildProfile.ets cache by regenerate.
+[2025-10-27T21:00:49.556] [DEBUG] debug-file - Update task entry:default@CompileArkTS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/mock/mock-config.json5 cache by regenerate.
+[2025-10-27T21:00:49.556] [DEBUG] debug-file - Update task entry:default@CompileArkTS output file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/loader_out/default/ets cache.
+[2025-10-27T21:00:49.556] [DEBUG] debug-file - Incremental task entry:default@CompileArkTS post-execution cost:15 ms .
+[2025-10-27T21:00:49.556] [DEBUG] debug-file - Update task entry:default@BuildJS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/loader/default cache by regenerate.
+[2025-10-27T21:00:49.557] [DEBUG] debug-file - Update task entry:default@BuildJS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/resources/rawfile cache by regenerate.
+[2025-10-27T21:00:49.573] [DEBUG] debug-file - Update task entry:default@BuildJS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/ResourceTable.txt cache by regenerate.
+[2025-10-27T21:00:49.573] [DEBUG] debug-file - Update task entry:default@BuildJS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/ark_module.json cache by regenerate.
+[2025-10-27T21:00:49.573] [DEBUG] debug-file - Update task entry:default@BuildJS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/resources/base/profile cache by regenerate.
+[2025-10-27T21:00:49.573] [DEBUG] debug-file - Update task entry:default@BuildJS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/loader/default/pkgContextInfo.json cache by regenerate.
+[2025-10-27T21:00:49.573] [DEBUG] debug-file - Update task entry:default@BuildJS output file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/loader_out/default/js cache.
+[2025-10-27T21:00:49.573] [DEBUG] debug-file - Incremental task entry:default@BuildJS post-execution cost:18 ms .
+[2025-10-27T21:00:49.573] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@CacheNativeLibs is up-to-date.
+[2025-10-27T21:00:49.573] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@GeneratePkgModuleJson is up-to-date.
+[2025-10-27T21:00:49.574] [DEBUG] debug-file - Update task entry:default@PackageHap input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/stripped_native_libs/default cache by regenerate.
+[2025-10-27T21:00:49.574] [DEBUG] debug-file - Update task entry:default@PackageHap input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/module.json cache by regenerate.
+[2025-10-27T21:00:49.574] [DEBUG] debug-file - Update task entry:default@PackageHap input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/resources cache by regenerate.
+[2025-10-27T21:00:49.585] [DEBUG] debug-file - Update task entry:default@PackageHap input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/resources.index cache by regenerate.
+[2025-10-27T21:00:49.585] [DEBUG] debug-file - Update task entry:default@PackageHap input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/outputs/default/pack.info cache by regenerate.
+[2025-10-27T21:00:49.585] [DEBUG] debug-file - Update task entry:default@PackageHap input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/loader_out/default/ets cache from map.
+[2025-10-27T21:00:49.585] [DEBUG] debug-file - Update task entry:default@PackageHap input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/loader/default/pkgContextInfo.json cache by regenerate.
+[2025-10-27T21:00:49.585] [DEBUG] debug-file - Update task entry:default@PackageHap input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/loader_out/default/ets/sourceMaps.map cache by regenerate.
+[2025-10-27T21:00:49.586] [DEBUG] debug-file - Update task entry:default@PackageHap input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/generated/profile/default/BuildProfile.ets cache by regenerate.
+[2025-10-27T21:00:49.586] [DEBUG] debug-file - Update task entry:default@PackageHap output file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/outputs/default/entry-default-unsigned.hap cache.
+[2025-10-27T21:00:49.586] [DEBUG] debug-file - Update task entry:default@PackageHap output file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/source_map/default/sourceMaps.map cache.
+[2025-10-27T21:00:49.586] [DEBUG] debug-file - Update task entry:default@PackageHap output file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/outputs/default/mapping/sourceMaps.map cache.
+[2025-10-27T21:00:49.586] [DEBUG] debug-file - Incremental task entry:default@PackageHap post-execution cost:13 ms .
+[2025-10-27T21:00:49.586] [DEBUG] debug-file - Update task entry:default@SignHap input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/outputs/default/entry-default-unsigned.hap cache from map.
+[2025-10-27T21:00:49.586] [DEBUG] debug-file - Update task entry:default@SignHap output file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/outputs/default/entry-default-signed.hap cache.
+[2025-10-27T21:00:49.586] [DEBUG] debug-file - Incremental task entry:default@SignHap post-execution cost:1 ms .
+[2025-10-27T21:00:49.587] [DEBUG] debug-file - Update task entry:default@CollectDebugSymbol input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/loader_out/default/ets/sourceMaps.map cache by regenerate.
+[2025-10-27T21:00:49.587] [DEBUG] debug-file - Update task entry:default@CollectDebugSymbol input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/libs/default cache by regenerate.
+[2025-10-27T21:00:49.587] [DEBUG] debug-file - Update task entry:default@CollectDebugSymbol output file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/outputs/default/symbol cache.
+[2025-10-27T21:00:49.587] [DEBUG] debug-file - Incremental task entry:default@CollectDebugSymbol post-execution cost:2 ms .
+[2025-10-27T21:00:49.602] [DEBUG] debug-file - Cleanup worker 6.
+[2025-10-27T21:00:49.602] [DEBUG] debug-file - Worker 6 has been cleaned up.
+[2025-10-27T21:00:49.602] [DEBUG] debug-file - Current idle worker size: 1.
+[2025-10-27T21:00:49.602] [DEBUG] debug-file - Current resident worker size: 2.
+[2025-10-27T21:00:49.602] [DEBUG] debug-file - hvigor build process will be closed.
+[2025-10-27T21:00:49.607] [DEBUG] debug-file - worker[6] exits with exit code 1.
+[2025-10-27T21:00:49.616] [DEBUG] debug-file - session manager: send message to worker process.
+[2025-10-27T21:00:49.616] [DEBUG] debug-file - session manager: send message to worker process.
+[2025-10-27T21:00:49.616] [DEBUG] debug-file - watch worker: worker id should be larger than 0. Nothing will be sent to any worker thread.
+[2025-10-27T21:00:49.616] [DEBUG] debug-file - watch worker: worker id should be larger than 0. Nothing will be sent to any worker thread.
+[2025-10-27T21:02:03.944] [DEBUG] debug-file - session manager: set active socket. socketId=T2dR_58V_nCXy_2vAAEn
+[2025-10-27T21:02:03.962] [DEBUG] debug-file - watch worker: worker id should be larger than 0. Nothing will be sent to any worker thread.
+[2025-10-27T21:02:03.982] [DEBUG] debug-file - Hvigor init with startParameters:{
+  hvigorfileTypeCheck: false,
+  parallelExecution: true,
+  incrementalExecution: true,
+  printStackTrace: false,
+  daemon: true,
+  analyze: 0,
+  logLevel: Level { level: 20000, levelStr: 'INFO', colour: 'green' }
+}
+[2025-10-27T21:02:04.004] [DEBUG] debug-file - Cache service initialization finished in 22 ms 
+[2025-10-27T21:02:04.010] [DEBUG] debug-file - hvigorfile, resolving /Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/hvigorfile.ts
+[2025-10-27T21:02:04.019] [DEBUG] debug-file - hvigorfile, require result:  { default: { plugins: [] } }
+[2025-10-27T21:02:04.019] [DEBUG] debug-file - hvigorfile, binding system plugins null
+[2025-10-27T21:02:04.024] [DEBUG] debug-file - Start initialize project's product build option map with build mode debug.
+[2025-10-27T21:02:04.024] [DEBUG] debug-file - Picking option from product 'default' with build mode 'debug'.
+[2025-10-27T21:02:04.024] [DEBUG] debug-file - Product 'default' build option initialized
+[2025-10-27T21:02:04.024] [DEBUG] debug-file - End initialize project's product build option map with build mode 'debug'.
+[2025-10-27T21:02:04.026] [DEBUG] debug-file - Obtain build option for product 'default'in this build.
+[2025-10-27T21:02:04.036] [DEBUG] debug-file - No signingConfig found, initRemoteHspCache failed.
+[2025-10-27T21:02:04.043] [DEBUG] debug-file - Start recording SDK configuration permission data.
+[2025-10-27T21:02:04.135] [DEBUG] debug-file - Sdk init in 98 ms 
+[2025-10-27T21:02:04.148] [DEBUG] debug-file - Project task initialization takes 11 ms 
+[2025-10-27T21:02:04.148] [DEBUG] debug-file - hvigorfile, binding custom plugins []
+[2025-10-27T21:02:04.148] [DEBUG] debug-file - hvigorfile, no custom plugins were found in /Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/hvigorfile.ts
+[2025-10-27T21:02:04.148] [DEBUG] debug-file - hvigorfile, resolve finished /Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/hvigorfile.ts
+[2025-10-27T21:02:04.153] [DEBUG] debug-file - hvigorfile, resolving /Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/hvigorfile.ts
+[2025-10-27T21:02:04.156] [DEBUG] debug-file - hvigorfile, require result:  { default: { plugins: [] } }
+[2025-10-27T21:02:04.156] [DEBUG] debug-file - hvigorfile, binding system plugins null
+[2025-10-27T21:02:04.168] [DEBUG] debug-file - Start initialize module-target build option map, moduleName=entry, buildMode=debug
+[2025-10-27T21:02:04.169] [DEBUG] debug-file - Target 'default' config initialized
+[2025-10-27T21:02:04.170] [DEBUG] debug-file - Target 'ohosTest' config initialized
+[2025-10-27T21:02:04.170] [DEBUG] debug-file - Module 'entry' target 'default' build option initialized
+[2025-10-27T21:02:04.170] [DEBUG] debug-file - Module 'entry' target 'ohosTest' build option initialized
+[2025-10-27T21:02:04.170] [DEBUG] debug-file - End initialize module-target build option map, moduleName=entry
+[2025-10-27T21:02:04.170] [DEBUG] debug-file - Obtain build option for module 'entry' target 'default'in this build.
+[2025-10-27T21:02:04.175] [DEBUG] debug-file - Module entry task initialization takes 5 ms 
+[2025-10-27T21:02:04.175] [DEBUG] debug-file - hvigorfile, binding custom plugins []
+[2025-10-27T21:02:04.175] [DEBUG] debug-file - hvigorfile, no custom plugins were found in /Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/hvigorfile.ts
+[2025-10-27T21:02:04.175] [DEBUG] debug-file - hvigorfile, resolve finished /Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/hvigorfile.ts
+[2025-10-27T21:02:04.262] [DEBUG] debug-file - hvigorfile, resolve hvigorfile dependencies in 87 ms 
+[2025-10-27T21:02:04.263] [DEBUG] debug-file - project has submodules:entry
+[2025-10-27T21:02:04.269] [DEBUG] debug-file - start to load updatedOhPackageInfo to the disk
+[2025-10-27T21:02:04.274] [DEBUG] debug-file - load to the disk finished
+[2025-10-27T21:02:04.274] [DEBUG] debug-file - Start to initialize dependency information.
+[2025-10-27T21:02:04.275] [DEBUG] debug-file - Module CardItem Collected Dependency: 
+[2025-10-27T21:02:04.275] [DEBUG] debug-file - Module CardItem's total dependency: 0
+[2025-10-27T21:02:04.275] [DEBUG] debug-file - Start to initialize dependency information.
+[2025-10-27T21:02:04.275] [DEBUG] debug-file - Module entry Collected Dependency: 
+[2025-10-27T21:02:04.275] [DEBUG] debug-file - Module entry's total dependency: 0
+[2025-10-27T21:02:04.277] [DEBUG] debug-file - Configuration phase cost:270 ms 
+[2025-10-27T21:02:04.278] [DEBUG] debug-file - Configuration task cost before running: 306 ms 
+[2025-10-27T21:02:04.279] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:02:04.279] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:02:04.280] [DEBUG] debug-file - Executing task :entry:default@PreBuild
+[2025-10-27T21:02:04.282] [DEBUG] debug-file - Incremental task entry:default@PreBuild pre-execution cost: 1 ms .
+[2025-10-27T21:02:04.282] [DEBUG] debug-file - entry : default@PreBuild cost memory 0.211700439453125
+[2025-10-27T21:02:04.283] [INFO] debug-file - UP-TO-DATE :entry:default@PreBuild...  
+[2025-10-27T21:02:04.284] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:02:04.284] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:02:04.285] [DEBUG] debug-file - Executing task :entry:default@CreateModuleInfo
+[2025-10-27T21:02:04.287] [DEBUG] debug-file - Task 'entry:default@CreateModuleInfo' cost while wrapping incremental declarations: 3 ms 
+[2025-10-27T21:02:04.287] [DEBUG] debug-file - entry : default@CreateModuleInfo cost memory 0.04976654052734375
+[2025-10-27T21:02:04.287] [DEBUG] debug-file - runTaskFromQueue task cost before running: 315 ms 
+[2025-10-27T21:02:04.287] [INFO] debug-file - Finished :entry:default@CreateModuleInfo... after 3 ms 
+[2025-10-27T21:02:04.288] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:02:04.288] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:02:04.288] [DEBUG] debug-file - Executing task :entry:default@GenerateMetadata
+[2025-10-27T21:02:04.289] [DEBUG] debug-file - Task 'entry:default@GenerateMetadata' cost while wrapping incremental declarations: 1 ms 
+[2025-10-27T21:02:04.289] [DEBUG] debug-file - Incremental task entry:default@GenerateMetadata pre-execution cost: 1 ms .
+[2025-10-27T21:02:04.289] [DEBUG] debug-file - entry : default@GenerateMetadata cost memory 0.07659149169921875
+[2025-10-27T21:02:04.289] [INFO] debug-file - UP-TO-DATE :entry:default@GenerateMetadata...  
+[2025-10-27T21:02:04.290] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:02:04.290] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:02:04.290] [DEBUG] debug-file - Executing task :entry:default@ConfigureCmake
+[2025-10-27T21:02:04.290] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:02:04.290] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:02:04.290] [DEBUG] debug-file - entry : default@ConfigureCmake cost memory 0.03597259521484375
+[2025-10-27T21:02:04.290] [DEBUG] debug-file - runTaskFromQueue task cost before running: 318 ms 
+[2025-10-27T21:02:04.290] [INFO] debug-file - Finished :entry:default@ConfigureCmake... after 1 ms 
+[2025-10-27T21:02:04.291] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:02:04.291] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:02:04.291] [DEBUG] debug-file - Executing task :entry:default@MergeProfile
+[2025-10-27T21:02:04.291] [DEBUG] debug-file - Incremental task entry:default@MergeProfile pre-execution cost: 1 ms .
+[2025-10-27T21:02:04.291] [DEBUG] debug-file - entry : default@MergeProfile cost memory 0.0949554443359375
+[2025-10-27T21:02:04.291] [INFO] debug-file - UP-TO-DATE :entry:default@MergeProfile...  
+[2025-10-27T21:02:04.292] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:02:04.292] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:02:04.292] [DEBUG] debug-file - Executing task :entry:default@CreateBuildProfile
+[2025-10-27T21:02:04.293] [DEBUG] debug-file - Task 'entry:default@CreateBuildProfile' cost while wrapping incremental declarations: 1 ms 
+[2025-10-27T21:02:04.293] [DEBUG] debug-file - Incremental task entry:default@CreateBuildProfile pre-execution cost: 1 ms .
+[2025-10-27T21:02:04.293] [DEBUG] debug-file - entry : default@CreateBuildProfile cost memory 0.08081817626953125
+[2025-10-27T21:02:04.293] [INFO] debug-file - UP-TO-DATE :entry:default@CreateBuildProfile...  
+[2025-10-27T21:02:04.293] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:02:04.293] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:02:04.294] [DEBUG] debug-file - Executing task :entry:default@PreCheckSyscap
+[2025-10-27T21:02:04.294] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:02:04.294] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:02:04.294] [DEBUG] debug-file - entry : default@PreCheckSyscap cost memory 0.03619384765625
+[2025-10-27T21:02:04.294] [DEBUG] debug-file - runTaskFromQueue task cost before running: 322 ms 
+[2025-10-27T21:02:04.294] [INFO] debug-file - Finished :entry:default@PreCheckSyscap... after 1 ms 
+[2025-10-27T21:02:04.295] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:02:04.295] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:02:04.296] [DEBUG] debug-file - Executing task :entry:default@GeneratePkgContextInfo
+[2025-10-27T21:02:04.296] [DEBUG] debug-file - Task 'entry:default@GeneratePkgContextInfo' cost while wrapping incremental declarations: 1 ms 
+[2025-10-27T21:02:04.297] [DEBUG] debug-file - Incremental task entry:default@GeneratePkgContextInfo pre-execution cost: 1 ms .
+[2025-10-27T21:02:04.297] [DEBUG] debug-file - entry : default@GeneratePkgContextInfo cost memory 0.05696868896484375
+[2025-10-27T21:02:04.297] [INFO] debug-file - UP-TO-DATE :entry:default@GeneratePkgContextInfo...  
+[2025-10-27T21:02:04.297] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:02:04.297] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:02:04.300] [DEBUG] debug-file - Executing task :entry:default@ProcessIntegratedHsp
+[2025-10-27T21:02:04.301] [DEBUG] debug-file - entry:default@ProcessIntegratedHsp is not up-to-date, since the output file '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/build/cache/default/integrated_hsp/integratedHspCache.json' does not exist.
+[2025-10-27T21:02:04.301] [DEBUG] debug-file - Incremental task entry:default@ProcessIntegratedHsp pre-execution cost: 1 ms .
+[2025-10-27T21:02:04.301] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:02:04.301] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:02:04.301] [DEBUG] debug-file - entry : default@ProcessIntegratedHsp cost memory 0.10695648193359375
+[2025-10-27T21:02:04.301] [DEBUG] debug-file - runTaskFromQueue task cost before running: 329 ms 
+[2025-10-27T21:02:04.302] [INFO] debug-file - Finished :entry:default@ProcessIntegratedHsp... after 1 ms 
+[2025-10-27T21:02:04.303] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:02:04.303] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:02:04.303] [DEBUG] debug-file - Executing task :entry:default@BuildNativeWithCmake
+[2025-10-27T21:02:04.303] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:02:04.303] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:02:04.303] [DEBUG] debug-file - entry : default@BuildNativeWithCmake cost memory 0.037017822265625
+[2025-10-27T21:02:04.303] [DEBUG] debug-file - runTaskFromQueue task cost before running: 330 ms 
+[2025-10-27T21:02:04.303] [INFO] debug-file - Finished :entry:default@BuildNativeWithCmake... after 1 ms 
+[2025-10-27T21:02:04.303] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:02:04.303] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:02:04.304] [DEBUG] debug-file - Executing task :entry:default@MakePackInfo
+[2025-10-27T21:02:04.305] [DEBUG] debug-file - Incremental task entry:default@MakePackInfo pre-execution cost: 1 ms .
+[2025-10-27T21:02:04.305] [DEBUG] debug-file - entry : default@MakePackInfo cost memory 0.12830352783203125
+[2025-10-27T21:02:04.307] [INFO] debug-file - UP-TO-DATE :entry:default@MakePackInfo...  
+[2025-10-27T21:02:04.310] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:02:04.310] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:02:04.312] [DEBUG] debug-file - Executing task :entry:default@SyscapTransform
+[2025-10-27T21:02:04.312] [DEBUG] debug-file - File: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/syscap.json' from 'sysCapJsonPath' is not exists, just ignore.
+[2025-10-27T21:02:04.313] [DEBUG] debug-file - Task 'entry:default@SyscapTransform' cost while wrapping incremental declarations: 1 ms 
+[2025-10-27T21:02:04.314] [DEBUG] debug-file - entry:default@SyscapTransform is not up-to-date, since the output file '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/syscap/default/rpcid.sc' does not exist.
+[2025-10-27T21:02:04.314] [DEBUG] debug-file - Incremental task entry:default@SyscapTransform pre-execution cost: 2 ms .
+[2025-10-27T21:02:04.314] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:02:04.314] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:02:04.314] [DEBUG] debug-file - entry : default@SyscapTransform cost memory 0.1202239990234375
+[2025-10-27T21:02:04.315] [DEBUG] debug-file - runTaskFromQueue task cost before running: 343 ms 
+[2025-10-27T21:02:04.315] [INFO] debug-file - Finished :entry:default@SyscapTransform... after 3 ms 
+[2025-10-27T21:02:04.317] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:02:04.317] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:02:04.318] [DEBUG] debug-file - Executing task :entry:default@ProcessProfile
+[2025-10-27T21:02:04.319] [DEBUG] debug-file - Incremental task entry:default@ProcessProfile pre-execution cost: 1 ms .
+[2025-10-27T21:02:04.319] [DEBUG] debug-file - entry : default@ProcessProfile cost memory 0.09521484375
+[2025-10-27T21:02:04.319] [INFO] debug-file - UP-TO-DATE :entry:default@ProcessProfile...  
+[2025-10-27T21:02:04.320] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:02:04.320] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:02:04.321] [DEBUG] debug-file - Executing task :entry:default@ProcessRouterMap
+[2025-10-27T21:02:04.322] [DEBUG] debug-file - Incremental task entry:default@ProcessRouterMap pre-execution cost: 1 ms .
+[2025-10-27T21:02:04.322] [DEBUG] debug-file - entry : default@ProcessRouterMap cost memory 0.17528533935546875
+[2025-10-27T21:02:04.323] [INFO] debug-file - UP-TO-DATE :entry:default@ProcessRouterMap...  
+[2025-10-27T21:02:04.332] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:02:04.332] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:02:04.332] [DEBUG] debug-file - Executing task :entry:default@BuildNativeWithNinja
+[2025-10-27T21:02:04.332] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:02:04.332] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:02:04.333] [DEBUG] debug-file - entry : default@BuildNativeWithNinja cost memory 0.05224609375
+[2025-10-27T21:02:04.333] [DEBUG] debug-file - runTaskFromQueue task cost before running: 360 ms 
+[2025-10-27T21:02:04.333] [INFO] debug-file - Finished :entry:default@BuildNativeWithNinja... after 1 ms 
+[2025-10-27T21:02:04.334] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:02:04.334] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:02:04.334] [DEBUG] debug-file - restool module names: entry; moduleName=entry, taskName=default@ProcessResource
+[2025-10-27T21:02:04.336] [DEBUG] debug-file - Executing task :entry:default@ProcessResource
+[2025-10-27T21:02:04.336] [DEBUG] debug-file - Incremental task entry:default@ProcessResource pre-execution cost: 1 ms .
+[2025-10-27T21:02:04.337] [DEBUG] debug-file - entry : default@ProcessResource cost memory 0.13375091552734375
+[2025-10-27T21:02:04.340] [INFO] debug-file - UP-TO-DATE :entry:default@ProcessResource...  
+[2025-10-27T21:02:04.341] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:02:04.341] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:02:04.343] [DEBUG] debug-file - Executing task :entry:default@GenerateLoaderJson
+[2025-10-27T21:02:04.349] [DEBUG] debug-file - Incremental task entry:default@GenerateLoaderJson pre-execution cost: 3 ms .
+[2025-10-27T21:02:04.349] [DEBUG] debug-file - entry : default@GenerateLoaderJson cost memory 0.587005615234375
+[2025-10-27T21:02:04.350] [INFO] debug-file - UP-TO-DATE :entry:default@GenerateLoaderJson...  
+[2025-10-27T21:02:04.351] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:02:04.351] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:02:04.351] [DEBUG] debug-file - Executing task :entry:default@ProcessLibs
+[2025-10-27T21:02:04.352] [DEBUG] debug-file - Incremental task entry:default@ProcessLibs pre-execution cost: 1 ms .
+[2025-10-27T21:02:04.352] [DEBUG] debug-file - entry : default@ProcessLibs cost memory 0.099578857421875
+[2025-10-27T21:02:04.352] [INFO] debug-file - UP-TO-DATE :entry:default@ProcessLibs...  
+[2025-10-27T21:02:04.353] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:02:04.353] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:02:04.353] [DEBUG] debug-file - restool module names: entry; moduleName=entry, taskName=default@CompileResource
+[2025-10-27T21:02:04.354] [DEBUG] debug-file - Executing task :entry:default@CompileResource
+[2025-10-27T21:02:04.391] [DEBUG] debug-file - Incremental task entry:default@CompileResource pre-execution cost: 37 ms .
+[2025-10-27T21:02:04.391] [DEBUG] debug-file - entry : default@CompileResource cost memory 0.017822265625
+[2025-10-27T21:02:04.392] [INFO] debug-file - UP-TO-DATE :entry:default@CompileResource...  
+[2025-10-27T21:02:04.395] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:02:04.395] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:02:04.397] [DEBUG] debug-file - Executing task :entry:default@DoNativeStrip
+[2025-10-27T21:02:04.397] [DEBUG] debug-file - Task 'entry:default@DoNativeStrip' cost while wrapping incremental declarations: 1 ms 
+[2025-10-27T21:02:04.397] [DEBUG] debug-file - Incremental task entry:default@DoNativeStrip pre-execution cost: 1 ms .
+[2025-10-27T21:02:04.397] [DEBUG] debug-file - entry : default@DoNativeStrip cost memory 0.05481719970703125
+[2025-10-27T21:02:04.397] [INFO] debug-file - UP-TO-DATE :entry:default@DoNativeStrip...  
+[2025-10-27T21:02:04.398] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:02:04.398] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:02:04.399] [DEBUG] debug-file - Executing task :entry:default@CompileArkTS
+[2025-10-27T21:02:04.412] [DEBUG] debug-file - entry:default@CompileArkTS is not up-to-date, since the input file '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets' has been changed.
+[2025-10-27T21:02:04.412] [DEBUG] debug-file - Incremental task entry:default@CompileArkTS pre-execution cost: 13 ms .
+[2025-10-27T21:02:04.418] [DEBUG] debug-file - build config:
+[2025-10-27T21:02:04.418] [DEBUG] debug-file - {
+  moduleType: 'entry',
+  perf: 0,
+  targetName: '.default',
+  packageManagerType: 'ohpm',
+  localPropertiesPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/local.properties',
+  isPreview: false,
+  isOhosTest: false,
+  isLocalTest: false,
+  buildMode: 'Debug',
+  watchMode: 'false',
+  aceProfilePath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/resources/base/profile',
+  etsLoaderPath: '/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/build-tools/ets-loader',
+  modulePath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry',
+  testFrameworkPar: {
+    testMode: undefined,
+    coveragePathFilter: undefined,
+    coverageMode: undefined
+  },
+  needCoverageInsert: false,
+  debugLine: false,
+  projectTopDir: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem',
+  compileSdkVersion: 17,
+  compatibleSdkVersion: 17,
+  compatibleSdkVersionStage: undefined,
+  bundleName: 'c***d',
+  etsLoaderVersion: '5.0.5.165',
+  etsLoaderReleaseType: 'Release',
+  aotCompileMode: 'type',
+  apPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/modules.ap',
+  entryModuleName: 'entry',
+  entryModuleVersion: '1.0.0',
+  entryPackageName: 'entry',
+  allModuleNameHash: '5b05c2e038a962f9d8d16f4f603565e7',
+  externalApiPaths: [ '/Applications/DevEco-Studio.app/Contents/sdk/default/hms/ets' ],
+  compilerTypes: undefined,
+  isCrossplatform: false,
+  hvigorPluginFile: undefined,
+  compilePluginPath: undefined,
+  buildGeneratedProfilePath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/generated/profile/default',
+  bundleType: 'app',
+  arkTSVersion: undefined,
+  apiVersion: 17,
+  needCompleteSourcesMap: false,
+  isFaMode: false,
+  strictMode: {
+    caseSensitiveCheck: true,
+    useNormalizedOHMUrl: true,
+    noExternalImportByPath: true
+  },
+  buildDir: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build',
+  deviceTypes: [ 'phone', 'tablet', '2in1' ],
+  useNormalizedOHMUrl: true,
+  pkgContextInfo: {
+    '@ohos/hypium': {
+      packageName: '@ohos/hypium',
+      bundleName: '*****',
+      moduleName: '',
+      version: '1.0.21',
+      entryPath: 'index.js',
+      isSO: false,
+      dependencyAlias: ''
+    },
+    '@ohos/hamock': {
+      packageName: '@ohos/hamock',
+      bundleName: '*****',
+      moduleName: '',
+      version: '1.0.0',
+      entryPath: 'index.ets',
+      isSO: false,
+      dependencyAlias: ''
+    },
+    entry: {
+      packageName: 'entry',
+      bundleName: '*****',
+      moduleName: '',
+      version: '',
+      entryPath: 'src/main/',
+      isSO: false,
+      dependencyAlias: ''
+    }
+  },
+  ohPackagePathMap: {},
+  dependencyAliasMap: {},
+  permission: { requestPermissions: [ [Object] ], definePermissions: undefined },
+  integratedHsp: false,
+  projectArkOption: undefined,
+  sourceMapDir: undefined,
+  branchElimination: false,
+  transformLib: undefined,
+  caseSensitiveCheck: true,
+  tsImportSendable: false,
+  resolveConflictMode: true,
+  depName2RootPath: {},
+  depName2DepInfo: {},
+  rootPathSet: [ '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem' ],
+  useNativeResolver: true,
+  shouldEmitJs: true,
+  autoLazyImport: undefined,
+  allowEmptyBundleName: false,
+  singleFileEmit: false,
+  arkCompileCachePath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/cache/default/default@CompileArkTS/esmodule',
+  reExportCheckMode: 'noCheck',
+  aceModuleJsonPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/ark_module.json',
+  appResource: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/ResourceTable.txt',
+  rawFileResource: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/resources/rawfile',
+  resourceTableHash: '8e59911aa3d0057d4fe73ade6c6f7a54',
+  runtimeOS: 'HarmonyOS',
+  sdkInfo: 'false:17:5.0.5.165:Release',
+  aceModuleRoot: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets',
+  compileMode: 'esmodule',
+  aceSuperVisualPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/supervisual',
+  aceBuildJson: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/loader/default/loader.json',
+  cachePath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug',
+  aceModuleBuild: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/loader_out/default/ets',
+  supportChunks: true,
+  declaredFilesPath: undefined,
+  pkgNameToPkgBriefInfo: {
+    entry: {
+      pkgRoot: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry',
+      originalSourceRoots: undefined,
+      sourceRoots: [Array],
+      pkgName: 'entry'
+    }
+  },
+  projectModel: {
+    '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main': {
+      moduleName: 'entry',
+      modulePkgPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry',
+      belongProjectPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem'
+    },
+    '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/src/ohosTest/ets': {
+      moduleName: 'entry_test',
+      modulePkgPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry',
+      belongProjectPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem'
+    },
+    '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/ohosTest': {
+      moduleName: 'entry_test',
+      modulePkgPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry',
+      belongProjectPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem'
+    },
+    '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry': {
+      moduleName: 'entry',
+      modulePkgPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry',
+      belongProjectPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem'
+    },
+    '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem': {
+      moduleName: 'CardItem',
+      modulePkgPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem',
+      belongProjectPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem'
+    }
+  },
+  pkgJsonFileHash: '6b89abcf4532b4f864472c17cdcdc9c1',
+  allModulePaths: [ '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry' ],
+  routerMap: {},
+  obfuscationOptions: undefined,
+  compileBlockPkg: [],
+  mockParams: {
+    decorator: '@MockSetup',
+    packageName: '@ohos/hamock',
+    etsSourceRootPath: 'src/main/ets',
+    mockConfigPath: '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/mock/mock-config.json5',
+    mockConfigKey2ModuleInfo: {}
+  },
+  copyCodeResourceEnable: true,
+  copyCodeResourceExcludes: [],
+  uiTransformOptimization: false,
+  otherPaths: {
+    'entry/*': [ '../*', '../../../build/default/generated/profile/default/*' ]
+  },
+  collectImportersConfig: undefined
+}
+[2025-10-27T21:02:04.418] [DEBUG] debug-file - Compile arkts with external api path: /Applications/DevEco-Studio.app/Contents/sdk/default/hms/ets
+[2025-10-27T21:02:04.419] [DEBUG] debug-file - default@CompileArkTS work[368] is submitted.
+[2025-10-27T21:02:04.419] [DEBUG] debug-file - default@CompileArkTS work[368] is pushed to ready queue.
+[2025-10-27T21:02:04.419] [DEBUG] debug-file - default@CompileArkTS work[368] is not dispatched.
+[2025-10-27T21:02:04.419] [DEBUG] debug-file - CopyResources startTime: 386339731913166
+[2025-10-27T21:02:04.419] [DEBUG] debug-file - default@CompileArkTS work[369] is submitted.
+[2025-10-27T21:02:04.419] [DEBUG] debug-file - default@CompileArkTS work[369] is pushed to ready queue.
+[2025-10-27T21:02:04.419] [DEBUG] debug-file - default@CompileArkTS work[369] is not dispatched.
+[2025-10-27T21:02:04.419] [DEBUG] debug-file - entry : default@CompileArkTS cost memory 4.407676696777344
+[2025-10-27T21:02:04.420] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:02:04.420] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:02:04.422] [DEBUG] debug-file - Executing task :entry:default@BuildJS
+[2025-10-27T21:02:04.423] [DEBUG] debug-file - entry : default@BuildJS cost memory 0.12224578857421875
+[2025-10-27T21:02:04.423] [DEBUG] debug-file - runTaskFromQueue task cost before running: 451 ms 
+[2025-10-27T21:02:04.424] [INFO] debug-file - Finished :entry:default@BuildJS... after 2 ms 
+[2025-10-27T21:02:04.424] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:02:04.424] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:02:04.425] [DEBUG] debug-file - Executing task :entry:default@CacheNativeLibs
+[2025-10-27T21:02:04.425] [DEBUG] debug-file - Task 'entry:default@CacheNativeLibs' cost while wrapping incremental declarations: 1 ms 
+[2025-10-27T21:02:04.425] [DEBUG] debug-file - Incremental task entry:default@CacheNativeLibs pre-execution cost: 1 ms .
+[2025-10-27T21:02:04.425] [DEBUG] debug-file - entry : default@CacheNativeLibs cost memory 0.06165313720703125
+[2025-10-27T21:02:04.426] [INFO] debug-file - UP-TO-DATE :entry:default@CacheNativeLibs...  
+[2025-10-27T21:02:04.621] [DEBUG] debug-file - A work dispatched to worker[7] failed because unable to get work from ready queue.
+[2025-10-27T21:02:04.621] [DEBUG] debug-file - Create  resident worker with id: 6.
+[2025-10-27T21:02:04.622] [DEBUG] debug-file - default@CompileArkTS work[369] has been dispatched to worker[6].
+[2025-10-27T21:02:04.722] [DEBUG] debug-file - A work dispatched to worker[7] failed because unable to get work from ready queue.
+[2025-10-27T21:02:04.722] [DEBUG] debug-file - A work dispatched to worker[6] failed because of worker busy.
+[2025-10-27T21:02:04.722] [DEBUG] debug-file - A work dispatched to worker[5] failed because unable to get work from ready queue.
+[2025-10-27T21:02:04.723] [DEBUG] debug-file - default@CompileArkTS work[368] has been dispatched to worker[4].
+[2025-10-27T21:02:05.423] [DEBUG] debug-file - worker[6] has one work done.
+[2025-10-27T21:02:05.423] [DEBUG] debug-file - CopyResources is end, endTime: 386340735724541
+[2025-10-27T21:02:05.423] [DEBUG] debug-file - default@CompileArkTS work[369] done.
+[2025-10-27T21:02:05.941] [DEBUG] debug-file - A work dispatched to worker[6] failed because unable to get work from ready queue.
+[2025-10-27T21:02:07.310] [DEBUG] debug-file - Ark compile task finished.finished time is 386342622986833
+[2025-10-27T21:02:07.311] [DEBUG] debug-file - worker[4] has one work done.
+[2025-10-27T21:02:07.317] [DEBUG] debug-file - default@CompileArkTS work[368] done.
+[2025-10-27T21:02:07.317] [DEBUG] debug-file - A work dispatched to worker[4] failed because unable to get work from ready queue.
+[2025-10-27T21:02:07.319] [INFO] debug-file - Finished :entry:default@CompileArkTS... after 2 s 606 ms 
+[2025-10-27T21:02:07.321] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:02:07.321] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:02:07.322] [DEBUG] debug-file - Executing task :entry:default@GeneratePkgModuleJson
+[2025-10-27T21:02:07.322] [DEBUG] debug-file - Task 'entry:default@GeneratePkgModuleJson' cost while wrapping incremental declarations: 1 ms 
+[2025-10-27T21:02:07.325] [DEBUG] debug-file - Incremental task entry:default@GeneratePkgModuleJson pre-execution cost: 3 ms .
+[2025-10-27T21:02:07.325] [DEBUG] debug-file - entry : default@GeneratePkgModuleJson cost memory 0.05759429931640625
+[2025-10-27T21:02:07.325] [INFO] debug-file - UP-TO-DATE :entry:default@GeneratePkgModuleJson...  
+[2025-10-27T21:02:07.326] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:02:07.326] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:02:07.329] [DEBUG] debug-file - Executing task :entry:default@PackageHap
+[2025-10-27T21:02:07.342] [DEBUG] debug-file - entry:default@PackageHap is not up-to-date, since the input file '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/loader_out/default/ets' has been changed.
+[2025-10-27T21:02:07.342] [DEBUG] debug-file - Incremental task entry:default@PackageHap pre-execution cost: 13 ms .
+[2025-10-27T21:02:07.342] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:02:07.342] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:02:07.344] [DEBUG] debug-file - Use tool [/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/toolchains/lib/app_packing_tool.jar]
+ [
+  'java',
+  '-Dfile.encoding=utf-8',
+  '-jar',
+  '/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/toolchains/lib/app_packing_tool.jar',
+  '--mode',
+  'hap',
+  '--force',
+  'true',
+  '--lib-path',
+  '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/stripped_native_libs/default',
+  '--json-path',
+  '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/package/default/module.json',
+  '--resources-path',
+  '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/resources',
+  '--index-path',
+  '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/resources.index',
+  '--pack-info-path',
+  '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/outputs/default/pack.info',
+  '--out-path',
+  '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/outputs/default/entry-default-unsigned.hap',
+  '--ets-path',
+  '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/loader_out/default/ets',
+  '--pkg-context-path',
+  '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/loader/default/pkgContextInfo.json'
+]
+[2025-10-27T21:02:07.346] [DEBUG] debug-file - default@PackageHap work[370] is submitted.
+[2025-10-27T21:02:07.347] [DEBUG] debug-file - default@PackageHap work[370] is pushed to ready queue.
+[2025-10-27T21:02:07.347] [DEBUG] debug-file - A work dispatched to worker[7] failed because unable to get work from ready queue.
+[2025-10-27T21:02:07.348] [DEBUG] debug-file - default@PackageHap work[370] has been dispatched to worker[6].
+[2025-10-27T21:02:07.348] [DEBUG] debug-file - default@PackageHap work[370] is dispatched.
+[2025-10-27T21:02:07.350] [DEBUG] debug-file - entry : default@PackageHap cost memory 3.7573013305664062
+[2025-10-27T21:02:07.407] [DEBUG] debug-file - current process  memoryUsage: {
+  rss: 347488256,
+  heapTotal: 76070912,
+  heapUsed: 51228184,
+  external: 2644961,
+  arrayBuffers: 674072
+} os memoryUsage :15.91961669921875
+[2025-10-27T21:02:07.894] [DEBUG] debug-file - worker[6] has one work done.
+[2025-10-27T21:02:07.894] [DEBUG] debug-file - default@PackageHap work[370] done.
+[2025-10-27T21:02:07.894] [DEBUG] debug-file - A work dispatched to worker[6] failed because unable to get work from ready queue.
+[2025-10-27T21:02:07.895] [INFO] debug-file - Finished :entry:default@PackageHap... after 510 ms 
+[2025-10-27T21:02:07.896] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:02:07.896] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:02:07.897] [DEBUG] debug-file - Executing task :entry:default@SignHap
+[2025-10-27T21:02:07.897] [WARN] debug-file - Will skip sign 'hos_hap'. No signingConfigs profile is configured in current project.
+             If needed, configure the signingConfigs in /Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/build-profile.json5.
+[2025-10-27T21:02:07.897] [DEBUG] debug-file - entry:default@SignHap is not up-to-date, since the input file '/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/outputs/default/entry-default-unsigned.hap' has been changed.
+[2025-10-27T21:02:07.897] [DEBUG] debug-file - Incremental task entry:default@SignHap pre-execution cost: 1 ms .
+[2025-10-27T21:02:07.897] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:02:07.897] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:02:07.898] [DEBUG] debug-file - entry : default@SignHap cost memory 0.10007476806640625
+[2025-10-27T21:02:07.898] [DEBUG] debug-file - runTaskFromQueue task cost before running: 3 s 925 ms 
+[2025-10-27T21:02:07.898] [INFO] debug-file - Finished :entry:default@SignHap... after 1 ms 
+[2025-10-27T21:02:07.898] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:02:07.898] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:02:07.899] [DEBUG] debug-file - Executing task :entry:default@CollectDebugSymbol
+[2025-10-27T21:02:07.900] [DEBUG] debug-file - jsonObjWithoutParam {} at undefined
+[2025-10-27T21:02:07.900] [DEBUG] debug-file - jsonObjWithoutParam {"name":"entry","version":"1.0.0","description":"Please describe the basic information.","main":"","author":"","license":"","dependencies":{}} at undefined
+[2025-10-27T21:02:07.900] [DEBUG] debug-file - entry : default@CollectDebugSymbol cost memory 0.19989776611328125
+[2025-10-27T21:02:07.900] [DEBUG] debug-file - runTaskFromQueue task cost before running: 3 s 928 ms 
+[2025-10-27T21:02:07.900] [INFO] debug-file - Finished :entry:default@CollectDebugSymbol... after 2 ms 
+[2025-10-27T21:02:07.901] [DEBUG] debug-file - Executing task :entry:assembleHap
+[2025-10-27T21:02:07.901] [DEBUG] debug-file - entry : assembleHap cost memory 0.01125335693359375
+[2025-10-27T21:02:07.901] [DEBUG] debug-file - runTaskFromQueue task cost before running: 3 s 929 ms 
+[2025-10-27T21:02:07.901] [INFO] debug-file - Finished :entry:assembleHap... after 1 ms 
+[2025-10-27T21:02:07.902] [DEBUG] debug-file - BUILD SUCCESSFUL in 3 s 929 ms 
+[2025-10-27T21:02:07.902] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@PreBuild is up-to-date.
+[2025-10-27T21:02:07.902] [DEBUG] debug-file - Update task entry:default@CreateModuleInfo output file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/generated/profile/default/ModuleInfo.ts cache.
+[2025-10-27T21:02:07.903] [DEBUG] debug-file - Incremental task entry:default@CreateModuleInfo post-execution cost:1 ms .
+[2025-10-27T21:02:07.903] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@GenerateMetadata is up-to-date.
+[2025-10-27T21:02:07.903] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@MergeProfile is up-to-date.
+[2025-10-27T21:02:07.903] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@CreateBuildProfile is up-to-date.
+[2025-10-27T21:02:07.903] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@GeneratePkgContextInfo is up-to-date.
+[2025-10-27T21:02:07.903] [DEBUG] debug-file - Update task entry:default@ProcessIntegratedHsp output file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/build/cache/default/integrated_hsp/integratedHspCache.json cache.
+[2025-10-27T21:02:07.903] [DEBUG] debug-file - Incremental task entry:default@ProcessIntegratedHsp post-execution cost:1 ms .
+[2025-10-27T21:02:07.903] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@MakePackInfo is up-to-date.
+[2025-10-27T21:02:07.903] [DEBUG] debug-file - Update task entry:default@SyscapTransform input file:/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/toolchains/syscap_tool cache by regenerate.
+[2025-10-27T21:02:07.903] [DEBUG] debug-file - Update task entry:default@SyscapTransform input file:/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/ets/api/device-define cache by regenerate.
+[2025-10-27T21:02:07.903] [DEBUG] debug-file - Update task entry:default@SyscapTransform output file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/syscap/default/rpcid.sc cache.
+[2025-10-27T21:02:07.903] [DEBUG] debug-file - Incremental task entry:default@SyscapTransform post-execution cost:1 ms .
+[2025-10-27T21:02:07.903] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@ProcessProfile is up-to-date.
+[2025-10-27T21:02:07.903] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@ProcessRouterMap is up-to-date.
+[2025-10-27T21:02:07.904] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@ProcessResource is up-to-date.
+[2025-10-27T21:02:07.904] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@GenerateLoaderJson is up-to-date.
+[2025-10-27T21:02:07.904] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@ProcessLibs is up-to-date.
+[2025-10-27T21:02:07.904] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@CompileResource is up-to-date.
+[2025-10-27T21:02:07.904] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@DoNativeStrip is up-to-date.
+[2025-10-27T21:02:07.905] [DEBUG] debug-file - Update task entry:default@CompileArkTS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/loader/default cache by regenerate.
+[2025-10-27T21:02:07.905] [DEBUG] debug-file - Update task entry:default@CompileArkTS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/resources/rawfile cache by regenerate.
+[2025-10-27T21:02:07.915] [DEBUG] debug-file - Update task entry:default@CompileArkTS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/ResourceTable.txt cache by regenerate.
+[2025-10-27T21:02:07.915] [DEBUG] debug-file - Update task entry:default@CompileArkTS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/ark_module.json cache by regenerate.
+[2025-10-27T21:02:07.916] [DEBUG] debug-file - Update task entry:default@CompileArkTS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/resources/base/profile cache by regenerate.
+[2025-10-27T21:02:07.916] [DEBUG] debug-file - Update task entry:default@CompileArkTS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/main/ets cache from map.
+[2025-10-27T21:02:07.916] [DEBUG] debug-file - Update task entry:default@CompileArkTS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/loader/default/pkgContextInfo.json cache by regenerate.
+[2025-10-27T21:02:07.916] [DEBUG] debug-file - Update task entry:default@CompileArkTS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/generated/profile/default/BuildProfile.ets cache by regenerate.
+[2025-10-27T21:02:07.916] [DEBUG] debug-file - Update task entry:default@CompileArkTS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/src/mock/mock-config.json5 cache by regenerate.
+[2025-10-27T21:02:07.916] [DEBUG] debug-file - Update task entry:default@CompileArkTS output file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/loader_out/default/ets cache.
+[2025-10-27T21:02:07.916] [DEBUG] debug-file - Incremental task entry:default@CompileArkTS post-execution cost:13 ms .
+[2025-10-27T21:02:07.917] [DEBUG] debug-file - Update task entry:default@BuildJS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/loader/default cache by regenerate.
+[2025-10-27T21:02:07.917] [DEBUG] debug-file - Update task entry:default@BuildJS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/resources/rawfile cache by regenerate.
+[2025-10-27T21:02:07.927] [DEBUG] debug-file - Update task entry:default@BuildJS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/ResourceTable.txt cache by regenerate.
+[2025-10-27T21:02:07.927] [DEBUG] debug-file - Update task entry:default@BuildJS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/ark_module.json cache by regenerate.
+[2025-10-27T21:02:07.927] [DEBUG] debug-file - Update task entry:default@BuildJS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/resources/base/profile cache by regenerate.
+[2025-10-27T21:02:07.927] [DEBUG] debug-file - Update task entry:default@BuildJS input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/loader/default/pkgContextInfo.json cache by regenerate.
+[2025-10-27T21:02:07.927] [DEBUG] debug-file - Update task entry:default@BuildJS output file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/loader_out/default/js cache.
+[2025-10-27T21:02:07.927] [DEBUG] debug-file - Incremental task entry:default@BuildJS post-execution cost:12 ms .
+[2025-10-27T21:02:07.927] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@CacheNativeLibs is up-to-date.
+[2025-10-27T21:02:07.927] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@GeneratePkgModuleJson is up-to-date.
+[2025-10-27T21:02:07.928] [DEBUG] debug-file - Update task entry:default@PackageHap input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/stripped_native_libs/default cache by regenerate.
+[2025-10-27T21:02:07.928] [DEBUG] debug-file - Update task entry:default@PackageHap input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/module.json cache by regenerate.
+[2025-10-27T21:02:07.928] [DEBUG] debug-file - Update task entry:default@PackageHap input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/resources cache by regenerate.
+[2025-10-27T21:02:07.941] [DEBUG] debug-file - Update task entry:default@PackageHap input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/res/default/resources.index cache by regenerate.
+[2025-10-27T21:02:07.941] [DEBUG] debug-file - Update task entry:default@PackageHap input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/outputs/default/pack.info cache by regenerate.
+[2025-10-27T21:02:07.941] [DEBUG] debug-file - Update task entry:default@PackageHap input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/loader_out/default/ets cache from map.
+[2025-10-27T21:02:07.941] [DEBUG] debug-file - Update task entry:default@PackageHap input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/loader/default/pkgContextInfo.json cache by regenerate.
+[2025-10-27T21:02:07.941] [DEBUG] debug-file - Update task entry:default@PackageHap input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/loader_out/default/ets/sourceMaps.map cache by regenerate.
+[2025-10-27T21:02:07.941] [DEBUG] debug-file - Update task entry:default@PackageHap input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/generated/profile/default/BuildProfile.ets cache by regenerate.
+[2025-10-27T21:02:07.941] [DEBUG] debug-file - Update task entry:default@PackageHap output file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/outputs/default/entry-default-unsigned.hap cache.
+[2025-10-27T21:02:07.941] [DEBUG] debug-file - Update task entry:default@PackageHap output file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/source_map/default/sourceMaps.map cache.
+[2025-10-27T21:02:07.942] [DEBUG] debug-file - Update task entry:default@PackageHap output file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/outputs/default/mapping/sourceMaps.map cache.
+[2025-10-27T21:02:07.942] [DEBUG] debug-file - Incremental task entry:default@PackageHap post-execution cost:15 ms .
+[2025-10-27T21:02:07.942] [DEBUG] debug-file - Update task entry:default@SignHap input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/outputs/default/entry-default-unsigned.hap cache from map.
+[2025-10-27T21:02:07.942] [DEBUG] debug-file - Update task entry:default@SignHap output file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/outputs/default/entry-default-signed.hap cache.
+[2025-10-27T21:02:07.942] [DEBUG] debug-file - Incremental task entry:default@SignHap post-execution cost:1 ms .
+[2025-10-27T21:02:07.943] [DEBUG] debug-file - Update task entry:default@CollectDebugSymbol input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/loader_out/default/ets/sourceMaps.map cache by regenerate.
+[2025-10-27T21:02:07.943] [DEBUG] debug-file - Update task entry:default@CollectDebugSymbol input file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/intermediates/libs/default cache by regenerate.
+[2025-10-27T21:02:07.943] [DEBUG] debug-file - Update task entry:default@CollectDebugSymbol output file:/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/entry/build/default/outputs/default/symbol cache.
+[2025-10-27T21:02:07.943] [DEBUG] debug-file - Incremental task entry:default@CollectDebugSymbol post-execution cost:1 ms .
+[2025-10-27T21:02:07.960] [DEBUG] debug-file - Cleanup worker 6.
+[2025-10-27T21:02:07.960] [DEBUG] debug-file - Worker 6 has been cleaned up.
+[2025-10-27T21:02:07.960] [DEBUG] debug-file - Current idle worker size: 1.
+[2025-10-27T21:02:07.960] [DEBUG] debug-file - Current resident worker size: 2.
+[2025-10-27T21:02:07.960] [DEBUG] debug-file - hvigor build process will be closed.
+[2025-10-27T21:02:07.968] [DEBUG] debug-file - session manager: send message to worker process.
+[2025-10-27T21:02:07.968] [DEBUG] debug-file - session manager: send message to worker process.
+[2025-10-27T21:02:07.968] [DEBUG] debug-file - worker[6] exits with exit code 1.
+[2025-10-27T21:02:07.968] [DEBUG] debug-file - watch worker: worker id should be larger than 0. Nothing will be sent to any worker thread.
+[2025-10-27T21:02:07.968] [DEBUG] debug-file - watch worker: worker id should be larger than 0. Nothing will be sent to any worker thread.

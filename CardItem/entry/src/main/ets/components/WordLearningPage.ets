@@ -20,6 +20,7 @@ export struct WordLearningPage {
   @State cardScale: number = 1  // 卡片缩放状态
   @State imageError: boolean = false  // 图片加载失败状态
   @State micIconScale: number = 1  // 麦克风图标缩放状态
+  @State showHearGif: boolean = false  // 是否显示听音GIF
   
   private learningDataManager = LearningDataManager.getInstance()
 
@@ -121,6 +122,12 @@ export struct WordLearningPage {
     this.currentMode = 'listen'
     console.log('进入听力模式')
     
+    // 显示hearWord.gif，持续2秒
+    this.showHearGif = true
+    setTimeout(() => {
+      this.showHearGif = false
+    }, 2000)
+    
     // 卡片缩放动画：缩小再放大
     this.animateCardScale()
     
@@ -200,11 +207,11 @@ export struct WordLearningPage {
       const result = await AudioRecorderManager.startRecord(word.english)
       console.log('录音已开始，单词:', word.english, '返回结果:', result)
       
-      // 3秒后自动停止录音
+      // 5秒后自动停止录音
       setTimeout(async () => {
-        console.log('录音超时（3秒），停止录音')
+        console.log('录音超时（5秒），停止录音')
         await this.stopRecording(word)
-      }, 3000)
+      }, 5000)
       
     } catch (error) {
       console.error('录音失败:', error)
@@ -405,6 +412,15 @@ export struct WordLearningPage {
                   .margin({ bottom: 10 })
                   .scale({ x: this.micIconScale, y: this.micIconScale })
                   .animation({ duration: 500, curve: Curve.EaseInOut, iterations: 1, playMode: PlayMode.Normal })
+              }
+              
+              // 听音图标（仅在听力模式下显示）
+              if (this.showHearGif) {
+                Image($rawfile('hearWord.gif'))
+                  .width(60)
+                  .height(40)
+                  .objectFit(ImageFit.Fill)
+                  .margin({ bottom: 10 })
               }
               
               Row() {

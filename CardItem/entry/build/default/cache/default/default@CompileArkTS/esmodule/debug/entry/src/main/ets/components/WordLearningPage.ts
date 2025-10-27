@@ -13,6 +13,7 @@ interface WordLearningPage_Params {
     cardScale?: number;
     imageError?: boolean;
     micIconScale?: number;
+    showHearGif?: boolean;
     learningDataManager?;
 }
 import type { WordData, SubcategoryData } from '../types/CommonTypes';
@@ -41,6 +42,8 @@ export class WordLearningPage extends ViewPU {
         , this, "imageError");
         this.__micIconScale = new ObservedPropertySimplePU(1 // 麦克风图标缩放状态
         , this, "micIconScale");
+        this.__showHearGif = new ObservedPropertySimplePU(false // 是否显示听音GIF
+        , this, "showHearGif");
         this.learningDataManager = LearningDataManager.getInstance();
         this.setInitiallyProvidedValue(params);
         this.finalizeConstruction();
@@ -79,6 +82,9 @@ export class WordLearningPage extends ViewPU {
         if (params.micIconScale !== undefined) {
             this.micIconScale = params.micIconScale;
         }
+        if (params.showHearGif !== undefined) {
+            this.showHearGif = params.showHearGif;
+        }
         if (params.learningDataManager !== undefined) {
             this.learningDataManager = params.learningDataManager;
         }
@@ -95,6 +101,7 @@ export class WordLearningPage extends ViewPU {
         this.__cardScale.purgeDependencyOnElmtId(rmElmtId);
         this.__imageError.purgeDependencyOnElmtId(rmElmtId);
         this.__micIconScale.purgeDependencyOnElmtId(rmElmtId);
+        this.__showHearGif.purgeDependencyOnElmtId(rmElmtId);
     }
     aboutToBeDeleted() {
         this.__currentWordIndex.aboutToBeDeleted();
@@ -106,6 +113,7 @@ export class WordLearningPage extends ViewPU {
         this.__cardScale.aboutToBeDeleted();
         this.__imageError.aboutToBeDeleted();
         this.__micIconScale.aboutToBeDeleted();
+        this.__showHearGif.aboutToBeDeleted();
         SubscriberManager.Get().delete(this.id__());
         this.aboutToBeDeletedInternal();
     }
@@ -174,6 +182,13 @@ export class WordLearningPage extends ViewPU {
     }
     set micIconScale(newValue: number) {
         this.__micIconScale.set(newValue);
+    }
+    private __showHearGif: ObservedPropertySimplePU<boolean>; // 是否显示听音GIF
+    get showHearGif() {
+        return this.__showHearGif.get();
+    }
+    set showHearGif(newValue: boolean) {
+        this.__showHearGif.set(newValue);
     }
     private learningDataManager;
     aboutToAppear() {
@@ -263,6 +278,11 @@ export class WordLearningPage extends ViewPU {
     private enterListenMode() {
         this.currentMode = 'listen';
         console.log('进入听力模式');
+        // 显示hearWord.gif，持续2秒
+        this.showHearGif = true;
+        setTimeout(() => {
+            this.showHearGif = false;
+        }, 2000);
         // 卡片缩放动画：缩小再放大
         this.animateCardScale();
         // 自动播放当前单词的发音
@@ -328,11 +348,11 @@ export class WordLearningPage extends ViewPU {
             // 开始录音
             const result = await AudioRecorderManager.startRecord(word.english);
             console.log('录音已开始，单词:', word.english, '返回结果:', result);
-            // 3秒后自动停止录音
+            // 5秒后自动停止录音
             setTimeout(async () => {
-                console.log('录音超时（3秒），停止录音');
+                console.log('录音超时（5秒），停止录音');
                 await this.stopRecording(word);
-            }, 3000);
+            }, 5000);
         }
         catch (error) {
             console.error('录音失败:', error);
@@ -628,6 +648,27 @@ export class WordLearningPage extends ViewPU {
                                     Image.margin({ bottom: 10 });
                                     Image.scale({ x: this.micIconScale, y: this.micIconScale });
                                     Context.animation(null);
+                                }, Image);
+                            });
+                        }
+                        // 听音图标（仅在听力模式下显示）
+                        else {
+                            this.ifElseBranchUpdateFunction(1, () => {
+                            });
+                        }
+                    }, If);
+                    If.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        If.create();
+                        // 听音图标（仅在听力模式下显示）
+                        if (this.showHearGif) {
+                            this.ifElseBranchUpdateFunction(0, () => {
+                                this.observeComponentCreation2((elmtId, isInitialRender) => {
+                                    Image.create({ "id": 0, "type": 30000, params: ['hearWord.gif'], "bundleName": "com.example.studyenglishbycard", "moduleName": "entry" });
+                                    Image.width(60);
+                                    Image.height(40);
+                                    Image.objectFit(ImageFit.Fill);
+                                    Image.margin({ bottom: 10 });
                                 }, Image);
                             });
                         }
