@@ -4,6 +4,12 @@ import { WordData, SubcategoryData } from '../types/CommonTypes'
 import { LearningDataManager } from '../utils/LearningDataManager'
 import { SpeechManager } from '../utils/SpeechManager'
 import { AudioRecorderManager } from '../utils/AudioRecorderManager'
+
+interface TouchPoint {
+  x: number
+  y: number
+}
+
 @Component
 export struct WordLearningPage {
   subcategoryId: string = ''
@@ -24,6 +30,7 @@ export struct WordLearningPage {
   @State testOptions: WordData[] = []  // 测试选项（3个单词）
   @State selectedTestOption: number = -1  // 选中的选项索引
   @State testCorrectAnswerShown: boolean = false  // 是否正确答案已显示
+  @State drawingPaths: string = ''  // 绘制的路径数据
   
   private learningDataManager = LearningDataManager.getInstance()
 
@@ -319,8 +326,49 @@ export struct WordLearningPage {
   // 进入书写模式
   private enterWriteMode() {
     this.currentMode = 'write'
+    this.draggedLetters = []  // 清空已拖拽的字母
+    this.writeResultMessage = ''  // 清空提示信息
+    this.isWriteCorrect = false
     console.log('进入书写模式')
-    // TODO: 实现拼写练习功能
+  }
+
+  // 检查拼写结果
+  private checkWriteResult() {
+    if (!this.getCurrentWord()) {
+      return
+    }
+    
+    const currentWord = this.getCurrentWord()!.english
+    const userInput = this.draggedLetters.join('')
+    
+    // 检查是否输入完成
+    if (this.draggedLetters.length === currentWord.length) {
+      // 判断拼写是否正确
+      if (userInput === currentWord) {
+        this.isWriteCorrect = true
+        this.writeResultMessage = '答对了，你真棒！'
+        // 播放正确提示音
+        SpeechManager.speak('答对了，你真棒！').catch((err: Error) => {
+          console.error('拼写成功提示失败:', err)
+        })
+        // 1秒后返回学习页面
+        setTimeout(() => {
+          this.currentMode = 'normal'
+        }, 1000)
+      } else {
+        this.isWriteCorrect = false
+        this.writeResultMessage = '再试试吧'
+        // 播放错误提示音
+        SpeechManager.speak('再试试吧').catch((err: Error) => {
+          console.error('拼写错误提示失败:', err)
+        })
+        // 2秒后清空书写区域，让用户重新开始
+        setTimeout(() => {
+          this.draggedLetters = []
+          this.writeResultMessage = ''
+        }, 2000)
+      }
+    }
   }
 
   // 退出学习模式
@@ -388,6 +436,9 @@ export struct WordLearningPage {
       if (this.currentMode === 'read') {
         // 测试模式显示
         this.buildTestMode()
+      } else if (this.currentMode === 'write') {
+        // 书写模式显示
+        this.buildWriteMode()
       } else {
         // 常规模式显示
         this.buildNormalMode()
@@ -436,6 +487,110 @@ export struct WordLearningPage {
     .width('100%')
     .height('90%')
     .padding(20)
+  }
+
+  @State draggedLetters: string[] = []
+  @State writeResultMessage: string = ''  // 拼写结果提示
+  @State isWriteCorrect: boolean = false  // 是否拼写正确
+
+  @Builder
+  buildWriteMode() {
+    if (this.getCurrentWord()) {
+      Column() {
+        
+        Row() {
+          // 左边：显示单词的字母（可拖拽）
+          Column() {
+            Text(this.getCurrentWord()!.chinese)
+              .fontSize(50)
+              .fontColor('#000000')
+              .margin({ bottom: 20 })
+            
+            // 打乱顺序的字母
+            Flex({ wrap: FlexWrap.Wrap, justifyContent: FlexAlign.Center }) {
+              ForEach(Array.from(this.getCurrentWord()!.english), (letter: string, index: number) => {
+                Text(letter)
+                  .fontSize(60)
+                  .fontColor('#FFFFFF')
+                  .fontWeight(FontWeight.Bold)
+                  .width(80)
+                  .height(80)
+                  .textAlign(TextAlign.Center)
+                  .backgroundColor('#4A90E2')
+                  .borderRadius(10)
+                  .margin(10)
+                  .onClick(() => {
+                    // 点击字母，添加到书写框
+                    if (this.draggedLetters.filter(l => l === letter).length < this.getCurrentWord()!.english.split('').filter(l => l === letter).length) {
+                      this.draggedLetters.push(letter)
+                      this.checkWriteResult()
+                    }
+                  })
+              })
+            }
+            .width('100%')
+          }
+          .width('50%')
+          .height('100%')
+          .padding(20)
+          
+          // 右边：书写框（显示已拖拽的字母）
+          Column() {
+            Text('书写框')
+              .fontSize(40)
+              .fontColor('#666666')
+              .margin({ bottom: 20 })
+            
+            Flex({ wrap: FlexWrap.Wrap, justifyContent: FlexAlign.Center }) {
+              ForEach(this.draggedLetters, (letter: string, index: number) => {
+                Text(letter)
+                  .fontSize(60)
+                  .fontColor('#000000')
+                  .fontWeight(FontWeight.Bold)
+                  .width(80)
+                  .height(80)
+                  .textAlign(TextAlign.Center)
+                  .backgroundColor(this.isWriteCorrect ? '#90EE90' : '#F0F0F0')
+                  .borderRadius(10)
+                  .margin(10)
+                  .onClick(() => {
+                    // 点击已放置的字母，移除
+                    if (!this.isWriteCorrect) {
+                      this.draggedLetters.splice(index, 1)
+                      this.writeResultMessage = ''
+                    }
+                  })
+              })
+              
+              if (this.draggedLetters.length === 0) {
+                Text('点击左侧字母拼写单词')
+                  .fontSize(40)
+                  .fontColor('#CCCCCC')
+                  .margin(50)
+              }
+            }
+            .width('100%')
+            .height('70%')
+            
+            // 显示判断结果
+            if (this.writeResultMessage !== '') {
+              Text(this.writeResultMessage)
+                .fontSize(50)
+                .fontColor(this.isWriteCorrect ? '#00AA00' : '#FF0000')
+                .fontWeight(FontWeight.Bold)
+                .margin({ top: 20 })
+            }
+          }
+          .width('50%')
+          .height('100%')
+          .padding(20)
+        }
+        .width('100%')
+        .height('70%')
+      }
+      .width('100%')
+      .height('90%')
+    }
   }
 
   @Builder

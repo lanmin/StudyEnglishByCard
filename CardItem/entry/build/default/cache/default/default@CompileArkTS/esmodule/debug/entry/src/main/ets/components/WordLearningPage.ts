@@ -17,12 +17,20 @@ interface WordLearningPage_Params {
     testOptions?: WordData[];
     selectedTestOption?: number;
     testCorrectAnswerShown?: boolean;
+    drawingPaths?: string;
     learningDataManager?;
+    draggedLetters?: string[];
+    writeResultMessage?: string;
+    isWriteCorrect?: boolean;
 }
 import type { WordData, SubcategoryData } from '../types/CommonTypes';
 import { LearningDataManager } from "@normalized:N&&&entry/src/main/ets/utils/LearningDataManager&";
 import { SpeechManager } from "@normalized:N&&&entry/src/main/ets/utils/SpeechManager&";
 import { AudioRecorderManager } from "@normalized:N&&&entry/src/main/ets/utils/AudioRecorderManager&";
+interface TouchPoint {
+    x: number;
+    y: number;
+}
 export class WordLearningPage extends ViewPU {
     constructor(parent, params, __localStorage, elmtId = -1, paramsLambda = undefined, extraInfo) {
         super(parent, __localStorage, elmtId, extraInfo);
@@ -53,7 +61,14 @@ export class WordLearningPage extends ViewPU {
         , this, "selectedTestOption");
         this.__testCorrectAnswerShown = new ObservedPropertySimplePU(false // 是否正确答案已显示
         , this, "testCorrectAnswerShown");
+        this.__drawingPaths = new ObservedPropertySimplePU('' // 绘制的路径数据
+        , this, "drawingPaths");
         this.learningDataManager = LearningDataManager.getInstance();
+        this.__draggedLetters = new ObservedPropertyObjectPU([], this, "draggedLetters");
+        this.__writeResultMessage = new ObservedPropertySimplePU('' // 拼写结果提示
+        , this, "writeResultMessage");
+        this.__isWriteCorrect = new ObservedPropertySimplePU(false // 是否拼写正确
+        , this, "isWriteCorrect");
         this.setInitiallyProvidedValue(params);
         this.finalizeConstruction();
     }
@@ -103,8 +118,20 @@ export class WordLearningPage extends ViewPU {
         if (params.testCorrectAnswerShown !== undefined) {
             this.testCorrectAnswerShown = params.testCorrectAnswerShown;
         }
+        if (params.drawingPaths !== undefined) {
+            this.drawingPaths = params.drawingPaths;
+        }
         if (params.learningDataManager !== undefined) {
             this.learningDataManager = params.learningDataManager;
+        }
+        if (params.draggedLetters !== undefined) {
+            this.draggedLetters = params.draggedLetters;
+        }
+        if (params.writeResultMessage !== undefined) {
+            this.writeResultMessage = params.writeResultMessage;
+        }
+        if (params.isWriteCorrect !== undefined) {
+            this.isWriteCorrect = params.isWriteCorrect;
         }
     }
     updateStateVars(params: WordLearningPage_Params) {
@@ -123,6 +150,10 @@ export class WordLearningPage extends ViewPU {
         this.__testOptions.purgeDependencyOnElmtId(rmElmtId);
         this.__selectedTestOption.purgeDependencyOnElmtId(rmElmtId);
         this.__testCorrectAnswerShown.purgeDependencyOnElmtId(rmElmtId);
+        this.__drawingPaths.purgeDependencyOnElmtId(rmElmtId);
+        this.__draggedLetters.purgeDependencyOnElmtId(rmElmtId);
+        this.__writeResultMessage.purgeDependencyOnElmtId(rmElmtId);
+        this.__isWriteCorrect.purgeDependencyOnElmtId(rmElmtId);
     }
     aboutToBeDeleted() {
         this.__currentWordIndex.aboutToBeDeleted();
@@ -138,6 +169,10 @@ export class WordLearningPage extends ViewPU {
         this.__testOptions.aboutToBeDeleted();
         this.__selectedTestOption.aboutToBeDeleted();
         this.__testCorrectAnswerShown.aboutToBeDeleted();
+        this.__drawingPaths.aboutToBeDeleted();
+        this.__draggedLetters.aboutToBeDeleted();
+        this.__writeResultMessage.aboutToBeDeleted();
+        this.__isWriteCorrect.aboutToBeDeleted();
         SubscriberManager.Get().delete(this.id__());
         this.aboutToBeDeletedInternal();
     }
@@ -234,6 +269,13 @@ export class WordLearningPage extends ViewPU {
     }
     set testCorrectAnswerShown(newValue: boolean) {
         this.__testCorrectAnswerShown.set(newValue);
+    }
+    private __drawingPaths: ObservedPropertySimplePU<string>; // 绘制的路径数据
+    get drawingPaths() {
+        return this.__drawingPaths.get();
+    }
+    set drawingPaths(newValue: string) {
+        this.__drawingPaths.set(newValue);
     }
     private learningDataManager;
     aboutToAppear() {
@@ -486,8 +528,47 @@ export class WordLearningPage extends ViewPU {
     // 进入书写模式
     private enterWriteMode() {
         this.currentMode = 'write';
+        this.draggedLetters = []; // 清空已拖拽的字母
+        this.writeResultMessage = ''; // 清空提示信息
+        this.isWriteCorrect = false;
         console.log('进入书写模式');
-        // TODO: 实现拼写练习功能
+    }
+    // 检查拼写结果
+    private checkWriteResult() {
+        if (!this.getCurrentWord()) {
+            return;
+        }
+        const currentWord = this.getCurrentWord()!.english;
+        const userInput = this.draggedLetters.join('');
+        // 检查是否输入完成
+        if (this.draggedLetters.length === currentWord.length) {
+            // 判断拼写是否正确
+            if (userInput === currentWord) {
+                this.isWriteCorrect = true;
+                this.writeResultMessage = '答对了，你真棒！';
+                // 播放正确提示音
+                SpeechManager.speak('答对了，你真棒！').catch((err: Error) => {
+                    console.error('拼写成功提示失败:', err);
+                });
+                // 1秒后返回学习页面
+                setTimeout(() => {
+                    this.currentMode = 'normal';
+                }, 1000);
+            }
+            else {
+                this.isWriteCorrect = false;
+                this.writeResultMessage = '再试试吧';
+                // 播放错误提示音
+                SpeechManager.speak('再试试吧').catch((err: Error) => {
+                    console.error('拼写错误提示失败:', err);
+                });
+                // 2秒后清空书写区域，让用户重新开始
+                setTimeout(() => {
+                    this.draggedLetters = [];
+                    this.writeResultMessage = '';
+                }, 2000);
+            }
+        }
     }
     // 退出学习模式
     private exitMode() {
@@ -584,8 +665,14 @@ export class WordLearningPage extends ViewPU {
                     this.buildTestMode.bind(this)();
                 });
             }
-            else {
+            else if (this.currentMode === 'write') {
                 this.ifElseBranchUpdateFunction(1, () => {
+                    // 书写模式显示
+                    this.buildWriteMode.bind(this)();
+                });
+            }
+            else {
+                this.ifElseBranchUpdateFunction(2, () => {
                     // 常规模式显示
                     this.buildNormalMode.bind(this)();
                 });
@@ -652,6 +739,201 @@ export class WordLearningPage extends ViewPU {
         // 3个选项
         Row.pop();
         Column.pop();
+    }
+    private __draggedLetters: ObservedPropertyObjectPU<string[]>;
+    get draggedLetters() {
+        return this.__draggedLetters.get();
+    }
+    set draggedLetters(newValue: string[]) {
+        this.__draggedLetters.set(newValue);
+    }
+    private __writeResultMessage: ObservedPropertySimplePU<string>; // 拼写结果提示
+    get writeResultMessage() {
+        return this.__writeResultMessage.get();
+    }
+    set writeResultMessage(newValue: string) {
+        this.__writeResultMessage.set(newValue);
+    }
+    private __isWriteCorrect: ObservedPropertySimplePU<boolean>; // 是否拼写正确
+    get isWriteCorrect() {
+        return this.__isWriteCorrect.get();
+    }
+    set isWriteCorrect(newValue: boolean) {
+        this.__isWriteCorrect.set(newValue);
+    }
+    buildWriteMode(parent = null) {
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            If.create();
+            if (this.getCurrentWord()) {
+                this.ifElseBranchUpdateFunction(0, () => {
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Column.create();
+                        Column.width('100%');
+                        Column.height('90%');
+                    }, Column);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Row.create();
+                        Row.width('100%');
+                        Row.height('70%');
+                    }, Row);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        // 左边：显示单词的字母（可拖拽）
+                        Column.create();
+                        // 左边：显示单词的字母（可拖拽）
+                        Column.width('50%');
+                        // 左边：显示单词的字母（可拖拽）
+                        Column.height('100%');
+                        // 左边：显示单词的字母（可拖拽）
+                        Column.padding(20);
+                    }, Column);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Text.create(this.getCurrentWord()!.chinese);
+                        Text.fontSize(50);
+                        Text.fontColor('#000000');
+                        Text.margin({ bottom: 20 });
+                    }, Text);
+                    Text.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        // 打乱顺序的字母
+                        Flex.create({ wrap: FlexWrap.Wrap, justifyContent: FlexAlign.Center });
+                        // 打乱顺序的字母
+                        Flex.width('100%');
+                    }, Flex);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        ForEach.create();
+                        const forEachItemGenFunction = (_item, index: number) => {
+                            const letter = _item;
+                            this.observeComponentCreation2((elmtId, isInitialRender) => {
+                                Text.create(letter);
+                                Text.fontSize(60);
+                                Text.fontColor('#FFFFFF');
+                                Text.fontWeight(FontWeight.Bold);
+                                Text.width(80);
+                                Text.height(80);
+                                Text.textAlign(TextAlign.Center);
+                                Text.backgroundColor('#4A90E2');
+                                Text.borderRadius(10);
+                                Text.margin(10);
+                                Text.onClick(() => {
+                                    // 点击字母，添加到书写框
+                                    if (this.draggedLetters.filter(l => l === letter).length < this.getCurrentWord()!.english.split('').filter(l => l === letter).length) {
+                                        this.draggedLetters.push(letter);
+                                        this.checkWriteResult();
+                                    }
+                                });
+                            }, Text);
+                            Text.pop();
+                        };
+                        this.forEachUpdateFunction(elmtId, Array.from(this.getCurrentWord()!.english), forEachItemGenFunction, undefined, true, false);
+                    }, ForEach);
+                    ForEach.pop();
+                    // 打乱顺序的字母
+                    Flex.pop();
+                    // 左边：显示单词的字母（可拖拽）
+                    Column.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        // 右边：书写框（显示已拖拽的字母）
+                        Column.create();
+                        // 右边：书写框（显示已拖拽的字母）
+                        Column.width('50%');
+                        // 右边：书写框（显示已拖拽的字母）
+                        Column.height('100%');
+                        // 右边：书写框（显示已拖拽的字母）
+                        Column.padding(20);
+                    }, Column);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Text.create('书写框');
+                        Text.fontSize(40);
+                        Text.fontColor('#666666');
+                        Text.margin({ bottom: 20 });
+                    }, Text);
+                    Text.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Flex.create({ wrap: FlexWrap.Wrap, justifyContent: FlexAlign.Center });
+                        Flex.width('100%');
+                        Flex.height('70%');
+                    }, Flex);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        ForEach.create();
+                        const forEachItemGenFunction = (_item, index: number) => {
+                            const letter = _item;
+                            this.observeComponentCreation2((elmtId, isInitialRender) => {
+                                Text.create(letter);
+                                Text.fontSize(60);
+                                Text.fontColor('#000000');
+                                Text.fontWeight(FontWeight.Bold);
+                                Text.width(80);
+                                Text.height(80);
+                                Text.textAlign(TextAlign.Center);
+                                Text.backgroundColor(this.isWriteCorrect ? '#90EE90' : '#F0F0F0');
+                                Text.borderRadius(10);
+                                Text.margin(10);
+                                Text.onClick(() => {
+                                    // 点击已放置的字母，移除
+                                    if (!this.isWriteCorrect) {
+                                        this.draggedLetters.splice(index, 1);
+                                        this.writeResultMessage = '';
+                                    }
+                                });
+                            }, Text);
+                            Text.pop();
+                        };
+                        this.forEachUpdateFunction(elmtId, this.draggedLetters, forEachItemGenFunction, undefined, true, false);
+                    }, ForEach);
+                    ForEach.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        If.create();
+                        if (this.draggedLetters.length === 0) {
+                            this.ifElseBranchUpdateFunction(0, () => {
+                                this.observeComponentCreation2((elmtId, isInitialRender) => {
+                                    Text.create('点击左侧字母拼写单词');
+                                    Text.fontSize(40);
+                                    Text.fontColor('#CCCCCC');
+                                    Text.margin(50);
+                                }, Text);
+                                Text.pop();
+                            });
+                        }
+                        else {
+                            this.ifElseBranchUpdateFunction(1, () => {
+                            });
+                        }
+                    }, If);
+                    If.pop();
+                    Flex.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        If.create();
+                        // 显示判断结果
+                        if (this.writeResultMessage !== '') {
+                            this.ifElseBranchUpdateFunction(0, () => {
+                                this.observeComponentCreation2((elmtId, isInitialRender) => {
+                                    Text.create(this.writeResultMessage);
+                                    Text.fontSize(50);
+                                    Text.fontColor(this.isWriteCorrect ? '#00AA00' : '#FF0000');
+                                    Text.fontWeight(FontWeight.Bold);
+                                    Text.margin({ top: 20 });
+                                }, Text);
+                                Text.pop();
+                            });
+                        }
+                        else {
+                            this.ifElseBranchUpdateFunction(1, () => {
+                            });
+                        }
+                    }, If);
+                    If.pop();
+                    // 右边：书写框（显示已拖拽的字母）
+                    Column.pop();
+                    Row.pop();
+                    Column.pop();
+                });
+            }
+            else {
+                this.ifElseBranchUpdateFunction(1, () => {
+                });
+            }
+        }, If);
+        If.pop();
     }
     buildNormalMode(parent = null) {
         this.observeComponentCreation2((elmtId, isInitialRender) => {
