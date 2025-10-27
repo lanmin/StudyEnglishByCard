@@ -3,7 +3,7 @@
 import { WordData, SubcategoryData } from '../types/CommonTypes'
 import { LearningDataManager } from '../utils/LearningDataManager'
 import { TTSManager } from '../utils/TTSManager'
-
+@Entry
 @Component
 export struct WordLearningPage {
   @Prop subcategoryId: string = ''
@@ -98,91 +98,61 @@ export struct WordLearningPage {
           .onClick(() => {
             console.log('返回按钮被点击 - 暂时禁用返回功能')
           })
-
-        Blank()
-        
-        Text(this.getCurrentWord()?.english || '')
-          .fontSize(28)
-          .fontColor('#333333')
-          .fontWeight(FontWeight.Bold)
-          .onClick(() => {
-            this.flipCard()
-          })
-        
-        Blank()
-        
-        Text(`${this.currentWordIndex + 1}/${this.words.length}`)
-          .fontSize(20)
-          .fontColor('#666666')
       }
       .width('100%')
-      .height(60)
+      .height('10%')
       .padding({ left: 20, right: 20 })
-      .backgroundColor('#F5F5F5')
 
       // 主要内容区域
       Row() {
         if (this.getCurrentWord()) {
           // 左侧：上一个按钮
-          Button('上一个')
-            .fontSize(30)
+          Button('←')
+            .fontSize(40)
             .fontColor('#FFFFFF')
             .backgroundColor('#FF0000')
             .borderRadius(15)
-            .width(80)
+            .width(60)
             .height(60)
             .enabled(this.currentWordIndex > 0)
             .onClick(() => {
               this.prevWord()
             })
+            .alignSelf(ItemAlign.End)
           
           // 中间：单词卡片
-          Stack() {
-            // 正面 - 英文单词
-            Column() {
-              // 使用rawfile资源引用
-              Image($rawfile(this.getCurrentWord()!.image))
-                .width(300)
-                .height(300)
-                .borderRadius(20)
-                .objectFit(ImageFit.Cover)
-                .alt($r('app.media.foreground')) // 备用图片
-                .onError(() => {
-                  console.log(`图片加载失败: ${this.getCurrentWord()!.image}`)
-                  // 尝试备用路径
-                  console.log('尝试使用备用图片路径...')
-                })
-                .onComplete(() => {
-                  console.log(`图片加载成功: ${this.getCurrentWord()!.image}`)
-                })
-                .onClick(() => {
-                  this.playPronunciation()
-                })
-                .gesture(
-                  LongPressGesture({ repeat: true })
-                    .onAction(() => {
-                      this.flipCard()
-                    })
-                )
-            }
-            .rotate({ angle: this.isFlipped ? 180 : 0, x: 0, y: 1, z: 0 })
-            .animation({ duration: 600, curve: Curve.EaseInOut, iterations: 1, playMode: PlayMode.Normal })
-            
-            // 背面 - 中文意思
-            Column() {
-              Image($rawfile(this.getCurrentWord()!.image))
-                .width(300)
-                .height(300)
-                .borderRadius(20)
-                .objectFit(ImageFit.Cover)
-                .opacity(0.3)
-                .alt($r('app.media.foreground')) // 备用图片
-            }
-            .rotate({ angle: this.isFlipped ? 0 : -180, x: 0, y: 1, z: 0 })
-            .animation({ duration: 600, curve: Curve.EaseInOut, iterations: 1, playMode: PlayMode.Normal })
+          Column() {
+            // 使用rawfile资源引用
+            Image($rawfile(this.getCurrentWord()!.image))
+              .width(250)
+              .height(250)
+              .borderRadius(20)
+              .objectFit(ImageFit.Cover)
+              .alt($r('app.media.foreground')) // 备用图片
+              .onError(() => {
+                console.log(`图片加载失败: ${this.getCurrentWord()!.image}`)
+                // 尝试备用路径
+                console.log('尝试使用备用图片路径...')
+              })
+              .onComplete(() => {
+                console.log(`图片加载成功: ${this.getCurrentWord()!.image}`)
+              })
+              .onClick(() => {
+                this.playPronunciation()
+              })
+              .gesture(
+                LongPressGesture({ repeat: true })
+                  .onAction(() => {
+                    this.flipCard()
+                  })
+              )
           }
+          .rotate({ angle: this.isFlipped ? 180 : 0, x: 0, y: 1, z: 0 })
+          .animation({ duration: 600, curve: Curve.EaseInOut, iterations: 1, playMode: PlayMode.Normal })
           .width(350)
-          .height(450)
+          .padding({bottom:0})
+          .height('90%')
+          .justifyContent(FlexAlign.Center)
           .borderRadius(25)
           .shadow({
             radius: 10,
@@ -229,17 +199,18 @@ export struct WordLearningPage {
           .padding({ left: 30 })
           
           // 最右侧：下一个按钮
-          Button('下一个')
-            .fontSize(30)
+          Button('→')
+            .fontSize(40)
             .fontColor('#FFFFFF')
             .backgroundColor('#0000FF')
             .borderRadius(15)
-            .width(80)
+            .width(60)
             .height(60)
             .enabled(this.currentWordIndex < this.words.length - 1)
             .onClick(() => {
               this.nextWord()
             })
+            .alignSelf(ItemAlign.End)
         } else {
           // 没有单词时的提示
           Column() {
@@ -258,13 +229,9 @@ export struct WordLearningPage {
         }
       }
       .flexGrow(1)
-      .justifyContent(FlexAlign.Start)
-      .alignItems(VerticalAlign.Center)
       .padding({ left: 50, right: 50 })
-      // .backgroundColor(Color.Green)
     }
     .width('100%')
-    .height('90%')
-    .backgroundColor('#F8F9FA')
+    .height('100%')
   }
 }

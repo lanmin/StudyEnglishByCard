@@ -189,8 +189,7 @@ export class WordLearningPage extends ViewPU {
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             Column.create();
             Column.width('100%');
-            Column.height('90%');
-            Column.backgroundColor('#F8F9FA');
+            Column.height('100%');
         }, Column);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             // 顶部导航栏
@@ -198,11 +197,9 @@ export class WordLearningPage extends ViewPU {
             // 顶部导航栏
             Row.width('100%');
             // 顶部导航栏
-            Row.height(60);
+            Row.height('10%');
             // 顶部导航栏
             Row.padding({ left: 20, right: 20 });
-            // 顶部导航栏
-            Row.backgroundColor('#F5F5F5');
         }, Row);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             Button.createWithLabel('←');
@@ -214,30 +211,6 @@ export class WordLearningPage extends ViewPU {
             });
         }, Button);
         Button.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Blank.create();
-        }, Blank);
-        Blank.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Text.create(this.getCurrentWord()?.english || '');
-            Text.fontSize(28);
-            Text.fontColor('#333333');
-            Text.fontWeight(FontWeight.Bold);
-            Text.onClick(() => {
-                this.flipCard();
-            });
-        }, Text);
-        Text.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Blank.create();
-        }, Blank);
-        Blank.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Text.create(`${this.currentWordIndex + 1}/${this.words.length}`);
-            Text.fontSize(20);
-            Text.fontColor('#666666');
-        }, Text);
-        Text.pop();
         // 顶部导航栏
         Row.pop();
         this.observeComponentCreation2((elmtId, isInitialRender) => {
@@ -245,10 +218,6 @@ export class WordLearningPage extends ViewPU {
             Row.create();
             // 主要内容区域
             Row.flexGrow(1);
-            // 主要内容区域
-            Row.justifyContent(FlexAlign.Start);
-            // 主要内容区域
-            Row.alignItems(VerticalAlign.Center);
             // 主要内容区域
             Row.padding({ left: 50, right: 50 });
         }, Row);
@@ -258,9 +227,9 @@ export class WordLearningPage extends ViewPU {
                 this.ifElseBranchUpdateFunction(0, () => {
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         // 左侧：上一个按钮
-                        Button.createWithLabel('上一个');
+                        Button.createWithLabel('←');
                         // 左侧：上一个按钮
-                        Button.fontSize(30);
+                        Button.fontSize(40);
                         // 左侧：上一个按钮
                         Button.fontColor('#FFFFFF');
                         // 左侧：上一个按钮
@@ -268,7 +237,7 @@ export class WordLearningPage extends ViewPU {
                         // 左侧：上一个按钮
                         Button.borderRadius(15);
                         // 左侧：上一个按钮
-                        Button.width(80);
+                        Button.width(60);
                         // 左侧：上一个按钮
                         Button.height(60);
                         // 左侧：上一个按钮
@@ -277,45 +246,47 @@ export class WordLearningPage extends ViewPU {
                         Button.onClick(() => {
                             this.prevWord();
                         });
+                        // 左侧：上一个按钮
+                        Button.alignSelf(ItemAlign.End);
                     }, Button);
                     // 左侧：上一个按钮
                     Button.pop();
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         // 中间：单词卡片
-                        Stack.create();
+                        Column.create();
+                        Context.animation({ duration: 600, curve: Curve.EaseInOut, iterations: 1, playMode: PlayMode.Normal });
                         // 中间：单词卡片
-                        Stack.width(350);
+                        Column.rotate({ angle: this.isFlipped ? 180 : 0, x: 0, y: 1, z: 0 });
+                        Context.animation(null);
                         // 中间：单词卡片
-                        Stack.height(450);
+                        Column.width(350);
                         // 中间：单词卡片
-                        Stack.borderRadius(25);
+                        Column.padding({ bottom: 0 });
                         // 中间：单词卡片
-                        Stack.shadow({
+                        Column.height('90%');
+                        // 中间：单词卡片
+                        Column.justifyContent(FlexAlign.Center);
+                        // 中间：单词卡片
+                        Column.borderRadius(25);
+                        // 中间：单词卡片
+                        Column.shadow({
                             radius: 10,
                             color: '#00000020',
                             offsetX: 0,
                             offsetY: 5
                         });
                         // 中间：单词卡片
-                        Stack.onClick(() => {
+                        Column.onClick(() => {
                             this.flipCard();
                         });
-                    }, Stack);
-                    this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        // 正面 - 英文单词
-                        Column.create();
-                        Context.animation({ duration: 600, curve: Curve.EaseInOut, iterations: 1, playMode: PlayMode.Normal });
-                        // 正面 - 英文单词
-                        Column.rotate({ angle: this.isFlipped ? 180 : 0, x: 0, y: 1, z: 0 });
-                        Context.animation(null);
                     }, Column);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         // 使用rawfile资源引用
                         Image.create({ "id": -1, "type": 30000, params: [this.getCurrentWord()!.image], "bundleName": "com.example.studyenglishbycard", "moduleName": "entry" });
                         // 使用rawfile资源引用
-                        Image.width(300);
+                        Image.width(250);
                         // 使用rawfile资源引用
-                        Image.height(300);
+                        Image.height(250);
                         // 使用rawfile资源引用
                         Image.borderRadius(20);
                         // 使用rawfile资源引用
@@ -344,29 +315,8 @@ export class WordLearningPage extends ViewPU {
                         LongPressGesture.pop();
                         Gesture.pop();
                     }, Image);
-                    // 正面 - 英文单词
-                    Column.pop();
-                    this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        // 背面 - 中文意思
-                        Column.create();
-                        Context.animation({ duration: 600, curve: Curve.EaseInOut, iterations: 1, playMode: PlayMode.Normal });
-                        // 背面 - 中文意思
-                        Column.rotate({ angle: this.isFlipped ? 0 : -180, x: 0, y: 1, z: 0 });
-                        Context.animation(null);
-                    }, Column);
-                    this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        Image.create({ "id": -1, "type": 30000, params: [this.getCurrentWord()!.image], "bundleName": "com.example.studyenglishbycard", "moduleName": "entry" });
-                        Image.width(300);
-                        Image.height(300);
-                        Image.borderRadius(20);
-                        Image.objectFit(ImageFit.Cover);
-                        Image.opacity(0.3);
-                        Image.alt({ "id": 16777218, "type": 20000, params: [], "bundleName": "com.example.studyenglishbycard", "moduleName": "entry" });
-                    }, Image);
-                    // 背面 - 中文意思
-                    Column.pop();
                     // 中间：单词卡片
-                    Stack.pop();
+                    Column.pop();
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         // 右侧：英文和中文显示区域
                         Column.create();
@@ -417,9 +367,9 @@ export class WordLearningPage extends ViewPU {
                     Column.pop();
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         // 最右侧：下一个按钮
-                        Button.createWithLabel('下一个');
+                        Button.createWithLabel('→');
                         // 最右侧：下一个按钮
-                        Button.fontSize(30);
+                        Button.fontSize(40);
                         // 最右侧：下一个按钮
                         Button.fontColor('#FFFFFF');
                         // 最右侧：下一个按钮
@@ -427,7 +377,7 @@ export class WordLearningPage extends ViewPU {
                         // 最右侧：下一个按钮
                         Button.borderRadius(15);
                         // 最右侧：下一个按钮
-                        Button.width(80);
+                        Button.width(60);
                         // 最右侧：下一个按钮
                         Button.height(60);
                         // 最右侧：下一个按钮
@@ -436,6 +386,8 @@ export class WordLearningPage extends ViewPU {
                         Button.onClick(() => {
                             this.nextWord();
                         });
+                        // 最右侧：下一个按钮
+                        Button.alignSelf(ItemAlign.End);
                     }, Button);
                     // 最右侧：下一个按钮
                     Button.pop();
@@ -477,4 +429,8 @@ export class WordLearningPage extends ViewPU {
     rerender() {
         this.updateDirtyElements();
     }
+    static getEntryName(): string {
+        return "WordLearningPage";
+    }
 }
+registerNamedRoute(() => new WordLearningPage(undefined, {}), "", { bundleName: "com.example.studyenglishbycard", moduleName: "entry", pagePath: "components/WordLearningPage", pageFullPath: "entry/src/main/ets/components/WordLearningPage", integratedHsp: "false", moduleType: "followWithHap" });
