@@ -20,7 +20,6 @@ interface WordLearningPage_Params {
     drawingPaths?: string;
     learningDataManager?;
     draggedLetters?: string[];
-    writeResultMessage?: string;
     isWriteCorrect?: boolean;
 }
 import type { WordData, SubcategoryData } from '../types/CommonTypes';
@@ -65,8 +64,6 @@ export class WordLearningPage extends ViewPU {
         , this, "drawingPaths");
         this.learningDataManager = LearningDataManager.getInstance();
         this.__draggedLetters = new ObservedPropertyObjectPU([], this, "draggedLetters");
-        this.__writeResultMessage = new ObservedPropertySimplePU('' // 拼写结果提示
-        , this, "writeResultMessage");
         this.__isWriteCorrect = new ObservedPropertySimplePU(false // 是否拼写正确
         , this, "isWriteCorrect");
         this.setInitiallyProvidedValue(params);
@@ -127,9 +124,6 @@ export class WordLearningPage extends ViewPU {
         if (params.draggedLetters !== undefined) {
             this.draggedLetters = params.draggedLetters;
         }
-        if (params.writeResultMessage !== undefined) {
-            this.writeResultMessage = params.writeResultMessage;
-        }
         if (params.isWriteCorrect !== undefined) {
             this.isWriteCorrect = params.isWriteCorrect;
         }
@@ -152,7 +146,6 @@ export class WordLearningPage extends ViewPU {
         this.__testCorrectAnswerShown.purgeDependencyOnElmtId(rmElmtId);
         this.__drawingPaths.purgeDependencyOnElmtId(rmElmtId);
         this.__draggedLetters.purgeDependencyOnElmtId(rmElmtId);
-        this.__writeResultMessage.purgeDependencyOnElmtId(rmElmtId);
         this.__isWriteCorrect.purgeDependencyOnElmtId(rmElmtId);
     }
     aboutToBeDeleted() {
@@ -171,7 +164,6 @@ export class WordLearningPage extends ViewPU {
         this.__testCorrectAnswerShown.aboutToBeDeleted();
         this.__drawingPaths.aboutToBeDeleted();
         this.__draggedLetters.aboutToBeDeleted();
-        this.__writeResultMessage.aboutToBeDeleted();
         this.__isWriteCorrect.aboutToBeDeleted();
         SubscriberManager.Get().delete(this.id__());
         this.aboutToBeDeletedInternal();
@@ -529,7 +521,6 @@ export class WordLearningPage extends ViewPU {
     private enterWriteMode() {
         this.currentMode = 'write';
         this.draggedLetters = []; // 清空已拖拽的字母
-        this.writeResultMessage = ''; // 清空提示信息
         this.isWriteCorrect = false;
         console.log('进入书写模式');
     }
@@ -545,7 +536,6 @@ export class WordLearningPage extends ViewPU {
             // 判断拼写是否正确
             if (userInput === currentWord) {
                 this.isWriteCorrect = true;
-                this.writeResultMessage = '答对了，你真棒！';
                 // 播放正确提示音
                 SpeechManager.speak('答对了，你真棒！').catch((err: Error) => {
                     console.error('拼写成功提示失败:', err);
@@ -557,7 +547,6 @@ export class WordLearningPage extends ViewPU {
             }
             else {
                 this.isWriteCorrect = false;
-                this.writeResultMessage = '再试试吧';
                 // 播放错误提示音
                 SpeechManager.speak('再试试吧').catch((err: Error) => {
                     console.error('拼写错误提示失败:', err);
@@ -565,7 +554,7 @@ export class WordLearningPage extends ViewPU {
                 // 2秒后清空书写区域，让用户重新开始
                 setTimeout(() => {
                     this.draggedLetters = [];
-                    this.writeResultMessage = '';
+                    this.isWriteCorrect = false;
                 }, 2000);
             }
         }
@@ -747,13 +736,6 @@ export class WordLearningPage extends ViewPU {
     set draggedLetters(newValue: string[]) {
         this.__draggedLetters.set(newValue);
     }
-    private __writeResultMessage: ObservedPropertySimplePU<string>; // 拼写结果提示
-    get writeResultMessage() {
-        return this.__writeResultMessage.get();
-    }
-    set writeResultMessage(newValue: string) {
-        this.__writeResultMessage.set(newValue);
-    }
     private __isWriteCorrect: ObservedPropertySimplePU<boolean>; // 是否拼写正确
     get isWriteCorrect() {
         return this.__isWriteCorrect.get();
@@ -770,33 +752,20 @@ export class WordLearningPage extends ViewPU {
                         Column.create();
                         Column.width('100%');
                         Column.height('90%');
+                        Column.padding({ left: 20, right: 20 });
                     }, Column);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        Row.create();
-                        Row.width('100%');
-                        Row.height('70%');
-                    }, Row);
-                    this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        // 左边：显示单词的字母（可拖拽）
+                        // 顶部：可选字母区域
                         Column.create();
-                        // 左边：显示单词的字母（可拖拽）
-                        Column.width('50%');
-                        // 左边：显示单词的字母（可拖拽）
-                        Column.height('100%');
-                        // 左边：显示单词的字母（可拖拽）
-                        Column.padding(20);
+                        // 顶部：可选字母区域
+                        Column.width('100%');
+                        // 顶部：可选字母区域
+                        Column.height('30%');
+                        // 顶部：可选字母区域
+                        Column.margin({ top: 30 });
                     }, Column);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        Text.create(this.getCurrentWord()!.chinese);
-                        Text.fontSize(50);
-                        Text.fontColor('#000000');
-                        Text.margin({ bottom: 20 });
-                    }, Text);
-                    Text.pop();
-                    this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        // 打乱顺序的字母
                         Flex.create({ wrap: FlexWrap.Wrap, justifyContent: FlexAlign.Center });
-                        // 打乱顺序的字母
                         Flex.width('100%');
                     }, Flex);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
@@ -827,31 +796,21 @@ export class WordLearningPage extends ViewPU {
                         this.forEachUpdateFunction(elmtId, Array.from(this.getCurrentWord()!.english), forEachItemGenFunction, undefined, true, false);
                     }, ForEach);
                     ForEach.pop();
-                    // 打乱顺序的字母
                     Flex.pop();
-                    // 左边：显示单词的字母（可拖拽）
+                    // 顶部：可选字母区域
                     Column.pop();
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        // 右边：书写框（显示已拖拽的字母）
+                        // 中间：书写区域（显示已拖拽的字母）
                         Column.create();
-                        // 右边：书写框（显示已拖拽的字母）
-                        Column.width('50%');
-                        // 右边：书写框（显示已拖拽的字母）
-                        Column.height('100%');
-                        // 右边：书写框（显示已拖拽的字母）
-                        Column.padding(20);
+                        // 中间：书写区域（显示已拖拽的字母）
+                        Column.width('100%');
+                        // 中间：书写区域（显示已拖拽的字母）
+                        Column.margin({ bottom: 40 });
                     }, Column);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        Text.create('书写框');
-                        Text.fontSize(40);
-                        Text.fontColor('#666666');
-                        Text.margin({ bottom: 20 });
-                    }, Text);
-                    Text.pop();
-                    this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        Flex.create({ wrap: FlexWrap.Wrap, justifyContent: FlexAlign.Center });
+                        Flex.create({ wrap: FlexWrap.NoWrap, justifyContent: FlexAlign.Center });
                         Flex.width('100%');
-                        Flex.height('70%');
+                        Flex.height(150);
                     }, Flex);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         ForEach.create();
@@ -859,11 +818,11 @@ export class WordLearningPage extends ViewPU {
                             const letter = _item;
                             this.observeComponentCreation2((elmtId, isInitialRender) => {
                                 Text.create(letter);
-                                Text.fontSize(60);
-                                Text.fontColor('#000000');
+                                Text.fontSize(70);
+                                Text.fontColor(this.isWriteCorrect ? '#000000' : '#FF0000');
                                 Text.fontWeight(FontWeight.Bold);
-                                Text.width(80);
-                                Text.height(80);
+                                Text.width(90);
+                                Text.height(90);
                                 Text.textAlign(TextAlign.Center);
                                 Text.backgroundColor(this.isWriteCorrect ? '#90EE90' : '#F0F0F0');
                                 Text.borderRadius(10);
@@ -872,7 +831,6 @@ export class WordLearningPage extends ViewPU {
                                     // 点击已放置的字母，移除
                                     if (!this.isWriteCorrect) {
                                         this.draggedLetters.splice(index, 1);
-                                        this.writeResultMessage = '';
                                     }
                                 });
                             }, Text);
@@ -886,7 +844,7 @@ export class WordLearningPage extends ViewPU {
                         if (this.draggedLetters.length === 0) {
                             this.ifElseBranchUpdateFunction(0, () => {
                                 this.observeComponentCreation2((elmtId, isInitialRender) => {
-                                    Text.create('点击左侧字母拼写单词');
+                                    Text.create('点击上面字母拼写单词');
                                     Text.fontSize(40);
                                     Text.fontColor('#CCCCCC');
                                     Text.margin(50);
@@ -901,30 +859,8 @@ export class WordLearningPage extends ViewPU {
                     }, If);
                     If.pop();
                     Flex.pop();
-                    this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        If.create();
-                        // 显示判断结果
-                        if (this.writeResultMessage !== '') {
-                            this.ifElseBranchUpdateFunction(0, () => {
-                                this.observeComponentCreation2((elmtId, isInitialRender) => {
-                                    Text.create(this.writeResultMessage);
-                                    Text.fontSize(50);
-                                    Text.fontColor(this.isWriteCorrect ? '#00AA00' : '#FF0000');
-                                    Text.fontWeight(FontWeight.Bold);
-                                    Text.margin({ top: 20 });
-                                }, Text);
-                                Text.pop();
-                            });
-                        }
-                        else {
-                            this.ifElseBranchUpdateFunction(1, () => {
-                            });
-                        }
-                    }, If);
-                    If.pop();
-                    // 右边：书写框（显示已拖拽的字母）
+                    // 中间：书写区域（显示已拖拽的字母）
                     Column.pop();
-                    Row.pop();
                     Column.pop();
                 });
             }
