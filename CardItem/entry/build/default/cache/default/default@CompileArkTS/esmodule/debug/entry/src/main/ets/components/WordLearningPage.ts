@@ -769,35 +769,35 @@ export class WordLearningPage extends ViewPU {
                     }, Column);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         Text.create('✨');
-                        Text.fontSize(50);
+                        Text.fontSize(40);
                         Text.fontColor('#FF6B6B');
                         Text.margin({ bottom: 10 });
                     }, Text);
                     Text.pop();
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         Text.create('拼');
-                        Text.fontSize(60);
+                        Text.fontSize(50);
                         Text.fontColor('#FF6B6B');
                         Text.fontWeight(FontWeight.Bold);
                     }, Text);
                     Text.pop();
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         Text.create('一');
-                        Text.fontSize(60);
+                        Text.fontSize(50);
                         Text.fontColor('#FF6B6B');
                         Text.fontWeight(FontWeight.Bold);
                     }, Text);
                     Text.pop();
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         Text.create('拼');
-                        Text.fontSize(60);
+                        Text.fontSize(50);
                         Text.fontColor('#FF6B6B');
                         Text.fontWeight(FontWeight.Bold);
                     }, Text);
                     Text.pop();
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         Text.create('✨');
-                        Text.fontSize(50);
+                        Text.fontSize(40);
                         Text.fontColor('#FF6B6B');
                         Text.margin({ top: 10 });
                     }, Text);
@@ -808,7 +808,7 @@ export class WordLearningPage extends ViewPU {
                         // 右侧：滚动内容区域
                         Column.create();
                         // 右侧：滚动内容区域
-                        Column.width('100%');
+                        Column.width('90%');
                         // 右侧：滚动内容区域
                         Column.layoutWeight(1);
                     }, Column);
@@ -837,7 +837,7 @@ export class WordLearningPage extends ViewPU {
                             const letter = _item;
                             this.observeComponentCreation2((elmtId, isInitialRender) => {
                                 Text.create(letter);
-                                Text.fontSize(70);
+                                Text.fontSize(50);
                                 Text.fontColor('#FFFFFF');
                                 Text.fontWeight(FontWeight.Bold);
                                 Text.width(85);
@@ -898,7 +898,7 @@ export class WordLearningPage extends ViewPU {
                             const letter = _item;
                             this.observeComponentCreation2((elmtId, isInitialRender) => {
                                 Text.create(letter);
-                                Text.fontSize(85);
+                                Text.fontSize(50);
                                 Text.fontColor('#FFFFFF');
                                 Text.fontWeight(FontWeight.Bold);
                                 Text.width(100);

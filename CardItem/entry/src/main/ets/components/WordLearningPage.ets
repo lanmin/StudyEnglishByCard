@@ -496,23 +496,23 @@ export struct WordLearningPage {
         // 左侧：标题
         Column() {
           Text('✨')
-            .fontSize(50)
+            .fontSize(40)
             .fontColor('#FF6B6B')
             .margin({ bottom: 10 })
           Text('拼')
-            .fontSize(60)
+            .fontSize(50)
             .fontColor('#FF6B6B')
             .fontWeight(FontWeight.Bold)
           Text('一')
-            .fontSize(60)
+            .fontSize(50)
             .fontColor('#FF6B6B')
             .fontWeight(FontWeight.Bold)
           Text('拼')
-            .fontSize(60)
+            .fontSize(50)
             .fontColor('#FF6B6B')
             .fontWeight(FontWeight.Bold)
           Text('✨')
-            .fontSize(50)
+            .fontSize(40)
             .fontColor('#FF6B6B')
             .margin({ top: 10 })
         }
@@ -528,7 +528,7 @@ export struct WordLearningPage {
             Flex({ wrap: FlexWrap.Wrap, justifyContent: FlexAlign.Center }) {
               ForEach(Array.from(this.getCurrentWord()!.english), (letter: string, index: number) => {
                 Text(letter)
-                  .fontSize(70)
+                  .fontSize(50)
                   .fontColor('#FFFFFF')
                   .fontWeight(FontWeight.Bold)
                   .width(85)
@@ -559,7 +559,7 @@ export struct WordLearningPage {
             Flex({ wrap: FlexWrap.NoWrap, justifyContent: FlexAlign.Center }) {
               ForEach(this.draggedLetters, (letter: string, index: number) => {
                 Text(letter)
-                  .fontSize(85)
+                  .fontSize(50)
                   .fontColor('#FFFFFF')
                   .fontWeight(FontWeight.Bold)
                   .width(100)
@@ -602,7 +602,7 @@ export struct WordLearningPage {
           })
           .margin({ bottom: 10 })
         }
-        .width('100%')
+        .width('90%')
         .layoutWeight(1)
       }
       .width('100%')
