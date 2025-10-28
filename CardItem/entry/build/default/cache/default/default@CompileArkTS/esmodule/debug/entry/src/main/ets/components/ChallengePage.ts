@@ -264,11 +264,32 @@ export class ChallengePage extends ViewPU {
     }
     initialRender() {
         this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Stack.create();
+            Stack.width('100%');
+            Stack.height('100%');
+            Stack.expandSafeArea();
+        }, Stack);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            // 背景图片
+            Image.create({ "id": 0, "type": 30000, params: ['bg2.png'], "bundleName": "com.example.studyenglishbycard", "moduleName": "entry" });
+            // 背景图片
+            Image.width('100%');
+            // 背景图片
+            Image.height('100%');
+            // 背景图片
+            Image.objectFit(ImageFit.Cover);
+            // 背景图片
+            Image.opacity(0.3);
+            // 背景图片
+            Image.expandSafeArea();
+        }, Image);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            // 主内容
             Column.create();
+            // 主内容
             Column.width('100%');
+            // 主内容
             Column.height('100%');
-            Column.backgroundColor('#FAFAFA');
-            Column.expandSafeArea();
         }, Column);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             // 顶部栏
@@ -382,7 +403,9 @@ export class ChallengePage extends ViewPU {
         Row.pop();
         // 内容
         Column.pop();
+        // 主内容
         Column.pop();
+        Stack.pop();
     }
     rerender() {
         this.updateDirtyElements();

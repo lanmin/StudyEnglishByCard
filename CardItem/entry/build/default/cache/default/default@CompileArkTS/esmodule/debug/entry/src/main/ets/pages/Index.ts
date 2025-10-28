@@ -550,11 +550,32 @@ class Index extends ViewPU {
     // 主题选择页（横屏布局，左右滑动）
     ThemeSelectPage(parent = null) {
         this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Stack.create();
+            Stack.width('100%');
+            Stack.height('100%');
+            Stack.expandSafeArea();
+        }, Stack);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            // 背景图片
+            Image.create({ "id": 0, "type": 30000, params: ['bg1.png'], "bundleName": "com.example.studyenglishbycard", "moduleName": "entry" });
+            // 背景图片
+            Image.width('100%');
+            // 背景图片
+            Image.height('100%');
+            // 背景图片
+            Image.objectFit(ImageFit.Cover);
+            // 背景图片
+            Image.opacity(0.3);
+            // 背景图片
+            Image.expandSafeArea();
+        }, Image);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            // 主内容
             Column.create();
+            // 主内容
             Column.width('100%');
+            // 主内容
             Column.height('100%');
-            Column.backgroundColor(GlobalStyles.COLORS.BACKGROUND);
-            Column.expandSafeArea();
         }, Column);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             // 顶部区域 - 标题和功能按钮
@@ -575,157 +596,22 @@ class Index extends ViewPU {
         }, Text);
         Text.pop();
         this.observeComponentCreation2((elmtId, isInitialRender) => {
-            // 复习按钮
-            // Button('复习')
-            //   .width(60)
-            //   .height(30)
-            //   .backgroundColor('#52C41A')
-            //   .fontSize(12)
-            //   .fontColor(Color.White)
-            //   .fontWeight(FontWeight.Bold)
-            //   .borderRadius(25)
-            //   .margin({ right: 15 })
-            //   .onClick(() => {
-            //     this.soundEffectManager.playButtonClick()
-            //     // TODO: 实现复习功能
-            //     console.log('复习按钮点击')
-            //   })
             // 挑战模式按钮（按当前选择的主题进入挑战页面）
             Button.createWithLabel('挑战模式');
-            // 复习按钮
-            // Button('复习')
-            //   .width(60)
-            //   .height(30)
-            //   .backgroundColor('#52C41A')
-            //   .fontSize(12)
-            //   .fontColor(Color.White)
-            //   .fontWeight(FontWeight.Bold)
-            //   .borderRadius(25)
-            //   .margin({ right: 15 })
-            //   .onClick(() => {
-            //     this.soundEffectManager.playButtonClick()
-            //     // TODO: 实现复习功能
-            //     console.log('复习按钮点击')
-            //   })
             // 挑战模式按钮（按当前选择的主题进入挑战页面）
             Button.width(120);
-            // 复习按钮
-            // Button('复习')
-            //   .width(60)
-            //   .height(30)
-            //   .backgroundColor('#52C41A')
-            //   .fontSize(12)
-            //   .fontColor(Color.White)
-            //   .fontWeight(FontWeight.Bold)
-            //   .borderRadius(25)
-            //   .margin({ right: 15 })
-            //   .onClick(() => {
-            //     this.soundEffectManager.playButtonClick()
-            //     // TODO: 实现复习功能
-            //     console.log('复习按钮点击')
-            //   })
             // 挑战模式按钮（按当前选择的主题进入挑战页面）
             Button.height(40);
-            // 复习按钮
-            // Button('复习')
-            //   .width(60)
-            //   .height(30)
-            //   .backgroundColor('#52C41A')
-            //   .fontSize(12)
-            //   .fontColor(Color.White)
-            //   .fontWeight(FontWeight.Bold)
-            //   .borderRadius(25)
-            //   .margin({ right: 15 })
-            //   .onClick(() => {
-            //     this.soundEffectManager.playButtonClick()
-            //     // TODO: 实现复习功能
-            //     console.log('复习按钮点击')
-            //   })
             // 挑战模式按钮（按当前选择的主题进入挑战页面）
             Button.backgroundColor(GlobalStyles.COLORS.PRIMARY_ORANGE);
-            // 复习按钮
-            // Button('复习')
-            //   .width(60)
-            //   .height(30)
-            //   .backgroundColor('#52C41A')
-            //   .fontSize(12)
-            //   .fontColor(Color.White)
-            //   .fontWeight(FontWeight.Bold)
-            //   .borderRadius(25)
-            //   .margin({ right: 15 })
-            //   .onClick(() => {
-            //     this.soundEffectManager.playButtonClick()
-            //     // TODO: 实现复习功能
-            //     console.log('复习按钮点击')
-            //   })
             // 挑战模式按钮（按当前选择的主题进入挑战页面）
             Button.fontSize(18);
-            // 复习按钮
-            // Button('复习')
-            //   .width(60)
-            //   .height(30)
-            //   .backgroundColor('#52C41A')
-            //   .fontSize(12)
-            //   .fontColor(Color.White)
-            //   .fontWeight(FontWeight.Bold)
-            //   .borderRadius(25)
-            //   .margin({ right: 15 })
-            //   .onClick(() => {
-            //     this.soundEffectManager.playButtonClick()
-            //     // TODO: 实现复习功能
-            //     console.log('复习按钮点击')
-            //   })
             // 挑战模式按钮（按当前选择的主题进入挑战页面）
             Button.fontColor(Color.White);
-            // 复习按钮
-            // Button('复习')
-            //   .width(60)
-            //   .height(30)
-            //   .backgroundColor('#52C41A')
-            //   .fontSize(12)
-            //   .fontColor(Color.White)
-            //   .fontWeight(FontWeight.Bold)
-            //   .borderRadius(25)
-            //   .margin({ right: 15 })
-            //   .onClick(() => {
-            //     this.soundEffectManager.playButtonClick()
-            //     // TODO: 实现复习功能
-            //     console.log('复习按钮点击')
-            //   })
             // 挑战模式按钮（按当前选择的主题进入挑战页面）
             Button.fontWeight(FontWeight.Bold);
-            // 复习按钮
-            // Button('复习')
-            //   .width(60)
-            //   .height(30)
-            //   .backgroundColor('#52C41A')
-            //   .fontSize(12)
-            //   .fontColor(Color.White)
-            //   .fontWeight(FontWeight.Bold)
-            //   .borderRadius(25)
-            //   .margin({ right: 15 })
-            //   .onClick(() => {
-            //     this.soundEffectManager.playButtonClick()
-            //     // TODO: 实现复习功能
-            //     console.log('复习按钮点击')
-            //   })
             // 挑战模式按钮（按当前选择的主题进入挑战页面）
             Button.borderRadius(25);
-            // 复习按钮
-            // Button('复习')
-            //   .width(60)
-            //   .height(30)
-            //   .backgroundColor('#52C41A')
-            //   .fontSize(12)
-            //   .fontColor(Color.White)
-            //   .fontWeight(FontWeight.Bold)
-            //   .borderRadius(25)
-            //   .margin({ right: 15 })
-            //   .onClick(() => {
-            //     this.soundEffectManager.playButtonClick()
-            //     // TODO: 实现复习功能
-            //     console.log('复习按钮点击')
-            //   })
             // 挑战模式按钮（按当前选择的主题进入挑战页面）
             Button.onClick(() => {
                 this.soundEffectManager.playButtonClick();
@@ -733,21 +619,6 @@ class Index extends ViewPU {
                 this.showChallenge = true;
             });
         }, Button);
-        // 复习按钮
-        // Button('复习')
-        //   .width(60)
-        //   .height(30)
-        //   .backgroundColor('#52C41A')
-        //   .fontSize(12)
-        //   .fontColor(Color.White)
-        //   .fontWeight(FontWeight.Bold)
-        //   .borderRadius(25)
-        //   .margin({ right: 15 })
-        //   .onClick(() => {
-        //     this.soundEffectManager.playButtonClick()
-        //     // TODO: 实现复习功能
-        //     console.log('复习按钮点击')
-        //   })
         // 挑战模式按钮（按当前选择的主题进入挑战页面）
         Button.pop();
         // 顶部区域 - 标题和功能按钮
@@ -783,7 +654,9 @@ class Index extends ViewPU {
         Row.pop();
         // 主题卡片容器 - 支持左右滑动
         Scroll.pop();
+        // 主内容
         Column.pop();
+        Stack.pop();
     }
     // 主题卡片
     ThemeCard(theme: ThemeData, index: number, parent = null) {
@@ -897,11 +770,32 @@ class Index extends ViewPU {
     // 子分类选择页面
     SubcategorySelectPage(parent = null) {
         this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Stack.create();
+            Stack.width('100%');
+            Stack.height('100%');
+            Stack.expandSafeArea();
+        }, Stack);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            // 背景图片
+            Image.create({ "id": 0, "type": 30000, params: ['bg2.png'], "bundleName": "com.example.studyenglishbycard", "moduleName": "entry" });
+            // 背景图片
+            Image.width('100%');
+            // 背景图片
+            Image.height('100%');
+            // 背景图片
+            Image.objectFit(ImageFit.Cover);
+            // 背景图片
+            Image.opacity(0.3);
+            // 背景图片
+            Image.expandSafeArea();
+        }, Image);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            // 主内容
             Column.create();
+            // 主内容
             Column.width('100%');
+            // 主内容
             Column.height('100%');
-            Column.backgroundColor(GlobalStyles.COLORS.BACKGROUND);
-            Column.expandSafeArea();
         }, Column);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             // 顶部区域 - 标题和返回按钮
@@ -966,7 +860,9 @@ class Index extends ViewPU {
         Row.pop();
         // 子分类卡片容器 - 支持左右滑动
         Scroll.pop();
+        // 主内容
         Column.pop();
+        Stack.pop();
     }
     // 子分类卡片
     SubcategoryCard(subcategory: SubcategoryData, index: number, parent = null) {

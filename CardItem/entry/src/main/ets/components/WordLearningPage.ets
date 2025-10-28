@@ -558,81 +558,93 @@ export struct WordLearningPage {
 
   @Builder
   build() {
-    Column() {
-      // 顶部导航栏
-      Row() {
-        // 返回按钮
-        Button('←')
-          .fontSize(22)
-          .fontColor(Color.Black)
-          .backgroundColor(Color.Transparent)
-          .margin({ top: 20 })
-          .onClick(() => {
-            if (this.currentMode !== 'normal') {
-              // 如果在学习模式（听、说、读、写），返回到单词学习页面
-              console.log('返回按钮被点击 - 返回到单词学习页面')
-              this.currentMode = 'normal'
-            } else {
-              // 如果在正常模式，返回到子分类选择页面
-              console.log('返回按钮被点击 - 返回子分类选择页面')
-              if (this.onBack) {
-                this.onBack()
-              }
-            }
-          })
-
-        Blank()
-
-        // 显示当前模式（右上角）
-        if (this.currentMode !== 'normal') {
-          Text(this.getModeText())
-            .fontSize(18)
-            .fontColor('#333333')
-            .margin({ right: 10, top: 20 })
-          
-          Button('×')
-            .fontSize(20)
-            .fontColor('#333333')
+    Stack() {
+      // 背景图片
+      Image($rawfile('bg3.png'))
+        .width('100%')
+        .height('100%')
+        .objectFit(ImageFit.Cover)
+        .opacity(0.3)
+        .expandSafeArea()
+      
+      // 主内容
+      Column() {
+        // 顶部导航栏
+        Row() {
+          // 返回按钮
+          Button('←')
+            .fontSize(22)
+            .fontColor(Color.Black)
             .backgroundColor(Color.Transparent)
-            .width(50)
-            .height(40)
             .margin({ top: 20 })
             .onClick(() => {
-              this.exitMode()
+              if (this.currentMode !== 'normal') {
+                // 如果在学习模式（听、说、读、写），返回到单词学习页面
+                console.log('返回按钮被点击 - 返回到单词学习页面')
+                this.currentMode = 'normal'
+              } else {
+                // 如果在正常模式，返回到子分类选择页面
+                console.log('返回按钮被点击 - 返回子分类选择页面')
+                if (this.onBack) {
+                  this.onBack()
+                }
+              }
             })
-        }
 
-        // 挑战模式右上角答对计数
-        if (this.currentMode === 'challenge') {
-          Text(`已答对 ${this.challengeCorrectCount}`)
-            .fontSize(16)
-            .fontColor('#52C41A')
-            .margin({ top: 20 })
+          Blank()
+
+          // 显示当前模式（右上角）
+          if (this.currentMode !== 'normal') {
+            Text(this.getModeText())
+              .fontSize(18)
+              .fontColor('#333333')
+              .margin({ right: 10, top: 20 })
+            
+            Button('×')
+              .fontSize(20)
+              .fontColor('#333333')
+              .backgroundColor(Color.Transparent)
+              .width(50)
+              .height(40)
+              .margin({ top: 20 })
+              .onClick(() => {
+                this.exitMode()
+              })
+          }
+
+          // 挑战模式右上角答对计数
+          if (this.currentMode === 'challenge') {
+            Text(`已答对 ${this.challengeCorrectCount}`)
+              .fontSize(16)
+              .fontColor('#52C41A')
+              .margin({ top: 20 })
+          }
+        }
+        .width('100%')
+        .height('15%')
+        .padding({ left: 20, right: 20 })
+        .justifyContent(FlexAlign.Center)
+
+        // 主要内容区域
+        if (this.currentMode === 'read') {
+          // 测试模式显示
+          this.buildTestMode()
+        } else if (this.currentMode === 'write') {
+          // 书写模式显示
+          this.buildWriteMode()
+        } else if (this.currentMode === 'challenge') {
+          // 挑战模式显示
+          this.buildChallengeMode()
+        } else {
+          // 常规模式显示
+          this.buildNormalMode()
         }
       }
       .width('100%')
-      .height('15%')
-      .padding({ left: 20, right: 20 })
-      .justifyContent(FlexAlign.Center)
-
-      // 主要内容区域
-      if (this.currentMode === 'read') {
-        // 测试模式显示
-        this.buildTestMode()
-      } else if (this.currentMode === 'write') {
-        // 书写模式显示
-        this.buildWriteMode()
-      } else if (this.currentMode === 'challenge') {
-        // 挑战模式显示
-        this.buildChallengeMode()
-      } else {
-        // 常规模式显示
-        this.buildNormalMode()
-      }
+      .height('100%')
     }
     .width('100%')
     .height('100%')
-    .backgroundColor('#FAFAFA')
     .expandSafeArea()
   }
 

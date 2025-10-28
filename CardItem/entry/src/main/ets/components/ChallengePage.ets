@@ -166,85 +166,97 @@ export struct ChallengePage {
 
   @Builder
   build() {
-    Column() {
-      // 顶部栏
-      Row() {
-        Button('←')
-          .fontSize(22)
-          .fontColor(Color.Black)
-          .backgroundColor(Color.Transparent)
-          .margin({ top: 20 })
-          .onClick(() => {
-            if (this.onBack) {
-              this.onBack()
-            }
-          })
-
-        Blank()
-
-        Text('挑战模式')
-          .fontSize(18)
-          .fontColor('#333333')
-          .margin({ left: 10, top: 20 })
-
-        Blank()
-
-        Text(`已答对 ${this.correctCount}`)
-          .fontSize(16)
-          .fontColor('#52C41A')
-          .margin({ top: 20 })
-      }
-      .width('100%')
-      .height('15%')
-      .padding({ left: 20, right: 20 })
-
-      // 内容
-      Column() {
-        Text('选择正确的图片')
-          .fontSize(24)
-          .fontColor('#333333')
-          .fontWeight(FontWeight.Bold)
-          .margin({ bottom: 30 })
-
-        Row() {
-          ForEach(this.options, (option: WordData, index: number) => {
-            Column() {
-              Image($rawfile(option.image))
-                .width(150)
-                .height(150)
-                .borderRadius(15)
-                .objectFit(ImageFit.Cover)
-                .scale({ x: this.imageScales[index], y: this.imageScales[index] })
-                .animation({ duration: 200, curve: Curve.EaseInOut })
-                .border({
-                  width: this.selectedIndex === index ? 5 : 4,
-                  color: this.selectedIndex === index
-                    ? (index === this.getCorrectIndex() ? '#00BB00' : '#FF5555')
-                    : this.getRandomBorderColorByWord(option.english),
-                  style: BorderStyle.Solid
-                })
-                .onClick(() => {
-                  this.selectOption(index)
-                })
-            }
-            .margin({ right: 10 })
-          })
-        }
-        .justifyContent(FlexAlign.Center)
+    Stack() {
+      // 背景图片
+      Image($rawfile('bg2.png'))
         .width('100%')
-        .flexGrow(1)
+        .height('100%')
+        .objectFit(ImageFit.Cover)
+        .opacity(0.3)
+        .expandSafeArea()
+      
+      // 主内容
+      Column() {
+        // 顶部栏
+        Row() {
+          Button('←')
+            .fontSize(22)
+            .fontColor(Color.Black)
+            .backgroundColor(Color.Transparent)
+            .margin({ top: 20 })
+            .onClick(() => {
+              if (this.onBack) {
+                this.onBack()
+              }
+            })
+
+          Blank()
+
+          Text('挑战模式')
+            .fontSize(18)
+            .fontColor('#333333')
+            .margin({ left: 10, top: 20 })
+
+          Blank()
+
+          Text(`已答对 ${this.correctCount}`)
+            .fontSize(16)
+            .fontColor('#52C41A')
+            .margin({ top: 20 })
+        }
+        .width('100%')
+        .height('15%')
+        .padding({ left: 20, right: 20 })
+
+        // 内容
+        Column() {
+          Text('选择正确的图片')
+            .fontSize(24)
+            .fontColor('#333333')
+            .fontWeight(FontWeight.Bold)
+            .margin({ bottom: 30 })
+
+          Row() {
+            ForEach(this.options, (option: WordData, index: number) => {
+              Column() {
+                Image($rawfile(option.image))
+                  .width(150)
+                  .height(150)
+                  .borderRadius(15)
+                  .objectFit(ImageFit.Cover)
+                  .scale({ x: this.imageScales[index], y: this.imageScales[index] })
+                  .animation({ duration: 200, curve: Curve.EaseInOut })
+                  .border({
+                    width: this.selectedIndex === index ? 5 : 4,
+                    color: this.selectedIndex === index
+                      ? (index === this.getCorrectIndex() ? '#00BB00' : '#FF5555')
+                      : this.getRandomBorderColorByWord(option.english),
+                    style: BorderStyle.Solid
+                  })
+                  .onClick(() => {
+                    this.selectOption(index)
+                  })
+              }
+              .margin({ right: 10 })
+            })
+          }
+          .justifyContent(FlexAlign.Center)
+          .width('100%')
+          .flexGrow(1)
+        }
+        .width('100%')
+        .height('85%')
+        .padding(20)
+        .onClick(() => {
+          // 点击空白处重新播放问题
+          this.replayChallengeQuestion()
+        })
       }
       .width('100%')
-      .height('85%')
-      .padding(20)
-      .onClick(() => {
-        // 点击空白处重新播放问题
-        this.replayChallengeQuestion()
-      })
+      .height('100%')
     }
     .width('100%')
     .height('100%')
-    .backgroundColor('#FAFAFA')
     .expandSafeArea()
   }
 }

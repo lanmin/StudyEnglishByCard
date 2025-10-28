@@ -228,69 +228,65 @@ struct Index {
 
   // 主题选择页（横屏布局，左右滑动）
   @Builder ThemeSelectPage() {
-    Column() {
-      // 顶部区域 - 标题和功能按钮
-      Row() {
-        Text('选择学习主题')
-          .fontSize(GlobalStyles.FONT_SIZES.TITLE_MEDIUM)
-          .fontColor(GlobalStyles.COLORS.PRIMARY_BLUE)
-          .fontWeight(FontWeight.Bold)
-          .layoutWeight(1)
-        
-        // 复习按钮
-        // Button('复习')
-        //   .width(60)
-        //   .height(30)
-        //   .backgroundColor('#52C41A')
-        //   .fontSize(12)
-        //   .fontColor(Color.White)
-        //   .fontWeight(FontWeight.Bold)
-        //   .borderRadius(25)
-        //   .margin({ right: 15 })
-        //   .onClick(() => {
-        //     this.soundEffectManager.playButtonClick()
-        //     // TODO: 实现复习功能
-        //     console.log('复习按钮点击')
-        //   })
-        
-        // 挑战模式按钮（按当前选择的主题进入挑战页面）
-        Button('挑战模式')
-          .width(120)
-          .height(40)
-          .backgroundColor(GlobalStyles.COLORS.PRIMARY_ORANGE)
-          .fontSize(18)
-          .fontColor(Color.White)
-          .fontWeight(FontWeight.Bold)
-          .borderRadius(25)
-          .onClick(() => {
-            this.soundEffectManager.playButtonClick()
-            console.log('挑战模式按钮点击，进入挑战页面，主题:', this.currentTheme)
-            this.showChallenge = true
-          })
-      }
-      .width('100%')
-      .padding({ left: GlobalStyles.SIZES.SPACING_LARGE, right: GlobalStyles.SIZES.SPACING_LARGE, top: GlobalStyles.SIZES.SPACING_MEDIUM })
-      .margin({ bottom: GlobalStyles.SIZES.SPACING_MEDIUM })
+    Stack() {
+      // 背景图片
+      Image($rawfile('bg1.png'))
+        .width('100%')
+        .height('100%')
+        .objectFit(ImageFit.Cover)
+        .opacity(0.3)
+        .expandSafeArea()
       
-      // 主题卡片容器 - 支持左右滑动
-      Scroll() {
+      // 主内容
+      Column() {
+        // 顶部区域 - 标题和功能按钮
         Row() {
-          ForEach(this.themes, (theme: ThemeData, index: number) => {
-            this.ThemeCard(theme, index)
-          })
+          Text('选择学习主题')
+            .fontSize(GlobalStyles.FONT_SIZES.TITLE_MEDIUM)
+            .fontColor(GlobalStyles.COLORS.PRIMARY_BLUE)
+            .fontWeight(FontWeight.Bold)
+            .layoutWeight(1)
+          
+          // 挑战模式按钮（按当前选择的主题进入挑战页面）
+          Button('挑战模式')
+            .width(120)
+            .height(40)
+            .backgroundColor(GlobalStyles.COLORS.PRIMARY_ORANGE)
+            .fontSize(18)
+            .fontColor(Color.White)
+            .fontWeight(FontWeight.Bold)
+            .borderRadius(25)
+            .onClick(() => {
+              this.soundEffectManager.playButtonClick()
+              console.log('挑战模式按钮点击，进入挑战页面，主题:', this.currentTheme)
+              this.showChallenge = true
+            })
         }
-        .justifyContent(FlexAlign.Start)
-        .padding({ top: GlobalStyles.SIZES.SPACING_MEDIUM, bottom: GlobalStyles.SIZES.SPACING_MEDIUM })
+        .width('100%')
+        .padding({ left: GlobalStyles.SIZES.SPACING_LARGE, right: GlobalStyles.SIZES.SPACING_LARGE, top: GlobalStyles.SIZES.SPACING_MEDIUM })
+        .margin({ bottom: GlobalStyles.SIZES.SPACING_MEDIUM })
+        
+        // 主题卡片容器 - 支持左右滑动
+        Scroll() {
+          Row() {
+            ForEach(this.themes, (theme: ThemeData, index: number) => {
+              this.ThemeCard(theme, index)
+            })
+          }
+          .justifyContent(FlexAlign.Start)
+          .padding({ top: GlobalStyles.SIZES.SPACING_MEDIUM, bottom: GlobalStyles.SIZES.SPACING_MEDIUM })
+        }
+        .width('100%')
+        .layoutWeight(1)
+        .scrollable(ScrollDirection.Horizontal)
+        .scrollBar(BarState.Auto)
+        .padding({ left: GlobalStyles.SIZES.SPACING_LARGE + 10, right: GlobalStyles.SIZES.SPACING_LARGE })
       }
       .width('100%')
-      .layoutWeight(1)
-      .scrollable(ScrollDirection.Horizontal)
-      .scrollBar(BarState.Auto)
-      .padding({ left: GlobalStyles.SIZES.SPACING_LARGE + 10, right: GlobalStyles.SIZES.SPACING_LARGE })
+      .height('100%')
     }
     .width('100%')
     .height('100%')
-    .backgroundColor(GlobalStyles.COLORS.BACKGROUND)
     .expandSafeArea()
   }
 
@@ -370,48 +366,60 @@ struct Index {
 
   // 子分类选择页面
   @Builder SubcategorySelectPage() {
-    Column() {
-      // 顶部区域 - 标题和返回按钮
-      Row() {
-        Button('←')
-          .fontSize(22)
-          .fontColor(Color.Black)
-          .backgroundColor(Color.Transparent)
-          .onClick(() => {
-            this.soundEffectManager.playButtonClick()
-            this.goBack()
-          })
-        
-        Text(`${this.getThemeName(this.currentTheme)} - 选择子分类`)
-          .fontSize(GlobalStyles.FONT_SIZES.TITLE_MEDIUM)
-          .fontColor(GlobalStyles.COLORS.PRIMARY_BLUE)
-          .fontWeight(FontWeight.Bold)
-          .layoutWeight(1)
-          .textAlign(TextAlign.Center)
-      }
-      .width('100%')
-      .padding({ left: GlobalStyles.SIZES.SPACING_LARGE, right: GlobalStyles.SIZES.SPACING_LARGE, top: GlobalStyles.SIZES.SPACING_MEDIUM })
-      .margin({ bottom: GlobalStyles.SIZES.SPACING_MEDIUM })
+    Stack() {
+      // 背景图片
+      Image($rawfile('bg2.png'))
+        .width('100%')
+        .height('100%')
+        .objectFit(ImageFit.Cover)
+        .opacity(0.3)
+        .expandSafeArea()
       
-      // 子分类卡片容器 - 支持左右滑动
-      Scroll() {
+      // 主内容
+      Column() {
+        // 顶部区域 - 标题和返回按钮
         Row() {
-          ForEach(this.subcategories, (subcategory: SubcategoryData, index: number) => {
-            this.SubcategoryCard(subcategory, index)
-          })
+          Button('←')
+            .fontSize(22)
+            .fontColor(Color.Black)
+            .backgroundColor(Color.Transparent)
+            .onClick(() => {
+              this.soundEffectManager.playButtonClick()
+              this.goBack()
+            })
+          
+          Text(`${this.getThemeName(this.currentTheme)} - 选择子分类`)
+            .fontSize(GlobalStyles.FONT_SIZES.TITLE_MEDIUM)
+            .fontColor(GlobalStyles.COLORS.PRIMARY_BLUE)
+            .fontWeight(FontWeight.Bold)
+            .layoutWeight(1)
+            .textAlign(TextAlign.Center)
         }
-        .justifyContent(FlexAlign.Start)
-        .padding({ top: GlobalStyles.SIZES.SPACING_MEDIUM, bottom: GlobalStyles.SIZES.SPACING_MEDIUM })
+        .width('100%')
+        .padding({ left: GlobalStyles.SIZES.SPACING_LARGE, right: GlobalStyles.SIZES.SPACING_LARGE, top: GlobalStyles.SIZES.SPACING_MEDIUM })
+        .margin({ bottom: GlobalStyles.SIZES.SPACING_MEDIUM })
+        
+        // 子分类卡片容器 - 支持左右滑动
+        Scroll() {
+          Row() {
+            ForEach(this.subcategories, (subcategory: SubcategoryData, index: number) => {
+              this.SubcategoryCard(subcategory, index)
+            })
+          }
+          .justifyContent(FlexAlign.Start)
+          .padding({ top: GlobalStyles.SIZES.SPACING_MEDIUM, bottom: GlobalStyles.SIZES.SPACING_MEDIUM })
+        }
+        .width('100%')
+        .layoutWeight(1)
+        .scrollable(ScrollDirection.Horizontal)
+        .scrollBar(BarState.Auto)
+        .padding({ left: GlobalStyles.SIZES.SPACING_LARGE + 10, right: GlobalStyles.SIZES.SPACING_LARGE })
       }
       .width('100%')
-      .layoutWeight(1)
-      .scrollable(ScrollDirection.Horizontal)
-      .scrollBar(BarState.Auto)
-      .padding({ left: GlobalStyles.SIZES.SPACING_LARGE + 10, right: GlobalStyles.SIZES.SPACING_LARGE })
+      .height('100%')
     }
     .width('100%')
     .height('100%')
-    .backgroundColor(GlobalStyles.COLORS.BACKGROUND)
     .expandSafeArea()
   }
 
