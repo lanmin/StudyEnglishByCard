@@ -32,6 +32,12 @@ struct Index {
   @State isImageHidden: boolean = false
   @State volumeVisible: boolean = false
   @State currentVolume: number = 50
+  
+  // 卡片点击效果状态
+  @State clickedThemeIndex: number = -1
+  @State clickedSubcategoryIndex: number = -1
+  @State cardScale: number = 1
+  @State cardOpacity: number = 1
 
   // 管理器实例
   private learningDataManager: LearningDataManager = LearningDataManager.getInstance()
@@ -145,6 +151,50 @@ struct Index {
   isThemeCompleted(themeId: string): boolean {
     const completion = this.learningProgressManager.getThemeCompletion(themeId)
     return completion?.isCompleted === true
+  }
+
+  // 卡片点击效果
+  private async playCardClickEffect(cardType: 'theme' | 'subcategory', index: number) {
+    if (cardType === 'theme') {
+      this.clickedThemeIndex = index
+    } else {
+      this.clickedSubcategoryIndex = index
+    }
+    
+    // 变大效果
+    this.cardScale = 1.15
+    this.cardOpacity = 0.6
+    
+    // 增强闪动效果 - 更明显的闪烁
+    setTimeout(() => {
+      this.cardOpacity = 1
+    }, 80)
+    
+    setTimeout(() => {
+      this.cardOpacity = 0.5
+    }, 160)
+    
+    setTimeout(() => {
+      this.cardOpacity = 1
+    }, 240)
+    
+    setTimeout(() => {
+      this.cardOpacity = 0.7
+    }, 320)
+    
+    setTimeout(() => {
+      this.cardOpacity = 1
+    }, 400)
+    
+    // 恢复原始大小
+    setTimeout(() => {
+      this.cardScale = 1
+      if (cardType === 'theme') {
+        this.clickedThemeIndex = -1
+      } else {
+        this.clickedSubcategoryIndex = -1
+      }
+    }, 600)
   }
 
   build() {
@@ -273,8 +323,8 @@ struct Index {
       .backgroundColor(GlobalStyles.COLORS.CARD_BACKGROUND)
       .borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM)
       .border({
-        width: 2,
-        color: this.getRandomBorderColor(index),
+        width: this.clickedThemeIndex === index ? 6 : 2,
+        color: this.clickedThemeIndex === index ? '#FF6B6B' : this.getRandomBorderColor(index),
         style: BorderStyle.Solid
       })
       .padding({ top: 10, bottom: 10, left: 10, right: 10 })
@@ -283,10 +333,18 @@ struct Index {
       .margin({ right: GlobalStyles.SIZES.SPACING_MEDIUM })
       .onClick(() => {
         this.soundEffectManager.playButtonClick()
-        this.enterSubcategorySelect(theme.id)
+        this.playCardClickEffect('theme', index)
+        // 延迟执行导航，让动画先播放
+        setTimeout(() => {
+          this.enterSubcategorySelect(theme.id)
+        }, 300)
       })
-      .animation(GlobalStyles.ANIMATIONS.BUTTON_PRESS)
-      .scale({ x: 1, y: 1 })
+      .scale({ 
+        x: this.clickedThemeIndex === index ? this.cardScale : 1, 
+        y: this.clickedThemeIndex === index ? this.cardScale : 1 
+      })
+      .opacity(this.clickedThemeIndex === index ? this.cardOpacity : 1)
+      .animation({ duration: 200, curve: Curve.EaseInOut })
 
       // 完成状态对勾
       if (this.isThemeCompleted(theme.id)) {
@@ -386,8 +444,8 @@ struct Index {
       .backgroundColor(GlobalStyles.COLORS.CARD_BACKGROUND)
       .borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM)
       .border({
-        width: 2,
-        color: this.getRandomBorderColor(index),
+        width: this.clickedSubcategoryIndex === index ? 6 : 2,
+        color: this.clickedSubcategoryIndex === index ? '#FF6B6B' : this.getRandomBorderColor(index),
         style: BorderStyle.Solid
       })
       .padding({ top: 10, bottom: 10, left: 10, right: 10 })
@@ -396,10 +454,18 @@ struct Index {
       .margin({ right: GlobalStyles.SIZES.SPACING_MEDIUM })
       .onClick(() => {
         this.soundEffectManager.playButtonClick()
-        this.startSubcategoryLearning(subcategory.id)
+        this.playCardClickEffect('subcategory', index)
+        // 延迟执行导航，让动画先播放
+        setTimeout(() => {
+          this.startSubcategoryLearning(subcategory.id)
+        }, 300)
       })
-      .animation(GlobalStyles.ANIMATIONS.BUTTON_PRESS)
-      .scale({ x: 1, y: 1 })
+      .scale({ 
+        x: this.clickedSubcategoryIndex === index ? this.cardScale : 1, 
+        y: this.clickedSubcategoryIndex === index ? this.cardScale : 1 
+      })
+      .opacity(this.clickedSubcategoryIndex === index ? this.cardOpacity : 1)
+      .animation({ duration: 200, curve: Curve.EaseInOut })
 
       // 完成状态对勾
       if (this.isSubcategoryCompleted(subcategory.id)) {

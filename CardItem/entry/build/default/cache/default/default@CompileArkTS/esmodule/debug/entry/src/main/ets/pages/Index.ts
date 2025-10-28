@@ -15,6 +15,10 @@ interface Index_Params {
     isImageHidden?: boolean;
     volumeVisible?: boolean;
     currentVolume?: number;
+    clickedThemeIndex?: number;
+    clickedSubcategoryIndex?: number;
+    cardScale?: number;
+    cardOpacity?: number;
     learningDataManager?: LearningDataManager;
     soundEffectManager?: SoundEffectManager;
     ttsManager?: TTSManager;
@@ -51,8 +55,14 @@ class Index extends ViewPU {
         this.__isImageHidden = new ObservedPropertySimplePU(false, this, "isImageHidden");
         this.__volumeVisible = new ObservedPropertySimplePU(false, this, "volumeVisible");
         this.__currentVolume = new ObservedPropertySimplePU(50
-        // 管理器实例
+        // 卡片点击效果状态
         , this, "currentVolume");
+        this.__clickedThemeIndex = new ObservedPropertySimplePU(-1, this, "clickedThemeIndex");
+        this.__clickedSubcategoryIndex = new ObservedPropertySimplePU(-1, this, "clickedSubcategoryIndex");
+        this.__cardScale = new ObservedPropertySimplePU(1, this, "cardScale");
+        this.__cardOpacity = new ObservedPropertySimplePU(1
+        // 管理器实例
+        , this, "cardOpacity");
         this.learningDataManager = LearningDataManager.getInstance();
         this.soundEffectManager = SoundEffectManager.getInstance();
         this.ttsManager = TTSManager.getInstance();
@@ -104,6 +114,18 @@ class Index extends ViewPU {
         if (params.currentVolume !== undefined) {
             this.currentVolume = params.currentVolume;
         }
+        if (params.clickedThemeIndex !== undefined) {
+            this.clickedThemeIndex = params.clickedThemeIndex;
+        }
+        if (params.clickedSubcategoryIndex !== undefined) {
+            this.clickedSubcategoryIndex = params.clickedSubcategoryIndex;
+        }
+        if (params.cardScale !== undefined) {
+            this.cardScale = params.cardScale;
+        }
+        if (params.cardOpacity !== undefined) {
+            this.cardOpacity = params.cardOpacity;
+        }
         if (params.learningDataManager !== undefined) {
             this.learningDataManager = params.learningDataManager;
         }
@@ -145,6 +167,10 @@ class Index extends ViewPU {
         this.__isImageHidden.purgeDependencyOnElmtId(rmElmtId);
         this.__volumeVisible.purgeDependencyOnElmtId(rmElmtId);
         this.__currentVolume.purgeDependencyOnElmtId(rmElmtId);
+        this.__clickedThemeIndex.purgeDependencyOnElmtId(rmElmtId);
+        this.__clickedSubcategoryIndex.purgeDependencyOnElmtId(rmElmtId);
+        this.__cardScale.purgeDependencyOnElmtId(rmElmtId);
+        this.__cardOpacity.purgeDependencyOnElmtId(rmElmtId);
     }
     aboutToBeDeleted() {
         this.__currentPage.aboutToBeDeleted();
@@ -160,6 +186,10 @@ class Index extends ViewPU {
         this.__isImageHidden.aboutToBeDeleted();
         this.__volumeVisible.aboutToBeDeleted();
         this.__currentVolume.aboutToBeDeleted();
+        this.__clickedThemeIndex.aboutToBeDeleted();
+        this.__clickedSubcategoryIndex.aboutToBeDeleted();
+        this.__cardScale.aboutToBeDeleted();
+        this.__cardOpacity.aboutToBeDeleted();
         SubscriberManager.Get().delete(this.id__());
         this.aboutToBeDeletedInternal();
     }
@@ -253,6 +283,35 @@ class Index extends ViewPU {
     }
     set currentVolume(newValue: number) {
         this.__currentVolume.set(newValue);
+    }
+    // 卡片点击效果状态
+    private __clickedThemeIndex: ObservedPropertySimplePU<number>;
+    get clickedThemeIndex() {
+        return this.__clickedThemeIndex.get();
+    }
+    set clickedThemeIndex(newValue: number) {
+        this.__clickedThemeIndex.set(newValue);
+    }
+    private __clickedSubcategoryIndex: ObservedPropertySimplePU<number>;
+    get clickedSubcategoryIndex() {
+        return this.__clickedSubcategoryIndex.get();
+    }
+    set clickedSubcategoryIndex(newValue: number) {
+        this.__clickedSubcategoryIndex.set(newValue);
+    }
+    private __cardScale: ObservedPropertySimplePU<number>;
+    get cardScale() {
+        return this.__cardScale.get();
+    }
+    set cardScale(newValue: number) {
+        this.__cardScale.set(newValue);
+    }
+    private __cardOpacity: ObservedPropertySimplePU<number>;
+    get cardOpacity() {
+        return this.__cardOpacity.get();
+    }
+    set cardOpacity(newValue: number) {
+        this.__cardOpacity.set(newValue);
     }
     // 管理器实例
     private learningDataManager: LearningDataManager;
@@ -360,6 +419,44 @@ class Index extends ViewPU {
         const completion = this.learningProgressManager.getThemeCompletion(themeId);
         return completion?.isCompleted === true;
     }
+    // 卡片点击效果
+    private async playCardClickEffect(cardType: 'theme' | 'subcategory', index: number) {
+        if (cardType === 'theme') {
+            this.clickedThemeIndex = index;
+        }
+        else {
+            this.clickedSubcategoryIndex = index;
+        }
+        // 变大效果
+        this.cardScale = 1.15;
+        this.cardOpacity = 0.6;
+        // 增强闪动效果 - 更明显的闪烁
+        setTimeout(() => {
+            this.cardOpacity = 1;
+        }, 80);
+        setTimeout(() => {
+            this.cardOpacity = 0.5;
+        }, 160);
+        setTimeout(() => {
+            this.cardOpacity = 1;
+        }, 240);
+        setTimeout(() => {
+            this.cardOpacity = 0.7;
+        }, 320);
+        setTimeout(() => {
+            this.cardOpacity = 1;
+        }, 400);
+        // 恢复原始大小
+        setTimeout(() => {
+            this.cardScale = 1;
+            if (cardType === 'theme') {
+                this.clickedThemeIndex = -1;
+            }
+            else {
+                this.clickedSubcategoryIndex = -1;
+            }
+        }, 600);
+    }
     initialRender() {
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             Column.create();
@@ -379,7 +476,7 @@ class Index extends ViewPU {
                                     onBack: () => {
                                         this.showChallenge = false;
                                     }
-                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 153, col: 9 });
+                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 203, col: 9 });
                                 ViewPU.create(componentCall);
                                 let paramsLambda = () => {
                                     return {
@@ -423,7 +520,7 @@ class Index extends ViewPU {
                                     onBack: () => {
                                         this.currentPage = 'subcategory_select';
                                     }
-                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 166, col: 9 });
+                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 216, col: 9 });
                                 ViewPU.create(componentCall);
                                 let paramsLambda = () => {
                                     return {
@@ -695,14 +792,14 @@ class Index extends ViewPU {
         }, Stack);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             Column.create();
-            Context.animation(GlobalStyles.ANIMATIONS.BUTTON_PRESS);
+            Context.animation({ duration: 200, curve: Curve.EaseInOut });
             Column.width(200);
             Column.height(190);
             Column.backgroundColor(GlobalStyles.COLORS.CARD_BACKGROUND);
             Column.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
             Column.border({
-                width: 2,
-                color: this.getRandomBorderColor(index),
+                width: this.clickedThemeIndex === index ? 6 : 2,
+                color: this.clickedThemeIndex === index ? '#FF6B6B' : this.getRandomBorderColor(index),
                 style: BorderStyle.Solid
             });
             Column.padding({ top: 10, bottom: 10, left: 10, right: 10 });
@@ -711,10 +808,18 @@ class Index extends ViewPU {
             Column.margin({ right: GlobalStyles.SIZES.SPACING_MEDIUM });
             Column.onClick(() => {
                 this.soundEffectManager.playButtonClick();
-                this.enterSubcategorySelect(theme.id);
+                this.playCardClickEffect('theme', index);
+                // 延迟执行导航，让动画先播放
+                setTimeout(() => {
+                    this.enterSubcategorySelect(theme.id);
+                }, 300);
             });
+            Column.scale({
+                x: this.clickedThemeIndex === index ? this.cardScale : 1,
+                y: this.clickedThemeIndex === index ? this.cardScale : 1
+            });
+            Column.opacity(this.clickedThemeIndex === index ? this.cardOpacity : 1);
             Context.animation(null);
-            Column.scale({ x: 1, y: 1 });
         }, Column);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             // 主题图标
@@ -870,14 +975,14 @@ class Index extends ViewPU {
         }, Stack);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             Column.create();
-            Context.animation(GlobalStyles.ANIMATIONS.BUTTON_PRESS);
+            Context.animation({ duration: 200, curve: Curve.EaseInOut });
             Column.width(200);
             Column.height(190);
             Column.backgroundColor(GlobalStyles.COLORS.CARD_BACKGROUND);
             Column.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
             Column.border({
-                width: 2,
-                color: this.getRandomBorderColor(index),
+                width: this.clickedSubcategoryIndex === index ? 6 : 2,
+                color: this.clickedSubcategoryIndex === index ? '#FF6B6B' : this.getRandomBorderColor(index),
                 style: BorderStyle.Solid
             });
             Column.padding({ top: 10, bottom: 10, left: 10, right: 10 });
@@ -886,10 +991,18 @@ class Index extends ViewPU {
             Column.margin({ right: GlobalStyles.SIZES.SPACING_MEDIUM });
             Column.onClick(() => {
                 this.soundEffectManager.playButtonClick();
-                this.startSubcategoryLearning(subcategory.id);
+                this.playCardClickEffect('subcategory', index);
+                // 延迟执行导航，让动画先播放
+                setTimeout(() => {
+                    this.startSubcategoryLearning(subcategory.id);
+                }, 300);
             });
+            Column.scale({
+                x: this.clickedSubcategoryIndex === index ? this.cardScale : 1,
+                y: this.clickedSubcategoryIndex === index ? this.cardScale : 1
+            });
+            Column.opacity(this.clickedSubcategoryIndex === index ? this.cardOpacity : 1);
             Context.animation(null);
-            Column.scale({ x: 1, y: 1 });
         }, Column);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             // 子分类图标
