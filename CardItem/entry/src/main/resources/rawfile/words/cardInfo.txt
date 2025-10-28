@@ -62,7 +62,7 @@ Rice cake｜米糕｜お餅（おもち，omochi）
 Toast｜吐司｜トースト（toostu）  
 Waffle｜华夫饼｜ワッフル（waffuru）  
 Muffin｜玛芬｜マフィン（mafin）  
-@@@ 零食和其他食物｜Snacks_Other Foods｜スナック＆その他の食べ物（すなっく＆そのたののたべもの）
+@@@ 零食&其他食物｜Snacks & Other Foods｜スナック＆その他の食べ物（すなっく＆そのたののたべもの）
 Candy｜糖果｜キャンディー（kyandii）  
 Chocolate｜巧克力｜チョコレート（chokoreeto）  
 Cheese｜奶酪｜チーズ（cheese）  
@@ -424,7 +424,8 @@ Plane｜飞机｜飛行機（ひこうき，hikouki）
 Helicopter｜直升机｜ヘリコプター（herikoputaa）  
 Hot air balloon｜热气球｜熱気球（ねつききゅう，netsukikyuu）  
 Drone｜无人机｜ドローン（doroon）  
-### 七、家庭成员&称呼类（20个）｜Family Members and Titles（20）｜家族メンバー＆呼び方（かぞくめんばー＆よびかた，kazoku menbaa＆yobikata）
+### 七、家庭成员&称呼类（20个）｜Family Members & Titles（20）｜家族メンバー＆呼び方（かぞくめんばー＆よびかた，kazoku menbaa＆yobikata）
+@@@ 成员｜Member｜メンバー（めんばー，menbā）
 Mom｜妈妈｜母（はは，haha）  
 Dad｜爸爸｜父（ちち，chichi）  
 Brother｜哥哥/弟弟｜兄弟（きょうだい，kyoudai）  
@@ -432,6 +433,7 @@ Sister｜姐姐/妹妹｜姉妹（しまい，shimai）
 Baby｜宝宝｜赤ちゃん（あかちゃん，akachan）  
 Grandpa｜爷爷/外公｜お爺さん（おじいさん，ojiisan）  
 Grandma｜奶奶/外婆｜お婆さん（おばあさん，obaasan）  
+@@@ 称呼｜Address｜呼び名（よびな，yobina）
 Uncle｜叔叔/舅舅｜おじさん（ojisan）  
 Aunt｜阿姨/姑姑｜おばさん（obasan）  
 Cousin｜堂/表兄弟姐妹｜いとこ（itoko）  
@@ -502,48 +504,55 @@ Catch｜接｜捕まえる（つかまえる，tsukamaeru）
 Carry｜搬｜運ぶ（はこぶ，hakobu）  
 Hold｜拿｜持つ（もつ，motsu）  
 ### 九、场所类（20个）｜Places（20）｜場所（ばしょ，basho）
-Home｜家｜家（いえ，ie）  
-Park｜公园｜公園（こうえん，kouen）  
-School｜学校｜学校（がっこう，gakkou）  
-Classroom｜教室｜教室（きょうしつ，kyoushitsu）  
-Playground｜操场｜運動場（うんどうじょう，undoujou）  
-Library｜图书馆｜図書館（としょかん，toshokan）  
-Hospital｜医院｜病院（びょういん，byouin）  
-Doctor’s office｜医生办公室｜医者のオフィス（いしゃのofisu，isha no ofisu）  
-Supermarket｜超市｜スーパー（suupaa）  
-Store｜商店｜店（みせ，mise）  
-Restaurant｜餐厅｜レストラン（resutoran）  
-Café｜咖啡馆｜カフェ（kafe）  
-Zoo｜动物园｜動物園（どうぶつえん，doubutsuen）  
-Farm｜农场｜農場（のうじょう，noujou）  
-Garden｜花园｜庭（にわ，niwa）  
-Beach｜沙滩｜ビーチ（biichi）  
-Pool｜泳池｜プール（puuru）  
-Museum｜博物馆｜美術館（びじゅつかん，bijutsukan）  
-Cinema｜电影院｜映画館（えいがかん，eigakan）  
-Shop｜商店｜ショップ（shoppu）  
+@@@ 室内｜Indoor｜室内（しつない，shitsunai）
+Café｜咖啡馆｜カフェ（かふぇ，kafe）
+Cinema｜电影院｜シネマ（しねま，sinema）
+Classroom｜教室｜教室（きょうしつ，kyoushitsu）
+Doctor's office｜医生办公室｜診療室（しんりょうしつ，shinryoushitsu）
+Home｜家｜家（いえ，ie）
+Hospital｜医院｜病院（びょういん，byouin）
+Library｜图书馆｜図書館（としょかん，toshokan）
+Museum｜博物馆｜博物館（はくぶつかん，hakubutsukan）
+Restaurant｜餐厅｜レストラン（れすとらん，resutoran）
+School｜学校｜学校（がっこう，gakkou）
+Shop｜商店｜店（みせ，mise）
+Store｜商店｜ストア（すとあ，sto-a）
+Supermarket｜超市｜スーパー（すーぱー，suupaa）
+@@@ 室外｜Outdoor｜室外（しつがい，shitsugai
+Beach｜海滩｜ビーチ（びーち，biichi）
+Farm｜农场｜農場（のうじょう，noujou）
+Garden｜花园｜庭園（ていえん，tei'en）
+Park｜公园｜公園（こうえん，kouen）
+Playground｜操场｜運動場（うんどうじょう，undoujou）
+Pool｜游泳池｜プール（ぷーる，puuru）
+Zoo｜动物园｜動物園（どうぶつえん，doubutsuen）
 ### 十、自然事物类（20个）｜Natural Things（20）｜自然のもの（しぜんのもの，shizen no mono）
+@@@ Landscape｜风景｜風景（ふうけい，fuukei）
+Mountain｜山｜山（やま，yama）  
+River｜河｜川（かわ，kawa）  
+Lake｜湖｜湖（みずうみ，mizuumi）  
+Sea｜海｜海（うみ，umi）    
+Rock｜石头｜石（いし，ishi）
+@@@ Living things｜生物｜生物（せいぶつ，seibutsu）
+Tree｜树｜木（き，ki）  
+Flower｜花｜花（はな，hana）  
+Grass｜草｜草（くさ，kusa）  
+Leaf｜叶子｜葉（は，ha）
+@@@ Planet｜行星｜惑星（わくせい，wakusei）
 Sun｜太阳｜太陽（たいよう，taiyou）  
 Moon｜月亮｜月（つき，tsuki）  
-Star｜星星｜星（ほし，hoshi）  
+Star｜星星｜星（ほし，hoshi）
+Sky｜天空｜空（そら，sora）   
+Earth｜地球｜地球（ちきゅう，chikyuu） 
+@@@ Weather｜天气｜天気（てんき，tenki）
 Cloud｜云｜雲（くも，kumo）  
 Rain｜雨｜雨（あめ，ame）  
 Snow｜雪｜雪（ゆき，yuki）  
 Wind｜风｜風（かぜ，kaze）  
 Thunder｜雷｜雷（かみなり，kaminari）  
 Lightning｜闪电｜稲妻（いなづま，inazuma）  
-Sky｜天空｜空（そら，sora）  
-Earth｜地球｜地球（ちきゅう，chikyuu）  
-Mountain｜山｜山（やま，yama）  
-River｜河｜川（かわ，kawa）  
-Lake｜湖｜湖（みずうみ，mizuumi）  
-Sea｜海｜海（うみ，umi）  
-Tree｜树｜木（き，ki）  
-Flower｜花｜花（はな，hana）  
-Grass｜草｜草（くさ，kusa）  
-Leaf｜叶子｜葉（は，ha）  
-Rock｜石头｜石（いし，ishi）  
 ### 十一、服饰类（20个）｜Clothing（20）｜服装（ふくそう，fukusou）
+@@@ 衣服｜Clothes｜衣服（いふく，ifuku）
 Shirt｜衬衫｜シャツ（shatsu）  
 T-shirt｜T恤｜Tシャツ（tii shatsu）  
 Pants｜裤子｜ズボン（zubon）  
@@ -553,7 +562,8 @@ Dress｜连衣裙｜ワンピース（wanpiisu）
 Coat｜外套｜コート（kooto）  
 Jacket｜夹克｜ジャケット（jaketto）  
 Sweater｜毛衣｜セーター（seetaa）  
-Hoodie｜连帽衫｜フーディー（fuudii）  
+Hoodie｜连帽衫｜フーディー（fuudii） 
+@@@ 其他衣物｜Other Clothing｜その他の衣類（そのたのいるい，sonota no irui）
 Socks｜袜子｜靴下（くつした，kutsushita）  
 Shoes｜鞋子｜靴（くつ，kutsu）  
 Boots｜靴子｜ブーツ（buutsu）  
@@ -565,13 +575,15 @@ Gloves｜手套｜手袋（てぶくろ，tebukuro）
 Tie｜领带｜ネクタイ（nekutai）  
 Belt｜腰带｜ベルト（beruto）  
 ### 十二、玩具类（10个）｜Toys（10）｜おもちゃ（omochya）
+@@@ 电子玩具｜Electronic Toy｜電子玩具（でんしがんぐ，denshi gangu）
+Car｜玩具车｜おもちゃの車（おもちゃのくるま，omochya no kuruma） 
+Toy plane｜玩具飞机｜おもちゃの飛行機（おもちゃのひこうき，omochya no hikouki） 
+Train｜玩具火车｜おもちゃの電車（おもちゃのでんしゃ，omochya no densha）  
+Robot｜机器人｜ロボット（robotto）  
+@@@ 传统玩具｜Traditional Toy｜伝統玩具（でんとうがんぐ，dentou gangu）
 Ball｜球｜ボール（booru）  
 Doll｜玩偶｜人形（にんぎょう，ningyou）  
-Car｜玩具车｜おもちゃの車（おもちゃのくるま，omochya no kuruma）  
-Train｜玩具火车｜おもちゃの電車（おもちゃのでんしゃ，omochya no densha）  
 Puzzle｜拼图｜パズル（pazzuru）  
 Block｜积木｜積み木（つみき，tsumiki）  
 Teddy bear｜泰迪熊｜テディベア（tedibea）  
-Robot｜机器人｜ロボット（robotto）  
 Dollhouse｜娃娃屋｜ドールハウス（dooru hausu）  
-Toy plane｜玩具飞机｜おもちゃの飛行機（おもちゃのひこうき，omochya no hikouki）  
