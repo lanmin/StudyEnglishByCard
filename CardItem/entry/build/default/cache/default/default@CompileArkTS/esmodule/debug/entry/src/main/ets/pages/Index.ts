@@ -383,13 +383,13 @@ class Index extends ViewPU {
             Column.backgroundColor(GlobalStyles.COLORS.BACKGROUND);
         }, Column);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
-            // 顶部区域 - 标题和设置按钮
+            // 顶部区域 - 标题和功能按钮
             Row.create();
-            // 顶部区域 - 标题和设置按钮
+            // 顶部区域 - 标题和功能按钮
             Row.width('100%');
-            // 顶部区域 - 标题和设置按钮
+            // 顶部区域 - 标题和功能按钮
             Row.padding({ left: GlobalStyles.SIZES.SPACING_LARGE, right: GlobalStyles.SIZES.SPACING_LARGE, top: GlobalStyles.SIZES.SPACING_MEDIUM });
-            // 顶部区域 - 标题和设置按钮
+            // 顶部区域 - 标题和功能按钮
             Row.margin({ bottom: GlobalStyles.SIZES.SPACING_MEDIUM });
         }, Row);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
@@ -401,28 +401,60 @@ class Index extends ViewPU {
         }, Text);
         Text.pop();
         this.observeComponentCreation2((elmtId, isInitialRender) => {
-            // 设置按钮
-            Button.createWithLabel('⚙️');
-            // 设置按钮
+            // 复习按钮
+            Button.createWithLabel('复习');
+            // 复习按钮
             Button.width(60);
-            // 设置按钮
-            Button.height(60);
-            // 设置按钮
-            Button.backgroundColor(GlobalStyles.COLORS.LIGHT_GRAY);
-            // 设置按钮
-            Button.fontSize(24);
-            // 设置按钮
-            Button.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
-            // 设置按钮
+            // 复习按钮
+            Button.height(40);
+            // 复习按钮
+            Button.backgroundColor('#52C41A');
+            // 复习按钮
+            Button.fontSize(12);
+            // 复习按钮
+            Button.fontColor(Color.White);
+            // 复习按钮
+            Button.fontWeight(FontWeight.Bold);
+            // 复习按钮
+            Button.borderRadius(25);
+            // 复习按钮
+            Button.margin({ right: 15 });
+            // 复习按钮
             Button.onClick(() => {
                 this.soundEffectManager.playButtonClick();
-                console.log('Settings button clicked, changing to parent_helper');
-                this.currentPage = 'parent_helper';
+                // TODO: 实现复习功能
+                console.log('复习按钮点击');
             });
         }, Button);
-        // 设置按钮
+        // 复习按钮
         Button.pop();
-        // 顶部区域 - 标题和设置按钮
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            // 跳过学习按钮
+            Button.createWithLabel('跳过学习');
+            // 跳过学习按钮
+            Button.width(80);
+            // 跳过学习按钮
+            Button.height(40);
+            // 跳过学习按钮
+            Button.backgroundColor('#FF7875');
+            // 跳过学习按钮
+            Button.fontSize(12);
+            // 跳过学习按钮
+            Button.fontColor(Color.White);
+            // 跳过学习按钮
+            Button.fontWeight(FontWeight.Bold);
+            // 跳过学习按钮
+            Button.borderRadius(25);
+            // 跳过学习按钮
+            Button.onClick(() => {
+                this.soundEffectManager.playButtonClick();
+                // TODO: 实现跳过学习功能
+                console.log('跳过学习按钮点击');
+            });
+        }, Button);
+        // 跳过学习按钮
+        Button.pop();
+        // 顶部区域 - 标题和功能按钮
         Row.pop();
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             // 主题卡片容器 - 支持左右滑动

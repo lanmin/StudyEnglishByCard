@@ -135,7 +135,7 @@ struct Index {
   // 主题选择页（横屏布局，左右滑动）
   @Builder ThemeSelectPage() {
     Column() {
-      // 顶部区域 - 标题和设置按钮
+      // 顶部区域 - 标题和功能按钮
       Row() {
         Text('选择学习主题')
           .fontSize(GlobalStyles.FONT_SIZES.TITLE_MEDIUM)
@@ -143,17 +143,35 @@ struct Index {
           .fontWeight(FontWeight.Bold)
           .layoutWeight(1)
         
-        // 设置按钮
-        Button('⚙️')
+        // 复习按钮
+        Button('复习')
           .width(60)
-          .height(60)
-          .backgroundColor(GlobalStyles.COLORS.LIGHT_GRAY)
-          .fontSize(24)
-          .borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM)
+          .height(40)
+          .backgroundColor('#52C41A')
+          .fontSize(12)
+          .fontColor(Color.White)
+          .fontWeight(FontWeight.Bold)
+          .borderRadius(25)
+          .margin({ right: 15 })
           .onClick(() => {
             this.soundEffectManager.playButtonClick()
-            console.log('Settings button clicked, changing to parent_helper')
-            this.currentPage = 'parent_helper'
+            // TODO: 实现复习功能
+            console.log('复习按钮点击')
+          })
+        
+        // 跳过学习按钮
+        Button('跳过学习')
+          .width(80)
+          .height(40)
+          .backgroundColor('#FF7875')
+          .fontSize(12)
+          .fontColor(Color.White)
+          .fontWeight(FontWeight.Bold)
+          .borderRadius(25)
+          .onClick(() => {
+            this.soundEffectManager.playButtonClick()
+            // TODO: 实现跳过学习功能
+            console.log('跳过学习按钮点击')
           })
       }
       .width('100%')
