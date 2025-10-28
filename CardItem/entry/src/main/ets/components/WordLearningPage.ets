@@ -51,6 +51,11 @@ export struct WordLearningPage {
     SpeechManager.init()
     this.loadWords()
     
+    // 延迟播放当前单词，确保数据已加载
+    setTimeout(() => {
+      this.playPronunciation()
+    }, 500)
+    
     // 如果从外部要求以挑战模式进入，加载后直接进入挑战
     if (this.initialMode === 'challenge') {
       // 异步进入，确保words已准备
@@ -182,6 +187,11 @@ export struct WordLearningPage {
       this.isFlipped = false
       this.completedModes = []  // 清空已完成状态
       this.currentMode = 'normal'  // 回到正常模式
+      
+      // 延迟播放新单词的发音
+      setTimeout(() => {
+        this.playPronunciation()
+      }, 300)
     }
   }
 
@@ -192,6 +202,11 @@ export struct WordLearningPage {
       this.isFlipped = false
       this.completedModes = []  // 清空已完成状态
       this.currentMode = 'normal'  // 回到正常模式
+      
+      // 延迟播放新单词的发音
+      setTimeout(() => {
+        this.playPronunciation()
+      }, 300)
     }
   }
 
@@ -454,6 +469,19 @@ export struct WordLearningPage {
     }, 300)
   }
 
+  // 重新播放测试问题
+  private async replayTestQuestion() {
+    const correctWord = this.getCurrentWord()
+    if (!correctWord) {
+      console.error('没有当前单词')
+      return
+    }
+    
+    // 播放问题："哪个是沙发Sofa？"
+    const question = `哪个是${correctWord.chinese}${correctWord.english}？`
+    await SpeechManager.speak(question)
+  }
+
   // 进入书写模式
   private enterWriteMode() {
     this.currentMode = 'write'
@@ -518,7 +546,7 @@ export struct WordLearningPage {
       case 'speak':
         return '口语模式'
       case 'read':
-        return '阅读模式'
+        return '测试模式'
       case 'write':
         return '书写模式'
       case 'challenge':
@@ -555,12 +583,12 @@ export struct WordLearningPage {
 
         Blank()
 
-        // 显示当前模式
+        // 显示当前模式（右上角）
         if (this.currentMode !== 'normal') {
           Text(this.getModeText())
             .fontSize(18)
             .fontColor('#333333')
-            .margin({ left: 10, top: 20 })
+            .margin({ right: 10, top: 20 })
           
           Button('×')
             .fontSize(20)
@@ -573,8 +601,6 @@ export struct WordLearningPage {
               this.exitMode()
             })
         }
-
-        Blank()
 
         // 挑战模式右上角答对计数
         if (this.currentMode === 'challenge') {
@@ -651,6 +677,10 @@ export struct WordLearningPage {
     .width('100%')
     .height('90%')
     .padding(20)
+    .onClick(() => {
+      // 点击空白处重新播放问题
+      this.replayTestQuestion()
+    })
   }
 
   @State draggedLetters: string[] = []

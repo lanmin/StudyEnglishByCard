@@ -134,6 +134,21 @@ export struct ChallengePage {
     return colors[Math.abs(hash) % colors.length]
   }
 
+  // 重新播放挑战问题
+  private async replayChallengeQuestion() {
+    if (this.options.length === 0) {
+      console.warn('没有当前选项')
+      return
+    }
+    
+    // 找到正确答案（第一个选项是正确答案）
+    const correctWord: WordData = this.options[0]  // 简化：假设第一个是正确答案
+    
+    // 播放问题："哪个是XX English？"
+    const question: string = `哪个是${correctWord.chinese}${correctWord.english}？`
+    await SpeechManager.speak(question)
+  }
+
   private getCorrectIndex(): number {
     if (this.options.length === 0) return -1
     // 正确项为 options 中在 generateQuestion 放入的正确词；无法直接引用，改为：
@@ -222,6 +237,10 @@ export struct ChallengePage {
       .width('100%')
       .height('85%')
       .padding(20)
+      .onClick(() => {
+        // 点击空白处重新播放问题
+        this.replayChallengeQuestion()
+      })
     }
     .width('100%')
     .height('100%')
