@@ -21,6 +21,7 @@ interface WordLearningPage_Params {
     learningDataManager?;
     draggedLetters?: string[];
     isWriteCorrect?: boolean;
+    completedModes?: string[];
 }
 import type { WordData, SubcategoryData } from '../types/CommonTypes';
 import { LearningDataManager } from "@normalized:N&&&entry/src/main/ets/utils/LearningDataManager&";
@@ -66,6 +67,8 @@ export class WordLearningPage extends ViewPU {
         this.__draggedLetters = new ObservedPropertyObjectPU([], this, "draggedLetters");
         this.__isWriteCorrect = new ObservedPropertySimplePU(false // 是否拼写正确
         , this, "isWriteCorrect");
+        this.__completedModes = new ObservedPropertyObjectPU([] // 已完成的功能模式（听、说、测、写）
+        , this, "completedModes");
         this.setInitiallyProvidedValue(params);
         this.finalizeConstruction();
     }
@@ -127,6 +130,9 @@ export class WordLearningPage extends ViewPU {
         if (params.isWriteCorrect !== undefined) {
             this.isWriteCorrect = params.isWriteCorrect;
         }
+        if (params.completedModes !== undefined) {
+            this.completedModes = params.completedModes;
+        }
     }
     updateStateVars(params: WordLearningPage_Params) {
     }
@@ -147,6 +153,7 @@ export class WordLearningPage extends ViewPU {
         this.__drawingPaths.purgeDependencyOnElmtId(rmElmtId);
         this.__draggedLetters.purgeDependencyOnElmtId(rmElmtId);
         this.__isWriteCorrect.purgeDependencyOnElmtId(rmElmtId);
+        this.__completedModes.purgeDependencyOnElmtId(rmElmtId);
     }
     aboutToBeDeleted() {
         this.__currentWordIndex.aboutToBeDeleted();
@@ -165,6 +172,7 @@ export class WordLearningPage extends ViewPU {
         this.__drawingPaths.aboutToBeDeleted();
         this.__draggedLetters.aboutToBeDeleted();
         this.__isWriteCorrect.aboutToBeDeleted();
+        this.__completedModes.aboutToBeDeleted();
         SubscriberManager.Get().delete(this.id__());
         this.aboutToBeDeletedInternal();
     }
@@ -339,6 +347,8 @@ export class WordLearningPage extends ViewPU {
         if (this.currentWordIndex < this.words.length - 1) {
             this.currentWordIndex++;
             this.isFlipped = false;
+            this.completedModes = []; // 清空已完成状态
+            this.currentMode = 'normal'; // 回到正常模式
         }
     }
     // 上一个单词
@@ -346,6 +356,8 @@ export class WordLearningPage extends ViewPU {
         if (this.currentWordIndex > 0) {
             this.currentWordIndex--;
             this.isFlipped = false;
+            this.completedModes = []; // 清空已完成状态
+            this.currentMode = 'normal'; // 回到正常模式
         }
     }
     // 处理点击事件：翻转卡片并播放发音
@@ -359,6 +371,12 @@ export class WordLearningPage extends ViewPU {
         console.log('进入听力模式');
         // 显示hearWord.gif，持续2秒
         this.showHearGif = true;
+        // 2秒后标记完成
+        setTimeout(() => {
+            if (!this.completedModes.includes('listen')) {
+                this.completedModes.push('listen');
+            }
+        }, 2000);
         setTimeout(() => {
             this.showHearGif = false;
         }, 2000);
@@ -396,6 +414,12 @@ export class WordLearningPage extends ViewPU {
         await SpeechManager.speak(question);
         // 3. 开启麦克风录制
         await this.startRecording(word);
+        // 录音结束后标记完成
+        setTimeout(() => {
+            if (!this.completedModes.includes('speak')) {
+                this.completedModes.push('speak');
+            }
+        }, 5000); // 录音5秒后完成
     }
     // 开始麦克风图标动画
     private startMicIconAnimation() {
@@ -503,6 +527,10 @@ export class WordLearningPage extends ViewPU {
                 console.log('✅ 选择正确！');
                 this.testCorrectAnswerShown = true;
                 await SpeechManager.speak('答对了，你真棒！');
+                // 标记测试完成
+                if (!this.completedModes.includes('read')) {
+                    this.completedModes.push('read');
+                }
                 // 自动返回学习页面
                 setTimeout(() => {
                     this.currentMode = 'normal';
@@ -540,6 +568,10 @@ export class WordLearningPage extends ViewPU {
                 SpeechManager.speak('答对了，你真棒！').catch((err: Error) => {
                     console.error('拼写成功提示失败:', err);
                 });
+                // 标记书写完成
+                if (!this.completedModes.includes('write')) {
+                    this.completedModes.push('write');
+                }
                 // 1秒后返回学习页面
                 setTimeout(() => {
                     this.currentMode = 'normal';
@@ -595,21 +627,28 @@ export class WordLearningPage extends ViewPU {
             Row.padding({ left: 20, right: 20 });
         }, Row);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Button.createWithLabel('←');
-            Button.fontSize(24);
-            Button.fontColor('#333333');
-            Button.backgroundColor(Color.Transparent);
-            Button.onClick(() => {
-                console.log('返回按钮被点击 - 返回子分类选择页面');
-                if (this.onBack) {
-                    this.onBack();
-                }
-            });
-        }, Button);
-        Button.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            // Button('←')
+            //   .fontSize(24)
+            //   .fontColor('#333333')
+            //   .backgroundColor(Color.Transparent)
+            //   .onClick(() => {
+            //     console.log('返回按钮被点击 - 返回子分类选择页面')
+            //     if (this.onBack) {
+            //       this.onBack()
+            //     }
+            //   })
             Blank.create();
         }, Blank);
+        // Button('←')
+        //   .fontSize(24)
+        //   .fontColor('#333333')
+        //   .backgroundColor(Color.Transparent)
+        //   .onClick(() => {
+        //     console.log('返回按钮被点击 - 返回子分类选择页面')
+        //     if (this.onBack) {
+        //       this.onBack()
+        //     }
+        //   })
         Blank.pop();
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             If.create();
@@ -742,6 +781,13 @@ export class WordLearningPage extends ViewPU {
     }
     set isWriteCorrect(newValue: boolean) {
         this.__isWriteCorrect.set(newValue);
+    }
+    private __completedModes: ObservedPropertyObjectPU<string[]>; // 已完成的功能模式（听、说、测、写）
+    get completedModes() {
+        return this.__completedModes.get();
+    }
+    set completedModes(newValue: string[]) {
+        this.__completedModes.set(newValue);
     }
     buildWriteMode(parent = null) {
         this.observeComponentCreation2((elmtId, isInitialRender) => {
@@ -1156,6 +1202,10 @@ export class WordLearningPage extends ViewPU {
                         Row.justifyContent(FlexAlign.Center);
                     }, Row);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Stack.create();
+                        Stack.margin({ right: 10 });
+                    }, Stack);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
                         Button.createWithLabel('听');
                         Button.fontSize(18);
                         Button.fontColor('#FFFFFF');
@@ -1163,12 +1213,36 @@ export class WordLearningPage extends ViewPU {
                         Button.borderRadius(20);
                         Button.width(60);
                         Button.height(50);
-                        Button.margin({ right: 10 });
                         Button.onClick(() => {
                             this.enterListenMode();
                         });
                     }, Button);
                     Button.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        If.create();
+                        if (this.completedModes.includes('listen')) {
+                            this.ifElseBranchUpdateFunction(0, () => {
+                                this.observeComponentCreation2((elmtId, isInitialRender) => {
+                                    Text.create('✓');
+                                    Text.fontSize(20);
+                                    Text.fontColor('#52C41A');
+                                    Text.fontWeight(FontWeight.Bold);
+                                    Text.position({ x: 45, y: 0 });
+                                }, Text);
+                                Text.pop();
+                            });
+                        }
+                        else {
+                            this.ifElseBranchUpdateFunction(1, () => {
+                            });
+                        }
+                    }, If);
+                    If.pop();
+                    Stack.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Stack.create();
+                        Stack.margin({ right: 10 });
+                    }, Stack);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         Button.createWithLabel('说');
                         Button.fontSize(18);
@@ -1177,12 +1251,36 @@ export class WordLearningPage extends ViewPU {
                         Button.borderRadius(20);
                         Button.width(60);
                         Button.height(50);
-                        Button.margin({ right: 10 });
                         Button.onClick(() => {
                             this.enterSpeakMode();
                         });
                     }, Button);
                     Button.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        If.create();
+                        if (this.completedModes.includes('speak')) {
+                            this.ifElseBranchUpdateFunction(0, () => {
+                                this.observeComponentCreation2((elmtId, isInitialRender) => {
+                                    Text.create('✓');
+                                    Text.fontSize(20);
+                                    Text.fontColor('#52C41A');
+                                    Text.fontWeight(FontWeight.Bold);
+                                    Text.position({ x: 45, y: 0 });
+                                }, Text);
+                                Text.pop();
+                            });
+                        }
+                        else {
+                            this.ifElseBranchUpdateFunction(1, () => {
+                            });
+                        }
+                    }, If);
+                    If.pop();
+                    Stack.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Stack.create();
+                        Stack.margin({ right: 10 });
+                    }, Stack);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         Button.createWithLabel('测');
                         Button.fontSize(18);
@@ -1191,12 +1289,35 @@ export class WordLearningPage extends ViewPU {
                         Button.borderRadius(20);
                         Button.width(60);
                         Button.height(50);
-                        Button.margin({ right: 10 });
                         Button.onClick(() => {
                             this.enterReadMode();
                         });
                     }, Button);
                     Button.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        If.create();
+                        if (this.completedModes.includes('read')) {
+                            this.ifElseBranchUpdateFunction(0, () => {
+                                this.observeComponentCreation2((elmtId, isInitialRender) => {
+                                    Text.create('✓');
+                                    Text.fontSize(20);
+                                    Text.fontColor('#52C41A');
+                                    Text.fontWeight(FontWeight.Bold);
+                                    Text.position({ x: 45, y: 0 });
+                                }, Text);
+                                Text.pop();
+                            });
+                        }
+                        else {
+                            this.ifElseBranchUpdateFunction(1, () => {
+                            });
+                        }
+                    }, If);
+                    If.pop();
+                    Stack.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Stack.create();
+                    }, Stack);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         Button.createWithLabel('写');
                         Button.fontSize(18);
@@ -1210,6 +1331,27 @@ export class WordLearningPage extends ViewPU {
                         });
                     }, Button);
                     Button.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        If.create();
+                        if (this.completedModes.includes('write')) {
+                            this.ifElseBranchUpdateFunction(0, () => {
+                                this.observeComponentCreation2((elmtId, isInitialRender) => {
+                                    Text.create('✓');
+                                    Text.fontSize(20);
+                                    Text.fontColor('#52C41A');
+                                    Text.fontWeight(FontWeight.Bold);
+                                    Text.position({ x: 45, y: 0 });
+                                }, Text);
+                                Text.pop();
+                            });
+                        }
+                        else {
+                            this.ifElseBranchUpdateFunction(1, () => {
+                            });
+                        }
+                    }, If);
+                    If.pop();
+                    Stack.pop();
                     Row.pop();
                     // 听说读写按钮区域
                     Column.pop();

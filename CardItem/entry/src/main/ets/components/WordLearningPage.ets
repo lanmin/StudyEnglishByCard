@@ -110,6 +110,8 @@ export struct WordLearningPage {
     if (this.currentWordIndex < this.words.length - 1) {
       this.currentWordIndex++
       this.isFlipped = false
+      this.completedModes = []  // 清空已完成状态
+      this.currentMode = 'normal'  // 回到正常模式
     }
   }
 
@@ -118,6 +120,8 @@ export struct WordLearningPage {
     if (this.currentWordIndex > 0) {
       this.currentWordIndex--
       this.isFlipped = false
+      this.completedModes = []  // 清空已完成状态
+      this.currentMode = 'normal'  // 回到正常模式
     }
   }
 
@@ -134,6 +138,12 @@ export struct WordLearningPage {
     
     // 显示hearWord.gif，持续2秒
     this.showHearGif = true
+    // 2秒后标记完成
+    setTimeout(() => {
+      if (!this.completedModes.includes('listen')) {
+        this.completedModes.push('listen')
+      }
+    }, 2000)
     setTimeout(() => {
       this.showHearGif = false
     }, 2000)
@@ -181,6 +191,13 @@ export struct WordLearningPage {
     
     // 3. 开启麦克风录制
     await this.startRecording(word)
+    
+    // 录音结束后标记完成
+    setTimeout(() => {
+      if (!this.completedModes.includes('speak')) {
+        this.completedModes.push('speak')
+      }
+    }, 5000)  // 录音5秒后完成
   }
 
   // 开始麦克风图标动画
@@ -309,6 +326,11 @@ export struct WordLearningPage {
         this.testCorrectAnswerShown = true
         await SpeechManager.speak('答对了，你真棒！')
         
+        // 标记测试完成
+        if (!this.completedModes.includes('read')) {
+          this.completedModes.push('read')
+        }
+        
         // 自动返回学习页面
         setTimeout(() => {
           this.currentMode = 'normal'
@@ -349,6 +371,11 @@ export struct WordLearningPage {
         SpeechManager.speak('答对了，你真棒！').catch((err: Error) => {
           console.error('拼写成功提示失败:', err)
         })
+        // 标记书写完成
+        if (!this.completedModes.includes('write')) {
+          this.completedModes.push('write')
+        }
+        
         // 1秒后返回学习页面
         setTimeout(() => {
           this.currentMode = 'normal'
@@ -394,19 +421,7 @@ export struct WordLearningPage {
     Column() {
       // 顶部导航栏
       Row() {
-        Button('←')
-          .fontSize(24)
-          .fontColor('#333333')
-          .backgroundColor(Color.Transparent)
-          .onClick(() => {
-            console.log('返回按钮被点击 - 返回子分类选择页面')
-            if (this.onBack) {
-              this.onBack()
-            }
-          })
-
         Blank()
-
         // 显示当前模式
         if (this.currentMode !== 'normal') {
           Text(this.getModeText())
@@ -488,6 +503,7 @@ export struct WordLearningPage {
 
   @State draggedLetters: string[] = []
   @State isWriteCorrect: boolean = false  // 是否拼写正确
+  @State completedModes: string[] = []  // 已完成的功能模式（听、说、测、写）
 
   @Builder
   buildWriteMode() {
@@ -725,52 +741,92 @@ export struct WordLearningPage {
               }
               
               Row() {
-                Button('听')
-                  .fontSize(18)
-                  .fontColor('#FFFFFF')
-                  .backgroundColor(this.currentMode === 'listen' ? '#FF0000' : '#FF6B6B')
-                  .borderRadius(20)
-                  .width(60)
-                  .height(50)
-                  .margin({ right: 10 })
-                  .onClick(() => {
-                    this.enterListenMode()
-                  })
+                Stack() {
+                  Button('听')
+                    .fontSize(18)
+                    .fontColor('#FFFFFF')
+                    .backgroundColor(this.currentMode === 'listen' ? '#FF0000' : '#FF6B6B')
+                    .borderRadius(20)
+                    .width(60)
+                    .height(50)
+                    .onClick(() => {
+                      this.enterListenMode()
+                    })
+                  
+                  if (this.completedModes.includes('listen')) {
+                    Text('✓')
+                      .fontSize(20)
+                      .fontColor('#52C41A')
+                      .fontWeight(FontWeight.Bold)
+                      .position({ x: 45, y: 0 })
+                  }
+                }
+                .margin({ right: 10 })
 
-                Button('说')
-                  .fontSize(18)
-                  .fontColor('#FFFFFF')
-                  .backgroundColor(this.currentMode === 'speak' ? '#00BFA5' : '#4ECDC4')
-                  .borderRadius(20)
-                  .width(60)
-                  .height(50)
-                  .margin({ right: 10 })
-                  .onClick(() => {
-                    this.enterSpeakMode()
-                  })
+                Stack() {
+                  Button('说')
+                    .fontSize(18)
+                    .fontColor('#FFFFFF')
+                    .backgroundColor(this.currentMode === 'speak' ? '#00BFA5' : '#4ECDC4')
+                    .borderRadius(20)
+                    .width(60)
+                    .height(50)
+                    .onClick(() => {
+                      this.enterSpeakMode()
+                    })
+                  
+                  if (this.completedModes.includes('speak')) {
+                    Text('✓')
+                      .fontSize(20)
+                      .fontColor('#52C41A')
+                      .fontWeight(FontWeight.Bold)
+                      .position({ x: 45, y: 0 })
+                  }
+                }
+                .margin({ right: 10 })
 
-                Button('测')
-                  .fontSize(18)
-                  .fontColor('#FFFFFF')
-                  .backgroundColor(this.currentMode === 'read' ? '#0277BD' : '#45B7D1')
-                  .borderRadius(20)
-                  .width(60)
-                  .height(50)
-                  .margin({ right: 10 })
-                  .onClick(() => {
-                    this.enterReadMode()
-                  })
+                Stack() {
+                  Button('测')
+                    .fontSize(18)
+                    .fontColor('#FFFFFF')
+                    .backgroundColor(this.currentMode === 'read' ? '#0277BD' : '#45B7D1')
+                    .borderRadius(20)
+                    .width(60)
+                    .height(50)
+                    .onClick(() => {
+                      this.enterReadMode()
+                    })
+                  
+                  if (this.completedModes.includes('read')) {
+                    Text('✓')
+                      .fontSize(20)
+                      .fontColor('#52C41A')
+                      .fontWeight(FontWeight.Bold)
+                      .position({ x: 45, y: 0 })
+                  }
+                }
+                .margin({ right: 10 })
 
-                Button('写')
-                  .fontSize(18)
-                  .fontColor('#FFFFFF')
-                  .backgroundColor(this.currentMode === 'write' ? '#009688' : '#96CEB4')
-                  .borderRadius(20)
-                  .width(60)
-                  .height(50)
-                  .onClick(() => {
-                    this.enterWriteMode()
-                  })
+                Stack() {
+                  Button('写')
+                    .fontSize(18)
+                    .fontColor('#FFFFFF')
+                    .backgroundColor(this.currentMode === 'write' ? '#009688' : '#96CEB4')
+                    .borderRadius(20)
+                    .width(60)
+                    .height(50)
+                    .onClick(() => {
+                      this.enterWriteMode()
+                    })
+                  
+                  if (this.completedModes.includes('write')) {
+                    Text('✓')
+                      .fontSize(20)
+                      .fontColor('#52C41A')
+                      .fontWeight(FontWeight.Bold)
+                      .position({ x: 45, y: 0 })
+                  }
+                }
               }
               .justifyContent(FlexAlign.Center)
             }
