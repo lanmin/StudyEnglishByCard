@@ -180,7 +180,7 @@ struct Index {
         
         // 复习按钮
         Button('复习')
-          .width(40)
+          .width(50)
           .height(30)
           .backgroundColor('#52C41A')
           .fontSize(12)
@@ -196,7 +196,7 @@ struct Index {
         
         // 跳过学习按钮
         Button('重置')
-          .width(40)
+          .width(50)
           .height(30)
           .backgroundColor('#FF7875')
           .fontSize(12)

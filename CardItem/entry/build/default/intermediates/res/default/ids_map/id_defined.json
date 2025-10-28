@@ -25,35 +25,35 @@
 			"id":	"0x01000005"
 		}, {
 			"type":	"string",
-			"name":	"module_desc",
+			"name":	"microphone_permission_reason",
 			"id":	"0x01000006"
 		}, {
-			"type":	"color",
-			"name":	"start_window_background",
+			"type":	"string",
+			"name":	"module_desc",
 			"id":	"0x01000007"
-		}, {
-			"type":	"float",
-			"name":	"page_text_font_size",
-			"id":	"0x01000008"
-		}, {
-			"type":	"media",
-			"name":	"startIcon",
-			"id":	"0x01000009"
-		}, {
-			"type":	"profile",
-			"name":	"backup_config",
-			"id":	"0x0100000A"
-		}, {
-			"type":	"profile",
-			"name":	"main_pages",
-			"id":	"0x0100000B"
 		}, {
 			"type":	"string",
 			"name":	"permission_reason",
+			"id":	"0x01000008"
+		}, {
+			"type":	"color",
+			"name":	"start_window_background",
+			"id":	"0x01000009"
+		}, {
+			"type":	"float",
+			"name":	"page_text_font_size",
+			"id":	"0x0100000A"
+		}, {
+			"type":	"media",
+			"name":	"startIcon",
+			"id":	"0x0100000B"
+		}, {
+			"type":	"profile",
+			"name":	"backup_config",
 			"id":	"0x0100000C"
 		}, {
-			"type":	"string",
-			"name":	"microphone_permission_reason",
+			"type":	"profile",
+			"name":	"main_pages",
 			"id":	"0x0100000D"
 		}]
 }

@@ -2,6 +2,11 @@
 
 import { ThemeType, WordData, SubcategoryData, ThemeData } from '../types/CommonTypes'
 
+// 资源管理器同步读取类型（避免在断言中直接使用对象字面量类型）
+interface ResourceManagerSync {
+  getRawFileContentSync(path: string): Uint8Array | ArrayBuffer
+}
+
 // 多语言结构体
 interface MultiLanguageText {
   english: string
@@ -68,6 +73,9 @@ export class LearningDataManager {
   private words: WordData[] = []
   private themes: ThemeData[] = []
   private subcategories: SubcategoryData[] = []
+  
+  // 外部提供的 cardInfo 文本（从 rawfile 读取后注入）
+  private externalCardInfo: string = ''
 
   private constructor() {
     this.parseCardInfoFile()
@@ -75,22 +83,35 @@ export class LearningDataManager {
     this.debugPrintAllSubcategories()
   }
 
-  // 解析cardInfo.txt文件到12个主题数组
+  // 允许外部传入最新的 cardInfo 文本后立即重新解析（不生成虚拟子类）
+  public reloadWithExternalCardInfo(content: string): void {
+    this.externalCardInfo = content
+    this.parseCardInfoFile()
+    this.convertToCompatibilityData()
+  }
+
+  // 解析cardInfo.txt文件到12个主题数组（严格依赖 @@@ 子类，不生成虚拟子类）
   private parseCardInfoFile(): void {
     // 先清空所有主题的子分类数组
     this.clearAllSubcategories()
     
-    const content = this.readCardInfoFile()
-    const lines = content.split('\n')
+    // 优先使用外部注入的内容，否则使用内置字符串
+    let content = this.externalCardInfo && this.externalCardInfo.length > 0
+      ? this.externalCardInfo
+      : this.readCardInfoFile()
+    // 移除 BOM，兼容不同换行符
+    content = content.replace(/^\uFEFF/, '')
+    const lines = content.split(/\r?\n/)
     
     let currentTheme: ThemeDataStructure | null = null
     let currentSubcategory: SubcategoryDataStructure | null = null
     
+    let subcategoryLineCount: number = 0
     for (const line of lines) {
       const trimmedLine = line.trim()
       
       // 解析主题 (### 开头)
-      if (trimmedLine.startsWith('### ')) {
+      if (/^###/.test(trimmedLine)) {
         const themeInfo = this.parseThemeLine(trimmedLine)
         if (themeInfo) {
           currentTheme = this.getThemeDataById(themeInfo.id)
@@ -103,7 +124,7 @@ export class LearningDataManager {
         currentSubcategory = null
       }
       // 解析子分类 (@@@ 开头)
-      else if (trimmedLine.startsWith('@@@ ')) {
+      else if (/^@@@/.test(trimmedLine)) {
         const subcategoryInfo = this.parseSubcategoryLine(trimmedLine)
         if (subcategoryInfo && currentTheme) {
           currentSubcategory = {
@@ -114,6 +135,7 @@ export class LearningDataManager {
           }
           currentTheme.subcategories.push(currentSubcategory)
           console.log(`Added subcategory: ${subcategoryInfo.languages.chinese} to theme: ${currentTheme.id}`)
+          subcategoryLineCount++
         }
       }
       // 解析单词 (普通行) - 必须已经有子分类才能添加单词
@@ -133,17 +155,41 @@ export class LearningDataManager {
         }
       }
     }
+
+    // 解析结束后打印概要，便于核对
+    console.log(`本次解析检测到子分类行数(以@@@开头)：${subcategoryLineCount}`)
+    this.debugPrintParsedSummary()
+  }
+
+  // 调试输出：打印解析到的主题与子分类摘要
+  private debugPrintParsedSummary(): void {
+    const allThemes: ThemeDataStructure[] = [
+      this.foodData, this.animalsData, this.dailyItemsData, this.bodyPartsData,
+      this.colorsShapesData, this.vehiclesData, this.familyData, this.actionsData,
+      this.placesData, this.natureData, this.clothingData, this.toysData
+    ]
+
+    console.log('=== 解析结果概览 ===')
+    allThemes.forEach((theme: ThemeDataStructure) => {
+      const themeNameCn: string = theme.languages.chinese
+      const subCount: number = theme.subcategories.length
+      console.log(`[主题] ${theme.id} | ${themeNameCn} | 子分类数=${subCount}`)
+      theme.subcategories.forEach((sub: SubcategoryDataStructure) => {
+        console.log(`  - [子类] ${sub.languages.chinese} (${sub.languages.english}) | 单词数=${sub.words.length}`)
+      })
+    })
+    console.log('=== 解析结果结束 ===')
   }
 
   // 解析主题行
   private parseThemeLine(line: string): ThemeParseResult | null {
-    const content = line.substring(4) // 移除 "### "
-    const parts = content.split('｜')
+    const content = line.startsWith('###') ? line.replace(/^###\s*/, '') : line
+    const parts = content.split(/｜|\|/)
     
-    if (parts.length >= 3) {
+    if (parts.length >= 2) {
       const chinesePart = parts[0].trim()
       const englishPart = parts[1].trim()
-      const japanesePart = parts[2].trim()
+      const japanesePart = parts.length >= 3 ? parts[2].trim() : ''
       
       // 提取中文名称（移除序号和数量）
       const chineseName = chinesePart.replace(/^[一二三四五六七八九十]+、/, '').replace(/（\d+个）/, '')
@@ -166,15 +212,15 @@ export class LearningDataManager {
 
   // 解析子分类行
   private parseSubcategoryLine(line: string): SubcategoryParseResult | null {
-    const content = line.substring(4) // 移除 "@@@ "
-    const parts = content.split('｜')
+    const content = line.startsWith('@@@') ? line.replace(/^@@@\s*/, '') : line
+    const parts = content.split(/｜|\|/)
     
-    if (parts.length >= 3) {
+    if (parts.length >= 2) {
       const result: SubcategoryParseResult = {
         languages: {
           english: parts[1].trim(),
           chinese: parts[0].trim(),
-          japanese: parts[2].trim()
+          japanese: parts.length >= 3 ? parts[2].trim() : ''
         }
       }
       return result
@@ -184,14 +230,14 @@ export class LearningDataManager {
 
   // 解析单词行
   private parseWordLine(line: string): WordParseResult | null {
-    const parts = line.split('｜')
+    const parts = line.split(/｜|\|/)
     
-    if (parts.length >= 3) {
+    if (parts.length >= 2) {
       const result: WordParseResult = {
         languages: {
           english: parts[0].trim(),
           chinese: parts[1].trim(),
-          japanese: parts[2].trim()
+          japanese: parts.length >= 3 ? parts[2].trim() : ''
         }
       }
       return result
@@ -386,6 +432,18 @@ export class LearningDataManager {
 
   // 读取cardInfo.txt文件内容
   private readCardInfoFile(): string {
+    // 优先从 rawfile 读取（以 txt 为准）；失败时回退内置
+    try {
+      const rm = getContext().resourceManager as ResourceManagerSync
+      const content = rm.getRawFileContentSync('words/cardInfo.txt') as Uint8Array | ArrayBuffer
+      const bytes = content instanceof Uint8Array ? content : new Uint8Array(content)
+      const text = this.utf8Decode(bytes)
+      if (text && text.length > 0) {
+        return text
+      }
+    } catch (e) {
+      console.warn('读取 rawfile/words/cardInfo.txt 失败，使用内置内容')
+    }
     // TODO: 改为从实际文件读取，目前使用硬编码
     return `### 一、食物类（100个）｜Food（100）｜食べ物（たべもの）
 @@@ 水果｜Fruit｜果物（くだもの）
@@ -982,6 +1040,33 @@ Dollhouse｜娃娃屋｜ドールハウス
 Toy plane｜玩具飞机｜おもちゃの飛行機`
   }
 
+  // UTF-8 解码，避免中文/日文乱码
+  private utf8Decode(bytes: Uint8Array): string {
+    let out = ''
+    let i = 0
+    while (i < bytes.length) {
+      const c = bytes[i++]
+      if (c < 0x80) {
+        out += String.fromCharCode(c)
+      } else if ((c & 0xE0) === 0xC0) {
+        const c2 = bytes[i++]
+        out += String.fromCharCode(((c & 0x1F) << 6) | (c2 & 0x3F))
+      } else if ((c & 0xF0) === 0xE0) {
+        const c2 = bytes[i++]
+        const c3 = bytes[i++]
+        out += String.fromCharCode(((c & 0x0F) << 12) | ((c2 & 0x3F) << 6) | (c3 & 0x3F))
+      } else {
+        const c2 = bytes[i++]
+        const c3 = bytes[i++]
+        const c4 = bytes[i++]
+        let code = ((c & 0x07) << 18) | ((c2 & 0x3F) << 12) | ((c3 & 0x3F) << 6) | (c4 & 0x3F)
+        code -= 0x10000
+        out += String.fromCharCode(0xD800 + (code >> 10), 0xDC00 + (code & 0x3FF))
+      }
+    }
+    return out
+  }
+
   // 生成图标路径
   private generateIconPath(themeId: string): string {
     const iconMap: Record<string, string> = {
@@ -1078,6 +1163,7 @@ Toy plane｜玩具飞机｜おもちゃの飛行機`
       '上衣': 'Clothing',
       
       // 玩具类（所有玩具都在Toys目录下，没有子目录）
+      '玩具': 'Toys',
       '传统玩具': 'Toys',
       '现代玩具': 'Toys',
       '户外玩具': 'Toys',
@@ -1090,12 +1176,18 @@ Toy plane｜玩具飞机｜おもちゃの飛行機`
     }
 
     const themeFolder = themeFolderMap[themeId] || 'Food'
-    const subcategoryFolder = subcategoryFolderMap[subcategoryName] || 'Fruit'
+    const subcategoryFolder = subcategoryFolderMap[subcategoryName]
     
     // 图片文件名处理：统一使用首字母大写格式
     const fileName = `${wordId.charAt(0).toUpperCase() + wordId.slice(1).toLowerCase()}.png`
     
-    const imagePath = `CardOriginal/${themeFolder}/${subcategoryFolder}/${fileName}`
+    // 当某些主题（如Toys/Clothing/Places/Natural Things）将图片直接放在主题目录下时，避免重复子目录
+    let imagePath: string
+    if (!subcategoryFolder || subcategoryFolder === themeFolder) {
+      imagePath = `CardOriginal/${themeFolder}/${fileName}`
+    } else {
+      imagePath = `CardOriginal/${themeFolder}/${subcategoryFolder}/${fileName}`
+    }
     console.log(`生成图片路径: ${wordId} -> ${imagePath}`)
     
     // 注意：实际使用时需要在Image组件中添加onError回调来处理图片加载失败
@@ -1251,20 +1343,12 @@ Toy plane｜玩具飞机｜おもちゃの飛行機`
       // 服饰类（所有服饰都在Clothing目录下，没有子目录）
       '上衣': 'Clothing',
 
-      // 玩具类（所有玩具都在Toys目录下，没有子目录）
-      '传统玩具': 'Toys',
-      '现代玩具': 'Toys',
-      '户外玩具': 'Toys',
-      '益智玩具': 'Toys',
-      '运动玩具': 'Toys',
-      '创意玩具': 'Toys',
-      '电子玩具': 'Toys',
-      '角色扮演玩具': 'Toys',
-      '其他玩具': 'Toys'
+      // 玩具类（严格按 @@@ 子类生成，不使用虚拟分类）
+      '玩具': 'Toys'
     }
 
     const themeFolder = themeFolderMap[themeId] || 'Food'
-    const subcategoryFolder = subcategoryFolderMap[subcategoryName] || 'Fruit'
+    const subcategoryFolder = subcategoryFolderMap[subcategoryName]
 
     // 从对应的theme数据中获取该子分类的第一个单词
     const theme = this.getThemeDataById(themeId)
@@ -1281,7 +1365,12 @@ Toy plane｜玩具飞机｜おもちゃの飛行機`
             const wordId = word.languages.english
             // 图片文件名处理：统一使用首字母大写格式
             const fileName = `${wordId.charAt(0).toUpperCase() + wordId.slice(1).toLowerCase()}.png`
-            const iconPath = `CardOriginal/${themeFolder}/${subcategoryFolder}/${fileName}`
+            let iconPath: string
+            if (!subcategoryFolder || subcategoryFolder === themeFolder) {
+              iconPath = `CardOriginal/${themeFolder}/${fileName}`
+            } else {
+              iconPath = `CardOriginal/${themeFolder}/${subcategoryFolder}/${fileName}`
+            }
             
             // 这里返回第一个单词的图片路径（实际检查由Image组件的onError处理）
             // 如果图片不存在，Image组件的onError会使用DefaultImg.png
