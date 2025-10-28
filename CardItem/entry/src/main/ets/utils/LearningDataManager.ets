@@ -147,7 +147,7 @@ export class LearningDataManager {
             id: wordId,
             languages: wordInfo.languages,
             subcategory: currentSubcategory.languages.chinese,
-            image: this.getImagePath(currentTheme.id, currentSubcategory.languages.chinese, wordId),
+            image: this.getImagePath(currentTheme.id, currentSubcategory.languages.english, wordId),
             pronunciation: this.generatePronunciation(wordInfo.languages.english)
           }
           currentSubcategory.words.push(wordData)
@@ -216,10 +216,22 @@ export class LearningDataManager {
     const parts = content.split(/｜|\|/)
     
     if (parts.length >= 2) {
+      let first = parts[0].trim()
+      let second = parts[1].trim()
+
+      const hasCJK = (s: string) => /[\u4e00-\u9fff]/.test(s)
+      const hasLatin = (s: string) => /[A-Za-z]/.test(s)
+      // 规范化：若发现第一列更像英文、第二列更像中文，则交换
+      if (hasLatin(first) && !hasCJK(first) && hasCJK(second)) {
+        const tmp = first
+        first = second
+        second = tmp
+      }
+
       const result: SubcategoryParseResult = {
         languages: {
-          english: parts[1].trim(),
-          chinese: parts[0].trim(),
+          english: second,
+          chinese: first,
           japanese: parts.length >= 3 ? parts[2].trim() : ''
         }
       }
@@ -378,7 +390,7 @@ export class LearningDataManager {
         this.subcategories.push({
           id: subcategory.id,
           name: subcategory.languages.chinese,
-          icon: this.generateSubcategoryIconPath(theme.id, subcategory.languages.chinese),
+          icon: this.generateSubcategoryIconPath(theme.id, subcategory.languages.english),
           color: this.generateSubcategoryColor(theme.id),
           themeId: theme.id as ThemeType,
           totalWords: subcategory.words.length,
@@ -877,7 +889,7 @@ Helicopter｜直升机｜ヘリコプター
 Hot air balloon｜热气球｜熱気球
 Drone｜无人机｜ドローン
 
-### 七、家庭成员&称呼类（20个）｜Family Members and Titles（20）｜家族
+### 七、家庭成员&称呼类（20个）｜Family Members & Titles（20）｜家族
 @@@ 家庭成员｜Family Members｜家族
 Mom｜妈妈｜母
 Dad｜爸爸｜父
@@ -1076,7 +1088,7 @@ Toy plane｜玩具飞机｜おもちゃの飛行機`
       'body_parts': 'CardOriginal/Theme/Body Parts.png',
       'colors_shapes': 'CardOriginal/Theme/Colors & Shapes.png',
       'vehicles': 'CardOriginal/Theme/Transportation.png',
-      'family': 'CardOriginal/Theme/Family Members and Titles.png',
+      'family': 'CardOriginal/Theme/Family Members & Titles.png',
       'actions': 'CardOriginal/Theme/Actions.png',
       'places': 'CardOriginal/Theme/Places.png',
       'nature': 'CardOriginal/Theme/Natural Things.png',
@@ -1090,7 +1102,25 @@ Toy plane｜玩具飞机｜おもちゃの飛行機`
 
   // 根据主题、子分类和单词名称生成图片路径
   private getImagePath(themeId: string, subcategoryName: string, wordId: string): string {
-    // 主题到文件夹的映射（根据实际目录结构）
+    const themeFolder = this.getThemeFolderName(themeId)
+    // 统一由一个函数构建路径（只用英文）
+    return this.buildWordImagePath(themeFolder, subcategoryName, wordId)
+  }
+
+  // 统一图片路径构建：CardOriginal/<ThemeFolder>/<SubcategoryEnglish>/<WordCapitalized>.png
+  private buildWordImagePath(themeFolder: string, subcategoryEnglish: string, wordEnglish: string): string {
+    const subEng = (subcategoryEnglish || '').trim()
+    if (!subEng) {
+      return 'CardOriginal/DefaultImg.png'
+    }
+    const fileName = `${wordEnglish.charAt(0).toUpperCase() + wordEnglish.slice(1).toLowerCase()}.png`
+    const imagePath = `CardOriginal/${themeFolder}/${subEng}/${fileName}`
+    console.log(`生成图片路径: ${wordEnglish.toLowerCase()} -> ${imagePath}`)
+    return imagePath
+  }
+
+  // 统一主题到文件夹的映射
+  private getThemeFolderName(themeId: string): string {
     const themeFolderMap: Record<string, string> = {
       'food': 'Food',
       'animals': 'Animals',
@@ -1105,94 +1135,7 @@ Toy plane｜玩具飞机｜おもちゃの飛行機`
       'clothing': 'Clothing',
       'toys': 'Toys'
     }
-
-    // 子分类到文件夹的映射（根据实际目录结构）
-    const subcategoryFolderMap: Record<string, string> = {
-      // 食物类
-      '水果': 'Fruit',
-      '蔬菜': 'Vegetable',
-      '主食': 'Staple Foods',
-      '零食和其他食物': 'Snacks_Other Foods',
-      
-      // 动物类
-      '宠物': 'Pet',
-      '农场动物': 'Farm Animals',
-      '动物园动物': 'Zoo Animals',
-      '水生动物': 'Aquatic Animals',
-      '昆虫&小型动物': 'Insects & Small Animals',
-      
-      // 日常物品类
-      '厨房用品': 'Kitchen Supplies',
-      '卧室用品': 'Bedroom Supplies',
-      '客厅用品': 'Living Room Supplies',
-      '洗漱用品': 'Toiletries',
-      '其他日常物品': 'Other Daily Items',
-      
-      // 身体部位类
-      '头部': 'Head',
-      '四肢': 'Limbs',
-      '躯干': 'Torso',
-      '其他': 'Others',
-      
-      // 颜色&形状类
-      '颜色': 'Colors',
-      '形状': 'Shapes',
-      
-      // 交通工具类
-      '陆地': 'Land',
-      '水上': 'Water',
-      '空中': 'Air',
-      
-      // 家庭成员类
-      '家庭成员': 'Family Members',
-      
-      // 动作类
-      '日常动作': 'Daily Actions',
-      '感官动作': 'Sensory Actions',
-      '互动动作': 'Interactive Actions',
-      '生活动作': 'Life Actions',
-      '其他动作': 'Other Actions',
-      
-      // 场所类（所有场所都在Places目录下，没有子目录）
-      '室内场所': 'Places',
-      
-      // 自然事物类（所有自然事物都在Natural Things目录下，没有子目录）
-      '天气': 'Natural Things',
-      
-      // 服饰类（所有服饰都在Clothing目录下，没有子目录）
-      '上衣': 'Clothing',
-      
-      // 玩具类（所有玩具都在Toys目录下，没有子目录）
-      '玩具': 'Toys',
-      '传统玩具': 'Toys',
-      '现代玩具': 'Toys',
-      '户外玩具': 'Toys',
-      '益智玩具': 'Toys',
-      '运动玩具': 'Toys',
-      '创意玩具': 'Toys',
-      '电子玩具': 'Toys',
-      '角色扮演玩具': 'Toys',
-      '其他玩具': 'Toys'
-    }
-
-    const themeFolder = themeFolderMap[themeId] || 'Food'
-    const subcategoryFolder = subcategoryFolderMap[subcategoryName]
-    
-    // 图片文件名处理：统一使用首字母大写格式
-    const fileName = `${wordId.charAt(0).toUpperCase() + wordId.slice(1).toLowerCase()}.png`
-    
-    // 当某些主题（如Toys/Clothing/Places/Natural Things）将图片直接放在主题目录下时，避免重复子目录
-    let imagePath: string
-    if (!subcategoryFolder || subcategoryFolder === themeFolder) {
-      imagePath = `CardOriginal/${themeFolder}/${fileName}`
-    } else {
-      imagePath = `CardOriginal/${themeFolder}/${subcategoryFolder}/${fileName}`
-    }
-    console.log(`生成图片路径: ${wordId} -> ${imagePath}`)
-    
-    // 注意：实际使用时需要在Image组件中添加onError回调来处理图片加载失败
-    // 如果图片不存在，使用DefaultImg.png作为占位图
-    return imagePath
+    return themeFolderMap[themeId] || 'Food'
   }
 
   // 获取主题数据
@@ -1218,6 +1161,19 @@ Toy plane｜玩具飞机｜おもちゃの飛行機`
     // 如果找不到，返回中文名称作为备用
     const subcategory = this.subcategories.find(sub => sub.id === subcategoryId)
     return subcategory?.name || ''
+  }
+
+  // 根据主题ID与中文子类名，返回该子类在txt中的英文名（用于生成文件夹名）
+  private findSubcategoryEnglishByChinese(themeId: string, chineseName: string): string {
+    const theme = this.getThemeDataById(themeId)
+    if (!theme) {
+      return ''
+    }
+    const sub = theme.subcategories.find((s: SubcategoryDataStructure) => {
+      // 兼容传入已是英文名的情况
+      return s.languages.chinese === chineseName || s.languages.english === chineseName
+    })
+    return sub ? sub.languages.english : ''
   }
 
   // 根据子分类ID获取主题ID
@@ -1271,109 +1227,24 @@ Toy plane｜玩具飞机｜おもちゃの飛行機`
 
   // 生成子分类图标路径 - 使用子分类文件夹内的第一张图片
   private generateSubcategoryIconPath(themeId: string, subcategoryName: string): string {
-    // 主题到文件夹的映射
-    const themeFolderMap: Record<string, string> = {
-      'food': 'Food',
-      'animals': 'Animals',
-      'daily_items': 'Daily Items',
-      'body_parts': 'Body Parts',
-      'colors_shapes': 'Colors & Shapes',
-      'vehicles': 'Transportation',
-      'family': 'Family Members and Titles',
-      'actions': 'Actions',
-      'places': 'Places',
-      'nature': 'Natural Things',
-      'clothing': 'Clothing',
-      'toys': 'Toys'
-    }
-
-    // 子分类到文件夹的映射
-    const subcategoryFolderMap: Record<string, string> = {
-      // 食物类
-      '水果': 'Fruit',
-      '蔬菜': 'Vegetable',
-      '主食': 'Staple Foods',
-      '零食和其他食物': 'Snacks_Other Foods',
-
-      // 动物类
-      '宠物': 'Pet',
-      '农场动物': 'Farm Animals',
-      '动物园动物': 'Zoo Animals',
-      '水生动物': 'Aquatic Animals',
-      '昆虫&小型动物': 'Insects & Small Animals',
-
-      // 日常物品类
-      '厨房用品': 'Kitchen Supplies',
-      '卧室用品': 'Bedroom Supplies',
-      '客厅用品': 'Living Room Supplies',
-      '洗漱用品': 'Toiletries',
-      '其他日常物品': 'Other Daily Items',
-
-      // 身体部位类
-      '头部': 'Head',
-      '四肢': 'Limbs',
-      '躯干': 'Torso',
-      '其他': 'Others',
-
-      // 颜色&形状类
-      '颜色': 'Colors',
-      '形状': 'Shapes',
-
-      // 交通工具类
-      '陆地': 'Land',
-      '水上': 'Water',
-      '空中': 'Air',
-
-      // 家庭成员类
-      '家庭成员': 'Family Members',
-
-      // 动作类
-      '日常动作': 'Daily Actions',
-      '感官动作': 'Sensory Actions',
-      '互动动作': 'Interactive Actions',
-      '生活动作': 'Life Actions',
-      '其他动作': 'Other Actions',
-
-      // 场所类（所有场所都在Places目录下，没有子目录）
-      '室内场所': 'Places',
-
-      // 自然事物类（所有自然事物都在Natural Things目录下，没有子目录）
-      '天气': 'Natural Things',
-
-      // 服饰类（所有服饰都在Clothing目录下，没有子目录）
-      '上衣': 'Clothing',
-
-      // 玩具类（严格按 @@@ 子类生成，不使用虚拟分类）
-      '玩具': 'Toys'
-    }
-
-    const themeFolder = themeFolderMap[themeId] || 'Food'
-    const subcategoryFolder = subcategoryFolderMap[subcategoryName]
+    const themeFolder = this.getThemeFolderName(themeId)
+    // 直接使用传入的英文子类名
+    const subcategoryFolder: string = subcategoryName
 
     // 从对应的theme数据中获取该子分类的第一个单词
     const theme = this.getThemeDataById(themeId)
-    console.log(`生成子分类图标: themeId=${themeId}, subcategoryName=${subcategoryName}, themeFolder=${themeFolder}, subcategoryFolder=${subcategoryFolder}`)
+    console.log(`生成子分类图标: themeId=${themeId}, subcategoryName=${subcategoryName}, themeFolder=${themeFolder}, subEng=${subcategoryFolder}`)
     
     if (theme) {
       console.log(`找到theme: ${theme.id}, 子分类数量: ${theme.subcategories.length}`)
-      const subcategory = theme.subcategories.find(s => s.languages.chinese === subcategoryName)
+      const subcategory = theme.subcategories.find(s => s.languages.english === subcategoryName)
       if (subcategory) {
         console.log(`找到子分类: ${subcategory.languages.chinese}, 单词数量: ${subcategory.words.length}`)
         if (subcategory.words.length > 0) {
           // 遍历所有单词，找到第一个存在于文件夹中的图片
           for (const word of subcategory.words) {
             const wordId = word.languages.english
-            // 图片文件名处理：统一使用首字母大写格式
-            const fileName = `${wordId.charAt(0).toUpperCase() + wordId.slice(1).toLowerCase()}.png`
-            let iconPath: string
-            if (!subcategoryFolder || subcategoryFolder === themeFolder) {
-              iconPath = `CardOriginal/${themeFolder}/${fileName}`
-            } else {
-              iconPath = `CardOriginal/${themeFolder}/${subcategoryFolder}/${fileName}`
-            }
-            
-            // 这里返回第一个单词的图片路径（实际检查由Image组件的onError处理）
-            // 如果图片不存在，Image组件的onError会使用DefaultImg.png
+            const iconPath: string = this.buildWordImagePath(themeFolder, subcategoryFolder, wordId)
             console.log(`生成子分类图标路径: ${subcategoryName} -> ${iconPath} (单词: ${wordId})`)
             return iconPath
           }
@@ -1388,7 +1259,7 @@ Toy plane｜玩具飞机｜おもちゃの飛行機`
     }
     
     // 如果找不到，返回一个默认路径
-    const defaultPath = `CardOriginal/${themeFolder}/${subcategoryFolder}/apple.png`
+    const defaultPath = `CardOriginal/DefaultImg.png`
     console.log(`使用默认子分类图标路径: ${subcategoryName} -> ${defaultPath}`)
     return defaultPath
   }

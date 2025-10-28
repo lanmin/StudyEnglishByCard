@@ -425,7 +425,7 @@ Helicopter｜直升机｜ヘリコプター（herikoputaa）
 Hot air balloon｜热气球｜熱気球（ねつききゅう，netsukikyuu）  
 Drone｜无人机｜ドローン（doroon）  
 ### 七、家庭成员&称呼类（20个）｜Family Members & Titles（20）｜家族メンバー＆呼び方（かぞくめんばー＆よびかた，kazoku menbaa＆yobikata）
-@@@ 成员｜Member｜メンバー（めんばー，menbā）
+@@@ 成员｜Members｜メンバー（めんばー，menbā）
 Mom｜妈妈｜母（はは，haha）  
 Dad｜爸爸｜父（ちち，chichi）  
 Brother｜哥哥/弟弟｜兄弟（きょうだい，kyoudai）  
@@ -433,7 +433,7 @@ Sister｜姐姐/妹妹｜姉妹（しまい，shimai）
 Baby｜宝宝｜赤ちゃん（あかちゃん，akachan）  
 Grandpa｜爷爷/外公｜お爺さん（おじいさん，ojiisan）  
 Grandma｜奶奶/外婆｜お婆さん（おばあさん，obaasan）  
-@@@ 称呼｜Address｜呼び名（よびな，yobina）
+@@@ 称呼｜Titles｜呼び名（よびな，yobina）
 Uncle｜叔叔/舅舅｜おじさん（ojisan）  
 Aunt｜阿姨/姑姑｜おばさん（obasan）  
 Cousin｜堂/表兄弟姐妹｜いとこ（itoko）  
@@ -575,12 +575,12 @@ Gloves｜手套｜手袋（てぶくろ，tebukuro）
 Tie｜领带｜ネクタイ（nekutai）  
 Belt｜腰带｜ベルト（beruto）  
 ### 十二、玩具类（10个）｜Toys（10）｜おもちゃ（omochya）
-@@@ 电子玩具｜Electronic Toy｜電子玩具（でんしがんぐ，denshi gangu）
+@@@ 电子玩具｜Electronic Toys｜電子玩具（でんしがんぐ，denshi gangu）
 Car｜玩具车｜おもちゃの車（おもちゃのくるま，omochya no kuruma） 
 Toy plane｜玩具飞机｜おもちゃの飛行機（おもちゃのひこうき，omochya no hikouki） 
 Train｜玩具火车｜おもちゃの電車（おもちゃのでんしゃ，omochya no densha）  
 Robot｜机器人｜ロボット（robotto）  
-@@@ 传统玩具｜Traditional Toy｜伝統玩具（でんとうがんぐ，dentou gangu）
+@@@ 传统玩具｜Traditional Toys｜伝統玩具（でんとうがんぐ，dentou gangu）
 Ball｜球｜ボール（booru）  
 Doll｜玩偶｜人形（にんぎょう，ningyou）  
 Puzzle｜拼图｜パズル（pazzuru）  

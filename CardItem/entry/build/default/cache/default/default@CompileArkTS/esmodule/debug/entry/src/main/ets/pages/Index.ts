@@ -437,7 +437,7 @@ class Index extends ViewPU {
             // 复习按钮
             Button.createWithLabel('复习');
             // 复习按钮
-            Button.width(50);
+            Button.width(60);
             // 复习按钮
             Button.height(30);
             // 复习按钮
@@ -465,7 +465,7 @@ class Index extends ViewPU {
             // 跳过学习按钮
             Button.createWithLabel('重置');
             // 跳过学习按钮
-            Button.width(50);
+            Button.width(60);
             // 跳过学习按钮
             Button.height(30);
             // 跳过学习按钮

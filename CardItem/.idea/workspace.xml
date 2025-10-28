@@ -13,27 +13,25 @@
       <change beforePath="$PROJECT_DIR$/.hvigor/outputs/build-logs/build.log.6" beforeDir="false" afterPath="$PROJECT_DIR$/.hvigor/outputs/build-logs/build.log.6" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.hvigor/outputs/build-logs/build.log.7" beforeDir="false" afterPath="$PROJECT_DIR$/.hvigor/outputs/build-logs/build.log.7" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.hvigor/outputs/build-logs/build.log.8" beforeDir="false" afterPath="$PROJECT_DIR$/.hvigor/outputs/build-logs/build.log.8" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.hvigor/outputs/build-logs/build.log.9" beforeDir="false" afterPath="$PROJECT_DIR$/.hvigor/outputs/build-logs/build.log.9" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.hvigor/outputs/logs/details/details.json" beforeDir="false" afterPath="$PROJECT_DIR$/.hvigor/outputs/logs/details/details.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510281424238900.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510281427464730.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510281428237820.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510281446598900.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510281450573220.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510281523449120.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510281525135350.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510281529302270.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510281552446640.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510281556432510.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510281738273820.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510281740181320.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510281743160970.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510281743569590.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510281744122630.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510281747060850.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510281747192080.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510281748349390.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510281748427040.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510281753033080.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@ColdReloadArkTS/esmodule/compileInfo.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/.ts_checker_cache" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/.ts_checker_cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/.tsbuildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/.tsbuildinfo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/.tsbuildinfo.linter" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/.tsbuildinfo.linter" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/modules/EntryAbility.ets-ed094f99147a0bb953af739472c9aecd.msgpack" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/modules/EntryAbility.ets-ed094f99147a0bb953af739472c9aecd.msgpack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/modules/EntryBackupAbility.ets-da0f5f32349699037802393e9f948309.msgpack" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/modules/EntryBackupAbility.ets-da0f5f32349699037802393e9f948309.msgpack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/modules/AudioRecorderManager.ets-6e9dcfe689ac3122815feb39c6d6c714.msgpack" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/modules/AudioRecorderManager.ets-6e9dcfe689ac3122815feb39c6d6c714.msgpack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/modules/Index.ets-927f80b0136368d430d4aa1cb5061f0a.msgpack" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/modules/Index.ets-927f80b0136368d430d4aa1cb5061f0a.msgpack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/modules/LearningDataManager.ets-5b7f316c88dc4b643119589893457505.msgpack" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/modules/LearningDataManager.ets-5b7f316c88dc4b643119589893457505.msgpack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/modules/SpeechManager.ets-46261fa3082b7be30c2d209ba6e9c88e.msgpack" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/modules/SpeechManager.ets-46261fa3082b7be30c2d209ba6e9c88e.msgpack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/modules/WordLearningPage.ets-ea292f9f4bd1f4b54e87300182ac53df.msgpack" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/modules/WordLearningPage.ets-ea292f9f4bd1f4b54e87300182ac53df.msgpack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/plugins/plugins.msgpack" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/plugins/plugins.msgpack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/entry/src/main/ets/pages/Index.protoBin" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/entry/src/main/ets/pages/Index.protoBin" afterDir="false" />
@@ -43,112 +41,158 @@
       <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/filesInfo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/filesInfo.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/modules.cache" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/modules.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/sourceMaps.json" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/sourceMaps.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/generated/r/default/ResourceTable.h" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/generated/r/default/ResourceTable.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/loader_out/default/ets/modules.abc" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/intermediates/loader_out/default/ets/modules.abc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/loader_out/default/ets/sourceMaps.map" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/intermediates/loader_out/default/ets/sourceMaps.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/package/default/module.json" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/intermediates/package/default/module.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/patch/default/libs.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/patch/default/patch.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/ResourceTable.txt" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/ResourceTable.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/ids_map/id_defined.json" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/ids_map/id_defined.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/module.json" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/module.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources.index" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/Belt.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/Boots.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/Cap.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/Coat.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/Dress.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/Gloves.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/Hat.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/Hoodie.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/Jacket.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/Pants.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/Sandals.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/Scarf.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/Shirt.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/Shoes.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/Shorts.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/Skirt.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/Socks.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/Sweater.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/T-shirt.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/Tie.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Family Members and Titles/Aunt.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Family Members and Titles/Baby.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Family Members and Titles/Brother.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Family Members and Titles/Cousin.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Family Members and Titles/Dad.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Family Members and Titles/Daddy.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Family Members and Titles/Daughter.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Family Members and Titles/Grandma.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Family Members and Titles/Grandpa.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Family Members and Titles/Husband.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Family Members and Titles/Mom.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Family Members and Titles/Mommy.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Family Members and Titles/Nephew.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Family Members and Titles/Niece.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Family Members and Titles/Sister.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Family Members and Titles/Son.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Family Members and Titles/Uncle.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Family Members and Titles/Wife.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Natural Things/Cloud.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Natural Things/Earth.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Natural Things/Flower.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Natural Things/Grass.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Natural Things/Lake.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Natural Things/Leaf.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Natural Things/Lightning.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Natural Things/Moon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Natural Things/Mountain.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Natural Things/Rain.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Natural Things/River.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Natural Things/Rock.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Natural Things/Sea.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Natural Things/Sky.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Natural Things/Snow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Natural Things/Star.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Natural Things/Sun.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Natural Things/Thunder.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Natural Things/Tree.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Natural Things/Wind.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Places/Beach.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Places/Café.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Places/Cinema.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Places/Classroom.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Places/Doctor’s office.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Places/Farm.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Places/Garden.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Places/Home.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Places/Hospital.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Places/Library.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Places/Museum.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Places/Park.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Places/Playground.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Places/Pool.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Places/Restaurant.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Places/School.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Places/Shop.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Places/Store.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Places/Supermarket.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Places/Zoo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Toys/Common Toys/Ball.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Toys/Common Toys/Block.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Toys/Common Toys/Car.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Toys/Common Toys/Doll.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Toys/Common Toys/Dollhouse.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Toys/Common Toys/Puzzle.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Toys/Common Toys/Robot.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Toys/Common Toys/Teddy bear.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Toys/Common Toys/Toy plane.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Toys/Common Toys/Train.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/Clothing/Coat.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/Clothing/Dress.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/Clothing/Hoodie.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/Clothing/Jacket.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/Clothing/Pants.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/Clothing/Shirt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/Clothing/Shorts.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/Clothing/Skirt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/Clothing/Sweater.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/Clothing/T-shirt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/Others/Belt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/Others/Boots.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/Others/Cap.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/Others/Gloves.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/Others/Hat.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/Others/Sandals.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/Others/Scarf.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/Others/Shoes.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/Others/Socks.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Clothing/Others/Tie.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Family Members &amp; Titles/Titles/Daughter.png" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Family Members &amp; Titles/Titles/Daughter.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Family Members &amp; Titles/Titles/Husband.png" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Family Members &amp; Titles/Titles/Husband.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Family Members &amp; Titles/Titles/Son.png" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Family Members &amp; Titles/Titles/Son.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Family Members &amp; Titles/Titles/Wife.png" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Family Members &amp; Titles/Titles/Wife.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Beef.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Butter.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Cake.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Candy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Cheese.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Chicken.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Chips.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Chocolate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Cookie.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Egg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Fish.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Honey.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Ice cream.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Jam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Juice.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Milk.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Nut.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Popcorn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Pork.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Shrimp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Soda.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Yogurt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Vegetable/Beans.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Vegetable/Broccoli.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Vegetable/Cabbage.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Vegetable/Carrot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Vegetable/Cauliflower.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Vegetable/Celery.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Vegetable/Corn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Vegetable/Cucumber.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Vegetable/Eggplant.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Vegetable/Garlic.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Vegetable/Ginger.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Vegetable/Lettuce.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Vegetable/Onion.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Vegetable/Peas.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Vegetable/Pepper.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Vegetable/Potato.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Vegetable/Pumpkin.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Vegetable/Radish.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Vegetable/Spinach.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/CardOriginal/Food/Vegetable/Tomato.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/words/cardInfo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/intermediates/res/default/resources/rawfile/words/cardInfo.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/source_map/default/sourceMaps.map" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/intermediates/source_map/default/sourceMaps.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/build/default/outputs/default/entry-default-unsigned.hap" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/outputs/default/entry-default-unsigned.hap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/outputs/default/entry-default-unsigned.hqf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/build/default/outputs/default/mapping/sourceMaps.map" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/outputs/default/mapping/sourceMaps.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entry/build/default/outputs/default/quickfix.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/src/main/ets/pages/Index.ets" beforeDir="false" afterPath="$PROJECT_DIR$/entry/src/main/ets/pages/Index.ets" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entry/src/main/ets/utils/LearningDataManager.ets" beforeDir="false" afterPath="$PROJECT_DIR$/entry/src/main/ets/utils/LearningDataManager.ets" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Animals/Pet/Bird.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Animals/Pet/Cat.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Animals/Pet/Dog.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Animals/Pet/Goldfish.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Animals/Pet/Guinea pig.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Animals/Pet/Hamster.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Animals/Pet/Kitten.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Animals/Pet/Parrot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Animals/Pet/Puppy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Animals/Pet/Rabbit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Animals/Pet/Turtle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Clothing/Clothing/Coat.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Clothing/Clothing/Dress.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Clothing/Clothing/Hoodie.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Clothing/Clothing/Jacket.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Clothing/Clothing/Pants.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Clothing/Clothing/Shirt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Clothing/Clothing/Shorts.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Clothing/Clothing/Skirt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Clothing/Clothing/Sweater.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Clothing/Clothing/T-shirt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Clothing/Others/Belt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Clothing/Others/Boots.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Clothing/Others/Cap.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Clothing/Others/Gloves.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Clothing/Others/Hat.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Clothing/Others/Sandals.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Clothing/Others/Scarf.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Clothing/Others/Shoes.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Clothing/Others/Socks.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Clothing/Others/Tie.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Family Members &amp; Titles/Titles/Daughter.png" beforeDir="false" afterPath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Family Members &amp; Titles/Titles/Daughter.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Family Members &amp; Titles/Titles/Husband.png" beforeDir="false" afterPath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Family Members &amp; Titles/Titles/Husband.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Family Members &amp; Titles/Titles/Son.png" beforeDir="false" afterPath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Family Members &amp; Titles/Titles/Son.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Family Members &amp; Titles/Titles/Wife.png" beforeDir="false" afterPath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Family Members &amp; Titles/Titles/Wife.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Beef.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Butter.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Cake.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Candy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Cheese.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Chicken.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Chips.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Chocolate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Cookie.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Egg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Fish.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Honey.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Ice cream.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Jam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Juice.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Milk.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Nut.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Popcorn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Pork.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Shrimp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Soda.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Snacks_Other Foods/Yogurt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Vegetable/Beans.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Vegetable/Broccoli.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Vegetable/Cabbage.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Vegetable/Carrot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Vegetable/Cauliflower.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Vegetable/Celery.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Vegetable/Corn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Vegetable/Cucumber.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Vegetable/Eggplant.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Vegetable/Garlic.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Vegetable/Ginger.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Vegetable/Lettuce.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Vegetable/Onion.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Vegetable/Peas.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Vegetable/Pepper.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Vegetable/Potato.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Vegetable/Pumpkin.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Vegetable/Radish.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Vegetable/Spinach.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Vegetable/Tomato.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/resources/rawfile/words/cardInfo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/entry/src/main/resources/rawfile/words/cardInfo.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,7 +207,6 @@
       <hilogPanelState>
         <option name="logPanelType" value="ONLINE" />
         <option name="processName" value="com.example.studyenglishbycard" />
-        <option name="searchFilterContent" value="[主题] " />
       </hilogPanelState>
     </panelStates>
   </component>
@@ -177,9 +220,9 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "127.0.0.1:5555": "5369684511761645186924",
+    "127.0.0.1:5555": "5369684511761651559100",
     "Application.entry.executor": "Run",
-    "MODULE_HAP_TIME": "{\"127.0.0.1:5555entry\":\"2025-10-28T09:53:05.930611539Z\"}",
+    "MODULE_HAP_TIME": "{\"127.0.0.1:5555entry\":\"2025-10-28T13:10:44.177431433Z\"}",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "ace.nodejs.version": "18.20.1"
@@ -274,8 +317,8 @@
       <list>
         <item itemvalue="Hvigor.CardItem [clean]" />
         <item itemvalue="Hvigor.CardItem [clean]" />
-        <item itemvalue="Hvigor.CardItem [assembleDevHqf]" />
-        <item itemvalue="Hvigor.CardItem [assembleDevHqf]" />
+        <item itemvalue="Hvigor.CardItem [clean]" />
+        <item itemvalue="Hvigor.CardItem [clean]" />
         <item itemvalue="Hvigor.CardItem [clean]" />
       </list>
     </recent_temporary>
@@ -291,28 +334,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="JavaScript">
           <url>file://$PROJECT_DIR$/entry/src/main/ets/utils/LearningDataManager.ets</url>
-          <line>98</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="JavaScript">
-          <url>file://$PROJECT_DIR$/entry/src/main/ets/utils/LearningDataManager.ets</url>
-          <line>102</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="JavaScript">
-          <url>file://$PROJECT_DIR$/entry/src/main/ets/utils/LearningDataManager.ets</url>
-          <line>108</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="JavaScript">
-          <url>file://$PROJECT_DIR$/entry/src/main/ets/utils/LearningDataManager.ets</url>
-          <line>113</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="JavaScript">
-          <url>file://$PROJECT_DIR$/entry/src/main/ets/utils/LearningDataManager.ets</url>
-          <line>127</line>
-          <option name="timeStamp" value="7" />
+          <line>447</line>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
