@@ -313,6 +313,27 @@ class Index extends ViewPU {
         const themeData = this.themes.find(t => t.id === theme);
         return themeData ? themeData.name : theme;
     }
+    // 获取随机边框颜色
+    getRandomBorderColor(index: number): string {
+        const colors = [
+            '#FF6B6B',
+            '#4ECDC4',
+            '#45B7D1',
+            '#96CEB4',
+            '#FFEAA7',
+            '#DDA0DD',
+            '#FFB347',
+            '#87CEEB',
+            '#F0E68C',
+            '#FFA07A',
+            '#98FB98',
+            '#F5DEB3',
+            '#D8BFD8',
+            '#FFE4E1',
+            '#E0FFFF' // 浅青色
+        ];
+        return colors[index % colors.length];
+    }
     initialRender() {
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             Column.create();
@@ -347,7 +368,7 @@ class Index extends ViewPU {
                                     onBack: () => {
                                         this.currentPage = 'subcategory_select';
                                     }
-                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 122, col: 9 });
+                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 144, col: 9 });
                                 ViewPU.create(componentCall);
                                 let paramsLambda = () => {
                                     return {
@@ -501,7 +522,7 @@ class Index extends ViewPU {
             Column.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
             Column.border({
                 width: 2,
-                color: '#E0E0E0',
+                color: this.getRandomBorderColor(index),
                 style: BorderStyle.Solid
             });
             Column.padding({ top: 10, bottom: 10, left: 10, right: 10 });
@@ -562,6 +583,7 @@ class Index extends ViewPU {
             Column.width('100%');
             Column.height('100%');
             Column.backgroundColor(GlobalStyles.COLORS.BACKGROUND);
+            Column.expandSafeArea();
         }, Column);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             // 顶部区域 - 标题和返回按钮
@@ -639,7 +661,7 @@ class Index extends ViewPU {
             Column.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
             Column.border({
                 width: 2,
-                color: '#E0E0E0',
+                color: this.getRandomBorderColor(index),
                 style: BorderStyle.Solid
             });
             Column.padding({ top: 10, bottom: 10, left: 10, right: 10 });

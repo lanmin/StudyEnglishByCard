@@ -110,6 +110,28 @@ struct Index {
     return themeData ? themeData.name : theme
   }
 
+  // 获取随机边框颜色
+  getRandomBorderColor(index: number): string {
+    const colors = [
+      '#FF6B6B', // 红色
+      '#4ECDC4', // 青色
+      '#45B7D1', // 蓝色
+      '#96CEB4', // 绿色
+      '#FFEAA7', // 黄色
+      '#DDA0DD', // 紫色
+      '#FFB347', // 橙色
+      '#87CEEB', // 天蓝色
+      '#F0E68C', // 卡其色
+      '#FFA07A', // 浅鲑鱼色
+      '#98FB98', // 浅绿色
+      '#F5DEB3', // 小麦色
+      '#D8BFD8', // 蓟色
+      '#FFE4E1', // 雾玫瑰色
+      '#E0FFFF'  // 浅青色
+    ]
+    return colors[index % colors.length]
+  }
+
   build() {
     Column() {
       if (this.currentPage === 'theme_select') {
@@ -229,7 +251,7 @@ struct Index {
     .borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM)
     .border({
       width: 2,
-      color: '#E0E0E0',
+      color: this.getRandomBorderColor(index),
       style: BorderStyle.Solid
     })
     .padding({ top: 10, bottom: 10, left: 10, right: 10 })
@@ -288,6 +310,7 @@ struct Index {
     .width('100%')
     .height('100%')
     .backgroundColor(GlobalStyles.COLORS.BACKGROUND)
+    .expandSafeArea()
   }
 
   // 子分类卡片
@@ -319,7 +342,7 @@ struct Index {
     .borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM)
     .border({
       width: 2,
-      color: '#E0E0E0',
+      color: this.getRandomBorderColor(index),
       style: BorderStyle.Solid
     })
     .padding({ top: 10, bottom: 10, left: 10, right: 10 })

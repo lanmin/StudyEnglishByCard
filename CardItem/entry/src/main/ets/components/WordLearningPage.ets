@@ -68,6 +68,56 @@ export struct WordLearningPage {
     return this.words[this.currentWordIndex]
   }
 
+  // 获取随机边框颜色
+  private getRandomBorderColor(index: number): string {
+    const colors = [
+      '#FF6B6B', // 红色
+      '#4ECDC4', // 青色
+      '#45B7D1', // 蓝色
+      '#96CEB4', // 绿色
+      '#FFEAA7', // 黄色
+      '#DDA0DD', // 紫色
+      '#FFB347', // 橙色
+      '#87CEEB', // 天蓝色
+      '#F0E68C', // 卡其色
+      '#FFA07A', // 浅鲑鱼色
+      '#98FB98', // 浅绿色
+      '#F5DEB3', // 小麦色
+      '#D8BFD8', // 蓟色
+      '#FFE4E1', // 雾玫瑰色
+      '#E0FFFF'  // 浅青色
+    ]
+    return colors[index % colors.length]
+  }
+
+  // 根据单词获取随机边框颜色
+  private getRandomBorderColorByWord(word: string): string {
+    const colors = [
+      '#FF6B6B', // 红色
+      '#4ECDC4', // 青色
+      '#45B7D1', // 蓝色
+      '#96CEB4', // 绿色
+      '#FFEAA7', // 黄色
+      '#DDA0DD', // 紫色
+      '#FFB347', // 橙色
+      '#87CEEB', // 天蓝色
+      '#F0E68C', // 卡其色
+      '#FFA07A', // 浅鲑鱼色
+      '#98FB98', // 浅绿色
+      '#F5DEB3', // 小麦色
+      '#D8BFD8', // 蓟色
+      '#FFE4E1', // 雾玫瑰色
+      '#E0FFFF'  // 浅青色
+    ]
+    // 将单词字符的ASCII码相加，然后取模，确保相同的单词总是得到相同的颜色
+    let hash = 0
+    for (let i = 0; i < word.length; i++) {
+      hash = ((hash << 5) - hash) + word.charCodeAt(i)
+      hash = hash & hash // 转换为32位整数
+    }
+    return colors[Math.abs(hash) % colors.length]
+  }
+
   // 获取子分类的英文名称
   private getSubcategoryEnglishName(): string {
     return this.learningDataManager.getSubcategoryEnglishName(this.subcategoryId)
@@ -426,6 +476,7 @@ export struct WordLearningPage {
           .fontSize(22)
           .fontColor(Color.Black)
           .backgroundColor(Color.Transparent)
+          .margin({ top: 20 })
           .onClick(() => {
             console.log('返回按钮被点击 - 返回子分类选择页面')
             if (this.onBack) {
@@ -440,7 +491,7 @@ export struct WordLearningPage {
           Text(this.getModeText())
             .fontSize(18)
             .fontColor('#333333')
-            .margin({ left: 10 })
+            .margin({ left: 10, top: 20 })
           
           Button('×')
             .fontSize(20)
@@ -448,13 +499,14 @@ export struct WordLearningPage {
             .backgroundColor(Color.Transparent)
             .width(50)
             .height(40)
+            .margin({ top: 20 })
             .onClick(() => {
               this.exitMode()
             })
         }
       }
       .width('100%')
-      .height('10%')
+      .height('15%')
       .padding({ left: 20, right: 20 })
       .justifyContent(FlexAlign.Center)
 
@@ -472,6 +524,8 @@ export struct WordLearningPage {
     }
     .width('100%')
     .height('100%')
+    .backgroundColor('#FAFAFA')
+    .expandSafeArea()
   }
 
   @Builder
@@ -493,10 +547,10 @@ export struct WordLearningPage {
               .borderRadius(15)
               .objectFit(ImageFit.Cover)
               .border({
-                width: this.selectedTestOption === index ? 5 : 0,
+                width: this.selectedTestOption === index ? 5 : 4,
                 color: this.selectedTestOption === index 
                   ? (index === this.testOptions.findIndex(w => w.english === this.getCurrentWord()?.english) ? '#00FF00' : '#FF0000')
-                  : '#000000',
+                  : this.getRandomBorderColorByWord(option.english),
                 style: BorderStyle.Solid
               })
               .onClick(() => {
@@ -564,7 +618,7 @@ export struct WordLearningPage {
                   .width(65)
                   .height(65)
                   .textAlign(TextAlign.Center)
-                  .backgroundColor('#4ECDC4')
+                  .backgroundColor('#FFA07A')
                   .borderRadius(18)
                   .margin(6)
                   .onClick(() => {
@@ -579,7 +633,7 @@ export struct WordLearningPage {
             .padding(10)
           }
           .width('100%')
-          .backgroundColor('#E8F8F5')
+          .backgroundColor('#FFE4E1')
           .borderRadius(25)
           .padding(15)
           .margin({ bottom: 20 })
@@ -654,6 +708,11 @@ export struct WordLearningPage {
               .height(250)
               .borderRadius(20)
               .objectFit(ImageFit.Cover)
+              .border({
+                width: 4,
+                color: this.getRandomBorderColorByWord(this.getCurrentWord()?.english || ''),
+                style: BorderStyle.Solid
+              })
               .onError(() => {
                 console.log(`图片加载失败: ${this.getCurrentWord()!.image}`)
                 console.log('使用DefaultImg.png作为占位图')
@@ -834,7 +893,7 @@ export struct WordLearningPage {
           }
           .justifyContent(FlexAlign.Center)
           .flexGrow(1)
-          .padding({ left: 30 })
+          .padding({ left: 30, right: 20 })
         } else {
           // 没有单词时的提示
           Column() {
@@ -854,5 +913,17 @@ export struct WordLearningPage {
       }
       .flexGrow(1)
       .padding({ left: 50, right: 50 })
+      .gesture(
+        PanGesture({ fingers: 1 })
+          .onActionEnd((event: GestureEvent) => {
+            // 向左滑动：下一张；向右滑动：上一张
+            const dx = event.offsetX
+            if (dx <= -50 && this.currentWordIndex < this.words.length - 1) {
+              this.nextWord()
+            } else if (dx >= 50 && this.currentWordIndex > 0) {
+              this.prevWord()
+            }
+          })
+      )
   }
 }

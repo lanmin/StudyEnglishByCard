@@ -309,6 +309,54 @@ export class WordLearningPage extends ViewPU {
     private getCurrentWord(): WordData | undefined {
         return this.words[this.currentWordIndex];
     }
+    // 获取随机边框颜色
+    private getRandomBorderColor(index: number): string {
+        const colors = [
+            '#FF6B6B',
+            '#4ECDC4',
+            '#45B7D1',
+            '#96CEB4',
+            '#FFEAA7',
+            '#DDA0DD',
+            '#FFB347',
+            '#87CEEB',
+            '#F0E68C',
+            '#FFA07A',
+            '#98FB98',
+            '#F5DEB3',
+            '#D8BFD8',
+            '#FFE4E1',
+            '#E0FFFF' // 浅青色
+        ];
+        return colors[index % colors.length];
+    }
+    // 根据单词获取随机边框颜色
+    private getRandomBorderColorByWord(word: string): string {
+        const colors = [
+            '#FF6B6B',
+            '#4ECDC4',
+            '#45B7D1',
+            '#96CEB4',
+            '#FFEAA7',
+            '#DDA0DD',
+            '#FFB347',
+            '#87CEEB',
+            '#F0E68C',
+            '#FFA07A',
+            '#98FB98',
+            '#F5DEB3',
+            '#D8BFD8',
+            '#FFE4E1',
+            '#E0FFFF' // 浅青色
+        ];
+        // 将单词字符的ASCII码相加，然后取模，确保相同的单词总是得到相同的颜色
+        let hash = 0;
+        for (let i = 0; i < word.length; i++) {
+            hash = ((hash << 5) - hash) + word.charCodeAt(i);
+            hash = hash & hash; // 转换为32位整数
+        }
+        return colors[Math.abs(hash) % colors.length];
+    }
     // 获取子分类的英文名称
     private getSubcategoryEnglishName(): string {
         return this.learningDataManager.getSubcategoryEnglishName(this.subcategoryId);
@@ -615,6 +663,8 @@ export class WordLearningPage extends ViewPU {
             Column.create();
             Column.width('100%');
             Column.height('100%');
+            Column.backgroundColor('#FAFAFA');
+            Column.expandSafeArea();
         }, Column);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             // 顶部导航栏
@@ -622,7 +672,7 @@ export class WordLearningPage extends ViewPU {
             // 顶部导航栏
             Row.width('100%');
             // 顶部导航栏
-            Row.height('10%');
+            Row.height('15%');
             // 顶部导航栏
             Row.padding({ left: 20, right: 20 });
             // 顶部导航栏
@@ -637,6 +687,8 @@ export class WordLearningPage extends ViewPU {
             Button.fontColor(Color.Black);
             // 返回按钮
             Button.backgroundColor(Color.Transparent);
+            // 返回按钮
+            Button.margin({ top: 20 });
             // 返回按钮
             Button.onClick(() => {
                 console.log('返回按钮被点击 - 返回子分类选择页面');
@@ -660,7 +712,7 @@ export class WordLearningPage extends ViewPU {
                         Text.create(this.getModeText());
                         Text.fontSize(18);
                         Text.fontColor('#333333');
-                        Text.margin({ left: 10 });
+                        Text.margin({ left: 10, top: 20 });
                     }, Text);
                     Text.pop();
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
@@ -670,6 +722,7 @@ export class WordLearningPage extends ViewPU {
                         Button.backgroundColor(Color.Transparent);
                         Button.width(50);
                         Button.height(40);
+                        Button.margin({ top: 20 });
                         Button.onClick(() => {
                             this.exitMode();
                         });
@@ -750,10 +803,10 @@ export class WordLearningPage extends ViewPU {
                     Image.borderRadius(15);
                     Image.objectFit(ImageFit.Cover);
                     Image.border({
-                        width: this.selectedTestOption === index ? 5 : 0,
+                        width: this.selectedTestOption === index ? 5 : 4,
                         color: this.selectedTestOption === index
                             ? (index === this.testOptions.findIndex(w => w.english === this.getCurrentWord()?.english) ? '#00FF00' : '#FF0000')
-                            : '#000000',
+                            : this.getRandomBorderColorByWord(option.english),
                         style: BorderStyle.Solid
                     });
                     Image.onClick(() => {
@@ -865,7 +918,7 @@ export class WordLearningPage extends ViewPU {
                         // 可选字母区域
                         Column.width('100%');
                         // 可选字母区域
-                        Column.backgroundColor('#E8F8F5');
+                        Column.backgroundColor('#FFE4E1');
                         // 可选字母区域
                         Column.borderRadius(25);
                         // 可选字母区域
@@ -890,7 +943,7 @@ export class WordLearningPage extends ViewPU {
                                 Text.width(65);
                                 Text.height(65);
                                 Text.textAlign(TextAlign.Center);
-                                Text.backgroundColor('#4ECDC4');
+                                Text.backgroundColor('#FFA07A');
                                 Text.borderRadius(18);
                                 Text.margin(6);
                                 Text.onClick(() => {
@@ -1004,6 +1057,20 @@ export class WordLearningPage extends ViewPU {
             Row.create();
             Row.flexGrow(1);
             Row.padding({ left: 50, right: 50 });
+            Gesture.create(GesturePriority.Low);
+            PanGesture.create({ fingers: 1 });
+            PanGesture.onActionEnd((event: GestureEvent) => {
+                // 向左滑动：下一张；向右滑动：上一张
+                const dx = event.offsetX;
+                if (dx <= -50 && this.currentWordIndex < this.words.length - 1) {
+                    this.nextWord();
+                }
+                else if (dx >= 50 && this.currentWordIndex > 0) {
+                    this.prevWord();
+                }
+            });
+            PanGesture.pop();
+            Gesture.pop();
         }, Row);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             If.create();
@@ -1055,6 +1122,12 @@ export class WordLearningPage extends ViewPU {
                         // 使用rawfile资源引用，如果图片加载失败则使用DefaultImg.png
                         Image.objectFit(ImageFit.Cover);
                         // 使用rawfile资源引用，如果图片加载失败则使用DefaultImg.png
+                        Image.border({
+                            width: 4,
+                            color: this.getRandomBorderColorByWord(this.getCurrentWord()?.english || ''),
+                            style: BorderStyle.Solid
+                        });
+                        // 使用rawfile资源引用，如果图片加载失败则使用DefaultImg.png
                         Image.onError(() => {
                             console.log(`图片加载失败: ${this.getCurrentWord()!.image}`);
                             console.log('使用DefaultImg.png作为占位图');
@@ -1087,7 +1160,7 @@ export class WordLearningPage extends ViewPU {
                         // 右侧：英文和中文显示区域 + 听说读写按钮
                         Column.flexGrow(1);
                         // 右侧：英文和中文显示区域 + 听说读写按钮
-                        Column.padding({ left: 30 });
+                        Column.padding({ left: 30, right: 20 });
                     }, Column);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         // 单词信息区域
