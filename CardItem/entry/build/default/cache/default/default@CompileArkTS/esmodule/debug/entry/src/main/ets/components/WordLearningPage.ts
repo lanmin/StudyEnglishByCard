@@ -625,30 +625,31 @@ export class WordLearningPage extends ViewPU {
             Row.height('10%');
             // 顶部导航栏
             Row.padding({ left: 20, right: 20 });
+            // 顶部导航栏
+            Row.justifyContent(FlexAlign.Center);
         }, Row);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
-            // Button('←')
-            //   .fontSize(24)
-            //   .fontColor('#333333')
-            //   .backgroundColor(Color.Transparent)
-            //   .onClick(() => {
-            //     console.log('返回按钮被点击 - 返回子分类选择页面')
-            //     if (this.onBack) {
-            //       this.onBack()
-            //     }
-            //   })
+            // 返回按钮
+            Button.createWithLabel('←');
+            // 返回按钮
+            Button.fontSize(22);
+            // 返回按钮
+            Button.fontColor(Color.Black);
+            // 返回按钮
+            Button.backgroundColor(Color.Transparent);
+            // 返回按钮
+            Button.onClick(() => {
+                console.log('返回按钮被点击 - 返回子分类选择页面');
+                if (this.onBack) {
+                    this.onBack();
+                }
+            });
+        }, Button);
+        // 返回按钮
+        Button.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
             Blank.create();
         }, Blank);
-        // Button('←')
-        //   .fontSize(24)
-        //   .fontColor('#333333')
-        //   .backgroundColor(Color.Transparent)
-        //   .onClick(() => {
-        //     console.log('返回按钮被点击 - 返回子分类选择页面')
-        //     if (this.onBack) {
-        //       this.onBack()
-        //     }
-        //   })
         Blank.pop();
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             If.create();
@@ -886,8 +887,8 @@ export class WordLearningPage extends ViewPU {
                                 Text.fontSize(50);
                                 Text.fontColor('#FFFFFF');
                                 Text.fontWeight(FontWeight.Bold);
-                                Text.width(85);
-                                Text.height(85);
+                                Text.width(65);
+                                Text.height(65);
                                 Text.textAlign(TextAlign.Center);
                                 Text.backgroundColor('#4ECDC4');
                                 Text.borderRadius(18);
@@ -947,8 +948,8 @@ export class WordLearningPage extends ViewPU {
                                 Text.fontSize(50);
                                 Text.fontColor('#FFFFFF');
                                 Text.fontWeight(FontWeight.Bold);
-                                Text.width(100);
-                                Text.height(100);
+                                Text.width(65);
+                                Text.height(65);
                                 Text.textAlign(TextAlign.Center);
                                 Text.backgroundColor(this.isWriteCorrect ? '#95E1D3' : '#FF9A9A');
                                 Text.borderRadius(20);
@@ -1008,32 +1009,6 @@ export class WordLearningPage extends ViewPU {
             If.create();
             if (this.getCurrentWord()) {
                 this.ifElseBranchUpdateFunction(0, () => {
-                    this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        // 左侧：上一个按钮
-                        Button.createWithLabel('←');
-                        // 左侧：上一个按钮
-                        Button.fontSize(40);
-                        // 左侧：上一个按钮
-                        Button.fontColor('#FFFFFF');
-                        // 左侧：上一个按钮
-                        Button.backgroundColor('#FF0000');
-                        // 左侧：上一个按钮
-                        Button.borderRadius(15);
-                        // 左侧：上一个按钮
-                        Button.width(60);
-                        // 左侧：上一个按钮
-                        Button.height(60);
-                        // 左侧：上一个按钮
-                        Button.enabled(this.currentWordIndex > 0);
-                        // 左侧：上一个按钮
-                        Button.onClick(() => {
-                            this.prevWord();
-                        });
-                        // 左侧：上一个按钮
-                        Button.alignSelf(ItemAlign.Center);
-                    }, Button);
-                    // 左侧：上一个按钮
-                    Button.pop();
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         // 中间：单词卡片
                         Column.create();
@@ -1357,32 +1332,6 @@ export class WordLearningPage extends ViewPU {
                     Column.pop();
                     // 右侧：英文和中文显示区域 + 听说读写按钮
                     Column.pop();
-                    this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        // 最右侧：下一个按钮
-                        Button.createWithLabel('→');
-                        // 最右侧：下一个按钮
-                        Button.fontSize(40);
-                        // 最右侧：下一个按钮
-                        Button.fontColor('#FFFFFF');
-                        // 最右侧：下一个按钮
-                        Button.backgroundColor('#FF0000');
-                        // 最右侧：下一个按钮
-                        Button.borderRadius(15);
-                        // 最右侧：下一个按钮
-                        Button.width(60);
-                        // 最右侧：下一个按钮
-                        Button.height(60);
-                        // 最右侧：下一个按钮
-                        Button.enabled(this.currentWordIndex < this.words.length - 1);
-                        // 最右侧：下一个按钮
-                        Button.onClick(() => {
-                            this.nextWord();
-                        });
-                        // 最右侧：下一个按钮
-                        Button.alignSelf(ItemAlign.Center);
-                    }, Button);
-                    // 最右侧：下一个按钮
-                    Button.pop();
                 });
             }
             else {

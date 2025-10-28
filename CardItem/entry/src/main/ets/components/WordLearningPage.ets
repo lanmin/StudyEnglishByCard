@@ -421,7 +421,20 @@ export struct WordLearningPage {
     Column() {
       // 顶部导航栏
       Row() {
+        // 返回按钮
+        Button('←')
+          .fontSize(22)
+          .fontColor(Color.Black)
+          .backgroundColor(Color.Transparent)
+          .onClick(() => {
+            console.log('返回按钮被点击 - 返回子分类选择页面')
+            if (this.onBack) {
+              this.onBack()
+            }
+          })
+
         Blank()
+
         // 显示当前模式
         if (this.currentMode !== 'normal') {
           Text(this.getModeText())
@@ -443,6 +456,7 @@ export struct WordLearningPage {
       .width('100%')
       .height('10%')
       .padding({ left: 20, right: 20 })
+      .justifyContent(FlexAlign.Center)
 
       // 主要内容区域
       if (this.currentMode === 'read') {
@@ -547,8 +561,8 @@ export struct WordLearningPage {
                   .fontSize(50)
                   .fontColor('#FFFFFF')
                   .fontWeight(FontWeight.Bold)
-                  .width(85)
-                  .height(85)
+                  .width(65)
+                  .height(65)
                   .textAlign(TextAlign.Center)
                   .backgroundColor('#4ECDC4')
                   .borderRadius(18)
@@ -578,8 +592,8 @@ export struct WordLearningPage {
                   .fontSize(50)
                   .fontColor('#FFFFFF')
                   .fontWeight(FontWeight.Bold)
-                  .width(100)
-                  .height(100)
+                  .width(65)
+                  .height(65)
                   .textAlign(TextAlign.Center)
                   .backgroundColor(this.isWriteCorrect ? '#95E1D3' : '#FF9A9A')
                   .borderRadius(20)
@@ -632,20 +646,6 @@ export struct WordLearningPage {
   buildNormalMode() {
     Row() {
       if (this.getCurrentWord()) {
-          // 左侧：上一个按钮
-          Button('←')
-            .fontSize(40)
-            .fontColor('#FFFFFF')
-            .backgroundColor('#FF0000')
-            .borderRadius(15)
-            .width(60)
-            .height(60)
-            .enabled(this.currentWordIndex > 0)
-            .onClick(() => {
-              this.prevWord()
-            })
-            .alignSelf(ItemAlign.Center)
-          
           // 中间：单词卡片
           Column() {
             // 使用rawfile资源引用，如果图片加载失败则使用DefaultImg.png
@@ -835,20 +835,6 @@ export struct WordLearningPage {
           .justifyContent(FlexAlign.Center)
           .flexGrow(1)
           .padding({ left: 30 })
-          
-          // 最右侧：下一个按钮
-          Button('→')
-            .fontSize(40)
-            .fontColor('#FFFFFF')
-            .backgroundColor('#FF0000')
-            .borderRadius(15)
-            .width(60)
-            .height(60)
-            .enabled(this.currentWordIndex < this.words.length - 1)
-            .onClick(() => {
-              this.nextWord()
-            })
-            .alignSelf(ItemAlign.Center)
         } else {
           // 没有单词时的提示
           Column() {

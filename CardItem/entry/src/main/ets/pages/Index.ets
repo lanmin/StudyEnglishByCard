@@ -244,11 +244,9 @@ struct Index {
       // 顶部区域 - 标题和返回按钮
       Row() {
         Button('←')
-          .width(60)
-          .height(60)
-          .backgroundColor(GlobalStyles.COLORS.LIGHT_GRAY)
-          .fontSize(24)
-          .borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM)
+          .fontSize(22)
+          .fontColor(Color.Black)
+          .backgroundColor(Color.Transparent)
           .onClick(() => {
             this.soundEffectManager.playButtonClick()
             this.goBack()

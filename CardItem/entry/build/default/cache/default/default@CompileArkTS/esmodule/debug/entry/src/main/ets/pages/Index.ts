@@ -569,11 +569,9 @@ class Index extends ViewPU {
         }, Row);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             Button.createWithLabel('←');
-            Button.width(60);
-            Button.height(60);
-            Button.backgroundColor(GlobalStyles.COLORS.LIGHT_GRAY);
-            Button.fontSize(24);
-            Button.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
+            Button.fontSize(22);
+            Button.fontColor(Color.Black);
+            Button.backgroundColor(Color.Transparent);
             Button.onClick(() => {
                 this.soundEffectManager.playButtonClick();
                 this.goBack();
