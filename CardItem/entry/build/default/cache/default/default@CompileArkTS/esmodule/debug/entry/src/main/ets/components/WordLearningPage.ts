@@ -976,7 +976,7 @@ export class WordLearningPage extends ViewPU {
                         Scroll.padding(10);
                     }, Scroll);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        Flex.create({ wrap: FlexWrap.NoWrap, justifyContent: FlexAlign.Start });
+                        Flex.create({ wrap: FlexWrap.NoWrap, justifyContent: FlexAlign.Center });
                         Flex.width('100%');
                     }, Flex);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
@@ -1044,7 +1044,7 @@ export class WordLearningPage extends ViewPU {
                         Scroll.width('100%');
                     }, Scroll);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        Flex.create({ wrap: FlexWrap.NoWrap, justifyContent: FlexAlign.Start });
+                        Flex.create({ wrap: FlexWrap.NoWrap, justifyContent: FlexAlign.Center });
                         Flex.width('100%');
                     }, Flex);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {

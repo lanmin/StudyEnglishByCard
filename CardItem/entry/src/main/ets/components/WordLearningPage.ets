@@ -652,7 +652,7 @@ export struct WordLearningPage {
           // 可选字母区域（单行，横向滚动）
           Column() {
             Scroll() {
-              Flex({ wrap: FlexWrap.NoWrap, justifyContent: FlexAlign.Start }) {
+              Flex({ wrap: FlexWrap.NoWrap, justifyContent: FlexAlign.Center }) {
                 ForEach(Array.from(this.getCurrentWord()!.english), (letter: string, index: number) => {
                   Text(letter)
                     .fontSize(50)
@@ -688,7 +688,7 @@ export struct WordLearningPage {
           // 书写区域（单行，横向滚动）
           Column() {
             Scroll() {
-              Flex({ wrap: FlexWrap.NoWrap, justifyContent: FlexAlign.Start }) {
+              Flex({ wrap: FlexWrap.NoWrap, justifyContent: FlexAlign.Center }) {
                 ForEach(this.draggedLetters, (letter: string, index: number) => {
                   Text(letter)
                     .fontSize(50)
