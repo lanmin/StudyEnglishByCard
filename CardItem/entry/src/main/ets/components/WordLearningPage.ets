@@ -16,6 +16,9 @@ export struct WordLearningPage {
   subcategoryId: string = ''
   onBack?: () => void
   
+  // 允许外部指定初始模式（从主题页进入挑战）
+  initialMode: 'normal' | 'challenge' = 'normal'
+  
   @State currentWordIndex: number = 0
   @State words: WordData[] = []
   @State subcategory: SubcategoryData | undefined = undefined
@@ -23,7 +26,7 @@ export struct WordLearningPage {
   @State isPlaying: boolean = false
   
   // 听说读写模式状态
-  @State currentMode: 'listen' | 'speak' | 'read' | 'write' | 'normal' = 'normal'
+  @State currentMode: 'listen' | 'speak' | 'read' | 'write' | 'challenge' | 'normal' = 'normal'
   @State cardScale: number = 1  // 卡片缩放状态
   @State imageError: boolean = false  // 图片加载失败状态
   @State micIconScale: number = 1  // 麦克风图标缩放状态
@@ -32,6 +35,13 @@ export struct WordLearningPage {
   @State selectedTestOption: number = -1  // 选中的选项索引
   @State testCorrectAnswerShown: boolean = false  // 是否正确答案已显示
   @State drawingPaths: string = ''  // 绘制的路径数据
+  @State testImageScales: number[] = [1, 1, 1]  // 测试模式三个选项的缩放状态
+  
+  // 挑战模式状态
+  @State challengeOptions: WordData[] = []  // 当前题目的3个选项
+  @State challengeSelectedIndex: number = -1  // 选中项
+  @State challengeCorrectCount: number = 0  // 累计答对题数
+  @State challengeAnswerShown: boolean = false  // 是否已揭示答案
   
   private learningDataManager = LearningDataManager.getInstance()
   private learningProgressManager = LearningProgressManager.getInstance()
@@ -40,6 +50,14 @@ export struct WordLearningPage {
     // 初始化TTS
     SpeechManager.init()
     this.loadWords()
+    
+    // 如果从外部要求以挑战模式进入，加载后直接进入挑战
+    if (this.initialMode === 'challenge') {
+      // 异步进入，确保words已准备
+      setTimeout(() => {
+        this.enterChallengeMode().catch((err: Error) => console.error('进入挑战模式失败:', err))
+      }, 0)
+    }
   }
 
   aboutToDisappear() {
@@ -386,6 +404,8 @@ export struct WordLearningPage {
     this.testOptions = shuffledOptions
     this.selectedTestOption = -1
     this.testCorrectAnswerShown = false
+    // 重置图片缩放状态
+    this.testImageScales = [1, 1, 1]
     console.log('测试选项生成:', shuffledOptions.map(w => w.english))
   }
 
@@ -400,6 +420,9 @@ export struct WordLearningPage {
     
     const correctWord = this.getCurrentWord()
     const isCorrect = index === this.testOptions.findIndex(w => w.english === correctWord?.english)
+    
+    // 立即放大选中的图片
+    this.testImageScales[index] = 1.2
     
     // 等待一小段时间后播放声音
     setTimeout(async () => {
@@ -425,6 +448,8 @@ export struct WordLearningPage {
         await SpeechManager.speak('再试试吧')
         // 清空选择，让用户可以重选
         this.selectedTestOption = -1
+        // 重置图片缩放
+        this.testImageScales[index] = 1
       }
     }, 300)
   }
@@ -496,6 +521,8 @@ export struct WordLearningPage {
         return '阅读模式'
       case 'write':
         return '书写模式'
+      case 'challenge':
+        return '挑战模式'
       default:
         return ''
     }
@@ -546,6 +573,16 @@ export struct WordLearningPage {
               this.exitMode()
             })
         }
+
+        Blank()
+
+        // 挑战模式右上角答对计数
+        if (this.currentMode === 'challenge') {
+          Text(`已答对 ${this.challengeCorrectCount}`)
+            .fontSize(16)
+            .fontColor('#52C41A')
+            .margin({ top: 20 })
+        }
       }
       .width('100%')
       .height('15%')
@@ -559,6 +596,9 @@ export struct WordLearningPage {
       } else if (this.currentMode === 'write') {
         // 书写模式显示
         this.buildWriteMode()
+      } else if (this.currentMode === 'challenge') {
+        // 挑战模式显示
+        this.buildChallengeMode()
       } else {
         // 常规模式显示
         this.buildNormalMode()
@@ -588,6 +628,8 @@ export struct WordLearningPage {
               .height(150)
               .borderRadius(15)
               .objectFit(ImageFit.Cover)
+              .scale({ x: this.testImageScales[index], y: this.testImageScales[index] })
+              .animation({ duration: 200, curve: Curve.EaseInOut })
               .border({
                 width: this.selectedTestOption === index ? 5 : 4,
                 color: this.selectedTestOption === index 
@@ -746,6 +788,126 @@ export struct WordLearningPage {
       .backgroundColor('#FAFAFA')
       .margin({ top: 20, bottom: 20 })
     }
+  }
+
+  // 挑战模式：连续答题，答对自动进入下一题
+  @Builder
+  buildChallengeMode() {
+    Column() {
+      Text('挑战：选择正确的图片')
+        .fontSize(24)
+        .fontColor('#333333')
+        .fontWeight(FontWeight.Bold)
+        .margin({ bottom: 30 })
+      
+      Row() {
+        ForEach(this.challengeOptions, (option: WordData, index: number) => {
+          Column() {
+            Image($rawfile(option.image))
+              .width(150)
+              .height(150)
+              .borderRadius(15)
+              .objectFit(ImageFit.Cover)
+              .border({
+                width: this.challengeSelectedIndex === index ? 5 : 4,
+                color: this.challengeSelectedIndex === index 
+                  ? (this.isChallengeCorrectIndex(index) ? '#00BB00' : '#FF5555')
+                  : this.getRandomBorderColorByWord(option.english),
+                style: BorderStyle.Solid
+              })
+              .onClick(() => {
+                this.selectChallengeOption(index)
+              })
+          }
+          .margin({ right: 10 })
+        })
+      }
+      .justifyContent(FlexAlign.Center)
+      .width('100%')
+      .flexGrow(1)
+    }
+    .width('100%')
+    .height('90%')
+    .padding(20)
+  }
+
+  private isChallengeCorrectIndex(index: number): boolean {
+    const correct = this.challengeOptions.findIndex(w => w.english === this.challengeCurrentWordEnglish())
+    return index === correct
+  }
+
+  private challengeCurrentWordEnglish(): string | undefined {
+    const w = this._challengeCurrentWord
+    return w ? w.english : undefined
+  }
+
+  private _challengeCurrentWord?: WordData
+
+  private async enterChallengeMode() {
+    console.log('进入挑战模式：准备初始化题目')
+    this.currentMode = 'challenge'
+    this.challengeCorrectCount = 0
+    await this.generateChallengeQuestion()
+    console.log('进入挑战模式：题目已生成，当前选项数量:', this.challengeOptions.length)
+  }
+
+  private async generateChallengeQuestion() {
+    console.log('生成挑战题目：开始')
+    // 随机选择一个单词作为正确答案
+    if (this.words.length === 0) {
+      console.warn('生成挑战题目：words为空')
+      this.challengeOptions = []
+      this._challengeCurrentWord = undefined
+      return
+    }
+    const correctWord = this.words[Math.floor(Math.random() * this.words.length)]
+    this._challengeCurrentWord = correctWord
+    console.log('生成挑战题目：正确答案为', correctWord.english)
+
+    // 生成两个干扰项
+    const others = this.words.filter(w => w.english !== correctWord.english)
+    const shuffledOthers = others.sort(() => Math.random() - 0.5)
+    const options: WordData[] = [correctWord]
+    for (let i = 0; i < 2 && i < shuffledOthers.length; i++) {
+      options.push(shuffledOthers[i])
+    }
+    // 打乱
+    this.challengeOptions = options.sort(() => Math.random() - 0.5)
+    this.challengeSelectedIndex = -1
+    this.challengeAnswerShown = false
+    console.log('生成挑战题目：选项为', this.challengeOptions.map(o => o.english).join(','))
+
+    // 朗读题目
+    const question = `哪个是${correctWord.chinese}${correctWord.english}？`
+    await SpeechManager.speak(question)
+  }
+
+  private async selectChallengeOption(index: number) {
+    if (this.challengeAnswerShown) {
+      return
+    }
+    console.log('挑战模式：选择了选项', index)
+    this.challengeSelectedIndex = index
+
+    const correctIndex = this.challengeOptions.findIndex(w => w.english === this.challengeCurrentWordEnglish())
+    const isCorrect = index === correctIndex
+
+    setTimeout(async () => {
+      if (isCorrect) {
+        console.log('挑战模式：回答正确，累计+1')
+        this.challengeAnswerShown = true
+        this.challengeCorrectCount += 1
+        await SpeechManager.speak('答对了，你真棒！')
+        // 短暂停顿后进入下一题
+        setTimeout(async () => {
+          await this.generateChallengeQuestion()
+        }, 600)
+      } else {
+        console.log('挑战模式：回答错误，可重选')
+        await SpeechManager.speak('再试试吧')
+        this.challengeSelectedIndex = -1
+      }
+    }, 200)
   }
 
   @Builder
@@ -938,6 +1100,9 @@ export struct WordLearningPage {
                       .position({ x: 45, y: 0 })
                   }
                 }
+                .margin({ right: 10 })
+
+                // 原挑战模式按钮已移除，改由主题页入口
               }
               .justifyContent(FlexAlign.Center)
             }

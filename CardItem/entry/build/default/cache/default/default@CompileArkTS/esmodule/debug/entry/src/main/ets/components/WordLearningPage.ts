@@ -4,12 +4,14 @@ if (!("finalizeConstruction" in ViewPU.prototype)) {
 interface WordLearningPage_Params {
     subcategoryId?: string;
     onBack?: () => void;
+    // 允许外部指定初始模式（从主题页进入挑战）
+    initialMode?: 'normal' | 'challenge';
     currentWordIndex?: number;
     words?: WordData[];
     subcategory?: SubcategoryData | undefined;
     isFlipped?: boolean;
     isPlaying?: boolean;
-    currentMode?: 'listen' | 'speak' | 'read' | 'write' | 'normal';
+    currentMode?: 'listen' | 'speak' | 'read' | 'write' | 'challenge' | 'normal';
     cardScale?: number;
     imageError?: boolean;
     micIconScale?: number;
@@ -18,11 +20,17 @@ interface WordLearningPage_Params {
     selectedTestOption?: number;
     testCorrectAnswerShown?: boolean;
     drawingPaths?: string;
+    testImageScales?: number[];
+    challengeOptions?: WordData[];
+    challengeSelectedIndex?: number;
+    challengeCorrectCount?: number;
+    challengeAnswerShown?: boolean;
     learningDataManager?;
     learningProgressManager?;
     draggedLetters?: string[];
     isWriteCorrect?: boolean;
     completedModes?: string[];
+    _challengeCurrentWord?: WordData;
 }
 import type { WordData, SubcategoryData, ThemeType } from '../types/CommonTypes';
 import { LearningDataManager } from "@normalized:N&&&entry/src/main/ets/utils/LearningDataManager&";
@@ -41,6 +49,7 @@ export class WordLearningPage extends ViewPU {
         }
         this.subcategoryId = '';
         this.onBack = undefined;
+        this.initialMode = 'normal';
         this.__currentWordIndex = new ObservedPropertySimplePU(0, this, "currentWordIndex");
         this.__words = new ObservedPropertyObjectPU([], this, "words");
         this.__subcategory = new ObservedPropertyObjectPU(undefined, this, "subcategory");
@@ -65,6 +74,17 @@ export class WordLearningPage extends ViewPU {
         , this, "testCorrectAnswerShown");
         this.__drawingPaths = new ObservedPropertySimplePU('' // 绘制的路径数据
         , this, "drawingPaths");
+        this.__testImageScales = new ObservedPropertyObjectPU([1, 1, 1] // 测试模式三个选项的缩放状态
+        // 挑战模式状态
+        , this, "testImageScales");
+        this.__challengeOptions = new ObservedPropertyObjectPU([] // 当前题目的3个选项
+        , this, "challengeOptions");
+        this.__challengeSelectedIndex = new ObservedPropertySimplePU(-1 // 选中项
+        , this, "challengeSelectedIndex");
+        this.__challengeCorrectCount = new ObservedPropertySimplePU(0 // 累计答对题数
+        , this, "challengeCorrectCount");
+        this.__challengeAnswerShown = new ObservedPropertySimplePU(false // 是否已揭示答案
+        , this, "challengeAnswerShown");
         this.learningDataManager = LearningDataManager.getInstance();
         this.learningProgressManager = LearningProgressManager.getInstance();
         this.__draggedLetters = new ObservedPropertyObjectPU([], this, "draggedLetters");
@@ -72,6 +92,7 @@ export class WordLearningPage extends ViewPU {
         , this, "isWriteCorrect");
         this.__completedModes = new ObservedPropertyObjectPU([] // 已完成的功能模式（听、说、测、写）
         , this, "completedModes");
+        this._challengeCurrentWord = undefined;
         this.setInitiallyProvidedValue(params);
         this.finalizeConstruction();
     }
@@ -81,6 +102,9 @@ export class WordLearningPage extends ViewPU {
         }
         if (params.onBack !== undefined) {
             this.onBack = params.onBack;
+        }
+        if (params.initialMode !== undefined) {
+            this.initialMode = params.initialMode;
         }
         if (params.currentWordIndex !== undefined) {
             this.currentWordIndex = params.currentWordIndex;
@@ -124,6 +148,21 @@ export class WordLearningPage extends ViewPU {
         if (params.drawingPaths !== undefined) {
             this.drawingPaths = params.drawingPaths;
         }
+        if (params.testImageScales !== undefined) {
+            this.testImageScales = params.testImageScales;
+        }
+        if (params.challengeOptions !== undefined) {
+            this.challengeOptions = params.challengeOptions;
+        }
+        if (params.challengeSelectedIndex !== undefined) {
+            this.challengeSelectedIndex = params.challengeSelectedIndex;
+        }
+        if (params.challengeCorrectCount !== undefined) {
+            this.challengeCorrectCount = params.challengeCorrectCount;
+        }
+        if (params.challengeAnswerShown !== undefined) {
+            this.challengeAnswerShown = params.challengeAnswerShown;
+        }
         if (params.learningDataManager !== undefined) {
             this.learningDataManager = params.learningDataManager;
         }
@@ -138,6 +177,9 @@ export class WordLearningPage extends ViewPU {
         }
         if (params.completedModes !== undefined) {
             this.completedModes = params.completedModes;
+        }
+        if (params._challengeCurrentWord !== undefined) {
+            this._challengeCurrentWord = params._challengeCurrentWord;
         }
     }
     updateStateVars(params: WordLearningPage_Params) {
@@ -157,6 +199,11 @@ export class WordLearningPage extends ViewPU {
         this.__selectedTestOption.purgeDependencyOnElmtId(rmElmtId);
         this.__testCorrectAnswerShown.purgeDependencyOnElmtId(rmElmtId);
         this.__drawingPaths.purgeDependencyOnElmtId(rmElmtId);
+        this.__testImageScales.purgeDependencyOnElmtId(rmElmtId);
+        this.__challengeOptions.purgeDependencyOnElmtId(rmElmtId);
+        this.__challengeSelectedIndex.purgeDependencyOnElmtId(rmElmtId);
+        this.__challengeCorrectCount.purgeDependencyOnElmtId(rmElmtId);
+        this.__challengeAnswerShown.purgeDependencyOnElmtId(rmElmtId);
         this.__draggedLetters.purgeDependencyOnElmtId(rmElmtId);
         this.__isWriteCorrect.purgeDependencyOnElmtId(rmElmtId);
         this.__completedModes.purgeDependencyOnElmtId(rmElmtId);
@@ -176,6 +223,11 @@ export class WordLearningPage extends ViewPU {
         this.__selectedTestOption.aboutToBeDeleted();
         this.__testCorrectAnswerShown.aboutToBeDeleted();
         this.__drawingPaths.aboutToBeDeleted();
+        this.__testImageScales.aboutToBeDeleted();
+        this.__challengeOptions.aboutToBeDeleted();
+        this.__challengeSelectedIndex.aboutToBeDeleted();
+        this.__challengeCorrectCount.aboutToBeDeleted();
+        this.__challengeAnswerShown.aboutToBeDeleted();
         this.__draggedLetters.aboutToBeDeleted();
         this.__isWriteCorrect.aboutToBeDeleted();
         this.__completedModes.aboutToBeDeleted();
@@ -184,6 +236,8 @@ export class WordLearningPage extends ViewPU {
     }
     private subcategoryId: string;
     private onBack?: () => void;
+    // 允许外部指定初始模式（从主题页进入挑战）
+    private initialMode: 'normal' | 'challenge';
     private __currentWordIndex: ObservedPropertySimplePU<number>;
     get currentWordIndex() {
         return this.__currentWordIndex.get();
@@ -220,11 +274,11 @@ export class WordLearningPage extends ViewPU {
         this.__isPlaying.set(newValue);
     }
     // 听说读写模式状态
-    private __currentMode: ObservedPropertySimplePU<'listen' | 'speak' | 'read' | 'write' | 'normal'>;
+    private __currentMode: ObservedPropertySimplePU<'listen' | 'speak' | 'read' | 'write' | 'challenge' | 'normal'>;
     get currentMode() {
         return this.__currentMode.get();
     }
-    set currentMode(newValue: 'listen' | 'speak' | 'read' | 'write' | 'normal') {
+    set currentMode(newValue: 'listen' | 'speak' | 'read' | 'write' | 'challenge' | 'normal') {
         this.__currentMode.set(newValue);
     }
     private __cardScale: ObservedPropertySimplePU<number>; // 卡片缩放状态
@@ -283,12 +337,55 @@ export class WordLearningPage extends ViewPU {
     set drawingPaths(newValue: string) {
         this.__drawingPaths.set(newValue);
     }
+    private __testImageScales: ObservedPropertyObjectPU<number[]>; // 测试模式三个选项的缩放状态
+    get testImageScales() {
+        return this.__testImageScales.get();
+    }
+    set testImageScales(newValue: number[]) {
+        this.__testImageScales.set(newValue);
+    }
+    // 挑战模式状态
+    private __challengeOptions: ObservedPropertyObjectPU<WordData[]>; // 当前题目的3个选项
+    get challengeOptions() {
+        return this.__challengeOptions.get();
+    }
+    set challengeOptions(newValue: WordData[]) {
+        this.__challengeOptions.set(newValue);
+    }
+    private __challengeSelectedIndex: ObservedPropertySimplePU<number>; // 选中项
+    get challengeSelectedIndex() {
+        return this.__challengeSelectedIndex.get();
+    }
+    set challengeSelectedIndex(newValue: number) {
+        this.__challengeSelectedIndex.set(newValue);
+    }
+    private __challengeCorrectCount: ObservedPropertySimplePU<number>; // 累计答对题数
+    get challengeCorrectCount() {
+        return this.__challengeCorrectCount.get();
+    }
+    set challengeCorrectCount(newValue: number) {
+        this.__challengeCorrectCount.set(newValue);
+    }
+    private __challengeAnswerShown: ObservedPropertySimplePU<boolean>; // 是否已揭示答案
+    get challengeAnswerShown() {
+        return this.__challengeAnswerShown.get();
+    }
+    set challengeAnswerShown(newValue: boolean) {
+        this.__challengeAnswerShown.set(newValue);
+    }
     private learningDataManager;
     private learningProgressManager;
     aboutToAppear() {
         // 初始化TTS
         SpeechManager.init();
         this.loadWords();
+        // 如果从外部要求以挑战模式进入，加载后直接进入挑战
+        if (this.initialMode === 'challenge') {
+            // 异步进入，确保words已准备
+            setTimeout(() => {
+                this.enterChallengeMode().catch((err: Error) => console.error('进入挑战模式失败:', err));
+            }, 0);
+        }
     }
     aboutToDisappear() {
         // 清理TTS资源
@@ -587,6 +684,8 @@ export class WordLearningPage extends ViewPU {
         this.testOptions = shuffledOptions;
         this.selectedTestOption = -1;
         this.testCorrectAnswerShown = false;
+        // 重置图片缩放状态
+        this.testImageScales = [1, 1, 1];
         console.log('测试选项生成:', shuffledOptions.map(w => w.english));
     }
     // 选择测试选项
@@ -598,6 +697,8 @@ export class WordLearningPage extends ViewPU {
         console.log('选择了选项:', index);
         const correctWord = this.getCurrentWord();
         const isCorrect = index === this.testOptions.findIndex(w => w.english === correctWord?.english);
+        // 立即放大选中的图片
+        this.testImageScales[index] = 1.2;
         // 等待一小段时间后播放声音
         setTimeout(async () => {
             if (isCorrect) {
@@ -621,6 +722,8 @@ export class WordLearningPage extends ViewPU {
                 await SpeechManager.speak('再试试吧');
                 // 清空选择，让用户可以重选
                 this.selectedTestOption = -1;
+                // 重置图片缩放
+                this.testImageScales[index] = 1;
             }
         }, 300);
     }
@@ -686,6 +789,8 @@ export class WordLearningPage extends ViewPU {
                 return '阅读模式';
             case 'write':
                 return '书写模式';
+            case 'challenge':
+                return '挑战模式';
             default:
                 return '';
         }
@@ -776,6 +881,30 @@ export class WordLearningPage extends ViewPU {
             }
         }, If);
         If.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Blank.create();
+        }, Blank);
+        Blank.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            If.create();
+            // 挑战模式右上角答对计数
+            if (this.currentMode === 'challenge') {
+                this.ifElseBranchUpdateFunction(0, () => {
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Text.create(`已答对 ${this.challengeCorrectCount}`);
+                        Text.fontSize(16);
+                        Text.fontColor('#52C41A');
+                        Text.margin({ top: 20 });
+                    }, Text);
+                    Text.pop();
+                });
+            }
+            else {
+                this.ifElseBranchUpdateFunction(1, () => {
+                });
+            }
+        }, If);
+        If.pop();
         // 顶部导航栏
         Row.pop();
         this.observeComponentCreation2((elmtId, isInitialRender) => {
@@ -793,8 +922,14 @@ export class WordLearningPage extends ViewPU {
                     this.buildWriteMode.bind(this)();
                 });
             }
-            else {
+            else if (this.currentMode === 'challenge') {
                 this.ifElseBranchUpdateFunction(2, () => {
+                    // 挑战模式显示
+                    this.buildChallengeMode.bind(this)();
+                });
+            }
+            else {
+                this.ifElseBranchUpdateFunction(3, () => {
                     // 常规模式显示
                     this.buildNormalMode.bind(this)();
                 });
@@ -838,10 +973,13 @@ export class WordLearningPage extends ViewPU {
                 }, Column);
                 this.observeComponentCreation2((elmtId, isInitialRender) => {
                     Image.create({ "id": -1, "type": 30000, params: [option.image], "bundleName": "com.example.studyenglishbycard", "moduleName": "entry" });
+                    Context.animation({ duration: 200, curve: Curve.EaseInOut });
                     Image.width(150);
                     Image.height(150);
                     Image.borderRadius(15);
                     Image.objectFit(ImageFit.Cover);
+                    Image.scale({ x: this.testImageScales[index], y: this.testImageScales[index] });
+                    Context.animation(null);
                     Image.border({
                         width: this.selectedTestOption === index ? 5 : 4,
                         color: this.selectedTestOption === index
@@ -1101,12 +1239,138 @@ export class WordLearningPage extends ViewPU {
                     Row.pop();
                 });
             }
-            else {
+            else // 挑战模式：连续答题，答对自动进入下一题
+             {
                 this.ifElseBranchUpdateFunction(1, () => {
                 });
             }
         }, If);
         If.pop();
+    }
+    // 挑战模式：连续答题，答对自动进入下一题
+    buildChallengeMode(parent = null) {
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Column.create();
+            Column.width('100%');
+            Column.height('90%');
+            Column.padding(20);
+        }, Column);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Text.create('挑战：选择正确的图片');
+            Text.fontSize(24);
+            Text.fontColor('#333333');
+            Text.fontWeight(FontWeight.Bold);
+            Text.margin({ bottom: 30 });
+        }, Text);
+        Text.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Row.create();
+            Row.justifyContent(FlexAlign.Center);
+            Row.width('100%');
+            Row.flexGrow(1);
+        }, Row);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            ForEach.create();
+            const forEachItemGenFunction = (_item, index: number) => {
+                const option = _item;
+                this.observeComponentCreation2((elmtId, isInitialRender) => {
+                    Column.create();
+                    Column.margin({ right: 10 });
+                }, Column);
+                this.observeComponentCreation2((elmtId, isInitialRender) => {
+                    Image.create({ "id": -1, "type": 30000, params: [option.image], "bundleName": "com.example.studyenglishbycard", "moduleName": "entry" });
+                    Image.width(150);
+                    Image.height(150);
+                    Image.borderRadius(15);
+                    Image.objectFit(ImageFit.Cover);
+                    Image.border({
+                        width: this.challengeSelectedIndex === index ? 5 : 4,
+                        color: this.challengeSelectedIndex === index
+                            ? (this.isChallengeCorrectIndex(index) ? '#00BB00' : '#FF5555')
+                            : this.getRandomBorderColorByWord(option.english),
+                        style: BorderStyle.Solid
+                    });
+                    Image.onClick(() => {
+                        this.selectChallengeOption(index);
+                    });
+                }, Image);
+                Column.pop();
+            };
+            this.forEachUpdateFunction(elmtId, this.challengeOptions, forEachItemGenFunction, undefined, true, false);
+        }, ForEach);
+        ForEach.pop();
+        Row.pop();
+        Column.pop();
+    }
+    private isChallengeCorrectIndex(index: number): boolean {
+        const correct = this.challengeOptions.findIndex(w => w.english === this.challengeCurrentWordEnglish());
+        return index === correct;
+    }
+    private challengeCurrentWordEnglish(): string | undefined {
+        const w = this._challengeCurrentWord;
+        return w ? w.english : undefined;
+    }
+    private _challengeCurrentWord?: WordData;
+    private async enterChallengeMode() {
+        console.log('进入挑战模式：准备初始化题目');
+        this.currentMode = 'challenge';
+        this.challengeCorrectCount = 0;
+        await this.generateChallengeQuestion();
+        console.log('进入挑战模式：题目已生成，当前选项数量:', this.challengeOptions.length);
+    }
+    private async generateChallengeQuestion() {
+        console.log('生成挑战题目：开始');
+        // 随机选择一个单词作为正确答案
+        if (this.words.length === 0) {
+            console.warn('生成挑战题目：words为空');
+            this.challengeOptions = [];
+            this._challengeCurrentWord = undefined;
+            return;
+        }
+        const correctWord = this.words[Math.floor(Math.random() * this.words.length)];
+        this._challengeCurrentWord = correctWord;
+        console.log('生成挑战题目：正确答案为', correctWord.english);
+        // 生成两个干扰项
+        const others = this.words.filter(w => w.english !== correctWord.english);
+        const shuffledOthers = others.sort(() => Math.random() - 0.5);
+        const options: WordData[] = [correctWord];
+        for (let i = 0; i < 2 && i < shuffledOthers.length; i++) {
+            options.push(shuffledOthers[i]);
+        }
+        // 打乱
+        this.challengeOptions = options.sort(() => Math.random() - 0.5);
+        this.challengeSelectedIndex = -1;
+        this.challengeAnswerShown = false;
+        console.log('生成挑战题目：选项为', this.challengeOptions.map(o => o.english).join(','));
+        // 朗读题目
+        const question = `哪个是${correctWord.chinese}${correctWord.english}？`;
+        await SpeechManager.speak(question);
+    }
+    private async selectChallengeOption(index: number) {
+        if (this.challengeAnswerShown) {
+            return;
+        }
+        console.log('挑战模式：选择了选项', index);
+        this.challengeSelectedIndex = index;
+        const correctIndex = this.challengeOptions.findIndex(w => w.english === this.challengeCurrentWordEnglish());
+        const isCorrect = index === correctIndex;
+        setTimeout(async () => {
+            if (isCorrect) {
+                console.log('挑战模式：回答正确，累计+1');
+                this.challengeAnswerShown = true;
+                this.challengeCorrectCount += 1;
+                await SpeechManager.speak('答对了，你真棒！');
+                // 短暂停顿后进入下一题
+                setTimeout(async () => {
+                    await this.generateChallengeQuestion();
+                }, 600);
+            }
+            else {
+                console.log('挑战模式：回答错误，可重选');
+                await SpeechManager.speak('再试试吧');
+                this.challengeSelectedIndex = -1;
+            }
+        }, 200);
     }
     buildNormalMode(parent = null) {
         this.observeComponentCreation2((elmtId, isInitialRender) => {
@@ -1421,6 +1685,7 @@ export class WordLearningPage extends ViewPU {
                     Stack.pop();
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         Stack.create();
+                        Stack.margin({ right: 10 });
                     }, Stack);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         Button.createWithLabel('写');

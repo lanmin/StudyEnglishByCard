@@ -6,6 +6,7 @@ import { TTSManager } from '../utils/TTSManager'
 import { LearningProgressManager } from '../utils/LearningProgressManager'
 import { GlobalStyles } from '../styles/GlobalStyles'
 import { WordLearningPage } from '../components/WordLearningPage'
+import { ChallengePage } from '../components/ChallengePage'
 import { 
   PageType, 
   ThemeType, 
@@ -26,6 +27,7 @@ struct Index {
   @State level: number = 1
   @State showProgress: boolean = false
   @State showDetailPage: boolean = false
+  @State showChallenge: boolean = false
   @State selectedWord: WordData | null = null
   @State isImageHidden: boolean = false
   @State volumeVisible: boolean = false
@@ -147,7 +149,14 @@ struct Index {
 
   build() {
     Column() {
-      if (this.currentPage === 'theme_select') {
+      if (this.showChallenge) {
+        ChallengePage({
+          theme: this.currentTheme,
+          onBack: () => {
+            this.showChallenge = false
+          }
+        })
+      } else if (this.currentPage === 'theme_select') {
         this.ThemeSelectPage()
       } else if (this.currentPage === 'subcategory_select') {
         this.SubcategorySelectPage()
@@ -194,7 +203,7 @@ struct Index {
         //     console.log('复习按钮点击')
         //   })
         
-        // 跳过学习按钮
+        // 挑战模式按钮（按当前选择的主题进入挑战页面）
         Button('挑战模式')
           .width(120)
           .height(40)
@@ -205,8 +214,8 @@ struct Index {
           .borderRadius(25)
           .onClick(() => {
             this.soundEffectManager.playButtonClick()
-            // TODO: 实现跳过学习功能
-            console.log('跳过学习按钮点击')
+            console.log('挑战模式按钮点击，进入挑战页面，主题:', this.currentTheme)
+            this.showChallenge = true
           })
       }
       .width('100%')

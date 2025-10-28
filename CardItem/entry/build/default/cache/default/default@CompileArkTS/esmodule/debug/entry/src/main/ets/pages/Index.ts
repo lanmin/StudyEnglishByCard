@@ -10,6 +10,7 @@ interface Index_Params {
     level?: number;
     showProgress?: boolean;
     showDetailPage?: boolean;
+    showChallenge?: boolean;
     selectedWord?: WordData | null;
     isImageHidden?: boolean;
     volumeVisible?: boolean;
@@ -29,6 +30,7 @@ import { TTSManager } from "@normalized:N&&&entry/src/main/ets/utils/TTSManager&
 import { LearningProgressManager } from "@normalized:N&&&entry/src/main/ets/utils/LearningProgressManager&";
 import { GlobalStyles } from "@normalized:N&&&entry/src/main/ets/styles/GlobalStyles&";
 import { WordLearningPage } from "@normalized:N&&&entry/src/main/ets/components/WordLearningPage&";
+import { ChallengePage } from "@normalized:N&&&entry/src/main/ets/components/ChallengePage&";
 import type { PageType, ThemeType, ThemeData, SubcategoryData, WordData, LearningMode } from '../types/CommonTypes';
 class Index extends ViewPU {
     constructor(parent, params, __localStorage, elmtId = -1, paramsLambda = undefined, extraInfo) {
@@ -44,6 +46,7 @@ class Index extends ViewPU {
         this.__level = new ObservedPropertySimplePU(1, this, "level");
         this.__showProgress = new ObservedPropertySimplePU(false, this, "showProgress");
         this.__showDetailPage = new ObservedPropertySimplePU(false, this, "showDetailPage");
+        this.__showChallenge = new ObservedPropertySimplePU(false, this, "showChallenge");
         this.__selectedWord = new ObservedPropertyObjectPU(null, this, "selectedWord");
         this.__isImageHidden = new ObservedPropertySimplePU(false, this, "isImageHidden");
         this.__volumeVisible = new ObservedPropertySimplePU(false, this, "volumeVisible");
@@ -85,6 +88,9 @@ class Index extends ViewPU {
         }
         if (params.showDetailPage !== undefined) {
             this.showDetailPage = params.showDetailPage;
+        }
+        if (params.showChallenge !== undefined) {
+            this.showChallenge = params.showChallenge;
         }
         if (params.selectedWord !== undefined) {
             this.selectedWord = params.selectedWord;
@@ -134,6 +140,7 @@ class Index extends ViewPU {
         this.__level.purgeDependencyOnElmtId(rmElmtId);
         this.__showProgress.purgeDependencyOnElmtId(rmElmtId);
         this.__showDetailPage.purgeDependencyOnElmtId(rmElmtId);
+        this.__showChallenge.purgeDependencyOnElmtId(rmElmtId);
         this.__selectedWord.purgeDependencyOnElmtId(rmElmtId);
         this.__isImageHidden.purgeDependencyOnElmtId(rmElmtId);
         this.__volumeVisible.purgeDependencyOnElmtId(rmElmtId);
@@ -148,6 +155,7 @@ class Index extends ViewPU {
         this.__level.aboutToBeDeleted();
         this.__showProgress.aboutToBeDeleted();
         this.__showDetailPage.aboutToBeDeleted();
+        this.__showChallenge.aboutToBeDeleted();
         this.__selectedWord.aboutToBeDeleted();
         this.__isImageHidden.aboutToBeDeleted();
         this.__volumeVisible.aboutToBeDeleted();
@@ -210,6 +218,13 @@ class Index extends ViewPU {
     }
     set showDetailPage(newValue: boolean) {
         this.__showDetailPage.set(newValue);
+    }
+    private __showChallenge: ObservedPropertySimplePU<boolean>;
+    get showChallenge() {
+        return this.__showChallenge.get();
+    }
+    set showChallenge(newValue: boolean) {
+        this.__showChallenge.set(newValue);
     }
     private __selectedWord: ObservedPropertyObjectPU<WordData | null>;
     get selectedWord() {
@@ -354,23 +369,52 @@ class Index extends ViewPU {
         }, Column);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             If.create();
-            if (this.currentPage === 'theme_select') {
+            if (this.showChallenge) {
                 this.ifElseBranchUpdateFunction(0, () => {
+                    {
+                        this.observeComponentCreation2((elmtId, isInitialRender) => {
+                            if (isInitialRender) {
+                                let componentCall = new ChallengePage(this, {
+                                    theme: this.currentTheme,
+                                    onBack: () => {
+                                        this.showChallenge = false;
+                                    }
+                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 153, col: 9 });
+                                ViewPU.create(componentCall);
+                                let paramsLambda = () => {
+                                    return {
+                                        theme: this.currentTheme,
+                                        onBack: () => {
+                                            this.showChallenge = false;
+                                        }
+                                    };
+                                };
+                                componentCall.paramsGenerator_ = paramsLambda;
+                            }
+                            else {
+                                this.updateStateVarsOfChildByElmtId(elmtId, {});
+                            }
+                        }, { name: "ChallengePage" });
+                    }
+                });
+            }
+            else if (this.currentPage === 'theme_select') {
+                this.ifElseBranchUpdateFunction(1, () => {
                     this.ThemeSelectPage.bind(this)();
                 });
             }
             else if (this.currentPage === 'subcategory_select') {
-                this.ifElseBranchUpdateFunction(1, () => {
+                this.ifElseBranchUpdateFunction(2, () => {
                     this.SubcategorySelectPage.bind(this)();
                 });
             }
             else if (this.currentPage === 'parent_helper') {
-                this.ifElseBranchUpdateFunction(2, () => {
+                this.ifElseBranchUpdateFunction(3, () => {
                     this.ParentHelperPage.bind(this)();
                 });
             }
             else if (this.currentPage === 'word_card') {
-                this.ifElseBranchUpdateFunction(3, () => {
+                this.ifElseBranchUpdateFunction(4, () => {
                     {
                         this.observeComponentCreation2((elmtId, isInitialRender) => {
                             if (isInitialRender) {
@@ -379,7 +423,7 @@ class Index extends ViewPU {
                                     onBack: () => {
                                         this.currentPage = 'subcategory_select';
                                     }
-                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 157, col: 9 });
+                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 166, col: 9 });
                                 ViewPU.create(componentCall);
                                 let paramsLambda = () => {
                                     return {
@@ -399,7 +443,7 @@ class Index extends ViewPU {
                 });
             }
             else {
-                this.ifElseBranchUpdateFunction(4, () => {
+                this.ifElseBranchUpdateFunction(5, () => {
                 });
             }
         }, If);
@@ -449,7 +493,7 @@ class Index extends ViewPU {
             //     // TODO: 实现复习功能
             //     console.log('复习按钮点击')
             //   })
-            // 跳过学习按钮
+            // 挑战模式按钮（按当前选择的主题进入挑战页面）
             Button.createWithLabel('挑战模式');
             // 复习按钮
             // Button('复习')
@@ -466,7 +510,7 @@ class Index extends ViewPU {
             //     // TODO: 实现复习功能
             //     console.log('复习按钮点击')
             //   })
-            // 跳过学习按钮
+            // 挑战模式按钮（按当前选择的主题进入挑战页面）
             Button.width(120);
             // 复习按钮
             // Button('复习')
@@ -483,7 +527,7 @@ class Index extends ViewPU {
             //     // TODO: 实现复习功能
             //     console.log('复习按钮点击')
             //   })
-            // 跳过学习按钮
+            // 挑战模式按钮（按当前选择的主题进入挑战页面）
             Button.height(40);
             // 复习按钮
             // Button('复习')
@@ -500,7 +544,7 @@ class Index extends ViewPU {
             //     // TODO: 实现复习功能
             //     console.log('复习按钮点击')
             //   })
-            // 跳过学习按钮
+            // 挑战模式按钮（按当前选择的主题进入挑战页面）
             Button.backgroundColor(GlobalStyles.COLORS.PRIMARY_ORANGE);
             // 复习按钮
             // Button('复习')
@@ -517,7 +561,7 @@ class Index extends ViewPU {
             //     // TODO: 实现复习功能
             //     console.log('复习按钮点击')
             //   })
-            // 跳过学习按钮
+            // 挑战模式按钮（按当前选择的主题进入挑战页面）
             Button.fontSize(18);
             // 复习按钮
             // Button('复习')
@@ -534,7 +578,7 @@ class Index extends ViewPU {
             //     // TODO: 实现复习功能
             //     console.log('复习按钮点击')
             //   })
-            // 跳过学习按钮
+            // 挑战模式按钮（按当前选择的主题进入挑战页面）
             Button.fontColor(Color.White);
             // 复习按钮
             // Button('复习')
@@ -551,7 +595,7 @@ class Index extends ViewPU {
             //     // TODO: 实现复习功能
             //     console.log('复习按钮点击')
             //   })
-            // 跳过学习按钮
+            // 挑战模式按钮（按当前选择的主题进入挑战页面）
             Button.fontWeight(FontWeight.Bold);
             // 复习按钮
             // Button('复习')
@@ -568,7 +612,7 @@ class Index extends ViewPU {
             //     // TODO: 实现复习功能
             //     console.log('复习按钮点击')
             //   })
-            // 跳过学习按钮
+            // 挑战模式按钮（按当前选择的主题进入挑战页面）
             Button.borderRadius(25);
             // 复习按钮
             // Button('复习')
@@ -585,11 +629,11 @@ class Index extends ViewPU {
             //     // TODO: 实现复习功能
             //     console.log('复习按钮点击')
             //   })
-            // 跳过学习按钮
+            // 挑战模式按钮（按当前选择的主题进入挑战页面）
             Button.onClick(() => {
                 this.soundEffectManager.playButtonClick();
-                // TODO: 实现跳过学习功能
-                console.log('跳过学习按钮点击');
+                console.log('挑战模式按钮点击，进入挑战页面，主题:', this.currentTheme);
+                this.showChallenge = true;
             });
         }, Button);
         // 复习按钮
@@ -607,7 +651,7 @@ class Index extends ViewPU {
         //     // TODO: 实现复习功能
         //     console.log('复习按钮点击')
         //   })
-        // 跳过学习按钮
+        // 挑战模式按钮（按当前选择的主题进入挑战页面）
         Button.pop();
         // 顶部区域 - 标题和功能按钮
         Row.pop();
