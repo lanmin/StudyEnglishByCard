@@ -192,11 +192,12 @@ struct Index {
       .layoutWeight(1)
       .scrollable(ScrollDirection.Horizontal)
       .scrollBar(BarState.Auto)
-      .padding({ left: GlobalStyles.SIZES.SPACING_LARGE, right: GlobalStyles.SIZES.SPACING_LARGE })
+      .padding({ left: GlobalStyles.SIZES.SPACING_LARGE + 10, right: GlobalStyles.SIZES.SPACING_LARGE })
     }
     .width('100%')
     .height('100%')
     .backgroundColor(GlobalStyles.COLORS.BACKGROUND)
+    .expandSafeArea()
   }
 
   // 主题卡片
@@ -226,6 +227,11 @@ struct Index {
     .height(190)
     .backgroundColor(GlobalStyles.COLORS.CARD_BACKGROUND)
     .borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM)
+    .border({
+      width: 2,
+      color: '#E0E0E0',
+      style: BorderStyle.Solid
+    })
     .padding({ top: 10, bottom: 10, left: 10, right: 10 })
     .justifyContent(FlexAlign.Center)
     .shadow(GlobalStyles.SHADOWS.MEDIUM)
@@ -277,7 +283,7 @@ struct Index {
       .layoutWeight(1)
       .scrollable(ScrollDirection.Horizontal)
       .scrollBar(BarState.Auto)
-      .padding({ left: GlobalStyles.SIZES.SPACING_LARGE, right: GlobalStyles.SIZES.SPACING_LARGE })
+      .padding({ left: GlobalStyles.SIZES.SPACING_LARGE + 10, right: GlobalStyles.SIZES.SPACING_LARGE })
     }
     .width('100%')
     .height('100%')
@@ -311,6 +317,11 @@ struct Index {
     .height(190)
     .backgroundColor(GlobalStyles.COLORS.CARD_BACKGROUND)
     .borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM)
+    .border({
+      width: 2,
+      color: '#E0E0E0',
+      style: BorderStyle.Solid
+    })
     .padding({ top: 10, bottom: 10, left: 10, right: 10 })
     .justifyContent(FlexAlign.Center)
     .shadow(GlobalStyles.SHADOWS.MEDIUM)
@@ -422,5 +433,6 @@ struct Index {
     .width('100%')
     .height('100%')
     .backgroundColor(GlobalStyles.COLORS.BACKGROUND)
+    .expandSafeArea()
   }
 }

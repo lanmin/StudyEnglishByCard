@@ -381,6 +381,7 @@ class Index extends ViewPU {
             Column.width('100%');
             Column.height('100%');
             Column.backgroundColor(GlobalStyles.COLORS.BACKGROUND);
+            Column.expandSafeArea();
         }, Column);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             // 顶部区域 - 标题和功能按钮
@@ -468,7 +469,7 @@ class Index extends ViewPU {
             // 主题卡片容器 - 支持左右滑动
             Scroll.scrollBar(BarState.Auto);
             // 主题卡片容器 - 支持左右滑动
-            Scroll.padding({ left: GlobalStyles.SIZES.SPACING_LARGE, right: GlobalStyles.SIZES.SPACING_LARGE });
+            Scroll.padding({ left: GlobalStyles.SIZES.SPACING_LARGE + 10, right: GlobalStyles.SIZES.SPACING_LARGE });
         }, Scroll);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             Row.create();
@@ -498,6 +499,11 @@ class Index extends ViewPU {
             Column.height(190);
             Column.backgroundColor(GlobalStyles.COLORS.CARD_BACKGROUND);
             Column.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
+            Column.border({
+                width: 2,
+                color: '#E0E0E0',
+                style: BorderStyle.Solid
+            });
             Column.padding({ top: 10, bottom: 10, left: 10, right: 10 });
             Column.justifyContent(FlexAlign.Center);
             Column.shadow(GlobalStyles.SHADOWS.MEDIUM);
@@ -601,7 +607,7 @@ class Index extends ViewPU {
             // 子分类卡片容器 - 支持左右滑动
             Scroll.scrollBar(BarState.Auto);
             // 子分类卡片容器 - 支持左右滑动
-            Scroll.padding({ left: GlobalStyles.SIZES.SPACING_LARGE, right: GlobalStyles.SIZES.SPACING_LARGE });
+            Scroll.padding({ left: GlobalStyles.SIZES.SPACING_LARGE + 10, right: GlobalStyles.SIZES.SPACING_LARGE });
         }, Scroll);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             Row.create();
@@ -631,6 +637,11 @@ class Index extends ViewPU {
             Column.height(190);
             Column.backgroundColor(GlobalStyles.COLORS.CARD_BACKGROUND);
             Column.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
+            Column.border({
+                width: 2,
+                color: '#E0E0E0',
+                style: BorderStyle.Solid
+            });
             Column.padding({ top: 10, bottom: 10, left: 10, right: 10 });
             Column.justifyContent(FlexAlign.Center);
             Column.shadow(GlobalStyles.SHADOWS.MEDIUM);
@@ -773,6 +784,7 @@ class Index extends ViewPU {
             Column.width('100%');
             Column.height('100%');
             Column.backgroundColor(GlobalStyles.COLORS.BACKGROUND);
+            Column.expandSafeArea();
         }, Column);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             // 顶部区域
