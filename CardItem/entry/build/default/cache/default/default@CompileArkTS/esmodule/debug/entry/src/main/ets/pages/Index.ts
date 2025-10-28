@@ -633,7 +633,7 @@ class Index extends ViewPU {
             // 主题卡片容器 - 支持左右滑动
             Scroll.scrollable(ScrollDirection.Horizontal);
             // 主题卡片容器 - 支持左右滑动
-            Scroll.scrollBar(BarState.Auto);
+            Scroll.scrollBar(BarState.Off);
             // 主题卡片容器 - 支持左右滑动
             Scroll.padding({ left: GlobalStyles.SIZES.SPACING_LARGE + 10, right: GlobalStyles.SIZES.SPACING_LARGE });
         }, Scroll);
@@ -711,60 +711,28 @@ class Index extends ViewPU {
             Image.padding(5);
         }, Image);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
-            // 主题名称（包含进度信息）
-            Text.create(`${theme.name}（${theme.completedWords}/${theme.totalWords}）`);
-            // 主题名称（包含进度信息）
+            // 主题名称
+            Text.create(theme.name);
+            // 主题名称
             Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_SMALL);
-            // 主题名称（包含进度信息）
+            // 主题名称
             Text.fontColor(GlobalStyles.COLORS.TEXT_PRIMARY);
-            // 主题名称（包含进度信息）
+            // 主题名称
             Text.fontWeight(FontWeight.Bold);
-            // 主题名称（包含进度信息）
+            // 主题名称
             Text.margin({ top: 8 });
-            // 主题名称（包含进度信息）
+            // 主题名称
             Text.textAlign(TextAlign.Center);
-            // 主题名称（包含进度信息）
+            // 主题名称
             Text.maxLines(2);
-            // 主题名称（包含进度信息）
+            // 主题名称
             Text.textOverflow({ overflow: TextOverflow.Ellipsis });
-            // 主题名称（包含进度信息）
+            // 主题名称
             Text.width('100%');
         }, Text);
-        // 主题名称（包含进度信息）
+        // 主题名称
         Text.pop();
         Column.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            If.create();
-            // 完成状态对勾
-            if (this.isThemeCompleted(theme.id)) {
-                this.ifElseBranchUpdateFunction(0, () => {
-                    this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        Text.create('✓');
-                        Text.fontSize(30);
-                        Text.fontColor('#52C41A');
-                        Text.fontWeight(FontWeight.Bold);
-                        Text.backgroundColor('#FFFFFF');
-                        Text.borderRadius(20);
-                        Text.width(40);
-                        Text.height(40);
-                        Text.textAlign(TextAlign.Center);
-                        Text.position({ x: 160, y: 10 });
-                        Text.shadow({
-                            radius: 5,
-                            color: '#00000020',
-                            offsetX: 0,
-                            offsetY: 2
-                        });
-                    }, Text);
-                    Text.pop();
-                });
-            }
-            else {
-                this.ifElseBranchUpdateFunction(1, () => {
-                });
-            }
-        }, If);
-        If.pop();
         Stack.pop();
     }
     // 子分类选择页面
@@ -839,7 +807,7 @@ class Index extends ViewPU {
             // 子分类卡片容器 - 支持左右滑动
             Scroll.scrollable(ScrollDirection.Horizontal);
             // 子分类卡片容器 - 支持左右滑动
-            Scroll.scrollBar(BarState.Auto);
+            Scroll.scrollBar(BarState.Off);
             // 子分类卡片容器 - 支持左右滑动
             Scroll.padding({ left: GlobalStyles.SIZES.SPACING_LARGE + 10, right: GlobalStyles.SIZES.SPACING_LARGE });
         }, Scroll);
@@ -917,60 +885,28 @@ class Index extends ViewPU {
             Image.padding(5);
         }, Image);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
-            // 子分类名称（包含进度信息）
-            Text.create(`${subcategory.name}（${subcategory.completedWords}/${subcategory.totalWords}）`);
-            // 子分类名称（包含进度信息）
+            // 子分类名称
+            Text.create(subcategory.name);
+            // 子分类名称
             Text.fontSize(GlobalStyles.FONT_SIZES.TEXT_SMALL);
-            // 子分类名称（包含进度信息）
+            // 子分类名称
             Text.fontColor(GlobalStyles.COLORS.TEXT_PRIMARY);
-            // 子分类名称（包含进度信息）
+            // 子分类名称
             Text.fontWeight(FontWeight.Bold);
-            // 子分类名称（包含进度信息）
+            // 子分类名称
             Text.margin({ top: 8 });
-            // 子分类名称（包含进度信息）
+            // 子分类名称
             Text.textAlign(TextAlign.Center);
-            // 子分类名称（包含进度信息）
+            // 子分类名称
             Text.maxLines(2);
-            // 子分类名称（包含进度信息）
+            // 子分类名称
             Text.textOverflow({ overflow: TextOverflow.Ellipsis });
-            // 子分类名称（包含进度信息）
+            // 子分类名称
             Text.width('100%');
         }, Text);
-        // 子分类名称（包含进度信息）
+        // 子分类名称
         Text.pop();
         Column.pop();
-        this.observeComponentCreation2((elmtId, isInitialRender) => {
-            If.create();
-            // 完成状态对勾
-            if (this.isSubcategoryCompleted(subcategory.id)) {
-                this.ifElseBranchUpdateFunction(0, () => {
-                    this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        Text.create('✓');
-                        Text.fontSize(30);
-                        Text.fontColor('#52C41A');
-                        Text.fontWeight(FontWeight.Bold);
-                        Text.backgroundColor('#FFFFFF');
-                        Text.borderRadius(20);
-                        Text.width(40);
-                        Text.height(40);
-                        Text.textAlign(TextAlign.Center);
-                        Text.position({ x: 160, y: 10 });
-                        Text.shadow({
-                            radius: 5,
-                            color: '#00000020',
-                            offsetX: 0,
-                            offsetY: 2
-                        });
-                    }, Text);
-                    Text.pop();
-                });
-            }
-            else {
-                this.ifElseBranchUpdateFunction(1, () => {
-                });
-            }
-        }, If);
-        If.pop();
         Stack.pop();
     }
     // 设置页面

@@ -279,7 +279,7 @@ struct Index {
         .width('100%')
         .layoutWeight(1)
         .scrollable(ScrollDirection.Horizontal)
-        .scrollBar(BarState.Auto)
+        .scrollBar(BarState.Off)
         .padding({ left: GlobalStyles.SIZES.SPACING_LARGE + 10, right: GlobalStyles.SIZES.SPACING_LARGE })
       }
       .width('100%')
@@ -303,8 +303,8 @@ struct Index {
           .objectFit(ImageFit.Contain)
           .padding(5)
         
-        // 主题名称（包含进度信息）
-        Text(`${theme.name}（${theme.completedWords}/${theme.totalWords}）`)
+        // 主题名称
+        Text(theme.name)
           .fontSize(GlobalStyles.FONT_SIZES.TEXT_SMALL)
           .fontColor(GlobalStyles.COLORS.TEXT_PRIMARY)
           .fontWeight(FontWeight.Bold)
@@ -342,25 +342,25 @@ struct Index {
       .opacity(this.clickedThemeIndex === index ? this.cardOpacity : 1)
       .animation({ duration: 200, curve: Curve.EaseInOut })
 
-      // 完成状态对勾
-      if (this.isThemeCompleted(theme.id)) {
-        Text('✓')
-          .fontSize(30)
-          .fontColor('#52C41A')
-          .fontWeight(FontWeight.Bold)
-          .backgroundColor('#FFFFFF')
-          .borderRadius(20)
-          .width(40)
-          .height(40)
-          .textAlign(TextAlign.Center)
-          .position({ x: 160, y: 10 })
-          .shadow({
-            radius: 5,
-            color: '#00000020',
-            offsetX: 0,
-            offsetY: 2
-          })
-      }
+      // 完成状态对勾 - 已隐藏
+      // if (this.isThemeCompleted(theme.id)) {
+      //   Text('✓')
+      //     .fontSize(30)
+      //     .fontColor('#52C41A')
+      //     .fontWeight(FontWeight.Bold)
+      //     .backgroundColor('#FFFFFF')
+      //     .borderRadius(20)
+      //     .width(40)
+      //     .height(40)
+      //     .textAlign(TextAlign.Center)
+      //     .position({ x: 160, y: 10 })
+      //     .shadow({
+      //       radius: 5,
+      //       color: '#00000020',
+      //       offsetX: 0,
+      //       offsetY: 2
+      //     })
+      // }
     }
   }
 
@@ -412,7 +412,7 @@ struct Index {
         .width('100%')
         .layoutWeight(1)
         .scrollable(ScrollDirection.Horizontal)
-        .scrollBar(BarState.Auto)
+        .scrollBar(BarState.Off)
         .padding({ left: GlobalStyles.SIZES.SPACING_LARGE + 10, right: GlobalStyles.SIZES.SPACING_LARGE })
       }
       .width('100%')
@@ -436,8 +436,8 @@ struct Index {
           .objectFit(ImageFit.Contain)
           .padding(5)
         
-        // 子分类名称（包含进度信息）
-        Text(`${subcategory.name}（${subcategory.completedWords}/${subcategory.totalWords}）`)
+        // 子分类名称
+        Text(subcategory.name)
           .fontSize(GlobalStyles.FONT_SIZES.TEXT_SMALL)
           .fontColor(GlobalStyles.COLORS.TEXT_PRIMARY)
           .fontWeight(FontWeight.Bold)
@@ -475,25 +475,25 @@ struct Index {
       .opacity(this.clickedSubcategoryIndex === index ? this.cardOpacity : 1)
       .animation({ duration: 200, curve: Curve.EaseInOut })
 
-      // 完成状态对勾
-      if (this.isSubcategoryCompleted(subcategory.id)) {
-        Text('✓')
-          .fontSize(30)
-          .fontColor('#52C41A')
-          .fontWeight(FontWeight.Bold)
-          .backgroundColor('#FFFFFF')
-          .borderRadius(20)
-          .width(40)
-          .height(40)
-          .textAlign(TextAlign.Center)
-          .position({ x: 160, y: 10 })
-          .shadow({
-            radius: 5,
-            color: '#00000020',
-            offsetX: 0,
-            offsetY: 2
-          })
-      }
+      // 完成状态对勾 - 已隐藏
+      // if (this.isSubcategoryCompleted(subcategory.id)) {
+      //   Text('✓')
+      //     .fontSize(30)
+      //     .fontColor('#52C41A')
+      //     .fontWeight(FontWeight.Bold)
+      //     .backgroundColor('#FFFFFF')
+      //     .borderRadius(20)
+      //     .width(40)
+      //     .height(40)
+      //     .textAlign(TextAlign.Center)
+      //     .position({ x: 160, y: 10 })
+      //     .shadow({
+      //       radius: 5,
+      //       color: '#00000020',
+      //       offsetX: 0,
+      //       offsetY: 2
+      //     })
+      // }
     }
   }
 
