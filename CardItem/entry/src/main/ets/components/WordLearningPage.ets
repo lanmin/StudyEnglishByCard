@@ -513,9 +513,16 @@ export struct WordLearningPage {
           .backgroundColor(Color.Transparent)
           .margin({ top: 20 })
           .onClick(() => {
-            console.log('返回按钮被点击 - 返回子分类选择页面')
-            if (this.onBack) {
-              this.onBack()
+            if (this.currentMode !== 'normal') {
+              // 如果在学习模式（听、说、读、写），返回到单词学习页面
+              console.log('返回按钮被点击 - 返回到单词学习页面')
+              this.currentMode = 'normal'
+            } else {
+              // 如果在正常模式，返回到子分类选择页面
+              console.log('返回按钮被点击 - 返回子分类选择页面')
+              if (this.onBack) {
+                this.onBack()
+              }
             }
           })
 
@@ -642,28 +649,33 @@ export struct WordLearningPage {
         
         // 右侧：滚动内容区域
         Column() {
-          // 可选字母区域
+          // 可选字母区域（单行，横向滚动）
           Column() {
-            Flex({ wrap: FlexWrap.Wrap, justifyContent: FlexAlign.Center }) {
-              ForEach(Array.from(this.getCurrentWord()!.english), (letter: string, index: number) => {
-                Text(letter)
-                  .fontSize(50)
-                  .fontColor('#FFFFFF')
-                  .fontWeight(FontWeight.Bold)
-                  .width(65)
-                  .height(65)
-                  .textAlign(TextAlign.Center)
-                  .backgroundColor('#FFA07A')
-                  .borderRadius(18)
-                  .margin(6)
-                  .onClick(() => {
-                    if (this.draggedLetters.filter(l => l === letter).length < this.getCurrentWord()!.english.split('').filter(l => l === letter).length) {
-                      this.draggedLetters.push(letter)
-                      this.checkWriteResult()
-                    }
-                  })
-              })
+            Scroll() {
+              Flex({ wrap: FlexWrap.NoWrap, justifyContent: FlexAlign.Start }) {
+                ForEach(Array.from(this.getCurrentWord()!.english), (letter: string, index: number) => {
+                  Text(letter)
+                    .fontSize(50)
+                    .fontColor('#FFFFFF')
+                    .fontWeight(FontWeight.Bold)
+                    .width(65)
+                    .height(65)
+                    .textAlign(TextAlign.Center)
+                    .backgroundColor('#FFA07A')
+                    .borderRadius(18)
+                    .margin(6)
+                    .onClick(() => {
+                      if (this.draggedLetters.filter(l => l === letter).length < this.getCurrentWord()!.english.split('').filter(l => l === letter).length) {
+                        this.draggedLetters.push(letter)
+                        this.checkWriteResult()
+                      }
+                    })
+                })
+              }
+              .width('100%')
             }
+            .scrollable(ScrollDirection.Horizontal)
+            .scrollBar(BarState.On)
             .width('100%')
             .padding(10)
           }
@@ -673,36 +685,40 @@ export struct WordLearningPage {
           .padding(15)
           .margin({ bottom: 20 })
         
-          // 书写区域
+          // 书写区域（单行，横向滚动）
           Column() {
-            Flex({ wrap: FlexWrap.NoWrap, justifyContent: FlexAlign.Center }) {
-              ForEach(this.draggedLetters, (letter: string, index: number) => {
-                Text(letter)
-                  .fontSize(50)
-                  .fontColor('#FFFFFF')
-                  .fontWeight(FontWeight.Bold)
-                  .width(65)
-                  .height(65)
-                  .textAlign(TextAlign.Center)
-                  .backgroundColor(this.isWriteCorrect ? '#95E1D3' : '#FF9A9A')
-                  .borderRadius(20)
-                  .margin(8)
-                  .onClick(() => {
-                    if (!this.isWriteCorrect) {
-                      this.draggedLetters.splice(index, 1)
-                    }
-                  })
-              })
-              
-              if (this.draggedLetters.length === 0) {
-                Text('👆 点击字母拼写')
-                  .fontSize(35)
-                  .fontColor('#A9A9A9')
-                  .margin(20)
+            Scroll() {
+              Flex({ wrap: FlexWrap.NoWrap, justifyContent: FlexAlign.Start }) {
+                ForEach(this.draggedLetters, (letter: string, index: number) => {
+                  Text(letter)
+                    .fontSize(50)
+                    .fontColor('#FFFFFF')
+                    .fontWeight(FontWeight.Bold)
+                    .width(65)
+                    .height(65)
+                    .textAlign(TextAlign.Center)
+                    .backgroundColor(this.isWriteCorrect ? '#95E1D3' : '#FF9A9A')
+                    .borderRadius(20)
+                    .margin(8)
+                    .onClick(() => {
+                      if (!this.isWriteCorrect) {
+                        this.draggedLetters.splice(index, 1)
+                      }
+                    })
+                })
+                
+                if (this.draggedLetters.length === 0) {
+                  Text('👆 点击字母拼写')
+                    .fontSize(35)
+                    .fontColor('#A9A9A9')
+                    .margin(20)
+                }
               }
+              .width('100%')
             }
+            .scrollable(ScrollDirection.Horizontal)
+            .scrollBar(BarState.On)
             .width('100%')
-            // .height(100)
           }
           .width('100%')
           .backgroundColor('#FFF8E7')
@@ -723,6 +739,7 @@ export struct WordLearningPage {
         }
         .width('90%')
         .layoutWeight(1)
+        .padding({ right: 20 })
       }
       .width('100%')
       .height('90%')

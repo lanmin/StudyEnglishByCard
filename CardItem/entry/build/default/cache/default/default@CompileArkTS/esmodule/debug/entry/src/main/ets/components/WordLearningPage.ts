@@ -723,9 +723,17 @@ export class WordLearningPage extends ViewPU {
             Button.margin({ top: 20 });
             // 返回按钮
             Button.onClick(() => {
-                console.log('返回按钮被点击 - 返回子分类选择页面');
-                if (this.onBack) {
-                    this.onBack();
+                if (this.currentMode !== 'normal') {
+                    // 如果在学习模式（听、说、读、写），返回到单词学习页面
+                    console.log('返回按钮被点击 - 返回到单词学习页面');
+                    this.currentMode = 'normal';
+                }
+                else {
+                    // 如果在正常模式，返回到子分类选择页面
+                    console.log('返回按钮被点击 - 返回子分类选择页面');
+                    if (this.onBack) {
+                        this.onBack();
+                    }
                 }
             });
         }, Button);
@@ -943,25 +951,33 @@ export class WordLearningPage extends ViewPU {
                         Column.width('90%');
                         // 右侧：滚动内容区域
                         Column.layoutWeight(1);
+                        // 右侧：滚动内容区域
+                        Column.padding({ right: 20 });
                     }, Column);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        // 可选字母区域
+                        // 可选字母区域（单行，横向滚动）
                         Column.create();
-                        // 可选字母区域
+                        // 可选字母区域（单行，横向滚动）
                         Column.width('100%');
-                        // 可选字母区域
+                        // 可选字母区域（单行，横向滚动）
                         Column.backgroundColor('#FFE4E1');
-                        // 可选字母区域
+                        // 可选字母区域（单行，横向滚动）
                         Column.borderRadius(25);
-                        // 可选字母区域
+                        // 可选字母区域（单行，横向滚动）
                         Column.padding(15);
-                        // 可选字母区域
+                        // 可选字母区域（单行，横向滚动）
                         Column.margin({ bottom: 20 });
                     }, Column);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        Flex.create({ wrap: FlexWrap.Wrap, justifyContent: FlexAlign.Center });
+                        Scroll.create();
+                        Scroll.scrollable(ScrollDirection.Horizontal);
+                        Scroll.scrollBar(BarState.On);
+                        Scroll.width('100%');
+                        Scroll.padding(10);
+                    }, Scroll);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Flex.create({ wrap: FlexWrap.NoWrap, justifyContent: FlexAlign.Start });
                         Flex.width('100%');
-                        Flex.padding(10);
                     }, Flex);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         ForEach.create();
@@ -991,37 +1007,44 @@ export class WordLearningPage extends ViewPU {
                     }, ForEach);
                     ForEach.pop();
                     Flex.pop();
-                    // 可选字母区域
+                    Scroll.pop();
+                    // 可选字母区域（单行，横向滚动）
                     Column.pop();
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        // 书写区域
+                        // 书写区域（单行，横向滚动）
                         Column.create();
-                        // 书写区域
+                        // 书写区域（单行，横向滚动）
                         Column.width('100%');
-                        // 书写区域
+                        // 书写区域（单行，横向滚动）
                         Column.backgroundColor('#FFF8E7');
-                        // 书写区域
+                        // 书写区域（单行，横向滚动）
                         Column.borderRadius(25);
-                        // 书写区域
+                        // 书写区域（单行，横向滚动）
                         Column.padding(20);
-                        // 书写区域
+                        // 书写区域（单行，横向滚动）
                         Column.border({
                             width: 4,
                             color: this.isWriteCorrect ? '#95E1D3' : '#FFB6C1',
                             style: BorderStyle.Solid
                         });
-                        // 书写区域
+                        // 书写区域（单行，横向滚动）
                         Column.shadow({
                             radius: 10,
                             color: '#00000010',
                             offsetX: 0,
                             offsetY: 3
                         });
-                        // 书写区域
+                        // 书写区域（单行，横向滚动）
                         Column.margin({ bottom: 10 });
                     }, Column);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        Flex.create({ wrap: FlexWrap.NoWrap, justifyContent: FlexAlign.Center });
+                        Scroll.create();
+                        Scroll.scrollable(ScrollDirection.Horizontal);
+                        Scroll.scrollBar(BarState.On);
+                        Scroll.width('100%');
+                    }, Scroll);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Flex.create({ wrap: FlexWrap.NoWrap, justifyContent: FlexAlign.Start });
                         Flex.width('100%');
                     }, Flex);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
@@ -1070,7 +1093,8 @@ export class WordLearningPage extends ViewPU {
                     }, If);
                     If.pop();
                     Flex.pop();
-                    // 书写区域
+                    Scroll.pop();
+                    // 书写区域（单行，横向滚动）
                     Column.pop();
                     // 右侧：滚动内容区域
                     Column.pop();
