@@ -674,6 +674,7 @@ export struct WordLearningPage {
           })
           .onClick(() => {
             this.flipCard()
+            this.playPronunciation()
           })
           
           // 右侧：英文和中文显示区域 + 听说读写按钮

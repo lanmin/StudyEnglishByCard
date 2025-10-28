@@ -1019,6 +1019,7 @@ export class WordLearningPage extends ViewPU {
                         // 中间：单词卡片
                         Column.onClick(() => {
                             this.flipCard();
+                            this.playPronunciation();
                         });
                     }, Column);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
