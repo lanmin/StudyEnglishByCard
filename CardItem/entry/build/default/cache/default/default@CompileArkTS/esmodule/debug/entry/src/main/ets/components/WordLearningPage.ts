@@ -19,14 +19,16 @@ interface WordLearningPage_Params {
     testCorrectAnswerShown?: boolean;
     drawingPaths?: string;
     learningDataManager?;
+    learningProgressManager?;
     draggedLetters?: string[];
     isWriteCorrect?: boolean;
     completedModes?: string[];
 }
-import type { WordData, SubcategoryData } from '../types/CommonTypes';
+import type { WordData, SubcategoryData, ThemeType } from '../types/CommonTypes';
 import { LearningDataManager } from "@normalized:N&&&entry/src/main/ets/utils/LearningDataManager&";
 import { SpeechManager } from "@normalized:N&&&entry/src/main/ets/utils/SpeechManager&";
 import { AudioRecorderManager } from "@normalized:N&&&entry/src/main/ets/utils/AudioRecorderManager&";
+import { LearningProgressManager } from "@normalized:N&&&entry/src/main/ets/utils/LearningProgressManager&";
 interface TouchPoint {
     x: number;
     y: number;
@@ -64,6 +66,7 @@ export class WordLearningPage extends ViewPU {
         this.__drawingPaths = new ObservedPropertySimplePU('' // 绘制的路径数据
         , this, "drawingPaths");
         this.learningDataManager = LearningDataManager.getInstance();
+        this.learningProgressManager = LearningProgressManager.getInstance();
         this.__draggedLetters = new ObservedPropertyObjectPU([], this, "draggedLetters");
         this.__isWriteCorrect = new ObservedPropertySimplePU(false // 是否拼写正确
         , this, "isWriteCorrect");
@@ -123,6 +126,9 @@ export class WordLearningPage extends ViewPU {
         }
         if (params.learningDataManager !== undefined) {
             this.learningDataManager = params.learningDataManager;
+        }
+        if (params.learningProgressManager !== undefined) {
+            this.learningProgressManager = params.learningProgressManager;
         }
         if (params.draggedLetters !== undefined) {
             this.draggedLetters = params.draggedLetters;
@@ -278,6 +284,7 @@ export class WordLearningPage extends ViewPU {
         this.__drawingPaths.set(newValue);
     }
     private learningDataManager;
+    private learningProgressManager;
     aboutToAppear() {
         // 初始化TTS
         SpeechManager.init();
@@ -408,6 +415,27 @@ export class WordLearningPage extends ViewPU {
             this.currentMode = 'normal'; // 回到正常模式
         }
     }
+    // 检查单词是否完成
+    private checkWordCompletion() {
+        const currentWord = this.getCurrentWord();
+        if (!currentWord)
+            return;
+        // 更新单词完成状态
+        this.learningProgressManager.updateWordCompletion(currentWord.english, this.completedModes);
+        // 检查子分类是否完成
+        const allWordIds = this.words.map(w => w.english);
+        const isSubcategoryCompleted = this.learningProgressManager.checkSubcategoryCompletion(this.subcategoryId, allWordIds);
+        if (isSubcategoryCompleted) {
+            console.log(`子分类 ${this.subcategoryId} 已完成！`);
+            // 检查主题是否完成
+            const subcategories = this.learningDataManager.getSubcategoriesByTheme(this.learningDataManager.getThemeBySubcategoryId(this.subcategoryId) as ThemeType);
+            const allSubcategoryIds = subcategories.map(s => s.id);
+            const isThemeCompleted = this.learningProgressManager.checkThemeCompletion(this.learningDataManager.getThemeBySubcategoryId(this.subcategoryId), allSubcategoryIds);
+            if (isThemeCompleted) {
+                console.log(`主题 ${this.learningDataManager.getThemeBySubcategoryId(this.subcategoryId)} 已完成！`);
+            }
+        }
+    }
     // 处理点击事件：翻转卡片并播放发音
     private handleTap() {
         this.flipCard();
@@ -423,6 +451,7 @@ export class WordLearningPage extends ViewPU {
         setTimeout(() => {
             if (!this.completedModes.includes('listen')) {
                 this.completedModes.push('listen');
+                this.checkWordCompletion();
             }
         }, 2000);
         setTimeout(() => {
@@ -466,6 +495,7 @@ export class WordLearningPage extends ViewPU {
         setTimeout(() => {
             if (!this.completedModes.includes('speak')) {
                 this.completedModes.push('speak');
+                this.checkWordCompletion();
             }
         }, 5000); // 录音5秒后完成
     }
@@ -578,6 +608,7 @@ export class WordLearningPage extends ViewPU {
                 // 标记测试完成
                 if (!this.completedModes.includes('read')) {
                     this.completedModes.push('read');
+                    this.checkWordCompletion();
                 }
                 // 自动返回学习页面
                 setTimeout(() => {
@@ -619,6 +650,7 @@ export class WordLearningPage extends ViewPU {
                 // 标记书写完成
                 if (!this.completedModes.includes('write')) {
                     this.completedModes.push('write');
+                    this.checkWordCompletion();
                 }
                 // 1秒后返回学习页面
                 setTimeout(() => {

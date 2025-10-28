@@ -789,7 +789,7 @@ Car｜汽车｜車
 Bus｜公交车｜バス
 Truck｜卡车｜トラック
 Taxi｜出租车｜タクシー
-Bike/Bicycle｜自行车｜自転車
+Bike｜自行车｜自転車
 Motorcycle｜摩托车｜バイク
 Scooter｜滑板车｜スクーター
 Train｜火车｜電車
@@ -819,7 +819,7 @@ Helicopter｜直升机｜ヘリコプター
 Hot air balloon｜热气球｜熱気球
 Drone｜无人机｜ドローン
 
-### 七、家庭成员&称呼类（20个）｜Family Members & Titles（20）｜家族
+### 七、家庭成员&称呼类（20个）｜Family Members and Titles（20）｜家族
 @@@ 家庭成员｜Family Members｜家族
 Mom｜妈妈｜母
 Dad｜爸爸｜父
@@ -991,7 +991,7 @@ Toy plane｜玩具飞机｜おもちゃの飛行機`
       'body_parts': 'CardOriginal/Theme/Body Parts.png',
       'colors_shapes': 'CardOriginal/Theme/Colors & Shapes.png',
       'vehicles': 'CardOriginal/Theme/Transportation.png',
-      'family': 'CardOriginal/Theme/Family Members & Titles.png',
+      'family': 'CardOriginal/Theme/Family Members and Titles.png',
       'actions': 'CardOriginal/Theme/Actions.png',
       'places': 'CardOriginal/Theme/Places.png',
       'nature': 'CardOriginal/Theme/Natural Things.png',
@@ -1013,7 +1013,7 @@ Toy plane｜玩具飞机｜おもちゃの飛行機`
       'body_parts': 'Body Parts',
       'colors_shapes': 'Colors & Shapes',
       'vehicles': 'Transportation',
-      'family': 'Family Members & Titles',
+      'family': 'Family Members and Titles',
       'actions': 'Actions',
       'places': 'Places',
       'nature': 'Natural Things',
@@ -1128,6 +1128,23 @@ Toy plane｜玩具飞机｜おもちゃの飛行機`
     return subcategory?.name || ''
   }
 
+  // 根据子分类ID获取主题ID
+  getThemeBySubcategoryId(subcategoryId: string): string {
+    const allThemes = [
+      this.foodData, this.animalsData, this.dailyItemsData, this.bodyPartsData,
+      this.colorsShapesData, this.vehiclesData, this.familyData, this.actionsData,
+      this.placesData, this.natureData, this.clothingData, this.toysData
+    ]
+    
+    for (const theme of allThemes) {
+      const subcategory = theme.subcategories.find(sub => sub.id === subcategoryId)
+      if (subcategory) {
+        return theme.id
+      }
+    }
+    return ''
+  }
+
   // 根据主题获取单词
   getWordsByTheme(theme: ThemeType): WordData[] {
     const themeMap: Record<ThemeType, string> = {
@@ -1170,7 +1187,7 @@ Toy plane｜玩具飞机｜おもちゃの飛行機`
       'body_parts': 'Body Parts',
       'colors_shapes': 'Colors & Shapes',
       'vehicles': 'Transportation',
-      'family': 'Family Members & Titles',
+      'family': 'Family Members and Titles',
       'actions': 'Actions',
       'places': 'Places',
       'nature': 'Natural Things',

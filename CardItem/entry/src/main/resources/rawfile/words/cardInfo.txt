@@ -395,7 +395,7 @@ Car｜汽车｜車（くるま，kuruma）
 Bus｜公交车｜バス（basu）  
 Truck｜卡车｜トラック（torakku）  
 Taxi｜出租车｜タクシー（takushii）  
-Bike/Bicycle｜自行车｜自転車（じてんしゃ，jitensha）  
+Bike｜自行车｜自転車（じてんしゃ，jitensha）
 Motorcycle｜摩托车｜バイク（baiku）  
 Scooter｜滑板车｜スクーター（sukuutaa）  
 Train｜火车｜電車（でんしゃ，densha）  
@@ -424,7 +424,7 @@ Plane｜飞机｜飛行機（ひこうき，hikouki）
 Helicopter｜直升机｜ヘリコプター（herikoputaa）  
 Hot air balloon｜热气球｜熱気球（ねつききゅう，netsukikyuu）  
 Drone｜无人机｜ドローン（doroon）  
-### 七、家庭成员&称呼类（20个）｜Family Members & Titles（20）｜家族メンバー＆呼び方（かぞくめんばー＆よびかた，kazoku menbaa＆yobikata）
+### 七、家庭成员&称呼类（20个）｜Family Members and Titles（20）｜家族メンバー＆呼び方（かぞくめんばー＆よびかた，kazoku menbaa＆yobikata）
 Mom｜妈妈｜母（はは，haha）  
 Dad｜爸爸｜父（ちち，chichi）  
 Brother｜哥哥/弟弟｜兄弟（きょうだい，kyoudai）  

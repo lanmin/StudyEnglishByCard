@@ -255,7 +255,8 @@ class Index extends ViewPU {
     }
     // 保存学习进度
     saveLearningProgress() {
-        this.learningProgressManager.saveProgress();
+        // 学习进度会自动保存，无需手动调用
+        console.log('学习进度已自动保存');
     }
     // 开始主题学习
     async startThemeLearning(theme: ThemeType) {
@@ -334,6 +335,16 @@ class Index extends ViewPU {
         ];
         return colors[index % colors.length];
     }
+    // 检查子分类是否完成
+    isSubcategoryCompleted(subcategoryId: string): boolean {
+        const completion = this.learningProgressManager.getSubcategoryCompletion(subcategoryId);
+        return completion?.isCompleted === true;
+    }
+    // 检查主题是否完成
+    isThemeCompleted(themeId: string): boolean {
+        const completion = this.learningProgressManager.getThemeCompletion(themeId);
+        return completion?.isCompleted === true;
+    }
     initialRender() {
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             Column.create();
@@ -368,7 +379,7 @@ class Index extends ViewPU {
                                     onBack: () => {
                                         this.currentPage = 'subcategory_select';
                                     }
-                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 144, col: 9 });
+                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 157, col: 9 });
                                 ViewPU.create(componentCall);
                                 let paramsLambda = () => {
                                     return {
@@ -426,9 +437,9 @@ class Index extends ViewPU {
             // 复习按钮
             Button.createWithLabel('复习');
             // 复习按钮
-            Button.width(60);
+            Button.width(40);
             // 复习按钮
-            Button.height(40);
+            Button.height(30);
             // 复习按钮
             Button.backgroundColor('#52C41A');
             // 复习按钮
@@ -452,11 +463,11 @@ class Index extends ViewPU {
         Button.pop();
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             // 跳过学习按钮
-            Button.createWithLabel('跳过学习');
+            Button.createWithLabel('重置');
             // 跳过学习按钮
-            Button.width(80);
+            Button.width(40);
             // 跳过学习按钮
-            Button.height(40);
+            Button.height(30);
             // 跳过学习按钮
             Button.backgroundColor('#FF7875');
             // 跳过学习按钮
@@ -513,6 +524,9 @@ class Index extends ViewPU {
     }
     // 主题卡片
     ThemeCard(theme: ThemeData, index: number, parent = null) {
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Stack.create();
+        }, Stack);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             Column.create();
             Context.animation(GlobalStyles.ANIMATIONS.BUTTON_PRESS);
@@ -575,6 +589,39 @@ class Index extends ViewPU {
         // 主题名称（包含进度信息）
         Text.pop();
         Column.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            If.create();
+            // 完成状态对勾
+            if (this.isThemeCompleted(theme.id)) {
+                this.ifElseBranchUpdateFunction(0, () => {
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Text.create('✓');
+                        Text.fontSize(30);
+                        Text.fontColor('#52C41A');
+                        Text.fontWeight(FontWeight.Bold);
+                        Text.backgroundColor('#FFFFFF');
+                        Text.borderRadius(20);
+                        Text.width(40);
+                        Text.height(40);
+                        Text.textAlign(TextAlign.Center);
+                        Text.position({ x: 160, y: 10 });
+                        Text.shadow({
+                            radius: 5,
+                            color: '#00000020',
+                            offsetX: 0,
+                            offsetY: 2
+                        });
+                    }, Text);
+                    Text.pop();
+                });
+            }
+            else {
+                this.ifElseBranchUpdateFunction(1, () => {
+                });
+            }
+        }, If);
+        If.pop();
+        Stack.pop();
     }
     // 子分类选择页面
     SubcategorySelectPage(parent = null) {
@@ -653,6 +700,9 @@ class Index extends ViewPU {
     // 子分类卡片
     SubcategoryCard(subcategory: SubcategoryData, index: number, parent = null) {
         this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Stack.create();
+        }, Stack);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
             Column.create();
             Context.animation(GlobalStyles.ANIMATIONS.BUTTON_PRESS);
             Column.width(200);
@@ -714,6 +764,39 @@ class Index extends ViewPU {
         // 子分类名称（包含进度信息）
         Text.pop();
         Column.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            If.create();
+            // 完成状态对勾
+            if (this.isSubcategoryCompleted(subcategory.id)) {
+                this.ifElseBranchUpdateFunction(0, () => {
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Text.create('✓');
+                        Text.fontSize(30);
+                        Text.fontColor('#52C41A');
+                        Text.fontWeight(FontWeight.Bold);
+                        Text.backgroundColor('#FFFFFF');
+                        Text.borderRadius(20);
+                        Text.width(40);
+                        Text.height(40);
+                        Text.textAlign(TextAlign.Center);
+                        Text.position({ x: 160, y: 10 });
+                        Text.shadow({
+                            radius: 5,
+                            color: '#00000020',
+                            offsetX: 0,
+                            offsetY: 2
+                        });
+                    }, Text);
+                    Text.pop();
+                });
+            }
+            else {
+                this.ifElseBranchUpdateFunction(1, () => {
+                });
+            }
+        }, If);
+        If.pop();
+        Stack.pop();
     }
     // 设置页面
     ParentHelperPage(parent = null) {

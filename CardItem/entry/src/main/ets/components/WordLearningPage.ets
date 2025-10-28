@@ -1,9 +1,10 @@
 // 单词学习页面组件
 
-import { WordData, SubcategoryData } from '../types/CommonTypes'
+import { WordData, SubcategoryData, ThemeType } from '../types/CommonTypes'
 import { LearningDataManager } from '../utils/LearningDataManager'
 import { SpeechManager } from '../utils/SpeechManager'
 import { AudioRecorderManager } from '../utils/AudioRecorderManager'
+import { LearningProgressManager } from '../utils/LearningProgressManager'
 
 interface TouchPoint {
   x: number
@@ -33,6 +34,7 @@ export struct WordLearningPage {
   @State drawingPaths: string = ''  // 绘制的路径数据
   
   private learningDataManager = LearningDataManager.getInstance()
+  private learningProgressManager = LearningProgressManager.getInstance()
 
   aboutToAppear() {
     // 初始化TTS
@@ -175,6 +177,35 @@ export struct WordLearningPage {
     }
   }
 
+  // 检查单词是否完成
+  private checkWordCompletion() {
+    const currentWord = this.getCurrentWord()
+    if (!currentWord) return
+
+    // 更新单词完成状态
+    this.learningProgressManager.updateWordCompletion(currentWord.english, this.completedModes)
+    
+    // 检查子分类是否完成
+    const allWordIds = this.words.map(w => w.english)
+    const isSubcategoryCompleted = this.learningProgressManager.checkSubcategoryCompletion(this.subcategoryId, allWordIds)
+    
+    if (isSubcategoryCompleted) {
+      console.log(`子分类 ${this.subcategoryId} 已完成！`)
+      
+      // 检查主题是否完成
+      const subcategories = this.learningDataManager.getSubcategoriesByTheme(this.learningDataManager.getThemeBySubcategoryId(this.subcategoryId) as ThemeType)
+      const allSubcategoryIds = subcategories.map(s => s.id)
+      const isThemeCompleted = this.learningProgressManager.checkThemeCompletion(
+        this.learningDataManager.getThemeBySubcategoryId(this.subcategoryId), 
+        allSubcategoryIds
+      )
+      
+      if (isThemeCompleted) {
+        console.log(`主题 ${this.learningDataManager.getThemeBySubcategoryId(this.subcategoryId)} 已完成！`)
+      }
+    }
+  }
+
   // 处理点击事件：翻转卡片并播放发音
   private handleTap() {
     this.flipCard()
@@ -192,6 +223,7 @@ export struct WordLearningPage {
     setTimeout(() => {
       if (!this.completedModes.includes('listen')) {
         this.completedModes.push('listen')
+        this.checkWordCompletion()
       }
     }, 2000)
     setTimeout(() => {
@@ -246,6 +278,7 @@ export struct WordLearningPage {
     setTimeout(() => {
       if (!this.completedModes.includes('speak')) {
         this.completedModes.push('speak')
+        this.checkWordCompletion()
       }
     }, 5000)  // 录音5秒后完成
   }
@@ -379,6 +412,7 @@ export struct WordLearningPage {
         // 标记测试完成
         if (!this.completedModes.includes('read')) {
           this.completedModes.push('read')
+          this.checkWordCompletion()
         }
         
         // 自动返回学习页面
@@ -424,6 +458,7 @@ export struct WordLearningPage {
         // 标记书写完成
         if (!this.completedModes.includes('write')) {
           this.completedModes.push('write')
+          this.checkWordCompletion()
         }
         
         // 1秒后返回学习页面

@@ -50,7 +50,8 @@ struct Index {
 
   // 保存学习进度
   saveLearningProgress() {
-    this.learningProgressManager.saveProgress()
+    // 学习进度会自动保存，无需手动调用
+    console.log('学习进度已自动保存')
   }
 
   // 开始主题学习
@@ -132,6 +133,18 @@ struct Index {
     return colors[index % colors.length]
   }
 
+  // 检查子分类是否完成
+  isSubcategoryCompleted(subcategoryId: string): boolean {
+    const completion = this.learningProgressManager.getSubcategoryCompletion(subcategoryId)
+    return completion?.isCompleted === true
+  }
+
+  // 检查主题是否完成
+  isThemeCompleted(themeId: string): boolean {
+    const completion = this.learningProgressManager.getThemeCompletion(themeId)
+    return completion?.isCompleted === true
+  }
+
   build() {
     Column() {
       if (this.currentPage === 'theme_select') {
@@ -167,8 +180,8 @@ struct Index {
         
         // 复习按钮
         Button('复习')
-          .width(60)
-          .height(40)
+          .width(40)
+          .height(30)
           .backgroundColor('#52C41A')
           .fontSize(12)
           .fontColor(Color.White)
@@ -182,9 +195,9 @@ struct Index {
           })
         
         // 跳过学习按钮
-        Button('跳过学习')
-          .width(80)
-          .height(40)
+        Button('重置')
+          .width(40)
+          .height(30)
           .backgroundColor('#FF7875')
           .fontSize(12)
           .fontColor(Color.White)
@@ -224,46 +237,68 @@ struct Index {
 
   // 主题卡片
   @Builder ThemeCard(theme: ThemeData, index: number) {
-    Column() {
-      // 主题图标
-      Image($rawfile(theme.icon))
-        .width(100)
-        .height(100)
-        .borderRadius(GlobalStyles.BORDER_RADIUS.SMALL)
-        .backgroundColor('#FFFFFF')
-        .objectFit(ImageFit.Contain)
-        .padding(5)
-      
-      // 主题名称（包含进度信息）
-      Text(`${theme.name}（${theme.completedWords}/${theme.totalWords}）`)
-        .fontSize(GlobalStyles.FONT_SIZES.TEXT_SMALL)
-        .fontColor(GlobalStyles.COLORS.TEXT_PRIMARY)
-        .fontWeight(FontWeight.Bold)
-        .margin({ top: 8 })
-        .textAlign(TextAlign.Center)
-        .maxLines(2)
-        .textOverflow({ overflow: TextOverflow.Ellipsis })
-        .width('100%')
+    Stack() {
+      Column() {
+        // 主题图标
+        Image($rawfile(theme.icon))
+          .width(100)
+          .height(100)
+          .borderRadius(GlobalStyles.BORDER_RADIUS.SMALL)
+          .backgroundColor('#FFFFFF')
+          .objectFit(ImageFit.Contain)
+          .padding(5)
+        
+        // 主题名称（包含进度信息）
+        Text(`${theme.name}（${theme.completedWords}/${theme.totalWords}）`)
+          .fontSize(GlobalStyles.FONT_SIZES.TEXT_SMALL)
+          .fontColor(GlobalStyles.COLORS.TEXT_PRIMARY)
+          .fontWeight(FontWeight.Bold)
+          .margin({ top: 8 })
+          .textAlign(TextAlign.Center)
+          .maxLines(2)
+          .textOverflow({ overflow: TextOverflow.Ellipsis })
+          .width('100%')
+      }
+      .width(200)
+      .height(190)
+      .backgroundColor(GlobalStyles.COLORS.CARD_BACKGROUND)
+      .borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM)
+      .border({
+        width: 2,
+        color: this.getRandomBorderColor(index),
+        style: BorderStyle.Solid
+      })
+      .padding({ top: 10, bottom: 10, left: 10, right: 10 })
+      .justifyContent(FlexAlign.Center)
+      .shadow(GlobalStyles.SHADOWS.MEDIUM)
+      .margin({ right: GlobalStyles.SIZES.SPACING_MEDIUM })
+      .onClick(() => {
+        this.soundEffectManager.playButtonClick()
+        this.enterSubcategorySelect(theme.id)
+      })
+      .animation(GlobalStyles.ANIMATIONS.BUTTON_PRESS)
+      .scale({ x: 1, y: 1 })
+
+      // 完成状态对勾
+      if (this.isThemeCompleted(theme.id)) {
+        Text('✓')
+          .fontSize(30)
+          .fontColor('#52C41A')
+          .fontWeight(FontWeight.Bold)
+          .backgroundColor('#FFFFFF')
+          .borderRadius(20)
+          .width(40)
+          .height(40)
+          .textAlign(TextAlign.Center)
+          .position({ x: 160, y: 10 })
+          .shadow({
+            radius: 5,
+            color: '#00000020',
+            offsetX: 0,
+            offsetY: 2
+          })
+      }
     }
-    .width(200)
-    .height(190)
-    .backgroundColor(GlobalStyles.COLORS.CARD_BACKGROUND)
-    .borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM)
-    .border({
-      width: 2,
-      color: this.getRandomBorderColor(index),
-      style: BorderStyle.Solid
-    })
-    .padding({ top: 10, bottom: 10, left: 10, right: 10 })
-    .justifyContent(FlexAlign.Center)
-    .shadow(GlobalStyles.SHADOWS.MEDIUM)
-    .margin({ right: GlobalStyles.SIZES.SPACING_MEDIUM })
-    .onClick(() => {
-      this.soundEffectManager.playButtonClick()
-      this.enterSubcategorySelect(theme.id)
-    })
-    .animation(GlobalStyles.ANIMATIONS.BUTTON_PRESS)
-    .scale({ x: 1, y: 1 })
   }
 
   // 子分类选择页面
@@ -315,46 +350,68 @@ struct Index {
 
   // 子分类卡片
   @Builder SubcategoryCard(subcategory: SubcategoryData, index: number) {
-    Column() {
-      // 子分类图标
-      Image($rawfile(subcategory.icon))
-        .width(100)
-        .height(100)
-        .borderRadius(GlobalStyles.BORDER_RADIUS.SMALL)
-        .backgroundColor('#FFFFFF')
-        .objectFit(ImageFit.Contain)
-        .padding(5)
-      
-      // 子分类名称（包含进度信息）
-      Text(`${subcategory.name}（${subcategory.completedWords}/${subcategory.totalWords}）`)
-        .fontSize(GlobalStyles.FONT_SIZES.TEXT_SMALL)
-        .fontColor(GlobalStyles.COLORS.TEXT_PRIMARY)
-        .fontWeight(FontWeight.Bold)
-        .margin({ top: 8 })
-        .textAlign(TextAlign.Center)
-        .maxLines(2)
-        .textOverflow({ overflow: TextOverflow.Ellipsis })
-        .width('100%')
+    Stack() {
+      Column() {
+        // 子分类图标
+        Image($rawfile(subcategory.icon))
+          .width(100)
+          .height(100)
+          .borderRadius(GlobalStyles.BORDER_RADIUS.SMALL)
+          .backgroundColor('#FFFFFF')
+          .objectFit(ImageFit.Contain)
+          .padding(5)
+        
+        // 子分类名称（包含进度信息）
+        Text(`${subcategory.name}（${subcategory.completedWords}/${subcategory.totalWords}）`)
+          .fontSize(GlobalStyles.FONT_SIZES.TEXT_SMALL)
+          .fontColor(GlobalStyles.COLORS.TEXT_PRIMARY)
+          .fontWeight(FontWeight.Bold)
+          .margin({ top: 8 })
+          .textAlign(TextAlign.Center)
+          .maxLines(2)
+          .textOverflow({ overflow: TextOverflow.Ellipsis })
+          .width('100%')
+      }
+      .width(200)
+      .height(190)
+      .backgroundColor(GlobalStyles.COLORS.CARD_BACKGROUND)
+      .borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM)
+      .border({
+        width: 2,
+        color: this.getRandomBorderColor(index),
+        style: BorderStyle.Solid
+      })
+      .padding({ top: 10, bottom: 10, left: 10, right: 10 })
+      .justifyContent(FlexAlign.Center)
+      .shadow(GlobalStyles.SHADOWS.MEDIUM)
+      .margin({ right: GlobalStyles.SIZES.SPACING_MEDIUM })
+      .onClick(() => {
+        this.soundEffectManager.playButtonClick()
+        this.startSubcategoryLearning(subcategory.id)
+      })
+      .animation(GlobalStyles.ANIMATIONS.BUTTON_PRESS)
+      .scale({ x: 1, y: 1 })
+
+      // 完成状态对勾
+      if (this.isSubcategoryCompleted(subcategory.id)) {
+        Text('✓')
+          .fontSize(30)
+          .fontColor('#52C41A')
+          .fontWeight(FontWeight.Bold)
+          .backgroundColor('#FFFFFF')
+          .borderRadius(20)
+          .width(40)
+          .height(40)
+          .textAlign(TextAlign.Center)
+          .position({ x: 160, y: 10 })
+          .shadow({
+            radius: 5,
+            color: '#00000020',
+            offsetX: 0,
+            offsetY: 2
+          })
+      }
     }
-    .width(200)
-    .height(190)
-    .backgroundColor(GlobalStyles.COLORS.CARD_BACKGROUND)
-    .borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM)
-    .border({
-      width: 2,
-      color: this.getRandomBorderColor(index),
-      style: BorderStyle.Solid
-    })
-    .padding({ top: 10, bottom: 10, left: 10, right: 10 })
-    .justifyContent(FlexAlign.Center)
-    .shadow(GlobalStyles.SHADOWS.MEDIUM)
-    .margin({ right: GlobalStyles.SIZES.SPACING_MEDIUM })
-    .onClick(() => {
-      this.soundEffectManager.playButtonClick()
-      this.startSubcategoryLearning(subcategory.id)
-    })
-    .animation(GlobalStyles.ANIMATIONS.BUTTON_PRESS)
-    .scale({ x: 1, y: 1 })
   }
 
   // 设置页面
