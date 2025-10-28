@@ -196,8 +196,8 @@ struct Index {
         
         // 跳过学习按钮
         Button('挑战模式')
-          .width(100)
-          .height(50)
+          .width(120)
+          .height(40)
           .backgroundColor(GlobalStyles.COLORS.PRIMARY_ORANGE)
           .fontSize(18)
           .fontColor(Color.White)

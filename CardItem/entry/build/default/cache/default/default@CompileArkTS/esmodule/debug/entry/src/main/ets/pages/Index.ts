@@ -467,7 +467,7 @@ class Index extends ViewPU {
             //     console.log('复习按钮点击')
             //   })
             // 跳过学习按钮
-            Button.width(100);
+            Button.width(120);
             // 复习按钮
             // Button('复习')
             //   .width(60)
@@ -484,7 +484,7 @@ class Index extends ViewPU {
             //     console.log('复习按钮点击')
             //   })
             // 跳过学习按钮
-            Button.height(50);
+            Button.height(40);
             // 复习按钮
             // Button('复习')
             //   .width(60)
