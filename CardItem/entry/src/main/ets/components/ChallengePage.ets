@@ -85,8 +85,7 @@ export struct ChallengePage {
     }
     this.selectedIndex = index
 
-    const correctIndex: number = this.options.findIndex(o => this.isCorrectWord(o))
-    const isCorrect: boolean = index === correctIndex
+    const isCorrect: boolean = index === this.correctAnswerIndex
 
     // 立即放大选中的图片
     this.imageScales[index] = 1.2
