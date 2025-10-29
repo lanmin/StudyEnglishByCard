@@ -11,6 +11,9 @@ interface Index_Params {
     showProgress?: boolean;
     showDetailPage?: boolean;
     showChallenge?: boolean;
+    showSettingsDialog?: boolean;
+    showPrivacyPage?: boolean;
+    showReportDialog?: boolean;
     selectedWord?: WordData | null;
     isImageHidden?: boolean;
     volumeVisible?: boolean;
@@ -36,6 +39,7 @@ import { GlobalStyles } from "@normalized:N&&&entry/src/main/ets/styles/GlobalSt
 import { WordLearningPage } from "@normalized:N&&&entry/src/main/ets/components/WordLearningPage&";
 import { ChallengePage } from "@normalized:N&&&entry/src/main/ets/components/ChallengePage&";
 import type { PageType, ThemeType, ThemeData, SubcategoryData, WordData, LearningMode } from '../types/CommonTypes';
+import promptAction from "@ohos:promptAction";
 class Index extends ViewPU {
     constructor(parent, params, __localStorage, elmtId = -1, paramsLambda = undefined, extraInfo) {
         super(parent, __localStorage, elmtId, extraInfo);
@@ -51,6 +55,9 @@ class Index extends ViewPU {
         this.__showProgress = new ObservedPropertySimplePU(false, this, "showProgress");
         this.__showDetailPage = new ObservedPropertySimplePU(false, this, "showDetailPage");
         this.__showChallenge = new ObservedPropertySimplePU(false, this, "showChallenge");
+        this.__showSettingsDialog = new ObservedPropertySimplePU(false, this, "showSettingsDialog");
+        this.__showPrivacyPage = new ObservedPropertySimplePU(false, this, "showPrivacyPage");
+        this.__showReportDialog = new ObservedPropertySimplePU(false, this, "showReportDialog");
         this.__selectedWord = new ObservedPropertyObjectPU(null, this, "selectedWord");
         this.__isImageHidden = new ObservedPropertySimplePU(false, this, "isImageHidden");
         this.__volumeVisible = new ObservedPropertySimplePU(false, this, "volumeVisible");
@@ -101,6 +108,15 @@ class Index extends ViewPU {
         }
         if (params.showChallenge !== undefined) {
             this.showChallenge = params.showChallenge;
+        }
+        if (params.showSettingsDialog !== undefined) {
+            this.showSettingsDialog = params.showSettingsDialog;
+        }
+        if (params.showPrivacyPage !== undefined) {
+            this.showPrivacyPage = params.showPrivacyPage;
+        }
+        if (params.showReportDialog !== undefined) {
+            this.showReportDialog = params.showReportDialog;
         }
         if (params.selectedWord !== undefined) {
             this.selectedWord = params.selectedWord;
@@ -163,6 +179,9 @@ class Index extends ViewPU {
         this.__showProgress.purgeDependencyOnElmtId(rmElmtId);
         this.__showDetailPage.purgeDependencyOnElmtId(rmElmtId);
         this.__showChallenge.purgeDependencyOnElmtId(rmElmtId);
+        this.__showSettingsDialog.purgeDependencyOnElmtId(rmElmtId);
+        this.__showPrivacyPage.purgeDependencyOnElmtId(rmElmtId);
+        this.__showReportDialog.purgeDependencyOnElmtId(rmElmtId);
         this.__selectedWord.purgeDependencyOnElmtId(rmElmtId);
         this.__isImageHidden.purgeDependencyOnElmtId(rmElmtId);
         this.__volumeVisible.purgeDependencyOnElmtId(rmElmtId);
@@ -182,6 +201,9 @@ class Index extends ViewPU {
         this.__showProgress.aboutToBeDeleted();
         this.__showDetailPage.aboutToBeDeleted();
         this.__showChallenge.aboutToBeDeleted();
+        this.__showSettingsDialog.aboutToBeDeleted();
+        this.__showPrivacyPage.aboutToBeDeleted();
+        this.__showReportDialog.aboutToBeDeleted();
         this.__selectedWord.aboutToBeDeleted();
         this.__isImageHidden.aboutToBeDeleted();
         this.__volumeVisible.aboutToBeDeleted();
@@ -255,6 +277,27 @@ class Index extends ViewPU {
     }
     set showChallenge(newValue: boolean) {
         this.__showChallenge.set(newValue);
+    }
+    private __showSettingsDialog: ObservedPropertySimplePU<boolean>;
+    get showSettingsDialog() {
+        return this.__showSettingsDialog.get();
+    }
+    set showSettingsDialog(newValue: boolean) {
+        this.__showSettingsDialog.set(newValue);
+    }
+    private __showPrivacyPage: ObservedPropertySimplePU<boolean>;
+    get showPrivacyPage() {
+        return this.__showPrivacyPage.get();
+    }
+    set showPrivacyPage(newValue: boolean) {
+        this.__showPrivacyPage.set(newValue);
+    }
+    private __showReportDialog: ObservedPropertySimplePU<boolean>;
+    get showReportDialog() {
+        return this.__showReportDialog.get();
+    }
+    set showReportDialog(newValue: boolean) {
+        this.__showReportDialog.set(newValue);
     }
     private __selectedWord: ObservedPropertyObjectPU<WordData | null>;
     get selectedWord() {
@@ -409,6 +452,13 @@ class Index extends ViewPU {
         ];
         return colors[index % colors.length];
     }
+    // 显示链接提示
+    private showUrlPrompt(url: string) {
+        promptAction.showToast({
+            message: `请在浏览器中输入：${url}`,
+            duration: 3000
+        });
+    }
     // 检查子分类是否完成
     isSubcategoryCompleted(subcategoryId: string): boolean {
         const completion = this.learningProgressManager.getSubcategoryCompletion(subcategoryId);
@@ -475,7 +525,7 @@ class Index extends ViewPU {
                                     onBack: () => {
                                         this.showChallenge = false;
                                     }
-                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 203, col: 9 });
+                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 215, col: 9 });
                                 ViewPU.create(componentCall);
                                 let paramsLambda = () => {
                                     return {
@@ -519,7 +569,7 @@ class Index extends ViewPU {
                                     onBack: () => {
                                         this.currentPage = 'subcategory_select';
                                     }
-                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 216, col: 9 });
+                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 228, col: 9 });
                                 ViewPU.create(componentCall);
                                 let paramsLambda = () => {
                                     return {
@@ -620,6 +670,33 @@ class Index extends ViewPU {
         }, Button);
         // 挑战模式按钮（按当前选择的主题进入挑战页面）
         Button.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            // 设置按钮
+            Button.createWithLabel('设置');
+            // 设置按钮
+            Button.width(100);
+            // 设置按钮
+            Button.height(40);
+            // 设置按钮
+            Button.backgroundColor(GlobalStyles.COLORS.PRIMARY_BLUE);
+            // 设置按钮
+            Button.fontSize(18);
+            // 设置按钮
+            Button.fontColor(Color.White);
+            // 设置按钮
+            Button.fontWeight(FontWeight.Bold);
+            // 设置按钮
+            Button.borderRadius(25);
+            // 设置按钮
+            Button.margin({ left: 10 });
+            // 设置按钮
+            Button.onClick(() => {
+                this.soundEffectManager.playButtonClick();
+                this.showSettingsDialog = true;
+            });
+        }, Button);
+        // 设置按钮
+        Button.pop();
         // 顶部区域 - 标题和功能按钮
         Row.pop();
         this.observeComponentCreation2((elmtId, isInitialRender) => {
@@ -655,6 +732,574 @@ class Index extends ViewPU {
         Scroll.pop();
         // 主内容
         Column.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            If.create();
+            // 设置页面（全屏）
+            if (this.showSettingsDialog) {
+                this.ifElseBranchUpdateFunction(0, () => {
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Column.create();
+                        Column.width('100%');
+                        Column.height('100%');
+                        Column.backgroundColor('#F5F5F5');
+                        Column.expandSafeArea();
+                    }, Column);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        // 顶部导航栏
+                        Row.create();
+                        // 顶部导航栏
+                        Row.width('100%');
+                        // 顶部导航栏
+                        Row.padding({ left: 20, right: 20, top: 10, bottom: 10 });
+                        // 顶部导航栏
+                        Row.backgroundColor(GlobalStyles.COLORS.PRIMARY_BLUE);
+                    }, Row);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Button.createWithLabel('←');
+                        Button.width(50);
+                        Button.height(50);
+                        Button.fontSize(24);
+                        Button.fontColor('#FFFFFF');
+                        Button.backgroundColor(Color.Transparent);
+                        Button.onClick(() => {
+                            this.soundEffectManager.playButtonClick();
+                            this.showSettingsDialog = false;
+                        });
+                    }, Button);
+                    Button.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Text.create('设置');
+                        Text.fontSize(22);
+                        Text.fontColor('#FFFFFF');
+                        Text.fontWeight(FontWeight.Bold);
+                        Text.layoutWeight(1);
+                        Text.textAlign(TextAlign.Center);
+                    }, Text);
+                    Text.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Blank.create();
+                        Blank.width(50);
+                    }, Blank);
+                    Blank.pop();
+                    // 顶部导航栏
+                    Row.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        // 功能按钮区域（两枚方块按钮，左右排列）
+                        Column.create();
+                        // 功能按钮区域（两枚方块按钮，左右排列）
+                        Column.width('100%');
+                        // 功能按钮区域（两枚方块按钮，左右排列）
+                        Column.layoutWeight(1);
+                    }, Column);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Blank.create();
+                        Blank.height(40);
+                    }, Blank);
+                    Blank.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Row.create();
+                        Row.width('100%');
+                        Row.padding({ left: 60, right: 20 });
+                    }, Row);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        // 儿童隐私协议 方块按钮（正方形）
+                        Column.create();
+                        // 儿童隐私协议 方块按钮（正方形）
+                        Column.width(150);
+                        // 儿童隐私协议 方块按钮（正方形）
+                        Column.height(150);
+                        // 儿童隐私协议 方块按钮（正方形）
+                        Column.backgroundColor('#E3F2FD');
+                        // 儿童隐私协议 方块按钮（正方形）
+                        Column.borderRadius(16);
+                        // 儿童隐私协议 方块按钮（正方形）
+                        Column.border({ width: 2, color: GlobalStyles.COLORS.PRIMARY_BLUE, style: BorderStyle.Solid });
+                        // 儿童隐私协议 方块按钮（正方形）
+                        Column.justifyContent(FlexAlign.Center);
+                        // 儿童隐私协议 方块按钮（正方形）
+                        Column.onClick(() => {
+                            this.soundEffectManager.playButtonClick();
+                            this.showPrivacyPage = true;
+                            this.showSettingsDialog = false;
+                        });
+                    }, Column);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Text.create('📄');
+                        Text.fontSize(34);
+                        Text.margin({ bottom: 8 });
+                    }, Text);
+                    Text.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Text.create('儿童隐私协议');
+                        Text.fontSize(16);
+                        Text.fontColor('#333333');
+                        Text.textAlign(TextAlign.Center);
+                    }, Text);
+                    Text.pop();
+                    // 儿童隐私协议 方块按钮（正方形）
+                    Column.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Blank.create();
+                        Blank.width(40);
+                    }, Blank);
+                    Blank.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        // 举报与投诉 方块按钮（正方形）
+                        Column.create();
+                        // 举报与投诉 方块按钮（正方形）
+                        Column.width(150);
+                        // 举报与投诉 方块按钮（正方形）
+                        Column.height(150);
+                        // 举报与投诉 方块按钮（正方形）
+                        Column.backgroundColor('#FFEBEE');
+                        // 举报与投诉 方块按钮（正方形）
+                        Column.borderRadius(16);
+                        // 举报与投诉 方块按钮（正方形）
+                        Column.border({ width: 2, color: '#FF6B6B', style: BorderStyle.Solid });
+                        // 举报与投诉 方块按钮（正方形）
+                        Column.justifyContent(FlexAlign.Center);
+                        // 举报与投诉 方块按钮（正方形）
+                        Column.onClick(() => {
+                            this.soundEffectManager.playButtonClick();
+                            this.showReportDialog = true;
+                            this.showSettingsDialog = false;
+                        });
+                    }, Column);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Text.create('📮');
+                        Text.fontSize(34);
+                        Text.margin({ bottom: 8 });
+                    }, Text);
+                    Text.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Text.create('举报与投诉');
+                        Text.fontSize(16);
+                        Text.fontColor('#333333');
+                        Text.textAlign(TextAlign.Center);
+                    }, Text);
+                    Text.pop();
+                    // 举报与投诉 方块按钮（正方形）
+                    Column.pop();
+                    Row.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Blank.create();
+                        Blank.height(40);
+                    }, Blank);
+                    Blank.pop();
+                    // 功能按钮区域（两枚方块按钮，左右排列）
+                    Column.pop();
+                    Column.pop();
+                });
+            }
+            // 隐私协议页面（全屏）
+            else {
+                this.ifElseBranchUpdateFunction(1, () => {
+                });
+            }
+        }, If);
+        If.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            If.create();
+            // 隐私协议页面（全屏）
+            if (this.showPrivacyPage) {
+                this.ifElseBranchUpdateFunction(0, () => {
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Stack.create();
+                        Stack.width('100%');
+                        Stack.height('100%');
+                        Stack.expandSafeArea();
+                    }, Stack);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Column.create();
+                        Column.width('100%');
+                        Column.height('100%');
+                        Column.backgroundColor('#FFFFFF');
+                        Column.expandSafeArea();
+                    }, Column);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        // 顶部导航栏
+                        Row.create();
+                        // 顶部导航栏
+                        Row.width('100%');
+                        // 顶部导航栏
+                        Row.padding({ left: 30, right: 20, top: 10, bottom: 10 });
+                        // 顶部导航栏
+                        Row.backgroundColor('#FFFFFF');
+                    }, Row);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Button.createWithLabel('←');
+                        Button.width(50);
+                        Button.height(50);
+                        Button.fontSize(24);
+                        Button.fontColor('#333333');
+                        Button.backgroundColor(Color.Transparent);
+                        Button.onClick(() => {
+                            this.soundEffectManager.playButtonClick();
+                            this.showPrivacyPage = false;
+                            this.showSettingsDialog = true;
+                        });
+                    }, Button);
+                    Button.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Text.create('儿童隐私协议');
+                        Text.fontSize(20);
+                        Text.fontColor('#333333');
+                        Text.fontWeight(FontWeight.Bold);
+                        Text.layoutWeight(1);
+                        Text.textAlign(TextAlign.Center);
+                    }, Text);
+                    Text.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Blank.create();
+                        Blank.width(50);
+                    }, Blank);
+                    Blank.pop();
+                    // 顶部导航栏
+                    Row.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Divider.create();
+                        Divider.color('#E0E0E0');
+                        Divider.strokeWidth(1);
+                    }, Divider);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        // 内容区域
+                        Scroll.create();
+                        // 内容区域
+                        Scroll.layoutWeight(1);
+                        // 内容区域
+                        Scroll.scrollBar(BarState.Auto);
+                    }, Scroll);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Column.create();
+                        Column.width('100%');
+                        Column.padding({ left: 40, right: 30, bottom: 20 });
+                    }, Column);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Text.create('儿童隐私保护声明');
+                        Text.fontSize(24);
+                        Text.fontColor('#333333');
+                        Text.fontWeight(FontWeight.Bold);
+                        Text.margin({ top: 20, bottom: 20 });
+                    }, Text);
+                    Text.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Text.create('我们高度重视未成年人个人信息保护。为了帮助您了解我们如何收集、使用和保护儿童的个人信息，请您仔细阅读本隐私保护声明。');
+                        Text.fontSize(16);
+                        Text.fontColor('#555555');
+                        Text.lineHeight(24);
+                        Text.margin({ bottom: 20 });
+                        Text.width('100%');
+                    }, Text);
+                    Text.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Text.create('查看完整隐私协议');
+                        Text.fontSize(18);
+                        Text.fontColor('#666666');
+                        Text.margin({ bottom: 10 });
+                        Text.width('100%');
+                    }, Text);
+                    Text.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        // 链接区域
+                        Row.create();
+                        // 链接区域
+                        Row.width('100%');
+                        // 链接区域
+                        Row.padding({ left: 16, right: 16, top: 12, bottom: 12 });
+                        // 链接区域
+                        Row.backgroundColor('#F0F8FF');
+                        // 链接区域
+                        Row.borderRadius(8);
+                        // 链接区域
+                        Row.border({
+                            width: 1,
+                            color: GlobalStyles.COLORS.PRIMARY_BLUE,
+                            style: BorderStyle.Solid
+                        });
+                        // 链接区域
+                        Row.margin({ bottom: 20 });
+                        // 链接区域
+                        Row.onClick(() => {
+                            this.soundEffectManager.playButtonClick();
+                            this.showUrlPrompt('https://lanmin.github.io/BabyStudyEnglishPrivacy.html');
+                        });
+                    }, Row);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Text.create('🔗');
+                        Text.fontSize(20);
+                        Text.margin({ right: 8 });
+                    }, Text);
+                    Text.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Text.create('https://lanmin.github.io/BabyStudyEnglishPrivacy.html');
+                        Text.fontSize(16);
+                        Text.fontColor(GlobalStyles.COLORS.PRIMARY_BLUE);
+                        Text.decoration({ type: TextDecorationType.Underline });
+                        Text.layoutWeight(1);
+                    }, Text);
+                    Text.pop();
+                    // 链接区域
+                    Row.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Text.create('您可以通过点击上方链接在浏览器中查看完整的《儿童隐私保护声明》，了解我们如何处理儿童的个人信息、您的权利以及如何联系我们。');
+                        Text.fontSize(16);
+                        Text.fontColor('#555555');
+                        Text.lineHeight(24);
+                        Text.margin({ bottom: 20 });
+                        Text.width('100%');
+                    }, Text);
+                    Text.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Text.create('如有任何疑问或需要帮助，请发送邮件至：394743521@qq.com');
+                        Text.fontSize(16);
+                        Text.fontColor('#555555');
+                        Text.lineHeight(24);
+                        Text.margin({ bottom: 40 });
+                        Text.width('100%');
+                    }, Text);
+                    Text.pop();
+                    Column.pop();
+                    // 内容区域
+                    Scroll.pop();
+                    Column.pop();
+                    Stack.pop();
+                });
+            }
+            // 举报与投诉页面（全屏）
+            else {
+                this.ifElseBranchUpdateFunction(1, () => {
+                });
+            }
+        }, If);
+        If.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            If.create();
+            // 举报与投诉页面（全屏）
+            if (this.showReportDialog) {
+                this.ifElseBranchUpdateFunction(0, () => {
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Column.create();
+                        Column.width('100%');
+                        Column.height('100%');
+                        Column.backgroundColor('#FFF5F5');
+                        Column.expandSafeArea();
+                    }, Column);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        // 顶部导航栏
+                        Row.create();
+                        // 顶部导航栏
+                        Row.width('100%');
+                        // 顶部导航栏
+                        Row.padding({ left: 20, right: 20, top: 10, bottom: 10 });
+                        // 顶部导航栏
+                        Row.backgroundColor('#FF6B6B');
+                    }, Row);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Button.createWithLabel('←');
+                        Button.width(50);
+                        Button.height(50);
+                        Button.fontSize(24);
+                        Button.fontColor('#FFFFFF');
+                        Button.backgroundColor(Color.Transparent);
+                        Button.onClick(() => {
+                            this.soundEffectManager.playButtonClick();
+                            this.showReportDialog = false;
+                            this.showSettingsDialog = true;
+                        });
+                    }, Button);
+                    Button.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Text.create('举报与投诉');
+                        Text.fontSize(22);
+                        Text.fontColor('#FFFFFF');
+                        Text.fontWeight(FontWeight.Bold);
+                        Text.layoutWeight(1);
+                        Text.textAlign(TextAlign.Center);
+                    }, Text);
+                    Text.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Blank.create();
+                        Blank.width(50);
+                    }, Blank);
+                    Blank.pop();
+                    // 顶部导航栏
+                    Row.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        // 内容区域
+                        Scroll.create();
+                        // 内容区域
+                        Scroll.layoutWeight(1);
+                        // 内容区域
+                        Scroll.scrollBar(BarState.Auto);
+                    }, Scroll);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Column.create();
+                        Column.width('100%');
+                        Column.padding({ top: 10 });
+                    }, Column);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Blank.create();
+                        Blank.height(40);
+                    }, Blank);
+                    Blank.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        // 说明卡片
+                        Column.create();
+                        // 说明卡片
+                        Column.width('100%');
+                        // 说明卡片
+                        Column.padding(24);
+                        // 说明卡片
+                        Column.backgroundColor('#FFFFFF');
+                        // 说明卡片
+                        Column.borderRadius(16);
+                        // 说明卡片
+                        Column.margin({ left: 30, right: 30, bottom: 20 });
+                        // 说明卡片
+                        Column.shadow({ radius: 8, color: '#00000010', offsetX: 0, offsetY: 2 });
+                    }, Column);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Text.create('📢');
+                        Text.fontSize(48);
+                        Text.margin({ bottom: 16 });
+                    }, Text);
+                    Text.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Text.create('举报与投诉');
+                        Text.fontSize(24);
+                        Text.fontColor('#333333');
+                        Text.fontWeight(FontWeight.Bold);
+                        Text.margin({ bottom: 12 });
+                    }, Text);
+                    Text.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Text.create('我们高度重视未成年人保护。');
+                        Text.fontSize(18);
+                        Text.fontColor('#666666');
+                        Text.fontWeight(FontWeight.Medium);
+                        Text.margin({ bottom: 8 });
+                    }, Text);
+                    Text.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Text.create('若您认为应用内容或功能不当，或涉及未成年人权益受侵害，欢迎通过以下方式与我们联系：');
+                        Text.fontSize(16);
+                        Text.fontColor('#555555');
+                        Text.lineHeight(24);
+                        Text.margin({ bottom: 20 });
+                    }, Text);
+                    Text.pop();
+                    // 说明卡片
+                    Column.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        // 联系方式卡片
+                        Column.create();
+                        // 联系方式卡片
+                        Column.width('100%');
+                        // 联系方式卡片
+                        Column.padding(24);
+                        // 联系方式卡片
+                        Column.backgroundColor('#FFFFFF');
+                        // 联系方式卡片
+                        Column.borderRadius(16);
+                        // 联系方式卡片
+                        Column.margin({ left: 30, right: 30, bottom: 20 });
+                        // 联系方式卡片
+                        Column.shadow({ radius: 8, color: '#00000010', offsetX: 0, offsetY: 2 });
+                    }, Column);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Text.create('📧');
+                        Text.fontSize(40);
+                        Text.margin({ bottom: 12 });
+                    }, Text);
+                    Text.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Text.create('联系方式');
+                        Text.fontSize(20);
+                        Text.fontColor('#333333');
+                        Text.fontWeight(FontWeight.Bold);
+                        Text.margin({ bottom: 16 });
+                    }, Text);
+                    Text.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Row.create();
+                        Row.width('100%');
+                        Row.justifyContent(FlexAlign.Center);
+                        Row.padding(16);
+                        Row.backgroundColor('#FFEBEE');
+                        Row.borderRadius(12);
+                        Row.margin({ bottom: 12 });
+                    }, Row);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Text.create('邮箱：');
+                        Text.fontSize(18);
+                        Text.fontColor('#555555');
+                    }, Text);
+                    Text.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Text.create('394743521@qq.com');
+                        Text.fontSize(18);
+                        Text.fontColor('#FF6B6B');
+                        Text.fontWeight(FontWeight.Bold);
+                    }, Text);
+                    Text.pop();
+                    Row.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Text.create('我们将及时受理并处理您的投诉与举报，尽快予以反馈。');
+                        Text.fontSize(16);
+                        Text.fontColor('#666666');
+                        Text.lineHeight(22);
+                        Text.margin({ bottom: 8 });
+                    }, Text);
+                    Text.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Text.create('依据相关规范（8.14），我们提供便捷、合理、有效的投诉和举报渠道。');
+                        Text.fontSize(16);
+                        Text.fontColor('#666666');
+                        Text.lineHeight(22);
+                    }, Text);
+                    Text.pop();
+                    // 联系方式卡片
+                    Column.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        // 返回按钮
+                        Button.createWithLabel('返回');
+                        // 返回按钮
+                        Button.width('90%');
+                        // 返回按钮
+                        Button.height(50);
+                        // 返回按钮
+                        Button.backgroundColor('#FF6B6B');
+                        // 返回按钮
+                        Button.fontSize(18);
+                        // 返回按钮
+                        Button.fontColor(Color.White);
+                        // 返回按钮
+                        Button.fontWeight(FontWeight.Bold);
+                        // 返回按钮
+                        Button.borderRadius(25);
+                        // 返回按钮
+                        Button.margin({ left: 30, right: 30, bottom: 20 });
+                        // 返回按钮
+                        Button.onClick(() => {
+                            this.soundEffectManager.playButtonClick();
+                            this.showReportDialog = false;
+                            this.showSettingsDialog = true;
+                        });
+                    }, Button);
+                    // 返回按钮
+                    Button.pop();
+                    Column.pop();
+                    // 内容区域
+                    Scroll.pop();
+                    Column.pop();
+                });
+            }
+            else {
+                this.ifElseBranchUpdateFunction(1, () => {
+                });
+            }
+        }, If);
+        If.pop();
         Stack.pop();
     }
     // 主题卡片

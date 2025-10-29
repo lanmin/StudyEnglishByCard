@@ -13,8 +13,8 @@
 		"compileSdkType": "HarmonyOS",
 		"appEnvironments": [],
 		"bundleType": "app",
-		"buildMode": "debug",
-		"debug": true
+		"buildMode": "release",
+		"debug": false
 	},
 	"module": {
 		"name": "entry",

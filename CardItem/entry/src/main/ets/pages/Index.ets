@@ -15,6 +15,7 @@ import {
   WordData,
   LearningMode 
 } from '../types/CommonTypes'
+import promptAction from '@ohos.promptAction'
 
 @Entry
 @Component
@@ -28,6 +29,9 @@ struct Index {
   @State showProgress: boolean = false
   @State showDetailPage: boolean = false
   @State showChallenge: boolean = false
+  @State showSettingsDialog: boolean = false
+  @State showPrivacyPage: boolean = false
+  @State showReportDialog: boolean = false
   @State selectedWord: WordData | null = null
   @State isImageHidden: boolean = false
   @State volumeVisible: boolean = false
@@ -139,6 +143,14 @@ struct Index {
       '#E0FFFF'  // 浅青色
     ]
     return colors[index % colors.length]
+  }
+
+  // 显示链接提示
+  private showUrlPrompt(url: string) {
+    promptAction.showToast({
+      message: `请在浏览器中输入：${url}`,
+      duration: 3000
+    })
   }
 
   // 检查子分类是否完成
@@ -260,6 +272,21 @@ struct Index {
               console.log('挑战模式按钮点击，进入挑战页面，主题:', this.currentTheme)
               this.showChallenge = true
             })
+
+          // 设置按钮
+          Button('设置')
+            .width(100)
+            .height(40)
+            .backgroundColor(GlobalStyles.COLORS.PRIMARY_BLUE)
+            .fontSize(18)
+            .fontColor(Color.White)
+            .fontWeight(FontWeight.Bold)
+            .borderRadius(25)
+            .margin({ left: 10 })
+            .onClick(() => {
+              this.soundEffectManager.playButtonClick()
+              this.showSettingsDialog = true
+            })
         }
         .width('100%')
         .padding({ left: GlobalStyles.SIZES.SPACING_LARGE, right: GlobalStyles.SIZES.SPACING_LARGE, top: GlobalStyles.SIZES.SPACING_MEDIUM })
@@ -283,6 +310,355 @@ struct Index {
       }
       .width('100%')
       .height('100%')
+
+      // 设置页面（全屏）
+      if (this.showSettingsDialog) {
+        Column() {
+          // 顶部导航栏
+          Row() {
+            Button('←')
+              .width(50)
+              .height(50)
+              .fontSize(24)
+              .fontColor('#FFFFFF')
+              .backgroundColor(Color.Transparent)
+              .onClick(() => {
+                this.soundEffectManager.playButtonClick()
+                this.showSettingsDialog = false
+              })
+            
+            Text('设置')
+              .fontSize(22)
+              .fontColor('#FFFFFF')
+              .fontWeight(FontWeight.Bold)
+              .layoutWeight(1)
+              .textAlign(TextAlign.Center)
+            
+            Blank().width(50)
+          }
+          .width('100%')
+          .padding({ left: 20, right: 20, top: 10, bottom: 10 })
+          .backgroundColor(GlobalStyles.COLORS.PRIMARY_BLUE)
+
+          // 功能按钮区域（两枚方块按钮，左右排列）
+          Column() {
+            Blank().height(40)
+
+            Row() {
+              // 儿童隐私协议 方块按钮（正方形）
+              Column() {
+                Text('📄')
+                  .fontSize(34)
+                  .margin({ bottom: 8 })
+                Text('儿童隐私协议')
+                  .fontSize(16)
+                  .fontColor('#333333')
+                  .textAlign(TextAlign.Center)
+              }
+              .width(150)
+              .height(150)
+              .backgroundColor('#E3F2FD')
+              .borderRadius(16)
+              .border({ width: 2, color: GlobalStyles.COLORS.PRIMARY_BLUE, style: BorderStyle.Solid })
+              .justifyContent(FlexAlign.Center)
+              .onClick(() => {
+                this.soundEffectManager.playButtonClick()
+                this.showPrivacyPage = true
+                this.showSettingsDialog = false
+              })
+
+              Blank().width(40)
+
+              // 举报与投诉 方块按钮（正方形）
+              Column() {
+                Text('📮')
+                  .fontSize(34)
+                  .margin({ bottom: 8 })
+                Text('举报与投诉')
+                  .fontSize(16)
+                  .fontColor('#333333')
+                  .textAlign(TextAlign.Center)
+              }
+              .width(150)
+              .height(150)
+              .backgroundColor('#FFEBEE')
+              .borderRadius(16)
+              .border({ width: 2, color: '#FF6B6B', style: BorderStyle.Solid })
+              .justifyContent(FlexAlign.Center)
+              .onClick(() => {
+                this.soundEffectManager.playButtonClick()
+                this.showReportDialog = true
+                this.showSettingsDialog = false
+              })
+            }
+            .width('100%')
+            .padding({ left: 60, right: 20 })
+
+            Blank().height(40)
+          }
+          .width('100%')
+          .layoutWeight(1)
+        }
+        .width('100%')
+        .height('100%')
+        .backgroundColor('#F5F5F5')
+        .expandSafeArea()
+      }
+
+      // 隐私协议页面（全屏）
+      if (this.showPrivacyPage) {
+        Stack() {
+          Column() {
+            // 顶部导航栏
+            Row() {
+              Button('←')
+                .width(50)
+                .height(50)
+                .fontSize(24)
+                .fontColor('#333333')
+                .backgroundColor(Color.Transparent)
+                .onClick(() => {
+                  this.soundEffectManager.playButtonClick()
+                  this.showPrivacyPage = false
+                  this.showSettingsDialog = true
+                })
+              
+              Text('儿童隐私协议')
+                .fontSize(20)
+                .fontColor('#333333')
+                .fontWeight(FontWeight.Bold)
+                .layoutWeight(1)
+                .textAlign(TextAlign.Center)
+              
+              Blank().width(50)
+            }
+            .width('100%')
+            .padding({ left: 30, right: 20, top: 10, bottom: 10 })
+            .backgroundColor('#FFFFFF')
+
+            Divider()
+              .color('#E0E0E0')
+              .strokeWidth(1)
+
+            // 内容区域
+            Scroll() {
+              Column() {
+                Text('儿童隐私保护声明')
+                  .fontSize(24)
+                  .fontColor('#333333')
+                  .fontWeight(FontWeight.Bold)
+                  .margin({ top: 20, bottom: 20 })
+
+                Text('我们高度重视未成年人个人信息保护。为了帮助您了解我们如何收集、使用和保护儿童的个人信息，请您仔细阅读本隐私保护声明。')
+                  .fontSize(16)
+                  .fontColor('#555555')
+                  .lineHeight(24)
+                  .margin({ bottom: 20 })
+                  .width('100%')
+
+                Text('查看完整隐私协议')
+                  .fontSize(18)
+                  .fontColor('#666666')
+                  .margin({ bottom: 10 })
+                  .width('100%')
+
+                // 链接区域
+                Row() {
+                  Text('🔗')
+                    .fontSize(20)
+                    .margin({ right: 8 })
+                  
+                  Text('https://lanmin.github.io/BabyStudyEnglishPrivacy.html')
+                    .fontSize(16)
+                    .fontColor(GlobalStyles.COLORS.PRIMARY_BLUE)
+                    .decoration({ type: TextDecorationType.Underline })
+                    .layoutWeight(1)
+                }
+                .width('100%')
+                .padding({ left: 16, right: 16, top: 12, bottom: 12 })
+                .backgroundColor('#F0F8FF')
+                .borderRadius(8)
+                .border({
+                  width: 1,
+                  color: GlobalStyles.COLORS.PRIMARY_BLUE,
+                  style: BorderStyle.Solid
+                })
+                .margin({ bottom: 20 })
+                .onClick(() => {
+                  this.soundEffectManager.playButtonClick()
+                  this.showUrlPrompt('https://lanmin.github.io/BabyStudyEnglishPrivacy.html')
+                })
+
+                Text('您可以通过点击上方链接在浏览器中查看完整的《儿童隐私保护声明》，了解我们如何处理儿童的个人信息、您的权利以及如何联系我们。')
+                  .fontSize(16)
+                  .fontColor('#555555')
+                  .lineHeight(24)
+                  .margin({ bottom: 20 })
+                  .width('100%')
+
+                Text('如有任何疑问或需要帮助，请发送邮件至：394743521@qq.com')
+                  .fontSize(16)
+                  .fontColor('#555555')
+                  .lineHeight(24)
+                  .margin({ bottom: 40 })
+                  .width('100%')
+              }
+              .width('100%')
+            .padding({ left: 40, right: 30, bottom: 20 })
+            }
+            .layoutWeight(1)
+            .scrollBar(BarState.Auto)
+          }
+          .width('100%')
+          .height('100%')
+          .backgroundColor('#FFFFFF')
+          .expandSafeArea()
+        }
+        .width('100%')
+        .height('100%')
+        .expandSafeArea()
+      }
+
+      // 举报与投诉页面（全屏）
+      if (this.showReportDialog) {
+        Column() {
+          // 顶部导航栏
+          Row() {
+            Button('←')
+              .width(50)
+              .height(50)
+              .fontSize(24)
+              .fontColor('#FFFFFF')
+              .backgroundColor(Color.Transparent)
+              .onClick(() => {
+                this.soundEffectManager.playButtonClick()
+                this.showReportDialog = false
+                this.showSettingsDialog = true
+              })
+            
+            Text('举报与投诉')
+              .fontSize(22)
+              .fontColor('#FFFFFF')
+              .fontWeight(FontWeight.Bold)
+              .layoutWeight(1)
+              .textAlign(TextAlign.Center)
+            
+            Blank().width(50)
+          }
+          .width('100%')
+          .padding({ left: 20, right: 20, top: 10, bottom: 10 })
+          .backgroundColor('#FF6B6B')
+
+          // 内容区域
+          Scroll() {
+            Column() {
+              Blank().height(40)
+
+              // 说明卡片
+              Column() {
+                Text('📢')
+                  .fontSize(48)
+                  .margin({ bottom: 16 })
+
+                Text('举报与投诉')
+                  .fontSize(24)
+                  .fontColor('#333333')
+                  .fontWeight(FontWeight.Bold)
+                  .margin({ bottom: 12 })
+
+                Text('我们高度重视未成年人保护。')
+                  .fontSize(18)
+                  .fontColor('#666666')
+                  .fontWeight(FontWeight.Medium)
+                  .margin({ bottom: 8 })
+
+                Text('若您认为应用内容或功能不当，或涉及未成年人权益受侵害，欢迎通过以下方式与我们联系：')
+                  .fontSize(16)
+                  .fontColor('#555555')
+                  .lineHeight(24)
+                  .margin({ bottom: 20 })
+              }
+              .width('100%')
+              .padding(24)
+              .backgroundColor('#FFFFFF')
+              .borderRadius(16)
+              .margin({ left: 30, right: 30, bottom: 20 })
+              .shadow({ radius: 8, color: '#00000010', offsetX: 0, offsetY: 2 })
+
+              // 联系方式卡片
+              Column() {
+                Text('📧')
+                  .fontSize(40)
+                  .margin({ bottom: 12 })
+
+                Text('联系方式')
+                  .fontSize(20)
+                  .fontColor('#333333')
+                  .fontWeight(FontWeight.Bold)
+                  .margin({ bottom: 16 })
+
+                Row() {
+                  Text('邮箱：')
+                    .fontSize(18)
+                    .fontColor('#555555')
+                  
+                  Text('394743521@qq.com')
+                    .fontSize(18)
+                    .fontColor('#FF6B6B')
+                    .fontWeight(FontWeight.Bold)
+                }
+                .width('100%')
+                .justifyContent(FlexAlign.Center)
+                .padding(16)
+                .backgroundColor('#FFEBEE')
+                .borderRadius(12)
+                .margin({ bottom: 12 })
+
+                Text('我们将及时受理并处理您的投诉与举报，尽快予以反馈。')
+                  .fontSize(16)
+                  .fontColor('#666666')
+                  .lineHeight(22)
+                  .margin({ bottom: 8 })
+
+                Text('依据相关规范（8.14），我们提供便捷、合理、有效的投诉和举报渠道。')
+                  .fontSize(16)
+                  .fontColor('#666666')
+                  .lineHeight(22)
+              }
+              .width('100%')
+              .padding(24)
+              .backgroundColor('#FFFFFF')
+              .borderRadius(16)
+              .margin({ left: 30, right: 30, bottom: 20 })
+              .shadow({ radius: 8, color: '#00000010', offsetX: 0, offsetY: 2 })
+
+              // 返回按钮
+              Button('返回')
+                .width('90%')
+                .height(50)
+                .backgroundColor('#FF6B6B')
+                .fontSize(18)
+                .fontColor(Color.White)
+                .fontWeight(FontWeight.Bold)
+                .borderRadius(25)
+                .margin({ left: 30, right: 30, bottom: 20 })
+                .onClick(() => {
+                  this.soundEffectManager.playButtonClick()
+                  this.showReportDialog = false
+                  this.showSettingsDialog = true
+                })
+            }
+            .width('100%')
+            .padding({ top: 10 })
+          }
+          .layoutWeight(1)
+          .scrollBar(BarState.Auto)
+        }
+        .width('100%')
+        .height('100%')
+        .backgroundColor('#FFF5F5')
+        .expandSafeArea()
+      }
     }
     .width('100%')
     .height('100%')

@@ -444,7 +444,7 @@ Niece｜侄女｜姪（めい，mei）
 Husband｜丈夫｜夫（おっと，otto）  
 Wife｜妻子｜妻（つま，tsuma）  
 Mommy｜妈咪｜マミー（mamii）  
-Daddy｜爹地｜ダディー（daddii）  
+Daddy｜爹地｜ダディー（daddii）
 ### 八、动作类（50个）｜Actions（50）｜動作（どうさ，dousa）
 @@@ 日常动作｜Daily Actions｜日常の動作（にちじょうのどうさ，nichijou no dousa）
 Eat｜吃｜食べる（たべる，taberu）  
