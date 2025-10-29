@@ -557,7 +557,7 @@ class Index extends ViewPU {
         }, Stack);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             // 背景图片
-            Image.create({ "id": 0, "type": 30000, params: ['bg1.png'], "bundleName": "com.example.studyenglishbycard", "moduleName": "entry" });
+            Image.create({ "id": 0, "type": 30000, params: ['bg1.png'], "bundleName": "com.babyLearnEnglishi.huawei", "moduleName": "entry" });
             // 背景图片
             Image.width('100%');
             // 背景图片
@@ -671,7 +671,7 @@ class Index extends ViewPU {
             Column.backgroundColor(GlobalStyles.COLORS.CARD_BACKGROUND);
             Column.borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM);
             Column.border({
-                width: this.clickedThemeIndex === index ? 6 : 2,
+                width: this.clickedThemeIndex === index ? 8 : 4,
                 color: this.clickedThemeIndex === index ? '#FF6B6B' : this.getRandomBorderColor(index),
                 style: BorderStyle.Solid
             });
@@ -696,7 +696,7 @@ class Index extends ViewPU {
         }, Column);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             // 主题图标
-            Image.create({ "id": -1, "type": 30000, params: [theme.icon], "bundleName": "com.example.studyenglishbycard", "moduleName": "entry" });
+            Image.create({ "id": -1, "type": 30000, params: [theme.icon], "bundleName": "com.babyLearnEnglishi.huawei", "moduleName": "entry" });
             // 主题图标
             Image.width(100);
             // 主题图标
@@ -745,7 +745,7 @@ class Index extends ViewPU {
         }, Stack);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             // 背景图片
-            Image.create({ "id": 0, "type": 30000, params: ['bg2.png'], "bundleName": "com.example.studyenglishbycard", "moduleName": "entry" });
+            Image.create({ "id": 0, "type": 30000, params: ['bg2.png'], "bundleName": "com.babyLearnEnglishi.huawei", "moduleName": "entry" });
             // 背景图片
             Image.width('100%');
             // 背景图片
@@ -870,7 +870,7 @@ class Index extends ViewPU {
         }, Column);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             // 子分类图标
-            Image.create({ "id": -1, "type": 30000, params: [subcategory.icon], "bundleName": "com.example.studyenglishbycard", "moduleName": "entry" });
+            Image.create({ "id": -1, "type": 30000, params: [subcategory.icon], "bundleName": "com.babyLearnEnglishi.huawei", "moduleName": "entry" });
             // 子分类图标
             Image.width(100);
             // 子分类图标
@@ -1068,4 +1068,4 @@ class Index extends ViewPU {
         return "Index";
     }
 }
-registerNamedRoute(() => new Index(undefined, {}), "", { bundleName: "com.example.studyenglishbycard", moduleName: "entry", pagePath: "pages/Index", pageFullPath: "entry/src/main/ets/pages/Index", integratedHsp: "false", moduleType: "followWithHap" });
+registerNamedRoute(() => new Index(undefined, {}), "", { bundleName: "com.babyLearnEnglishi.huawei", moduleName: "entry", pagePath: "pages/Index", pageFullPath: "entry/src/main/ets/pages/Index", integratedHsp: "false", moduleType: "followWithHap" });

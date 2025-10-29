@@ -827,7 +827,7 @@ export class WordLearningPage extends ViewPU {
         }, Stack);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             // 背景图片
-            Image.create({ "id": 0, "type": 30000, params: ['bg3.png'], "bundleName": "com.example.studyenglishbycard", "moduleName": "entry" });
+            Image.create({ "id": 0, "type": 30000, params: ['bg3.png'], "bundleName": "com.babyLearnEnglishi.huawei", "moduleName": "entry" });
             // 背景图片
             Image.width('100%');
             // 背景图片
@@ -1019,7 +1019,7 @@ export class WordLearningPage extends ViewPU {
                     Column.margin({ right: 10 });
                 }, Column);
                 this.observeComponentCreation2((elmtId, isInitialRender) => {
-                    Image.create({ "id": -1, "type": 30000, params: [option.image], "bundleName": "com.example.studyenglishbycard", "moduleName": "entry" });
+                    Image.create({ "id": -1, "type": 30000, params: [option.image], "bundleName": "com.babyLearnEnglishi.huawei", "moduleName": "entry" });
                     Context.animation({ duration: 200, curve: Curve.EaseInOut });
                     Image.width(150);
                     Image.height(150);
@@ -1325,7 +1325,7 @@ export class WordLearningPage extends ViewPU {
                     Column.margin({ right: 10 });
                 }, Column);
                 this.observeComponentCreation2((elmtId, isInitialRender) => {
-                    Image.create({ "id": -1, "type": 30000, params: [option.image], "bundleName": "com.example.studyenglishbycard", "moduleName": "entry" });
+                    Image.create({ "id": -1, "type": 30000, params: [option.image], "bundleName": "com.babyLearnEnglishi.huawei", "moduleName": "entry" });
                     Image.width(150);
                     Image.height(150);
                     Image.borderRadius(15);
@@ -1479,7 +1479,7 @@ export class WordLearningPage extends ViewPU {
                     }, Column);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         // 使用rawfile资源引用，如果图片加载失败则使用DefaultImg.png
-                        Image.create(this.imageError ? { "id": 0, "type": 30000, params: ['CardOriginal/DefaultImg.png'], "bundleName": "com.example.studyenglishbycard", "moduleName": "entry" } : { "id": -1, "type": 30000, params: [this.getCurrentWord()!.image], "bundleName": "com.example.studyenglishbycard", "moduleName": "entry" });
+                        Image.create(this.imageError ? { "id": 0, "type": 30000, params: ['CardOriginal/DefaultImg.png'], "bundleName": "com.babyLearnEnglishi.huawei", "moduleName": "entry" } : { "id": -1, "type": 30000, params: [this.getCurrentWord()!.image], "bundleName": "com.babyLearnEnglishi.huawei", "moduleName": "entry" });
                         // 使用rawfile资源引用，如果图片加载失败则使用DefaultImg.png
                         Image.width(250);
                         // 使用rawfile资源引用，如果图片加载失败则使用DefaultImg.png
@@ -1574,7 +1574,7 @@ export class WordLearningPage extends ViewPU {
                         if (this.currentMode === 'speak') {
                             this.ifElseBranchUpdateFunction(0, () => {
                                 this.observeComponentCreation2((elmtId, isInitialRender) => {
-                                    Image.create({ "id": 0, "type": 30000, params: ['CardOriginal/Wave.png'], "bundleName": "com.example.studyenglishbycard", "moduleName": "entry" });
+                                    Image.create({ "id": 0, "type": 30000, params: ['CardOriginal/Wave.png'], "bundleName": "com.babyLearnEnglishi.huawei", "moduleName": "entry" });
                                     Context.animation({ duration: 500, curve: Curve.EaseInOut, iterations: 1, playMode: PlayMode.Normal });
                                     Image.width(60);
                                     Image.height(40);
@@ -1598,7 +1598,7 @@ export class WordLearningPage extends ViewPU {
                         if (this.showHearGif) {
                             this.ifElseBranchUpdateFunction(0, () => {
                                 this.observeComponentCreation2((elmtId, isInitialRender) => {
-                                    Image.create({ "id": 0, "type": 30000, params: ['hearWord.gif'], "bundleName": "com.example.studyenglishbycard", "moduleName": "entry" });
+                                    Image.create({ "id": 0, "type": 30000, params: ['hearWord.gif'], "bundleName": "com.babyLearnEnglishi.huawei", "moduleName": "entry" });
                                     Image.width(60);
                                     Image.height(40);
                                     Image.objectFit(ImageFit.Fill);
@@ -1786,7 +1786,7 @@ export class WordLearningPage extends ViewPU {
                         Column.height(450);
                     }, Column);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        Image.create({ "id": 16777218, "type": 20000, params: [], "bundleName": "com.example.studyenglishbycard", "moduleName": "entry" });
+                        Image.create({ "id": 16777218, "type": 20000, params: [], "bundleName": "com.babyLearnEnglishi.huawei", "moduleName": "entry" });
                         Image.width(200);
                         Image.height(200);
                         Image.opacity(0.5);

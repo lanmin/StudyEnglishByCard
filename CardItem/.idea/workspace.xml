@@ -2,7 +2,41 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f13ac8f3-b68d-464b-b6b1-4675f4b41389" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.hvigor/cache/file-cache.json" beforeDir="false" afterPath="$PROJECT_DIR$/.hvigor/cache/file-cache.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.hvigor/cache/task-cache.json" beforeDir="false" afterPath="$PROJECT_DIR$/.hvigor/cache/task-cache.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.hvigor/outputs/build-logs/build.log" beforeDir="false" afterPath="$PROJECT_DIR$/.hvigor/outputs/build-logs/build.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.hvigor/outputs/logs/details/details.json" beforeDir="false" afterPath="$PROJECT_DIR$/.hvigor/outputs/logs/details/details.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.hvigor/outputs/sync/fileCache.json" beforeDir="false" afterPath="$PROJECT_DIR$/.hvigor/outputs/sync/fileCache.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.hvigor/outputs/sync/output.json" beforeDir="false" afterPath="$PROJECT_DIR$/.hvigor/outputs/sync/output.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510282245351050.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510290701278310.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510290730259180.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510290732134960.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510290733488150.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.hvigor/report/report-202510290740535340.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppScope/app.json5" beforeDir="false" afterPath="$PROJECT_DIR$/AppScope/app.json5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build-profile.json5" beforeDir="false" afterPath="$PROJECT_DIR$/build-profile.json5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/.ts_checker_cache" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/.ts_checker_cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/.tsbuildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/.tsbuildinfo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/.tsbuildinfo.linter" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/.tsbuildinfo.linter" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/modules/ChallengePage.ets-09d220bf957c7f39a52c78209da9e8dc.msgpack" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/modules/ChallengePage.ets-09d220bf957c7f39a52c78209da9e8dc.msgpack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/modules/Index.ets-927f80b0136368d430d4aa1cb5061f0a.msgpack" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/modules/Index.ets-927f80b0136368d430d4aa1cb5061f0a.msgpack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/plugins/plugins.msgpack" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/compiler.cache/plugins/plugins.msgpack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/entry/src/main/ets/components/ChallengePage.protoBin" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/entry/src/main/ets/components/ChallengePage.protoBin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/entry/src/main/ets/components/ChallengePage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/entry/src/main/ets/components/ChallengePage.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/entry/src/main/ets/pages/Index.protoBin" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/entry/src/main/ets/pages/Index.protoBin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/entry/src/main/ets/pages/Index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/entry/src/main/ets/pages/Index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/filesInfo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/filesInfo.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/modules.cache" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/modules.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/sourceMaps.json" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/sourceMaps.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/hap_metadata/default/output_metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/intermediates/hap_metadata/default/output_metadata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/loader_out/default/ets/modules.abc" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/intermediates/loader_out/default/ets/modules.abc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/loader_out/default/ets/sourceMaps.map" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/intermediates/loader_out/default/ets/sourceMaps.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/intermediates/source_map/default/sourceMaps.map" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/intermediates/source_map/default/sourceMaps.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/outputs/default/entry-default-unsigned.hap" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/outputs/default/entry-default-unsigned.hap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/build/default/outputs/default/mapping/sourceMaps.map" beforeDir="false" afterPath="$PROJECT_DIR$/entry/build/default/outputs/default/mapping/sourceMaps.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/ets/components/ChallengePage.ets" beforeDir="false" afterPath="$PROJECT_DIR$/entry/src/main/ets/components/ChallengePage.ets" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/main/ets/pages/Index.ets" beforeDir="false" afterPath="$PROJECT_DIR$/entry/src/main/ets/pages/Index.ets" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,22 +62,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;127.0.0.1:5555&quot;: &quot;5369684511761655756878&quot;,
-    &quot;Application.entry.executor&quot;: &quot;Run&quot;,
-    &quot;MODULE_HAP_TIME&quot;: &quot;{\&quot;127.0.0.1:5555entry\&quot;:\&quot;2025-10-28T14:20:40.807449411Z\&quot;}&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;ace.nodejs.version&quot;: &quot;18.20.1&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "127.0.0.1:5555": "5369684511761669618439",
+    "Application.entry.executor": "Run",
+    "MODULE_HAP_TIME": "{\"127.0.0.1:5555entry\":\"2025-10-28T23:58:35.433644479Z\"}",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "ace.nodejs.version": "18.20.1",
+    "last_csr_path": "/Users/lanmin/BabyStudyEnglish.csr",
+    "last_keystore_path": "/Users/lanmin/BabyStudyEnglishP12.p12",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/entry/src/main/resources/rawfile" />
       <recent name="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal" />
       <recent name="$PROJECT_DIR$/entry/src/main/resources/rawfile/words" />
       <recent name="$PROJECT_DIR$/entry/src/main/resources/rawfile/CardOriginal/Food/Snacks_Other Foods" />
-      <recent name="$PROJECT_DIR$/entry/src/main/resources/rawfile" />
       <recent name="$PROJECT_DIR$/entry/src/main" />
     </key>
   </component>
@@ -94,7 +131,7 @@
       <method v="2" />
     </configuration>
     <configuration name="entry" type="OhosDebugTask" factoryName="OpenHarmony App">
-      <MODULE_NAME />
+      <MODULE_NAME>entry</MODULE_NAME>
       <REINSTALL_APPLICATION>true</REINSTALL_APPLICATION>
       <ENVIRONMENT_VARIABLES>[]</ENVIRONMENT_VARIABLES>
       <DEBUG_LINE_ENABLE_DATA>false</DEBUG_LINE_ENABLE_DATA>

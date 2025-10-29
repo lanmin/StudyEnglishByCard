@@ -319,7 +319,7 @@ struct Index {
       .backgroundColor(GlobalStyles.COLORS.CARD_BACKGROUND)
       .borderRadius(GlobalStyles.BORDER_RADIUS.MEDIUM)
       .border({
-        width: this.clickedThemeIndex === index ? 6 : 2,
+        width: this.clickedThemeIndex === index ? 8 : 4,
         color: this.clickedThemeIndex === index ? '#FF6B6B' : this.getRandomBorderColor(index),
         style: BorderStyle.Solid
       })

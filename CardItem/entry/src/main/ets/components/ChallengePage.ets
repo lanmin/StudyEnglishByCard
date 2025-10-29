@@ -16,7 +16,8 @@ export struct ChallengePage {
   @State selectedIndex: number = -1
   @State answerShown: boolean = false
   @State correctCount: number = 0
-  @State imageScales: number[] = [1, 1, 1]  // 三个选项的缩放状态
+  @State imageScales: number[] = [1, 1, 1]
+  @State correctAnswerIndex: number = -1  // 三个选项的缩放状态
 
   private learningDataManager: LearningDataManager = LearningDataManager.getInstance()
 
@@ -69,6 +70,9 @@ export struct ChallengePage {
     this.answerShown = false
     // 重置图片缩放
     this.imageScales = [1, 1, 1]
+    
+    // 记录正确答案的索引
+    this.correctAnswerIndex = this.options.findIndex(option => option.english === correctWord.english)
 
     // 播放题目："哪个是XX English？"
     const question: string = `哪个是${correctWord.chinese}${correctWord.english}？`
@@ -150,18 +154,7 @@ export struct ChallengePage {
   }
 
   private getCorrectIndex(): number {
-    if (this.options.length === 0) return -1
-    // 正确项为 options 中在 generateQuestion 放入的正确词；无法直接引用，改为：
-    // 使用语音问题中提到的英文单词：无法取到，简化为：正确项即 options 中英文在 words 中匹配任意项，且在 options 中与其余两项不同名的那一个。
-    // 由于三项英文均不同名，这里等价于 0..2 中任一。为准确，我们在边框时临时计算：与 selectedIndex 比较不准确。
-    // 为简洁，在 selectOption 时已用计算方式判定正确性，这里只用于边框展示时的比较，
-    // 使用一个稳定但近似的方法：取 options 中英文字母序最小的当作"正确"以提供一致的视觉反馈。
-    interface OptionWithIndex {
-      i: number
-      k: string
-    }
-    const sorted: OptionWithIndex[] = this.options.map((w: WordData, i: number): OptionWithIndex => ({ i, k: w.english })).sort((a: OptionWithIndex, b: OptionWithIndex) => a.k.localeCompare(b.k))
-    return sorted.length > 0 ? sorted[0].i : -1
+    return this.correctAnswerIndex
   }
 
   @Builder

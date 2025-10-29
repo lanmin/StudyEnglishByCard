@@ -12,6 +12,7 @@ interface ChallengePage_Params {
     answerShown?: boolean;
     correctCount?: number;
     imageScales?: number[];
+    correctAnswerIndex?: number;
     learningDataManager?: LearningDataManager;
 }
 import type { WordData, ThemeType, SubcategoryData } from '../types/CommonTypes';
@@ -31,8 +32,9 @@ export class ChallengePage extends ViewPU {
         this.__selectedIndex = new ObservedPropertySimplePU(-1, this, "selectedIndex");
         this.__answerShown = new ObservedPropertySimplePU(false, this, "answerShown");
         this.__correctCount = new ObservedPropertySimplePU(0, this, "correctCount");
-        this.__imageScales = new ObservedPropertyObjectPU([1, 1, 1] // 三个选项的缩放状态
-        , this, "imageScales");
+        this.__imageScales = new ObservedPropertyObjectPU([1, 1, 1], this, "imageScales");
+        this.__correctAnswerIndex = new ObservedPropertySimplePU(-1 // 三个选项的缩放状态
+        , this, "correctAnswerIndex");
         this.learningDataManager = LearningDataManager.getInstance();
         this.setInitiallyProvidedValue(params);
         this.finalizeConstruction();
@@ -62,6 +64,9 @@ export class ChallengePage extends ViewPU {
         if (params.imageScales !== undefined) {
             this.imageScales = params.imageScales;
         }
+        if (params.correctAnswerIndex !== undefined) {
+            this.correctAnswerIndex = params.correctAnswerIndex;
+        }
         if (params.learningDataManager !== undefined) {
             this.learningDataManager = params.learningDataManager;
         }
@@ -75,6 +80,7 @@ export class ChallengePage extends ViewPU {
         this.__answerShown.purgeDependencyOnElmtId(rmElmtId);
         this.__correctCount.purgeDependencyOnElmtId(rmElmtId);
         this.__imageScales.purgeDependencyOnElmtId(rmElmtId);
+        this.__correctAnswerIndex.purgeDependencyOnElmtId(rmElmtId);
     }
     aboutToBeDeleted() {
         this.__words.aboutToBeDeleted();
@@ -83,6 +89,7 @@ export class ChallengePage extends ViewPU {
         this.__answerShown.aboutToBeDeleted();
         this.__correctCount.aboutToBeDeleted();
         this.__imageScales.aboutToBeDeleted();
+        this.__correctAnswerIndex.aboutToBeDeleted();
         SubscriberManager.Get().delete(this.id__());
         this.aboutToBeDeletedInternal();
     }
@@ -125,12 +132,19 @@ export class ChallengePage extends ViewPU {
     set correctCount(newValue: number) {
         this.__correctCount.set(newValue);
     }
-    private __imageScales: ObservedPropertyObjectPU<number[]>; // 三个选项的缩放状态
+    private __imageScales: ObservedPropertyObjectPU<number[]>;
     get imageScales() {
         return this.__imageScales.get();
     }
     set imageScales(newValue: number[]) {
         this.__imageScales.set(newValue);
+    }
+    private __correctAnswerIndex: ObservedPropertySimplePU<number>; // 三个选项的缩放状态
+    get correctAnswerIndex() {
+        return this.__correctAnswerIndex.get();
+    }
+    set correctAnswerIndex(newValue: number) {
+        this.__correctAnswerIndex.set(newValue);
     }
     private learningDataManager: LearningDataManager;
     aboutToAppear() {
@@ -176,6 +190,8 @@ export class ChallengePage extends ViewPU {
         this.answerShown = false;
         // 重置图片缩放
         this.imageScales = [1, 1, 1];
+        // 记录正确答案的索引
+        this.correctAnswerIndex = this.options.findIndex(option => option.english === correctWord.english);
         // 播放题目："哪个是XX English？"
         const question: string = `哪个是${correctWord.chinese}${correctWord.english}？`;
         await SpeechManager.speak(question);
@@ -248,19 +264,7 @@ export class ChallengePage extends ViewPU {
         await SpeechManager.speak(question);
     }
     private getCorrectIndex(): number {
-        if (this.options.length === 0)
-            return -1;
-        // 正确项为 options 中在 generateQuestion 放入的正确词；无法直接引用，改为：
-        // 使用语音问题中提到的英文单词：无法取到，简化为：正确项即 options 中英文在 words 中匹配任意项，且在 options 中与其余两项不同名的那一个。
-        // 由于三项英文均不同名，这里等价于 0..2 中任一。为准确，我们在边框时临时计算：与 selectedIndex 比较不准确。
-        // 为简洁，在 selectOption 时已用计算方式判定正确性，这里只用于边框展示时的比较，
-        // 使用一个稳定但近似的方法：取 options 中英文字母序最小的当作"正确"以提供一致的视觉反馈。
-        interface OptionWithIndex {
-            i: number;
-            k: string;
-        }
-        const sorted: OptionWithIndex[] = this.options.map((w: WordData, i: number): OptionWithIndex => ({ i, k: w.english })).sort((a: OptionWithIndex, b: OptionWithIndex) => a.k.localeCompare(b.k));
-        return sorted.length > 0 ? sorted[0].i : -1;
+        return this.correctAnswerIndex;
     }
     initialRender() {
         this.observeComponentCreation2((elmtId, isInitialRender) => {
@@ -271,7 +275,7 @@ export class ChallengePage extends ViewPU {
         }, Stack);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             // 背景图片
-            Image.create({ "id": 0, "type": 30000, params: ['bg2.png'], "bundleName": "com.example.studyenglishbycard", "moduleName": "entry" });
+            Image.create({ "id": 0, "type": 30000, params: ['bg2.png'], "bundleName": "com.babyLearnEnglishi.huawei", "moduleName": "entry" });
             // 背景图片
             Image.width('100%');
             // 背景图片
@@ -376,7 +380,7 @@ export class ChallengePage extends ViewPU {
                     Column.margin({ right: 10 });
                 }, Column);
                 this.observeComponentCreation2((elmtId, isInitialRender) => {
-                    Image.create({ "id": -1, "type": 30000, params: [option.image], "bundleName": "com.example.studyenglishbycard", "moduleName": "entry" });
+                    Image.create({ "id": -1, "type": 30000, params: [option.image], "bundleName": "com.babyLearnEnglishi.huawei", "moduleName": "entry" });
                     Context.animation({ duration: 200, curve: Curve.EaseInOut });
                     Image.width(150);
                     Image.height(150);

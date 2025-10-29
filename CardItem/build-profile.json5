@@ -1,6 +1,20 @@
 {
   "app": {
-    "signingConfigs": [],
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "storeFile": "/Users/lanmin/BabyStudyEnglishP12.p12",
+          "storePassword": "00000019BD3774F20DB98A2877E2FEB8F3B077F6A53FE1E7E99463D1D6D1646E3BBA76FD433C0A04D3",
+          "keyAlias": "BabyStudyEnglishAlias",
+          "keyPassword": "00000019E6E092B4F32AF248D16C07C19E13E915C1332E4AA3342B95E292C7522F588B7E76CBC20159",
+          "signAlg": "SHA256withECDSA",
+          "profile": "/Users/lanmin/Downloads/babyStudyEnglishProfileRelease.p7b",
+          "certpath": "/Users/lanmin/Downloads/babyStudyEnglishCer.cer"
+        }
+      }
+    ],
     "products": [
       {
         "name": "default",
