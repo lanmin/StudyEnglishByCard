@@ -564,7 +564,7 @@ export struct WordLearningPage {
         .width('100%')
         .height('100%')
         .objectFit(ImageFit.Cover)
-        .opacity(0.3)
+        .opacity(0.6)
         .expandSafeArea()
       
       // 主内容

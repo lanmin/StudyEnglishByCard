@@ -223,7 +223,6 @@ struct Index {
     }
     .width('100%')
     .height('100%')
-    .backgroundColor(GlobalStyles.COLORS.BACKGROUND)
   }
 
   // 主题选择页（横屏布局，左右滑动）
@@ -234,7 +233,7 @@ struct Index {
         .width('100%')
         .height('100%')
         .objectFit(ImageFit.Cover)
-        .opacity(0.3)
+        .opacity(0.6)
         .expandSafeArea()
       
       // 主内容
@@ -372,7 +371,7 @@ struct Index {
         .width('100%')
         .height('100%')
         .objectFit(ImageFit.Cover)
-        .opacity(0.3)
+        .opacity(0.6)
         .expandSafeArea()
       
       // 主内容

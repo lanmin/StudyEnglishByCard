@@ -462,7 +462,6 @@ class Index extends ViewPU {
             Column.create();
             Column.width('100%');
             Column.height('100%');
-            Column.backgroundColor(GlobalStyles.COLORS.BACKGROUND);
         }, Column);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             If.create();
@@ -565,7 +564,7 @@ class Index extends ViewPU {
             // 背景图片
             Image.objectFit(ImageFit.Cover);
             // 背景图片
-            Image.opacity(0.3);
+            Image.opacity(0.6);
             // 背景图片
             Image.expandSafeArea();
         }, Image);
@@ -753,7 +752,7 @@ class Index extends ViewPU {
             // 背景图片
             Image.objectFit(ImageFit.Cover);
             // 背景图片
-            Image.opacity(0.3);
+            Image.opacity(0.6);
             // 背景图片
             Image.expandSafeArea();
         }, Image);

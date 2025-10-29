@@ -835,7 +835,7 @@ export class WordLearningPage extends ViewPU {
             // 背景图片
             Image.objectFit(ImageFit.Cover);
             // 背景图片
-            Image.opacity(0.3);
+            Image.opacity(0.6);
             // 背景图片
             Image.expandSafeArea();
         }, Image);
