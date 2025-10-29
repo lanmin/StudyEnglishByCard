@@ -1126,7 +1126,7 @@ Toy plane｜玩具飞机｜おもちゃの飛行機`;
             'body_parts': 'Body Parts',
             'colors_shapes': 'Colors & Shapes',
             'vehicles': 'Transportation',
-            'family': 'Family Members and Titles',
+            'family': 'Family Members & Titles',
             'actions': 'Actions',
             'places': 'Places',
             'nature': 'Natural Things',
