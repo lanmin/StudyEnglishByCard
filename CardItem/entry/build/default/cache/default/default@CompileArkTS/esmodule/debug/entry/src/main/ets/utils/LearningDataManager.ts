@@ -259,8 +259,63 @@ export class LearningDataManager {
     }
     // 生成发音
     private generatePronunciation(english: string): string {
-        // 简单的发音生成，实际项目中可以使用更复杂的算法
-        return english.toLowerCase();
+        // 简单的音标映射，实际项目中可以使用更完整的音标库
+        const pronunciationMap: Record<string, string> = {
+            'apple': '/ˈæpəl/',
+            'banana': '/bəˈnɑːnə/',
+            'orange': '/ˈɔːrɪndʒ/',
+            'grape': '/ɡreɪp/',
+            'car': '/kɑːr/',
+            'bus': '/bʌs/',
+            'train': '/treɪn/',
+            'plane': '/pleɪn/',
+            'cat': '/kæt/',
+            'dog': '/dɔːɡ/',
+            'bird': '/bɜːrd/',
+            'fish': '/fɪʃ/',
+            'red': '/red/',
+            'blue': '/bluː/',
+            'green': '/ɡriːn/',
+            'yellow': '/ˈjeloʊ/',
+            'black': '/blæk/',
+            'white': '/waɪt/',
+            'head': '/hed/',
+            'eye': '/aɪ/',
+            'nose': '/noʊz/',
+            'mouth': '/maʊθ/',
+            'hand': '/hænd/',
+            'foot': '/fʊt/',
+            'book': '/bʊk/',
+            'pen': '/pen/',
+            'chair': '/tʃer/',
+            'table': '/ˈteɪbəl/',
+            'door': '/dɔːr/',
+            'window': '/ˈwɪndoʊ/',
+            'mother': '/ˈmʌðər/',
+            'father': '/ˈfɑːðər/',
+            'sister': '/ˈsɪstər/',
+            'brother': '/ˈbrʌðər/',
+            'run': '/rʌn/',
+            'jump': '/dʒʌmp/',
+            'walk': '/wɔːk/',
+            'swim': '/swɪm/',
+            'house': '/haʊs/',
+            'school': '/skuːl/',
+            'park': '/pɑːrk/',
+            'tree': '/triː/',
+            'flower': '/ˈflaʊər/',
+            'sun': '/sʌn/',
+            'moon': '/muːn/',
+            'shirt': '/ʃɜːrt/',
+            'pants': '/pænts/',
+            'shoes': '/ʃuːz/',
+            'hat': '/hæt/',
+            'ball': '/bɔːl/',
+            'toy': '/tɔɪ/',
+            'doll': '/dɑːl/',
+            'game': '/ɡeɪm/'
+        };
+        return pronunciationMap[english.toLowerCase()] || `/${english.toLowerCase()}/`;
     }
     // 清空所有主题的子分类数组
     private clearAllSubcategories(): void {

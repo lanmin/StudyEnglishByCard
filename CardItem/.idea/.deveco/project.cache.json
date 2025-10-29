@@ -7,7 +7,7 @@
 	},
 	"BuildOptions":{
 		"SELECT_BUILD_PRODUCT":"default",
-		"BUNDLE_NAME":"com.example.studyenglishbycard",
+		"BUNDLE_NAME":"com.babyLearnEnglishi.huawei",
 		"BUILD_PATH":{
 			"OUTPUT_PATH":"/Users/lanmin/Documents/PersonalItem/CardGameApp/CardItem/build/outputs/default"
 		},
